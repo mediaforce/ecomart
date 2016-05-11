@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Bootstrap.php">
+    <testsuites>
+        <testsuite name="zf_skeleton_test01">
+            <directory>./ApplicationTest</directory>
+        </testsuite>
+    </testsuites>
+
+    <exec command="phpunit --verbose --tap"/>
+</phpunit>

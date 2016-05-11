@@ -1,0 +1,20 @@
+<div>
+	{{usuario.error}}
+	<form name="formUsuario" method="POST" ng-hide="usuario.logado">
+		<fieldset>
+			<legend>Login</legend>
+			<label>
+				Usuario (e-mail padrão):
+				<input type="email" name="input" ng-model="usuario.usuario">
+				Senha:
+				<input type="password" name="input" id="password" ng-model="usuario.password">
+			</label>
+
+			<button ng-click="logarUsuario(usuario, 'site.index')">Logar-se</button>
+		</fieldset>
+	</form>
+	<div ng-show="usuario.logado">
+		Olá, {{usuario.nome}}.
+		<button ng-click="deslogarUsuario('site.index')">Deslogar</button>
+	</div>
+</div>

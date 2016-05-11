@@ -1,0 +1,18 @@
+<div>
+	<form name="dateDeliveryForm">
+		<label for="order_date_shipped">
+			<span class="r2-label-standard">Data de Envio</span>
+			<input type="date" name="order_date_shipped" ng-model="order.dateShipped" id="order_date_shipped"/>
+		</label>
+		<label for="order_date_expected">
+			<span class="r2-label-standard">Data Esperada</span>
+			<input type="date" name="order_date_expected" ng-model="order.expectedDeliveryDate" id="order_date_expected"/>
+		</label>
+		<label for="order_date_delivery">
+			<span class="r2-label-standard">Data de Entrega</span>
+			<input type="date" name="order_date_delivery" ng-model="order.dateDelivered" id="order_date_delivery"/>
+		</label>
+
+		<button ng-click="updateDateDelivery()" class="button expanded">Atualizar</button>
+	</form>
+</div>

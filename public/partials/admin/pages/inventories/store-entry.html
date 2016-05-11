@@ -1,0 +1,46 @@
+<div>
+	<form class="cad-form" novalidate name="storeEntryForm" data-polyfiller-update>
+		<h3>{{editStore.product.title}} - Código: {{editStore.product.id}}</h3>
+		<br>
+		<label for="store_quantity" class="r2-label-float">
+			<br>
+			<input type="number" class="form-control" placeholder="Quantidade" id="store_quantity" name="store_quantity"
+			ng-model="editStore.quantity" required
+			floating-validation/>
+		</label>
+		<label for="store_minimal_qtde_on_stock" class="r2-label-float">
+			<span class="r2-label-standard">Qtde. Mínima no Estoque</span>
+			<input type="number" class="form-control" placeholder="Qtde. Mínima no Estoque" value="e" id="store_minimal_qtde_on_stock" name="store_minimal_qtde_on_stock"
+			ng-model="editStore.minimalQtdeOnStock"
+			floating-validation/>
+		</label>
+		<label for="store_unit_cost" class="r2-label-float">
+			<span class="r2-label-standard">Custo</span>
+			<input type="number" class="form-control" placeholder="Custo" value="e" id="store_unit_cost" name="store_unit_cost"
+			ng-model="editStore.unitCost"
+			floating-validation/>
+		</label>
+		<label for="store_unit_price" class="r2-label-float">
+			<br>
+			<input type="number" class="form-control" placeholder="Preço" id="store_unit_price" name="store_unit_price"
+			ng-model="editStore.unitPrice" required
+			floating-validation/>
+		</label>
+		<label for="store_unit_discount_price" class="r2-label-float">
+			<span class="r2-label-standard">Preço c/ Desconto</span>
+			<input type="number" class="form-control" placeholder="Preço c/ Desconto" value="e" id="store_unit_discount_price" name="store_unit_discount_price"
+			ng-model="editStore.unitDiscountPrice"
+			floating-validation/>
+		</label>
+		<label for="store_sell_discount_price">
+			<span class="r2-label-standard">Vender c/ desconto?</span> &nbsp;&nbsp;&nbsp;
+			<input type="checkbox" ng-model="editStore.sellDiscountPrice" id="store_sell_discount_price"/>
+		</label>
+
+		<label for="store_store_status">
+			<span class="r2-label-standard">Por Para Vender?</span> &nbsp;&nbsp;&nbsp;
+			<input type="checkbox" ng-model="editStore.storeStatus" id="store_store_status"/>
+		</label>
+		<button ng-click="putStoreEntry()">Dar Entrada</button>
+	</form>
+</div>

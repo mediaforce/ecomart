@@ -1,0 +1,49 @@
+<div>
+	<h4 class-"r2-admin-page-subtitle subheader">Atualizar Status de Venda</h4>
+	<a class="button expanded">Atualizar Lista</a>
+	<table st-safe-src="storesCollection" st-set-filter="myStrictFilter" st-table="displayedStoresCollection" class="table table-striped table-scroll scroll">
+		<thead>
+			<tr>
+				<th>Status Venda</th>
+				<th>Código</th>
+				<th>Referência</th>
+				<th>Produto</th>
+				<th>Qtde</th>
+				<th>Custo</th>
+				<th>Preço Venda</th>
+				<th>Preço Desconto</th>
+				<th>Vender c/ Desconto</th>
+				<th>Qtde. Vendida</th>
+				<th>Qtde. Restante</th>
+				<th>Em vendas</th>
+				<th>Data de Cadastro</th>
+				<th>Data de Atualização</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedStoresCollection">
+				<td>{{row.product.id}}</td>
+				<td>{{row.product.reference}}</td>
+				<td>{{row.product.title}}</td>
+				<td>{{row.quantity}}</td>
+				<td>{{row.unitCost | currency}}</td>
+				<td>{{row.unitPrice | currency}}</td>
+				<td>{{row.unitDiscountPrice | currency}}</td>
+				<td>{{row.sellDiscountPrice ? 'SIM' : 'NÃO'}}</td>
+				<td>homologando</td>
+				<td>homologando</td>
+				<td>{{row.toSell ? 'SIM' : 'NÃO'}}</td>
+				<td>{{row.product.createdAt | date:'shortDate'}}</td>
+				<td>{{row.updatedAt | date:'shortDate'}}</td>
+				<td>[]</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="14" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

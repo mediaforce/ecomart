@@ -1,0 +1,170 @@
+<?php date_default_timezone_set('America/Sao_Paulo');?>
+<?php echo $this->doctype();?>
+<html lang="pt-br" data-ng-app="R2Erp">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('R2 Managed ' . 'ERP')->setSeparator(' - ')->setAutoEscape(false);?>
+        <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ;?>
+        <!-- Base style -->
+        <!-- build:css(public) /css/base.min.css -->
+        <?php
+        $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('css/screen.css'), 'screen')
+        ->prependStylesheet($this->basePath('css/print.css'), 'print');
+        echo $this->headLink();
+        $this->headLink()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Main style -->
+        <!-- build:css(public) /css/main.min.css -->
+        <?php
+        $this->headLink()
+        ->prependStylesheet($this->basePath('css/main.css'));
+        echo $this->headLink();
+        $this->headLink()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Third-Party styles -->
+        <!-- build:css(public) /css/main.min.css -->
+        <?php
+        $this->headLink()
+        ->prependStylesheet($this->basePath('bower_components/angular-ui-notification/dist/angular-ui-notification.css'));
+        echo $this->headLink();
+        $this->headLink()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Plugins Scripts -->
+        <!-- build:js(public) /js/plugins.min.js -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('bower_components/string/dist/string.js'))
+        ->prependFile($this->basePath('js/plugins/polyfiller.js'))
+        ->prependFile($this->basePath('js/plugins/underscore.js'))
+        ->prependFile($this->basePath('bower_components/foundation/js/foundation.js'))
+        ->prependFile($this->basePath('bower_components/foundation/js/vendor/modernizr.js'))
+        ->prependFile($this->basePath('bower_components/jquery/dist/jquery.js'));
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+
+        <!-- Scripts Condicionais  -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('js/plugins/respond.js'), 'text/javascript', array('conditional' => 'lt IE 9'))
+        ->prependFile($this->basePath('js/plugins/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- Angular & Resources Scripts -->
+        <!-- build:js(public) /js/angular-and-resources.min.js -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('bower_components/angular-input-masks/angular-input-masks-standalone.js'))
+        ->prependFile($this->basePath('bower_components/angular-i18n/angular-locale_pt-br.js'))
+        ->prependFile($this->basePath('bower_components/angular-favicon/angular-favicon.js'))
+        ->prependFile($this->basePath('bower_components/angular-messages/angular-messages.js'))
+        ->prependFile($this->basePath('bower_components/angular-cookies/angular-cookies.js'))
+        ->prependFile($this->basePath('bower_components/angular-ui-router/release/angular-ui-router.js'))
+        ->prependFile($this->basePath('bower_components/angular-resource/angular-resource.js'))
+        ->prependFile($this->basePath('bower_components/angular-breadcrumb/dist/angular-breadcrumb.js'))
+        ->prependFile($this->basePath('bower_components/angular-material/angular-material.js'))
+        ->prependFile($this->basePath('bower_components/angular-ui-notification/dist/angular-ui-notification.js'))
+        ->prependFile($this->basePath('bower_components/angular/angular.js'));
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Angular Translate Resources Scripts -->
+        <!-- build:js(public) /js/angular-translate-pack.min.js -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('bower_components/angular-dynamic-locale/tmhDynamicLocale.min.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-handler-log/angular-translate-handler-log.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-storage-local/angular-translate-storage-local.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate/angular-translate.js'));
+
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+    </head>
+    <body data-foundation-init data-polyfiller-init>
+
+        AMBIENTE DE TESTES - ERP
+        [breadcrumbs]<div class="breadcrumbs" ncy-breadcrumb></div>[breadcrumbs]
+        <div class="row">
+            <div class="large-3 large-offset-9 columns"><div data-ng-translate-language-select></div></div>
+        </div>
+
+        <div class="row">
+            <div class="small-3 columns"><div data-ui-view="header"></div></div>
+            <div class="small-9 columns"><div data-ui-view="content"></div></div>
+        </div>
+
+        <div class="row">
+            <div class="large-3 columns"><div data-ui-view="sidebar_left"></div></div>
+            <div class="large-6 columns"><div data-ui-view="footer"></div></div>
+            <div class="large-3 columns"><div data-ui-view="sidebar_right"></div></div>
+        </div>
+
+        <div data-ui-view="notification"></div>
+
+
+        <!-- R2TurismoApp Scripts -->
+        <!-- build:js(public) /js/R2AdminApp.min.js -->
+        <?php
+        echo $this->inlineScript()
+        // Shared Modules
+        ->appendFile($this->basePath('js/app/shared/auth/AuthModule.js'))
+        ->appendFile($this->basePath('js/app/shared/auth/TrackerModule.js'))
+        // Shared Plugins
+        ->appendFile($this->basePath('js/app/shared/plugins/factories/underscore.js'))
+        ->appendFile($this->basePath('js/app/shared/plugins/factories/string.js'))
+        // Shared Filters
+        ->appendFile($this->basePath('js/app/shared/filters/StringFilters.js'))
+        // Shared Directives
+        ->appendFile($this->basePath('js/app/shared/directives/PluginsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/DocumentsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/SocialNetworksDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/EmailsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/CreditCardsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/TelephonesDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/AddressesDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/LaguageSelectDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/ValidationDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/InputDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/CompanyDirectives.js'))
+        // Shared Services
+        ->appendFile($this->basePath('js/app/shared/services/BaseServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/UserServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/AclServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/LocaleServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/CompanyServices.js'))
+        // Shared Controllers
+        ->appendFile($this->basePath('js/app/shared/controllers/LayoutControllers.js'))
+        ->appendFile($this->basePath('js/app/shared/controllers/UsersControllers.js'))
+        // ERP App
+        ->appendFile($this->basePath('js/app/erp/R2Erp.js'))
+        // ERP Controllers
+        ->appendFile($this->basePath('js/app/erp/controllers/CustomerControllers.js'))
+        ->appendFile($this->basePath('js/app/erp/controllers/MyBusinessControllers.js'))
+        ->appendFile($this->basePath('js/app/erp/controllers/SupplierControllers.js'))
+        // ERP Services
+        ->appendFile($this->basePath('js/app/erp/services/ConfigServices.js'));
+        ?>
+        <!-- endbuild -->
+        
+    </body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html><html lang="pt-br" data-ng-app="R2Site">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <title>R2 Managed SITE</title>        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">        <!-- Base style -->
+        <!-- build:css(public) /css/base.min.css -->
+        <link href="/css/print.css" media="print" rel="stylesheet" type="text/css">
+<link href="/css/screen.css" media="screen" rel="stylesheet" type="text/css">
+<link href="/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">        <!-- endbuild -->
+
+        <!-- Main style -->
+        <!-- build:css(public) /css/main.min.css -->
+        <link href="/css/main.css" media="screen" rel="stylesheet" type="text/css">        <!-- endbuild -->
+
+        <!-- Plugins Scripts -->
+        <!-- build:js(public) /js/plugins.min.js -->
+        <script type="text/javascript" src="/js/plugins/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="/bower_components/foundation/js/vendor/modernizr.js"></script>
+<script type="text/javascript" src="/bower_components/foundation/js/foundation.js"></script>
+<script type="text/javascript" src="/js/plugins/underscore.js"></script>
+<script type="text/javascript" src="/js/plugins/polyfiller.js"></script>
+<script type="text/javascript" src="/bower_components/string/dist/string.js"></script>        <!-- endbuild -->
+
+
+        <!-- Scripts Condicionais  -->
+        <!--[if lt IE 9]><script type="text/javascript" src="/js/plugins/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="/js/plugins/respond.js"></script><![endif]-->        <!-- Angular & Resources Scripts -->
+        <!-- build:js(public) /js/angular-and-resources.min.js -->
+        <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="/bower_components/angular-cookies/angular-cookies.js"></script>
+<script type="text/javascript" src="/bower_components/angular-messages/angular-messages.js"></script>        <!-- endbuild -->
+
+        <!-- Angular Translate Resources Scripts -->
+        <!-- build:js(public) /js/angular-translate-pack.min.js -->
+        <script type="text/javascript" src="/bower_components/angular-translate/angular-translate.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate-handler-log/angular-translate-handler-log.js"></script>
+<script type="text/javascript" src="/bower_components/angular-dynamic-locale/tmhDynamicLocale.min.js"></script>        <!-- endbuild -->
+    </head>
+    <body data-foundation-init data-polyfiller-init>
+
+        
+
+        <div data-ui-view="notification"></div>
+
+        <div data-ui-view="header"></div>
+
+        <div data-ui-view="content"></div>
+
+        <div data-ui-view="footer"></div>
+
+        <!-- R2TurismoApp Scripts -->
+        <!-- build:js(public) /js/R2AdminApp.min.js -->
+        <script type="text/javascript" src="/js/app/shared/auth/AuthModule.js"></script>
+<script type="text/javascript" src="/js/app/shared/auth/TrackerModule.js"></script>
+<script type="text/javascript" src="/js/app/shared/plugins/factories/underscore.js"></script>
+<script type="text/javascript" src="/js/app/shared/plugins/factories/string.js"></script>
+<script type="text/javascript" src="/js/app/shared/filters/StringFilters.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/PluginsDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/DocumentsDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/SocialNetworksDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/EmailsDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/CreditCardsDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/TelephonesDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/AddressesDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/LaguageSelectDirective.js"></script>
+<script type="text/javascript" src="/js/app/shared/directives/ValidationDirectives.js"></script>
+<script type="text/javascript" src="/js/app/shared/services/BaseServices.js"></script>
+<script type="text/javascript" src="/js/app/shared/services/UserServices.js"></script>
+<script type="text/javascript" src="/js/app/shared/services/AclServices.js"></script>
+<script type="text/javascript" src="/js/app/shared/services/LocaleService.js"></script>
+<script type="text/javascript" src="/js/app/shared/controllers/LayoutControllers.js"></script>
+<script type="text/javascript" src="/js/app/shared/controllers/UsersControllers.js"></script>
+<script type="text/javascript" src="/js/app/site/R2Site.js"></script>
+<script type="text/javascript" src="/js/app/site/controllers/SiteIndexCtrl.js"></script>        <!-- endbuild -->
+        
+    </body>
+</html>

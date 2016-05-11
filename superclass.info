@@ -1,0 +1,104 @@
+<?php
+
+namespace R2Base\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator;
+
+/**
+ * R2RedesSociais
+ *
+ * @ORM\Table(name="r2_social_networks")
+ * @ORM\Entity
+ */
+class SocialNetwork {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="IDENTITY")
+	 */
+	private $id;
+
+	// TODO Implementar...
+	/*private $tipoRedeSocials;*/
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="endereco", type="string", length=255, nullable=false)
+	 */
+	private $address;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="R2Base\Entity\Classes\SuperClasse")
+	 * @ORM\JoinColumn(name="superclasse_id", referencedColumnName="id", nullable=false)
+	 **/
+	private $superClasse;
+
+	public function __construct($address) {
+		$this->address = $address;
+	}
+
+	/**
+	 * Gets the value of id.
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * Gets the value of endereco.
+	 *
+	 * @return string
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * Sets the value of endereco.
+	 *
+	 * @param string $address the endereco
+	 *
+	 * @return self
+	 */
+	public function setAddress($address) {
+		$this->address = $address;
+
+		return $this;
+	}
+
+	/**
+	 * Gets the value of superClasse.
+	 *
+	 * @return mixed
+	 */
+	public function getSuperClasse() {
+		return $this->superClasse;
+	}
+
+	/**
+	 * Sets the value of superClasse.
+	 *
+	 * @param mixed $superClasse the super classe
+	 *
+	 * @return self
+	 */
+	public function setSuperClasse($superClasse) {
+		$this->superClasse = $superClasse;
+
+		return $this;
+	}
+
+	public function toArray() {
+		return (new Hydrator\ClassMethods())->extract($this);
+	}
+
+}
+
+
+---------

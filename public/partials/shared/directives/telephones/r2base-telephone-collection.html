@@ -1,0 +1,82 @@
+<div>
+	<h3>{{'Telefone'|translate}} {{index+1}}</h3>
+	<br>
+	{{'Tipo'|translate}} {{'telefone'|translate}} *:
+	<select
+		name="tel_telephoneType[{{index}}]"
+		data-ng-model="telephonesModel[index].telephoneType"
+		required>
+
+		<option data-ng-hide="telephoneTypesLoad">{{'Carregando'|translate}}...</option>
+		<option data-ng-repeat="option in options.telephoneTypes" value="{{option.name}}">{{option.name|translate|capitalize}}</option>
+	</select>
+
+	<div
+		data-ng-messages="form['tel_telephoneType['+index+']'].$error"
+		data-ng-if="form['tel_telephoneType['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['tel_telephoneType['+index+']'].$touched && form['tel_telephoneType['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Escolha o tipo de telefone'|translate}}.</p>
+    </div>
+
+<!-- 	{{'País'|translate}} {{'DDI'|translate}}:
+	<select
+		name="input"
+		data-ng-model="usuario.telefones[indice].paisDDI">
+
+		<option data-ng-hide="paisesddiLoad">{{'Carregando'|translate}}...</option>
+		<option data-ng-repeat="option in opcoes.paisesDDI" value="{{option.id}}">{{option.nome}}</option>
+	</select>
+ -->
+
+<!-- 
+	{{'Área'|translate}} *:
+	<input
+		type="number"
+		name="tel_region[{{index}}]"
+		data-ng-model="user.person.telephones[index].region"
+		data-ng-minlength="2"
+		data-ng-maxlength="2"
+		required>
+
+	<div
+		data-ng-messages="userForm['tel_region['+index+']'].$error"
+		data-ng-if="userForm['tel_region['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': userForm['tel_region['+index+']'].$touched && userForm['tel_region['+index+']'].$invalid }">
+
+        <p data-ng-message="minlength">{{'Digite 2 números apenas'|translate}}.</p>
+        <p data-ng-message="maxlength">{{'Digite 2 números apenas'|translate}}.</p>
+        <p data-ng-message="required">{{'Códido da área obrigatório'|translate}}.</p>
+
+    </div> -->
+
+	{{'Número'|translate}} *:
+	<input
+		type="text"
+		name="tel_number[{{index}}]"
+		data-ng-model="telephonesModel[index].number"
+		ui-br-phone-number
+		required>
+	<div
+		data-ng-messages="form['tel_number['+index+']'].$error"
+		data-ng-if="form['tel_number['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['tel_number['+index+']'].$touched && form['tel_number['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Número obrigatório'|translate}}.</p>
+
+    </div>
+
+	<div data-ng-show="telephonesModel[index].telephoneType === 'MOBILE'">
+		{{'Operadora'|translate}}:
+		<select
+			name="input"
+			data-ng-model="telephonesModel[index].mobileMNO">
+
+			<option data-ng-hide="mobileMNOsLoad">{{'Carregando'|translate}}...</option>
+			<option data-ng-repeat="option in options.mobileMNOs" value="{{option.name}}">{{option.name|capitalize}}</option>
+		</select>
+	</div>
+
+	<button data-ng-click="removeElement()" class="button alert">{{'Remover'|translate}}</button>
+
+</div>

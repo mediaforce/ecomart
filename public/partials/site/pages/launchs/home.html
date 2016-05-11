@@ -1,0 +1,69 @@
+<div>
+	<div class="row r2-margin-top-10">
+		<div class="small-12 medium-6 large-3 columns" ng-repeat="store in storesCollection">
+			<div >
+				<div class="r2-product-box">
+					<div class="r2-hover-line"></div>
+					<div class="r2-inside-product-box">
+
+						<div class="r2-product-image">
+							<div class="img-test r2-image-fill">
+								<img class="" ng-src="{{store.cover.path}}" alt="Imagem {{store.product.title}}"  data-zoom-image="{{store.cover.path}}"/>
+							</div>
+						</div>
+						<p>
+							<span class="r2-product-title">{{store.product.title}}</span>
+						</p>
+						<p>
+							<span class="r2-product-subtitle">{{store.product.subtitle}}</span>
+						</p>
+						<p>
+							<div class="r2-product-rating">
+							</div>
+						</p>
+						<div ng-hide="store.noStock">
+							<p>
+								<span class="r2-product-price" ng-class="{'r2-text-line-trough': store.sellDiscountPrice}">
+									De: {{store.unitPrice|currency}}
+								</span>
+							</p>
+							<p ng-show="store.sellDiscountPrice">
+								<span class="r2-product-discount-price">
+									Por: <span class="r2-bold-font">De: {{store.unitDiscountPrice|currency}}</span>
+								</span>
+							</p>
+							<p>
+								<span class="r2-product-installments">
+									Ou em 10x iguais de {{ (store.price/10) | currency}}
+								</span>
+								<div class="r2-sem-juros">sem juros</div>
+							</p>
+							<div class="r2-add-product">
+								<ngcart-addtocart id="{{store.id}}" name="{{store.product.title}}" price="{{store.unitDiscountPrice}}" quantity="1" quantity-max="{{store.qtdeRestante}}" data="{img: store.cover.path, product: store.product}">
+									<button class="r2-product-btn-add" ng-click="comprarProduto(store)">Adicionar ao carrinho</button>
+								</ngcart-addtocart>
+							</div>
+							<div class="r2-buy-product" ng-controller="ComprarProdutoCtrl">
+								
+								<button class="r2-product-btn-buy" ng-click="comprarProduto(store)">COMPRAR</button>
+							</div>
+						</div>
+						<div ng-show="store.noStock" class="r2-no-stock">
+							<p>Não há quantidade disponível no estoque!</p>
+							<button class="button expanded  warning r2-avise-me-estoque">Avise-me quando chegar!</button>
+						</div>
+						<div class="clearfix"></div>
+						<div class="r2-margin-top-50"></div>
+						<a data-ui-sref="root.productsdetails({storeId: store.id, slug: store.slug})">
+							<div class="r2-product-plus-btn">
+								
+									<span class="r2-product-plus-symbol" >+</span>
+								
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

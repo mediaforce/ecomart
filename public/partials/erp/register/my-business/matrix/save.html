@@ -1,0 +1,41 @@
+<form class="cad-form" novalidate name="matrixForm" data-polyfiller-update>
+	<fieldset>
+		<legend><h3>{{'Cadatro Matriz : '|translate}} {{matrix.companyName}}</h3></legend>
+	
+		<div data-r2base-company-unique data-company-model="matrix" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	
+	</fieldset>
+	
+	<fieldset>
+		<legend>{{'Endereço'|translate}}</legend>
+		<div data-r2base-address-unique data-address-model="matrix.address" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Documentos'|translate}}</legend>
+		<div data-r2base-add-documents data-documents-model="matrix.documents" data-document-interface="legal" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{{'Emails'|translate}}</legend>
+		<div data-r2base-add-emails data-documents-model="matrix.emails" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{{'Redes Sociais'|translate}}</legend>
+		<div data-r2base-add-social-networks data-documents-model="matrix.socialNetworks" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{{'Telefones'|translate}}</legend>
+		<div data-r2base-add-telephones data-documents-model="matrix.telephones" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Mercadorias'|translate}}</legend>
+		<div data-r2base-add-telephones data-documents-model="matrix.goodTags" data-form="matrixForm" data-has-entity="hasCompany"></div>
+	</fieldset>
+
+	<button data-ng-click="verifyMatrix()" class="button success">Verificar Matriz</button>
+
+</form>

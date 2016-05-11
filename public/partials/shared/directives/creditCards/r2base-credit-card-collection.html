@@ -1,0 +1,31 @@
+<div data-polyfiller-update>
+	<h3>{{'Cartão de Credito'|translate}} {{indice+1}}</h3>
+
+	{{'Bandeira do cartão'|translate}}:
+	<select
+		name="brand_card[{{index}}]"
+		data-ng-model="user.person.creditCards[index].bandeiraSelecionada">
+		<option data-ng-hide="bandeirasCartaoLoad">{{'Carregando'|translate}}...</option>
+		<option data-ng-repeat="option in opcoes.bandeirasCartao" value="{{option.nome}}">{{option.nome}}</option>
+	</select>
+
+	{{'Titular'|translate}}:
+	<input
+		type="text"
+		name="input"
+		data-ng-model="user.person.creditCards[index].titular">
+
+	{{'Número'|translate}}:
+	<input
+		type="text"
+		name="input"
+		data-ng-model="usuario.cartoesCredito[indice].numero">
+
+	{{'Validade'|translate}}:
+	<input
+		type="month"
+		name="input"
+		data-ng-model="usuario.cartoesCredito[indice].validade">
+
+	<button data-ng-click="removeElement()">{{'Remover'|translate}}</button>
+</div>

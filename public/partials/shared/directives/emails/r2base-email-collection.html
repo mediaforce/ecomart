@@ -1,0 +1,25 @@
+<div>
+	<h3>{{'E-mail'|translate}} {{index+1}}</h3>
+	{{'Endereço'|translate}}:
+	<input
+		type="email"
+		name="email_address[{{index}}]"
+		data-ng-model="emailsModel[index].address"
+		data-ng-minlength="8"
+		data-ng-maxlength="100"
+		required>
+
+	<div
+		data-ng-messages="form['email_address['+index+']'].$error"
+		data-ng-if="form['email_address['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['email_address['+index+']'].$touched && form['email_address['+index+']'].$invalid }">
+
+        <p data-ng-message="minlength">{{'O endereço é muito curto'|translate}}.</p>
+        <p data-ng-message="maxlength">{{'O endereço é muito longo'|translate}}.</p>
+        <p data-ng-message="email">{{'Não é um e-mail válido'|translate}}.</p>
+        <p data-ng-message="required">{{'O endereço é obrigatório'|translate}}.</p>
+    </div>
+
+	<button data-ng-click="removeElement()" class="button alert">{{'Remover'|translate}}</button>
+
+</div>

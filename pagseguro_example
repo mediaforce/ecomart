@@ -1,0 +1,101 @@
+
+PagSeguroTransaction Object
+(
+    [date:PagSeguroTransaction:private] => 2016-05-05T19:56:25.000-03:00
+    [lastEventDate:PagSeguroTransaction:private] => 2016-05-05T19:59:35.000-03:00
+    [code:PagSeguroTransaction:private] => 6E951516-926C-4C56-BA58-BF77B9B7A055
+    [reference:PagSeguroTransaction:private] => 1100
+    [recoveryCode:PagSeguroTransaction:private] => 
+    [type:PagSeguroTransaction:private] => PagSeguroTransactionType Object
+        (
+            [value:PagSeguroTransactionType:private] => 1
+        )
+
+    [status:PagSeguroTransaction:private] => PagSeguroTransactionStatus Object
+        (
+            [value:PagSeguroTransactionStatus:private] => 3
+        )
+
+    [cancellationSource:PagSeguroTransaction:private] => 
+    [paymentMethod:PagSeguroTransaction:private] => PagSeguroPaymentMethod Object
+        (
+            [type:PagSeguroPaymentMethod:private] => PagSeguroPaymentMethodType Object
+                (
+                    [value:PagSeguroPaymentMethodType:private] => 1
+                )
+
+            [code:PagSeguroPaymentMethod:private] => PagSeguroPaymentMethodCode Object
+                (
+                    [value:PagSeguroPaymentMethodCode:private] => 107
+                )
+
+        )
+
+    [paymentLink:PagSeguroTransaction:private] => 
+    [grossAmount:PagSeguroTransaction:private] => 20.30
+    [discountAmount:PagSeguroTransaction:private] => 0.00
+    [feeAmount:PagSeguroTransaction:private] => 
+    [netAmount:PagSeguroTransaction:private] => 19.16
+    [escrowEndDate:PagSeguroTransaction:private] => 2016-05-19T19:59:34.000-03:00
+    [extraAmount:PagSeguroTransaction:private] => 0.00
+    [installmentCount:PagSeguroTransaction:private] => 1
+    [creditorFees:PagSeguroTransaction:private] => PagSeguroTransactionCreditorFees Object
+        (
+            [intermediationRateAmount:PagSeguroTransactionCreditorFees:private] => 0.25
+            [intermediationFeeAmount:PagSeguroTransactionCreditorFees:private] => 0.89
+        )
+
+    [operationalFeeAmount:PagSeguroTransaction:private] => 
+    [installmentFeeAmount:PagSeguroTransaction:private] => 
+    [itemCount:PagSeguroTransaction:private] => 
+    [items:PagSeguroTransaction:private] => Array
+        (
+            [0] => PagSeguroItem Object
+                (
+                    [id:PagSeguroItem:private] => 27
+                    [description:PagSeguroItem:private] => Kit Teste
+                    [quantity:PagSeguroItem:private] => 1
+                    [amount:PagSeguroItem:private] => 1.00
+                    [weight:PagSeguroItem:private] => 
+                    [shippingCost:PagSeguroItem:private] => 
+                )
+
+        )
+
+    [sender:PagSeguroTransaction:private] => PagSeguroSender Object
+        (
+            [name:PagSeguroSender:private] => shirlene souza
+            [email:PagSeguroSender:private] => aquila@mediaforce.com.br
+            [phone:PagSeguroSender:private] => PagSeguroPhone Object
+                (
+                    [areaCode:PagSeguroPhone:private] => 11
+                    [number:PagSeguroPhone:private] => 969857861
+                )
+
+            [documents:PagSeguroSender:private] => 
+            [ip:PagSeguroSender:private] => 
+        )
+
+    [shipping:PagSeguroTransaction:private] => PagSeguroShipping Object
+        (
+            [address:PagSeguroShipping:private] => PagSeguroAddress Object
+                (
+                    [postalCode:PagSeguroAddress:private] => 04664020
+                    [street:PagSeguroAddress:private] => Avenida Ministro �lvaro de Souza Lima
+                    [number:PagSeguroAddress:private] => 48
+                    [complement:PagSeguroAddress:private] => 
+                    [district:PagSeguroAddress:private] => Jardim Marajoara
+                    [city:PagSeguroAddress:private] => SAO PAULO
+                    [state:PagSeguroAddress:private] => SP
+                    [country:PagSeguroAddress:private] => BRA
+                )
+
+            [type:PagSeguroShipping:private] => PagSeguroShippingType Object
+                (
+                    [value:PagSeguroShippingType:private] => 2
+                )
+
+            [cost:PagSeguroShipping:private] => 19.30
+        )
+
+)

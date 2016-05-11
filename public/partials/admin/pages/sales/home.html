@@ -1,0 +1,73 @@
+<div>
+	
+	<h3 class-"r2-admin-page-title">Pedidos de Venda</h3>
+
+	<table id="r2-table-sale-orders" st-safe-src="saleOrdersCollection" st-set-filter="genericFilter" st-table="displayedSaleOrdersCollection" class="table table-striped table-scroll scroll">
+		<thead>
+			<tr class="r2-title-line">
+				<th st-sort="id">N.° Pedido</th>
+				<th st-sort="shippingType">Serviço Frete</th>
+				<th>Custo Frete</th>
+				<th>Data de Compra</th>
+				<th>Data de Envio</th>
+				<th>Data Esperada</th>
+				<th>Data de Entrega</th>
+				<th>Atualizar Envio</th>
+				<th>Valor Total</th>
+				<th>Desconto</th>
+				<th>Tipo de Pagamento</th>
+				<th>Status Pagamento</th>
+				<th>Ver Carrinho</th>
+				<th>Detalhes Cliente</th>
+				<th>Atualizar Pagamento</th>
+				<th>Cancelar Cielo</th>
+				<th>Excluir Pedido</th>
+			</tr>
+			<tr>
+				<th>
+					<input st-search="id" placeholder="Código" class="input-sm form-control" type="search"/>
+				</th>
+				<th>
+	                <input st-search="shippingType" placeholder="Serviço Frete" class="input-sm form-control" type="search"/>
+	            </th>
+	            <th colspan="15"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr ng-repeat="row in displayedSaleOrdersCollection">
+				<td>{{row.id}}</td>
+				<td>{{row.shippingType}}</td>
+				<td>{{row.shippingCost | currency}}</td>
+				<td>{{row.createdAt | date:'shortDate'}}</td>
+				<td>{{row.dateShipped}}</td>
+				<td>{{row.expectedDeliveryDate}}</td>
+				<td>{{row.dateDelivered}}</td>
+				<td><button ng-click="gotoDateDelivery(row.id)">Atualizar</button></td>
+				<td>{{row.totalOrderCost  | currency}}</td>
+				<td>{{row.discount  | currency}}</td>
+				<td>{{row.paymentType}}</td>
+				<td>{{row.payments[0].status}}</td>
+				<td><button ng-click="gotoCart(row.sales)">Ver</button></td>
+				<td><button ng-click="gotoCustomer(row.customer)">Ver</button></td>
+				<td ng-show="row.isCielo"><button ng-click="updateCieloPayment(row.tid)">Atualizar Cielo</button></td>
+				<td ng-show="row.isPagseguro"><button ng-click="updatePagseguroPayment(row.tid)">Atualizar Pagseguro</button></td>
+				<td ng-show="row.isBoleto"><button ng-click="updateBoletoPayment(row.id)">Atualizar Boleto</button></td>
+				<td ng-show="row.isCielo"><button ng-click="cancelarCielo(row.id)">Cancelar Cielo</button></td>
+				<td ng-hide="row.isCielo"></td>
+
+				<td><button ng-click="deleteOrder(row.id)">Excluir</button></td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td colspan="16" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+</div>
+

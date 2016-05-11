@@ -1,0 +1,143 @@
+<?php
+namespace R2User\Fixture;
+
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use R2Erp\Enum\CustomerType;
+
+class UsuariosLoad extends AbstractFixture implements OrderedFixtureInterface {
+	/**
+	 * Load data fixtures with the passed EntityManager
+	 *
+	 * @param ObjectManager $manager
+	 */
+	public function load(ObjectManager $manager) {
+
+		$userInput = [
+			'user' => 'dnaloco@gmail.com',
+			'password' => 'artdna',
+			'customerType' => new CustomerType('VIRTUAL-PHYSICAL'),
+			'person' => [
+				'name' => 'Arthur',
+				'surname' => 'Santos Costa',
+				'gender' => 'MALE',
+				'nationality' => 'brasileiro',
+				'birthDate' => '1984-09-01T03:00:00.000Z',
+				'photo' => null,
+				'telephones' => [
+					0 => [
+						'telephoneType' => 'HOME',
+						'number' => '1155235634',
+					],
+					1 => [
+						'telephoneType' => 'MOBILE',
+						'number' => '11987676663',
+						'mobileMNO' => 'CLARO',
+					],
+				],
+				'documents' => [
+					0 => [
+						'documentType' => 'RG',
+						'fields' => [
+							0 => 'Arthur Santos Costa',
+							1 => '322412146',
+							2 => 'SSP',
+						],
+					],
+					1 => [
+						'documentType' => 'CPF',
+						'fields' => [
+							0 => 'Arthur Santos Costa',
+							1 => '31335964894',
+						],
+					],
+				],
+				'socialNetworks' => [
+					0 => [
+						'address' => 'facebook.com/arthur',
+					],
+					1 => [
+						'address' => 'twitter.com/arthur',
+					],
+				],
+				'emails' => [
+					0 => [
+						'address' => 'arthur@yahoo.com',
+					],
+				],
+				'addresses' => [
+					0 => [
+						'state' => '26',
+						'city' => '355030',
+						'neighborhood' => 'Jd. Marajoara',
+						'postcode' => '04664020',
+						'address1' => 'Av. Ministro Alvaro de Souza Lima',
+						'address2' => 'casa 21',
+						'number' => 599,
+						'description' => null,
+					],
+				],
+			],
+		];
+
+		$userInput['user'] = new \R2Base\Entity\Email(array('address' => $userInput['user']));
+		$userInput['person']['gender'] = new \R2Base\Enum\Gender($userInput['person']['gender']);
+		$userInput['person']['birthDate'] = new \DateTime(date('Y-m-d H:i:s', strtotime($userInput['person']['birthDate'])));
+
+		if (empty($userInput['person']['photo']) || is_null($userInput['person']['photo'])) {
+			unset($userInput['person']['photo']);
+		}
+
+		$telephones = new \Doctrine\Common\Collections\ArrayCollection();
+		foreach ($userInput['person']['telephones'] as $telephone) {
+
+			$telephone['telephoneType'] = new \R2Base\Enum\TelephoneType($telephone['telephoneType']);
+			if ($telephone['telephoneType']->value() == 'MOBILE') {
+				$telephone['mobileMNO'] = new \R2Base\Enum\MobileMNO($telephone['mobileMNO']);
+			}
+			$telephones->add(new \R2Base\Entity\Telephone($telephone));
+		}
+		$userInput['person']['telephones'] = $telephones;
+
+		$documents = new \Doctrine\Common\Collections\ArrayCollection();
+		foreach ($userInput['person']['documents'] as $document) {
+			$document['documentType'] = new \R2Base\Enum\PhysicalDocumentType($document['documentType']);
+
+			foreach ($document['fields'] as $key => $val) {
+				$document['field' . ($key + 1)] = $val;
+			}
+
+			$documents->add(new \R2Base\Entity\Document($document));
+		}
+		$userInput['person']['documents'] = $documents;
+
+		$socialNetworks = new \Doctrine\Common\Collections\ArrayCollection();
+		foreach ($userInput['person']['socialNetworks'] as $socialNetwork) {
+			$socialNetworks->add(new \R2Base\Entity\SocialNetwork($socialNetwork));
+		}
+		$userInput['person']['socialNetworks'] = $socialNetworks;
+
+		$emails = new \Doctrine\Common\Collections\ArrayCollection();
+		foreach ($userInput['person']['emails'] as $email) {
+			$emails->add(new \R2Base\Entity\Email($email));
+		}
+		$userInput['person']['emails'] = $emails;
+
+		$addresses = new \Doctrine\Common\Collections\ArrayCollection();
+		foreach ($userInput['person']['addresses'] as $address) {
+			$address['state'] = $manager->getReference('R2Base\Entity\State', $address['state']);
+			$address['city'] = $manager->getReference('R2Base\Entity\City', $address['city']);
+			$addresses->add(new \R2Base\Entity\Address($address));
+		}
+		$userInput['person']['addresses'] = $addresses;
+		$userInput['person'] = new \R2Base\Entity\Person($userInput['person']);
+		$user = new \R2User\Entity\User($userInput);
+		$manager->persist($user);
+		$manager->flush();
+	}
+
+	public function getOrder() {
+		return 3;
+	}
+}

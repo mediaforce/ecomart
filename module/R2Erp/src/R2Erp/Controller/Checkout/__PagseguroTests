@@ -1,0 +1,152 @@
+$items = $data['data']['items'];
+
+/*			
+
+
+$paymentRequest = new \PagSeguroPaymentRequest();
+			foreach($items as $item) {
+				$paymentRequest->addItem($item['id'], $item['name'], $item['quantity'], number_format($item['total'], 2, '.', ''), $item['data']['weight']);
+			}
+
+			$user = $this->em->getReference('R2User\Entity\User', (int) $data['data']['user']);
+			$person = $user->getPerson();
+
+			$shippingAddress = $person->getAddresses()->get(0);
+
+			$sedexCode = \PagSeguroShippingType::getCodeByType('SEDEX');
+			$paymentRequest->setShippingType($sedexCode);
+
+			$paymentRequest->setShippingAddress(
+				$shippingAddress->getPostcode(), 
+				$shippingAddress->getAddress1(), 
+				$shippingAddress->getNumber(),
+				$shippingAddress->getAddress2(),
+				$shippingAddress->getNeighborhood(),
+				$shippingAddress->getCity()->getName(),
+				$shippingAddress->getState()->getCode(),
+				"BRA"
+			);
+
+			$telephone = $person->getTelephones()->get(0);
+			$document = $person->getDocuments()->get(0);
+
+			$areaCode = substr($telephone->getNumber(), 0, 2);
+			$telNumber = substr($telephone->getNumber(), 2);
+
+			$paymentRequest->setSender(
+				$person->getName(), 
+				'c22815926597802486170@sandbox.pagseguro.com.br', 
+				$areaCode, 
+				$telNumber, 
+				$document->getDocumentType(),
+				$document->getField1()
+			);
+
+			$paymentRequest->setCurrency("BRL");
+
+			$paymentRequest->setReference("REF123");
+
+			$paymentRequest->setRedirectUrl("http://www.dev.ecomart.com.br/");
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		$items = $data['data']['items'];
+		try {
+			$paymentRequest = new \PagSeguroPaymentRequest();
+			foreach($items as $item) {
+				$paymentRequest->addItem($item['id'], $item['name'], $item['quantity'], number_format($item['total'], 2, '.', ''), $item['data']['weight']);
+			}
+
+			$user = $this->em->getReference('R2User\Entity\User', (int) $data['data']['user']);
+			$person = $user->getPerson();
+
+			$shippingAddress = $person->getAddresses()->get(0);
+
+			$sedexCode = \PagSeguroShippingType::getCodeByType('SEDEX');
+			$paymentRequest->setShippingType($sedexCode);
+
+			$paymentRequest->setShippingAddress(
+				$shippingAddress->getPostcode(), 
+				$shippingAddress->getAddress1(), 
+				$shippingAddress->getNumber(),
+				$shippingAddress->getAddress2(),
+				$shippingAddress->getNeighborhood(),
+				$shippingAddress->getCity()->getName(),
+				$shippingAddress->getState()->getCode(),
+				"BRA"
+			);
+
+			$telephone = $person->getTelephones()->get(0);
+			$document = $person->getDocuments()->get(0);
+
+			$areaCode = substr($telephone->getNumber(), 0, 2);
+			$telNumber = substr($telephone->getNumber(), 2);
+
+			$paymentRequest->setSender(
+				$person->getName(), 
+				'c22815926597802486170@sandbox.pagseguro.com.br', 
+				$areaCode, 
+				$telNumber, 
+				$document->getDocumentType(),
+				$document->getField1()
+			);
+
+			$paymentRequest->setCurrency("BRL");
+
+			$paymentRequest->setReference("REF123");
+
+			$paymentRequest->setRedirectUrl("http://www.dev.ecomart.com.br/");
+
+			try {  
+			  
+			  $credentials = \PagSeguroConfig::getAccountCredentials(); // getApplicationCredentials()  
+			  $sessionId = \PagSeguroSessionService::getSession($credentials);  
+			  
+			} catch (\PagSeguroServiceException $e) {  
+			  die($e->getMessage());  
+			}  
+
+
+			return new JsonModel(array('data' => $sessionId));
+		} catch(\Exception $e) {
+			return new JsonModel(array('error' => $e->getMessage()));
+		}
+

@@ -1,0 +1,51 @@
+<div>
+	{{'Documento'|translate}} {{index+1}} - CPF<br>
+
+	{{'Nome'|translate}}:
+	<input
+		type="text"
+		name="doc_cpf_nome[{{index}}]"
+		data-ng-model="documentsModel[index].fields[0]"
+		data-ng-disabled="documentsModel[index].sameName"
+		data-ng-minlength="6"
+		data-ng-maxlength="100"
+		data-ng-trim="true"
+		required>
+
+	<input
+		type="checkbox"
+		name="input"
+		value="true"
+		data-ng-model="documentsModel[index].sameName">{{'Nome é o igual ao do cadastro'|translate}}
+	<br>
+
+	<div
+		data-ng-messages="form['doc_cpf_nome['+index+']'].$error"
+		data-ng-if="form['doc_cpf_nome['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['doc_cpf_nome['+index+']'].$touched && form['doc_cpf_nome['+index+']'].$invalid }">
+
+        <p data-ng-message="minlength">{{'Nome é muito curto'|translate}}.</p>
+        <p data-ng-message="maxlength">{{'Nome é muito longo'|translate}}.</p>
+        <p data-ng-message="required">{{'Nome é obrigatório'|translate}}.</p>
+    </div>
+
+	{{'Número'|translate}} CPF:
+	<input
+		type="text"
+		name="doc_cpf_numero[{{index}}]"
+		data-ng-model="documentsModel[index].fields[1]"
+		ui-br-cpf-mask
+		required>
+
+	<div
+		data-ng-messages="form['doc_cpf_numero['+index+']'].$error"
+		data-ng-if="form['doc_cpf_numero['+index+']'].$touched && !form['doc_cpf_numero['+index+']'].sameName"
+		data-ng-class="{ 'form-has-error': form['doc_cpf_numero['+index+']'].$touched && form['doc_cpf_numero['+index+']'].$invalid }">
+		
+		<p data-ng-message="cpf">{{'Não é um número de cpf válido'|translate}}.</p>
+        <p data-ng-message="required">{{'Número é obrigatório'|translate}}.</p>
+    </div>
+
+	<button class="button alert" data-ng-click="removeElement()">{{'Remover'|translate}}</button>
+
+</div>

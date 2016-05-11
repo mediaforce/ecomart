@@ -1,0 +1,486 @@
+<div>
+	<div class="row">
+		<div class="small-12 columns r2-home-title">
+			<h3>Meu Carrinho:</h3>
+			<div class="r2-line-title-decorator"></div>
+		</div>
+	</div>
+
+	<div class="r2-margin-top-20">
+		<div class="success callout large" ng-show="vendaFinalizada">
+		  <h5>O seu pedido foi concluído com sucesso.</h5>
+		  <br>
+		  <p>O número do seu pedido é {{pedidoId}}.</p>
+		</div>
+	</div>
+
+	<div class="row r2-margin-top-15">
+		<div class="small-12 columns">
+			<ngcart-cart></ngcart-cart>
+			<div class="row" ng-hide="userLogged">
+				<div class="small-12 columns">
+					<div class="r2-login" ng-hide="userLogged">Bem vindo, <a ng-click="loginShow()">identifique-se</a> para fazer suas compras!</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+	<form action="/boleto/bradesco" method="post" name="formBoleto" id="form-boleto" onsubmit=window.open('/boleto/bradesco','','scrollbars=no,menubar=no,height=600,width=800,resizable=yes,toolbar=no,status=no');>
+		<input type="text" name="valorTotal" ng-model="boleto.valorTotal" style="display: none;"/>
+		<input type="text" name="nossoNumero" ng-model="boleto.nossoNumero" style="display: none;"/>
+		<input type="text" name="clienteNome" ng-model="boleto.clienteNome" style="display: none;"/>
+		<input type="text" name="clienteDocumento" ng-model="boleto.clienteDocumento" style="display: none;"/>
+		<input type="text" name="clienteEndereco1" ng-model="boleto.clienteEndereco1" style="display: none;"/>
+		<input type="text" name="clienteEndereco2" ng-model="boleto.clienteEndereco2" style="display: none;"/>
+		<input type="text" name="demonstrativo3" ng-model="boleto.demonstrativo3" style="display: none;"/>
+		<input type="text" name="produtosQtde" ng-model="boleto.produtosQtde" style="display: none;"/>
+	</form>
+	
+	<div ng-show="userLogged && checkoutChoice === 0 && totalItems > 0 && !hasFrete">
+		<div class="row">
+			
+
+
+			<div class="columns"></div>
+		  	<div class="shrink columns">
+		  		<form novalidate id="calfFreteForm" name="calfFreteForm" ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+					<p>Selecione o serviço de envio:</p>
+					<div class="row">
+						<div class="medium-6 columns">
+							<label>
+								<input type="radio" ng-model="servicoFrete" value="40010">
+				    			SEDEX
+							</label>
+						</div>
+						<div class="medium-6 columns">
+							<label>
+								<input type="radio" ng-model="servicoFrete" value="41106">
+				    			PAC
+							</label>
+						</div>
+					</div>
+
+
+					<button class="button expanded" ng-click="calcFrete()">CALCULAR FRETE</button>		
+				</form>
+		  	</div>
+			
+		</div>
+	</div>
+
+	<div ng-show="userLogged && checkoutChoice === 0 && totalItems > 0 && !hasCoupon">
+		<div class="row">
+			<div class="columns"></div>
+			
+		  	<div class="shrink columns">
+				<form novalidate id="calfCouponForm" name="calfCouponForm" ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+					<label for="">
+						Cupom de Desconto:
+						<input type="text" required ng-model="coupon.coupon">
+					</label>
+					<button class="button expanded" ng-click="calcCoupon()" ng-disabled="calfCouponForm.$invalid">INSERIR CUPOM</button>	
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div ng-show="userLogged && checkoutChoice === 0 && totalItems > 0 && hasFrete">
+		<div class="row">
+			<div class="small-12 columns r2-home-title">
+				<h3>Escolha a forma de pagamento:</h3>
+				<div class="r2-line-title-decorator"></div>
+			</div>
+			<br>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<div class="expanded button-group r2-margin-top-15" >
+
+					<a class="button r2-btn-forma-pagamento" ng-click="changeShipping()">
+						<span class="r2-title-forma-pagamento">CALCULAR OUTRO FRETE</span>
+						<br>
+						<img src="/img/Logo-Correios-e-sedex-sedex-e-pac-2.jpg" alt="frete correios">
+					</a>
+
+					<a class="button r2-btn-forma-pagamento" ng-click="checkoutBoleto()">
+						<span class="r2-title-forma-pagamento">BOLETO</span>
+						<br>
+						<br>
+						<img src="/img/boleto-bancario.jpg" alt="pagamento boleto">
+					</a>
+					<a class="button r2-btn-forma-pagamento" ng-click="chooseCielo()">
+						<span class="r2-title-forma-pagamento">CARTÂO DE CREDITO</span>
+						<br>
+						<br>
+						<img src="/img/Bandeiras_Cielo.png" alt="bandeiras cartão cielo">
+					</a>
+					<a class="button r2-btn-forma-pagamento" ng-click="checkoutPagseguro()">
+						<span class="r2-title-forma-pagamento">PAGSEGURO</span>
+						<br>
+						<img src="/img/logo-pagseguro.png" alt="pagseguro logo">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<!--<div class="expanded button-group" ng-show="userLogged && checkoutChoice === 0 && totalItems > 0">-->
+	<!--<div class="column">-->
+	<!--<form ng-submit="checkoutBoleto()" action="/boleto/bradesco" method="post" target="_blank">-->
+	<!--<input type="text" name="valor" ng-model="valorTotal" style="display: none;"/>-->
+	<!--<input type="submit" class="button" value="BOLETO">-->
+	<!--</form>-->
+	<!--</div>-->
+	<!--<div class="column">-->
+	<!--<button class="button" ng-click="checkoutCielo()">CIELO</button>-->
+	<!--</div>-->
+	<!--<div class="column">-->
+	<!--<button class="button" ng-click="checkoutCielo()">PAGSEGURO</button>-->
+	<!--</div>-->
+	<!--</div>-->
+	<div ng-show="userLogged && checkoutChoice === 1 && totalItems > 0">
+		
+		<div class="row">
+			<div class="small-12 columns">
+				<img src="/img/logo-cielo-6x.jpg" alt="logo cielo">
+				<form novalidate id="transactionForm" name="transactionForm" ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+					<label for="transction_card">
+						
+						
+						
+						<div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Número do Cartão:</label>
+							</div>
+							<div class="small-6 columns">
+								<input
+								type="text"
+								name="transction_cardNumber"
+								ng-model="transaction.card.number"
+								cc-number
+								cc-type="cardType"
+								ng-required="true"
+								placeholder="Número do seu cartão de crédito"
+								required>
+								<div
+									data-ng-messages="transactionForm.transction_cardNumber.$error"
+									data-ng-if="transactionForm.transction_cardNumber.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transction_cardNumber.$touched && transactionForm.transction_cardNumber.$invalid }">
+									<p data-ng-message="required">
+										
+										<span class="icon-error"></span><span class="r2-error-message">Número do cartão obrigatório</span>
+									</p>
+									<p data-ng-message="ccNumber">
+										<span class="icon-error"></span><span class="r2-error-message">Esté não é um número de cartão válido</span>
+									</p>
+									<p data-ng-message="ccNumberType">
+										<span class="icon-error"></span><span class="r2-error-message">Este não é um tipo de cartão válido</span>
+									</p>
+								</div>
+							</div>
+							<div class="small-3 columns">
+								{{transactionForm.transction_cardNumber.$ccType || 'Bandeira'}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Nome do Cartão:</label>
+							</div>
+							<div class="small-9 columns">
+								<input
+								class="r2-input-name-card"
+								type="text"
+								name="transction_name"
+								placeholder="Nome impresso em seu cartão de crédito"
+								ng-model="transaction.card.name"
+								data-ng-minlength="3"
+								data-ng-maxlength="50"
+								data-ng-trim="true"
+								ng-required="true"
+								required>
+								<div
+									data-ng-messages="transactionForm.transction_name.$error"
+									data-ng-if="transactionForm.transction_name.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transction_name.$touched && transactionForm.transction_name.$invalid }">
+									<p data-ng-message="required">
+										<span class="icon-error"></span><span class="r2-error-message">Nome do cartão obrigatório</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">CPF do Titular:</label>
+							</div>
+							<div class="small-3 columns">
+								<input type="radio" ng-model="transaction.card.notSameCpf" ng-value="{{false}}"><label for="pokemonRed">o mesmo do comprador</label>
+							</div>
+							<div class="small-6 columns">
+								<input type="radio" ng-model="transaction.card.notSameCpf" ng-value="{{true}}"><label for="pokemonRed">outro</label>
+						
+							</div>
+						</div>
+						<div class="row" ng-show="transaction.card.notSameCpf">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Número do CPF:</label>
+							</div>
+							<div class="small-9 columns">
+								<input type="text"
+									name="transaction_other_cpf"
+									ng-model="transaction.card.otherCpf"
+									placeholder="Digite os números do CPF do dono do cartão"
+									ui-br-cpf-mask
+									ng-required="transaction.card.notSameCpf"/>
+								<div
+									data-ng-messages="transactionForm.transaction_other_cpf.$error"
+									data-ng-if="transactionForm.transaction_other_cpf.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_other_cpf.$touched && transactionForm.transaction_other_cpf.$invalid }">
+									<p data-ng-message="required">CPF obrigatório</p>
+								</div>
+							</div>
+						</div> -->
+						<div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Validade do Cartão:</label>
+							</div>
+							<div class="small-9 columns">
+								<div class="r2-input-exp-card" cc-exp>
+								  <input name="transaction_month" placeholder="Mês" ng-model="transaction.card.exp_month" cc-exp-month ng-required="true" />
+								  <input name="transaction_year" placeholder="Ano" ng-model="transaction.card.exp_year" cc-exp-year ng-required="true" />(2 dígitos para cada)
+								</div>
+
+								<div
+									data-ng-messages="transactionForm.transaction_month.$error"
+									data-ng-if="transactionForm.transaction_month.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_month.$touched && transactionForm.transaction_month.$invalid }">
+									<p data-ng-message="required">
+										<span class="icon-error"></span><span class="r2-error-message">Mês de validade é obrigatório</span></p>
+									</p>
+									<p data-ng-message="parse">
+										<span class="icon-error"></span><span class="r2-error-message">Mês de validade inválido</span>
+									</p>
+									<p data-ng-message="ccExpMonth">
+										<span class="icon-error"></span><span class="r2-error-message">Mês de validade inválido</span>
+									</p>
+								</div>
+								<div
+									data-ng-messages="transactionForm.transaction_year.$error"
+									data-ng-if="transactionForm.transaction_year.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_year.$touched && transactionForm.transaction_year.$invalid }">
+									<p data-ng-message="required">
+										<span class="icon-error"></span><span class="r2-error-message">Ano de validade é obrigatório (digite os 2 últimos dígitos do ano)</span>
+									</p>
+									<p data-ng-message="parse">
+										<span class="icon-error"></span><span class="r2-error-message">Ano de validade inválido (digite os 2 últimos dígitos do ano)</span>
+									</p>
+									<p data-ng-message="ccExpYear">
+										<span class="icon-error"></span><span class="r2-error-message">Ano de validade inválido (digite os 2 últimos dígitos do ano)</span>										
+									</p>
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Código de Segurança:</label>
+							</div>
+							<div class="small-2 columns">
+								<input type="text" placeholder="CVV" name="transaction_cvv" class="r2-input-cvv-card" ng-model="transaction.card.cvv" cc-type="transction_cardNumber.$ccType" ng-required="true" />
+								<div
+									data-ng-messages="transactionForm.transaction_cvv.$error"
+									data-ng-if="transactionForm.transaction_cvv.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_cvv.$touched && transactionForm.transaction_cvv.$invalid }">
+									<p data-ng-message="required">
+										<span class="icon-error"></span><span class="r2-error-message">CVV é obrigatório</span>	
+									</p>
+								</div>
+							</div>
+
+						</div>
+						<!-- <div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Fatura do Titular:</label>
+							</div>
+							<div class="small-3 columns">
+								<input type="radio" ng-model="transaction.card.notSameAddress" ng-value="{{false}}"><label for="mesmocomprador">o mesmo do comprador</label>
+							</div>
+							<div class="small-6 columns">
+								<input type="radio" ng-model="transaction.card.notSameAddress" ng-value="{{true}}"><label for="outro">outro</label>
+						
+							</div>
+						</div>
+						<div class="row" ng-show="transaction.card.notSameAddress">
+							<div class="small-12 columns">
+								<p>Endereço Para Fatura</p>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">CEP:</label>
+							</div>
+							<div class="small-9 columns">
+								<input
+									id="transaction_address_postcode"
+									type="text"
+									class="form-control"
+									name="transaction_address_postcode"
+									data-ng-model="transaction.card.invoiceaddress.postcode"
+									placeholder="Informe o CEP do endereço da fatura."
+									ui-br-cep-mask
+									ng-required="transaction.card.notSameAddress"/>
+								<div
+									data-ng-messages="transactionForm.transaction_address_postcode.$error"
+									data-ng-if="transactionForm.transaction_address_postcode.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_address_postcode.$touched && transactionForm.transaction_address_postcode.$invalid }">
+									<p data-ng-message="required">CEP obrigatório</p>
+								</div>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Estado:</label>
+							</div>
+							<div class="small-9 columns">
+								<select
+									name="transaction_address_state"
+									data-ng-model="transaction.card.invoiceaddress.state"
+									data-ng-change="transaction.card.invoiceaddress.state"
+									r2-input-disabled="editableInputSeekCep"
+									ng-required="transaction.card.notSameAddress">
+						
+									<option value="" disabled>Selecione o estado</option>
+									<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
+								</select>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Cidade:</label>
+							</div>
+							<div class="small-9 columns">
+								<select
+									name="transaction_address_city"
+									data-ng-model="transaction.card.invoiceaddress.city"
+									r2-input-disabled="editableInputSeekCep"
+									ng-required="transaction.card.notSameAddress">
+						
+									<option value="" disabled>Selecione a cidade</option>
+									<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
+								</select>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Bairro:</label>
+							</div>
+							<div class="small-9 columns">
+								<input
+									id="transaction_address_neighborhood"
+									type="text"
+									placeholder="Informe o bairro do endereço da fatura"
+									name="transaction_address_neighborhood"
+									data-ng-model="transaction.card.invoiceaddress.neighborhood"
+									r2-input-disabled="editableInputSeekCep"
+									ng-required="transaction.card.notSameAddress">
+								<div
+									data-ng-messages="transactionForm.transaction_address_neighborhood.$error"
+									data-ng-if="transactionForm.transaction_address_neighborhood.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_address_neighborhood.$touched && transactionForm.transaction_address_neighborhood.$invalid }">
+									<p data-ng-message="required">Bairro é obrigatório</p>
+								</div>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Logradouro:</label>
+							</div>
+							<div class="small-9 columns">
+								<input
+									id="transaction_address_address1"
+									type="text"
+									placeholder="Informe o logradouro do endereço da fatura"
+									name="transaction_address_address1"
+									data-ng-model="transaction.card.invoiceaddress.address1"
+									r2-input-disabled="editableInputSeekCep"
+									ng-required="transaction.card.notSameAddress">
+								<div
+									data-ng-messages="transactionForm.transaction_address_address1.$error"
+									data-ng-if="transactionForm.transaction_address_address1.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_address_address1.$touched && transactionForm.transaction_address_address1.$invalid }">
+									<p data-ng-message="required">Logradouro é obrigatório</p>
+								</div>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Número:</label>
+							</div>
+							<div class="small-9 columns">
+								<input
+									id="transaction_address_number"
+									type="number"
+									placeholder="Informe o número do endereço da fatura"
+									name="transaction_address_number"
+									data-ng-model="transaction.card.invoiceaddress.number"
+									r2-input-disabled="editableInputSeekCep"
+									ng-required="transaction.card.notSameAddress">
+								<div
+									data-ng-messages="transactionForm.transaction_address_number.$error"
+									data-ng-if="transactionForm.transaction_address_number.$touched"
+									data-ng-class="{ 'form-has-error': transactionForm.transaction_address_number.$touched && transactionForm.transaction_address_number.$invalid }">
+									<p data-ng-message="required">Número é obrigatório</p>
+								</div>
+							</div>
+						
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Complemento:</label>
+							</div>
+							<div class="small-9 columns">
+								<input
+									id="transaction_address_address2"
+									type="text"
+									placeholder="Informe o complemento do endereço da fatura, se houver"
+									name="transaction_address_address2"
+									data-ng-model="transaction.card.invoiceaddress.address2"
+									r2-input-disabled="editableInputSeekCep"
+									ng-required="transaction.card.notSameAddress">
+							</div>
+						</div> -->
+						<div class="row">
+							<div class="small-3 columns">
+								<label for="middle-label" class="text-right middle">Parcelamento:</label>
+							</div>
+							<div class="small-9 columns">
+								<select
+									name="transaction_address_installments"
+									id="transaction_address_installments"
+									data-ng-model="transaction.card.installments"
+									r2-input-disabled="installmentsLoad"
+									required>
+									<option value="" disabled>Selecione o número de parcelas(antes insira o número do cartão)</option>
+									<option data-ng-repeat="option in options.installments" value="{{option}}"><span class="r2-color-oceanblue r2-bold-font">{{option.quantity}}</span> X de {{option.installmentAmount | currency}} por {{option.totalAmount | currency}}</option>
+								</select>
+							</div>
+						</div>
+					</form>
+<!-- 					<ul>
+	<li data-ng-repeat="(key, errors) in transactionForm.$error track by $index"> <strong>{{ key }}</strong> errors
+		<ul>
+			<li data-ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>
+		</ul>
+	</li>
+</ul> -->
+				</div>
+				<button class="button expanded success r2-margin-top-15" ng-click="checkoutCielo()" ng-disabled="transactionForm.$invalid">FINALIZAR PEDIDO</button>
+				<button class="button expanded secondary r2-margin-top-15" ng-click="chooseAgain()">ESCOLHER OUTRA FORMA DE PAGAMENTO</button>
+			</div>
+			
+		</div>
+		<div ng-show="userLogged && checkoutChoice === 2 && totalItems > 0">
+			<div class="row">
+				PAGSEGURO
+				<button class="button expanded success r2-margin-top-15" ng-click="chooseAgain()">FINALIZAR PEDIDO</button>
+
+				<button class="button expanded secondary r2-margin-top-15" ng-click="chooseAgain()">ESCOLHER OUTRA FORMA DE PAGAMENTO</button>
+			</div>
+			
+		</div>
+	</div>

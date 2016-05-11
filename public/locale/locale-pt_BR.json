@@ -1,0 +1,12 @@
+{
+	"MALE": "Masculino",
+	"FEMALE": "Feminino",
+
+    "MOBILE": "CELULAR",
+    "HOME": "RESIDENCIAL",
+    "BUSSINESS": "COMERCIAL",
+
+	"Portuguese": "Português",
+	"English": "Inglês",
+	"directives.language-select.Language": "Linguagem"
+}

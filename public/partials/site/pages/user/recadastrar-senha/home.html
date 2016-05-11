@@ -1,0 +1,38 @@
+<div class="row">
+
+	<div class="small-12 columns r2-home-title">
+		<h3>RECADASTRAR SENHA</h3>
+		<div class="r2-line-title-decorator"></div>
+	</div>
+	<div class="clearfix"></div>
+	<br>
+</div>
+<form novalidate id="recadastrarSenhaForm" name="minhaContaForm" ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+	<div class="row  r2-margin-top-20">
+		<div class="small-12 columns">
+			<div class="medium-12 columns">
+				<label for="user_password">
+					<span class="r2-label-standard">Nova Senha: </span>
+					<br>
+					<input type="password" class="form-control" placeholder="Nova Senha" id="user_password" name="user_password"
+					ng-model="user.password"
+					required/>
+				</label>
+			</div>
+			<div class="medium-12 columns">
+				<label for="user_conf_password" class="r2-label-float">
+					<br>
+					<input type="password" class="form-control" placeholder="Confirme a Senha" id="user_conf_password" name="user_conf_password"
+					ng-model="user.confPassword"
+					data-r2-compare-to="user.password"
+					required
+					floating-validation/>
+				</label>
+			</div>
+
+			<div class="medium-12 columns">
+				<button class="button expanded" ng-click="updatePassword()" ng-disabled="minhaContaForm.user_password.$invalid || minhaContaForm.user_conf_password.$invalid">ATUALIZAR SENHA</button>
+			</div>
+		</div>
+	</div>
+</form>

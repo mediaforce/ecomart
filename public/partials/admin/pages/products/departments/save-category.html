@@ -1,0 +1,40 @@
+<div>
+	 <form class="cad-form" novalidate name="categoryForm" data-polyfiller-update>
+		<fieldset>
+			<legend>{{pageTitle}}</legend>
+			<label>Nome:</label>
+			<input
+				type="text"
+				name="category_name"
+				data-ng-model="category.name"
+				data-ng-minlength="3"
+				data-ng-maxlength="50"
+				data-ng-trim="true"
+				required>
+			<div
+				data-ng-messages="categoryForm.category_name.$error"
+				data-ng-if="categoryForm.category_name.$touched"
+				data-ng-class="{ 'form-has-error': categoryForm.category_name.$touched && categoryForm.category_name.$invalid }">
+				<p data-ng-message="minlength">
+					Nome é muito curto.
+				</p>
+				<p data-ng-message="maxlength">
+					Nome é muito longo.
+				</p>
+				<p data-ng-message="required">
+					Nome é obrigatório.
+				</p>
+			</div>
+
+			<label>Descrição Seo:</label>
+			<input
+				type="text"
+				name="category_seo_description"
+				data-ng-model="category.seoDescription">
+
+		</fieldset>
+
+		<button ng-click="save()" ng-disabled="disableSaveBtn || categoryForm.$invalid">{{btnSave}}</button>
+
+	</form>
+</div>

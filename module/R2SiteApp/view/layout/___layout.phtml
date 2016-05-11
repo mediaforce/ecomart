@@ -1,0 +1,57 @@
+<?php date_default_timezone_set('America/Sao_Paulo');?>
+<?php echo $this->doctype();?>
+<html lang="pt-br" data-ng-app="R2Site">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Ecomart')->setSeparator(' - ')->setAutoEscape(false);?>
+        <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ;?>
+
+        <link rel="stylesheet" href="minified/css/base.site.min.css">
+        <link rel="stylesheet" href="minified/css/main.site.min.css">
+        <link rel="stylesheet" href="minified/css/vendors.min.css">
+        <link rel="stylesheet" href="bower_components/angular-block-ui/dist/angular-block-ui.css">
+
+        <script src="minified/js/site.plugins.min.js"></script>
+        <script src="minified/js/angular_and_resources.min.js"></script>
+        <script src="bower_components/angular-slugify/angular-slugify.js"></script>
+        <script src="bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
+     
+        <script src="https://www.youtube.com/iframe_api"></script>
+
+        <script
+          src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
+          async defer
+        ></script>
+    
+      
+    </head>
+
+    <body data-foundation-init data-polyfiller-init id="layout-site">
+
+        <div id="loading-bar-container"></div>
+
+        <!-- <div data-ng-cloak class="row">
+            <div class="large-3 large-offset-9 columns"><div data-ng-translate-language-select></div></div>
+        </div> -->
+
+        <div data-ui-view="header"></div>
+        <div data-ui-view="banner"></div>
+        <div data-ui-view="sidebar_left"></div>
+        <div data-ui-view="content"></div>
+        <div data-ui-view="sidebar_right"></div>
+        <div data-ui-view="footer"></div>
+
+
+        <div data-ng-cloak data-ui-view="notification"></div>
+
+
+        <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
+        </script>
+
+       <script src="minified/js/R2SiteApp.min.js"></script>
+    </body>
+</html>

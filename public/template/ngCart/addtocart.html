@@ -1,0 +1,39 @@
+<div ng-hide="attrs.id">
+    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+
+</div>
+<div class="r2-product-buy-set-quantity" ng-show="attrs.id">
+    <div>
+<!--         <span ng-show="quantityMax">
+    <select name="quantity" id="quantity" ng-model="q"
+            ng-options=" v for v in qtyOpt"></select>
+</span> -->
+<!--         <a class="btn btn-sm btn-primary"
+   ng-click="ngCart.addItem(id, name, price, q, data)"
+   ng-transclude></a> -->
+
+        <div ng-show="inCart()" class="r2-qtde-product-group">
+            <span class="r2-product-add-title">Adicionar:&nbsp;&nbsp;&nbsp;</span>
+            <button class="r2-qtde-product-control r2-qtde-product-btn" ng-disabled="disableSubtract" ng-click="subtractQtde(id, name, price, q, data)">-</button>
+            <div class="r2-qtde-product-control">
+                <label>{{q}}</label>
+            </div>
+            <button class="r2-qtde-product-control r2-qtde-product-btn" ng-disabled="disableAdd" ng-click="addQtde(id, name, price, q, data)">+</button>
+        </div>
+        <div ng-hide="inCart()">
+            <a class="btn btn-sm btn-primary r2-product-add-subt"
+               ng-click="ngCart.addItem(id, name, price, 1, data)"
+               ng-transclude></a>
+        </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="r2-margin-top-10"></div>
+
+
+    <mark class="r2-product-cart-actions" ng-show="inCart()">
+        <a ng-click="ngCart.removeItemById(id)" class="small alert button" style="cursor: pointer;">Remover</a>
+        <a a data-ui-sref="root.checkout" class="small success button">Meu Carrinho</a>
+    </mark>
+</div>

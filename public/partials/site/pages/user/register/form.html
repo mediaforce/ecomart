@@ -1,0 +1,70 @@
+<style>
+	#status-buttons .button {
+		width: 100px;
+	}
+</style>
+
+<div class="row">
+	<div class="small-12 columns r2-home-title">
+		<h3>Cadastro de Cliente:</h3>
+		<div class="r2-line-title-decorator"></div>
+	</div>
+	<div class="small-12 columns r2-margin-top-10">
+		<div class="row align-center">
+			<div id="status-buttons" class="text-center button-group">
+		        <a ui-sref-active="active" ui-sref=".access" class="button" ng-class="stepForm == 1 ? '' : 'inactive'">
+		        	<div class="r2-width-100">
+		        		<div class="r2-circle">1</div>
+		        	</div>
+		        	<br>
+		        	Acesso
+		        </a>
+		        <a ui-sref-active="active" ui-sref=".personal" class="button" ng-class="stepForm == 2 ? '' : 'inactive'"> <!-- ng-class="stepForm > 1 ? '' : 'inactive'" -->
+		        	<div class="r2-width-100">
+		        		<div class="r2-circle">2</div>
+		        	</div>
+		        	<br>
+		        	Pessoal
+		        </a>
+		        <a ui-sref-active="active" ui-sref=".contact" class="button" ng-class="stepForm == 3 ? '' : 'inactive'">
+		        	<div class="r2-width-100">
+		        		<div class="r2-circle">3</div>
+		        	</div>
+		        	<br>
+		        	Contato
+		        </a>
+		        <a ui-sref-active="active" ui-sref=".address" class="button" ng-class="stepForm == 4 ? '' : 'inactive'">
+		        	<div class="r2-width-100">
+		        		<div class="r2-circle">4</div>
+		        	</div>
+		        	<br>
+		        	Endereço
+		        </a>
+		        <a ui-sref-active="active" ui-sref=".register" class="button" ng-class="stepForm == 5 ? '' : 'inactive'">
+		        	<div class="r2-width-100">
+		        		<div class="r2-circle">5</div>
+		        	</div>
+		        	<br>
+		        	Registro
+		        </a>
+		    </div>
+		</div>
+		<form novalidate id="userForm" name="userForm" ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+			<div data-ui-view="form_user"></div>
+		</form>
+
+<!-- 		VALID FORM: {{userForm.$valid}}
+<br>
+USER_CLIENT: {{user}}
+
+<br>
+
+<ul>
+  <li data-ng-repeat="(key, errors) in userForm.$error track by $index"> <strong>{{ key }}</strong> errors
+    <ul>
+      <li data-ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>
+    </ul>
+  </li>
+</ul> -->
+	</div>
+</div>

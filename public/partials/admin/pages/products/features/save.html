@@ -1,0 +1,51 @@
+<div>
+	<form class="cad-form" novalidate name="featureForm" data-polyfiller-update>
+		<fieldset>
+			<legend>{{pageTitle}}</legend>
+
+			
+			
+			<select name="feature_group"
+			      ng-model="feature.group"
+			      ng-options="group.id as group.name for group in options.groups"
+			      required> 
+				<option value="">Selecione o grupo de característica</option> 
+			</select>
+			<div
+				data-ng-messages="featureForm.feature_group.$error"
+				data-ng-if="featureForm.feature_group.$touched"
+				data-ng-class="{ 'form-has-error': featureForm.feature_group.$touched && featureForm.feature_group.$invalid }">
+
+				<p data-ng-message="required">
+					Selecionar um grupo é obrigatório.
+				</p>
+			</div>
+
+			<label>Valor:</label>
+			<input
+				type="text"
+				name="feature_name"
+				data-ng-model="feature.value"
+				data-ng-maxlength="50"
+				data-ng-trim="true"
+				required>
+			<div
+				data-ng-messages="featureForm.feature_name.$error"
+				data-ng-if="featureForm.feature_name.$touched"
+				data-ng-class="{ 'form-has-error': featureForm.feature_name.$touched && featureForm.feature_name.$invalid }">
+
+				<p data-ng-message="maxlength">
+					Nome é muito longo.
+				</p>
+				<p data-ng-message="required">
+					Nome é obrigatório.
+				</p>
+			</div>
+
+		</fieldset>
+
+		<button ng-click="save()" ng-disabled="disableSaveBtn || featureGroupForm.$invalid">{{btnSave}}</button>
+		<button ng-click="closeThisDialog(0)">Cancelar</button>
+
+	</form>
+</div>

@@ -1,0 +1,649 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"email",
+				"emailPadrao"
+			],
+			[
+				"__construct",
+				"__construct〔function〕"
+			],
+			[
+				"construct",
+				"__construct($configuration)	false"
+			],
+			[
+				"_setLas",
+				"_setUserLastVisitTime"
+			],
+			[
+				"R2T",
+				"R2TuTracker〔namespace〕"
+			],
+			[
+				"Serv",
+				"ServiceLocatorAwareInterface"
+			],
+			[
+				"Co",
+				"CookieTeste"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "module/R2Usuario/src/R2Usuario/Controller/UsuarioRestController.php",
+			"settings":
+			{
+				"buffer_size": 2059,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "module/R2Usuario/config/module.config.php",
+			"settings":
+			{
+				"buffer_size": 1109,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/application.config.php",
+			"settings":
+			{
+				"buffer_size": 2860,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 363.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"psr",
+				"phpfmt: toggle PSR1"
+			],
+			[
+				"html",
+				"HTMLBeautify"
+			],
+			[
+				"php",
+				"phpfmt: refactor"
+			],
+			[
+				"packege ",
+				"Package Control: List Packages"
+			],
+			[
+				"phpfmt",
+				"phpfmt: format now"
+			],
+			[
+				"fmt",
+				"phpfmt: toggle PSR2"
+			],
+			[
+				"themr",
+				"Themr: List themes"
+			],
+			[
+				"inden",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"alig",
+				"Preferences: Alignment File Settings – Default"
+			],
+			[
+				"ali",
+				"Package Control: List Packages"
+			],
+			[
+				"a",
+				"AlignTab: Live Preview Mode"
+			],
+			[
+				"tab",
+				"AlignTab"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"them",
+				"Themr: List themes"
+			],
+			[
+				"theme",
+				"Themr: List themes"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 648.0
+	},
+	"console":
+	{
+		"height": 572.0,
+		"history":
+		[
+			"--help",
+			"help",
+			"--version",
+			"subl --version",
+			"version",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/desenvolvimento/sites/projetos/goaway",
+		"/C/desenvolvimento/sites/projetos/goaway/config",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/config",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/src",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/src/Application",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/src/Application/Controller",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Controller",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Fixture",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Mail",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Service",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/config",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Controller",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Repository"
+	],
+	"file_history":
+	[
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Usuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Service/Usuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/config/module.config.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Repository/Usuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/src/Application/Controller/IndexController.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/Module.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Service/Usuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Telefone.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Service/AbstractService.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/PaisDDI.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/Operadora.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Email.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Foto.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Galeria.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/RedeSocial.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/src/Application/Controller/teste.txt",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/DDIPais.php",
+		"/C/desenvolvimento/sites/projetos/goaway/mixed-info.info",
+		"/C/desenvolvimento/Configs/sites_desenvolvimento.r2conf",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/CodigoPais.php",
+		"/C/desenvolvimento/Apache24/conf/httpd.conf",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/CartaoCredito.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Documento.php",
+		"/C/desenvolvimento/sites/projetos/goaway/doctrine-help.info.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/TipoTelefone.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/CodPais.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/BandeiraCartao.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/TipoDocumento.php",
+		"/C/desenvolvimento/Resources/PHP/APPS_TERCEIROS/zf2intermediario-master/module/SONUser/src/SONUser/Entity/User.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/EnumType.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/Enum/Sexo.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/Enum/Sexo.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/EnumType.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Helper/EnumType",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/DocumentoUsuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/EmailUsuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/FotoGaleria.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/GaleriaUsuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/RedeSocialUsuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/TelefoneUsuario.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/CartaoCreditoUsuario.php",
+		"/C/Users/arthur/AppData/Local/Temp/fz3temp-1/temp_style.min.css",
+		"/C/desenvolvimento/sites/projetos/goaway/doctrine-commands.info",
+		"/C/desenvolvimento/sites/projetos/goaway/UML/UsuarioDiagram.png",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Usuario/src/R2Usuario/Entity/TipoTelefone.php",
+		"/C/desenvolvimento/vpworkspace/exports/project.xml",
+		"/C/desenvolvimento/Resources/PHP/APPS_TERCEIROS/zf2intermediario-master/module/SONAcl/src/SONAcl/Fixture/LoadRole.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/AppLayout/view/layout/layout.phtml",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/Module.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/AppLayout/config/module.config.php",
+		"/C/desenvolvimento/sites/projetos/goaway/public/.htaccess",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/config/module.config.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/AppLayout/Module.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Acl/Module.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/Application/view/layout/layout.phtml",
+		"/C/desenvolvimento/sites/projetos/goaway/config/application.config.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/AppLayout/src/AppLayout/Controller/LayoutController.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Acl/config/module.config.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/Cidade.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/Estado.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/Pais.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/config/module.config.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Fixture/TestPaisEstadoCidadeLoad.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Hoteis/resources/servicos_lista",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2Base/src/R2Base/Entity/queryPaisEstadoCidade.sql",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2AppRest/Module.php",
+		"/C/desenvolvimento/sites/projetos/goaway/module/R2AppRest/config/module.config.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Usuario/config/module.config.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2AppRest/Module.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Usuario/Module.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/config/application.config.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2AppRest/config/module.config.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/zendframework/zend-json/src/Server/Request.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/Application/src/Application/Controller/IndexController.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/Application/view/application/index/index.phtml",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Usuario/src/R2Usuario/Fixture/UsuariosLoad.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Usuario/src/R2Usuario/Entity/Usuario.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Usuario/src/R2Usuario/Controller/IndexController.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/Application/view/layout/layout.phtml",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/Application/view/layout/layout_construcao.phtml",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/.htaccess",
+		"/C/Users/arthur/AppData/Local/Temp/fz3temp-1/layout.phtml",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/index.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/css/temp/style.css",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/Gruntfile.js",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/Application/view/layout/_backup_layout.phtml",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/build/module/Application/view/layout/layout.phtml",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/js/temp/global.js",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/js/temp/jquery.countdown.js",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/js/temp/Backstretch.js",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/js/temp/jquery-1.9.1.min.js",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2TuUsuario/src/R2TuUsuario/Controller/IndexController.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/composer.json",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/README.md",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/Application/view/layout/_backup_layout.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Tracker/src/R2Tracker/Service/TrackerService.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Tracker/src/R2Tracker/Entity/UserTracker.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Tracker/src/R2Tracker/Service/TrackerServiceInterface.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/zendframework/zend-session/src/Validator/HttpUserAgent.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/zendframework/zend-http/src/Header/UserAgent.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/zendframework/zend-mail/src/Header/HeaderInterface.php",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/phpfmt/message",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2TuUsuario/src/R2TuUsuario/Entity/Usuario.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/css/screen.css",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/PhpCodeGen/phpcodegen.sublime-settings",
+		"/C/desenvolvimento/Resources/PHP/APPS_TERCEIROS/piwik-php-tracker-master/PiwikTracker.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Tracker/src/R2Tracker/Entity/AddTrackerInterface.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2Tracker/src/R2Tracker/Entity/AddTracker.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2TuUsuario/config/module.config.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2TuUsuario/src/R2TuUsuario/Fixture/UsuariosLoad.php",
+		"/C/desenvolvimento/php-5.6.13/php.ini",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2TuUsuario/Module.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/init_autoloader.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/hounddog/doctrine-data-fixture-module/src/DoctrineDataFixtureModule/Module.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/hounddog/doctrine-data-fixture-module/src/DoctrineDataFixtureModule/Service/FixtureFactory.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/vendor/hounddog/doctrine-data-fixture-module/src/DoctrineDataFixtureModule/Command/ImportCommand.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/doctrine-commands.info",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/public/index.php",
+		"/C/desenvolvimento/sites/testes/zf_skeleton_test01/module/R2TuUsuario/src/R2TuUsuario/Fixture/LoadUsuariosData.php",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/Normalize Indentation/Normalize Indentation.sublime-settings",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/Alignment/Default (Windows).sublime-keymap",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/Terminal/Base File.sublime-settings",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/AutoAligner/README.md",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/User/AlignTab.sublime-settings",
+		"/C/Users/arthur/AppData/Roaming/Sublime Text 3/Packages/Seti_UI/README.md"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			"C:\\desenvolvimento\\sites\\projetos\\goaway\\module",
+			"C:\\desenvolvimento\\sites\\testes\\zf_skeleton_test01\\public\\css\\temp;,C:\\desenvolvimento\\sites\\testes\\zf_skeleton_test01\\public\\js\\temp",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"usario",
+			"')\n",
+			"\\t",
+			"(^[A-Z]\\w+)\\s+",
+			"^[A-Z]\\w+\\s+",
+			"\\s+",
+			"[0-9]+$",
+			"[0-9]+",
+			"(([0-9]+)\\s+([0-9]+))+",
+			"([0-9]+\\s+[0-9]+)+",
+			"([0-9]+\\s)+",
+			"\\t",
+			"\\s{2,}?",
+			"\\s{2,}",
+			"( ){2,}",
+			"(){2,}",
+			"/(){2,}/",
+			"(){2,}",
+			"Afghan",
+			"Afegani",
+			"80",
+			"private",
+			"estado",
+			"cidade",
+			"cidades",
+			"cidade",
+			";?>",
+			"Application",
+			"isValid",
+			"    \n",
+			";\n",
+			"('/",
+			"road2.jpg",
+			"road",
+			"road2",
+			"road",
+			"url",
+			"days",
+			"url",
+			"home",
+			"road",
+			"\"",
+			"extension",
+			"align",
+			"auto",
+			"getRequest",
+			"getUrlTrackPageView",
+			"configCookiePath",
+			"getCookieName",
+			"getCookieMatchingName",
+			"visitor",
+			"visitor_returning",
+			"form",
+			"firn",
+			"Top Bar",
+			"oil",
+			"black",
+			"'],\n",
+			"href",
+			"jQuery JavaScript Library",
+			"v2.1.4",
+			"public",
+			"APPLICATION_ENV",
+			"local",
+			"c:\\php",
+			"ctype",
+			"80",
+			"DirectoryIndex ",
+			"AddType ",
+			"C:",
+			"php"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"usuario",
+			" ",
+			"$1 ",
+			"$0' '",
+			"$0\\s",
+			"$0 ",
+			" ",
+			"(+$0)",
+			"(+$1)",
+			"(+$2-$3)",
+			"(+$0-$1)",
+			"(+$1-$2)",
+			"(+$1)",
+			"(+$1-$2",
+			"(+\\1",
+			"(+$1$2",
+			"(+$1",
+			"($1",
+			"(\\1)",
+			"(\\1*)",
+			"(\\1)",
+			"($1?)",
+			"($)",
+			"$1)",
+			"($1))",
+			"($1)",
+			" ",
+			"",
+			"'",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "module/R2Usuario/src/R2Usuario/Controller/UsuarioRestController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2059,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								39,
+								39
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "module/R2Usuario/config/module.config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1109,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								602,
+								602
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 39.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "config/application.config.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1090,
+								1090
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 128.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "GoAway.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 313.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

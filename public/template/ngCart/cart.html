@@ -1,0 +1,80 @@
+<div class="callout warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+  <p>O seu carrinho está vazio!</p>
+</div>
+
+<div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
+
+    <table class="table table-striped ngCart cart">
+
+        <thead>
+        <tr>
+            <th>Remover</th>
+            <th>Imagem</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+            <th>Subtotal</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr ng-show="ngCart.getTax()">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Juros ({{ ngCart.getTaxRate() }}%):</td>
+            <td>{{ ngCart.getTax() | currency }}</td>
+        </tr>
+        <tr ng-show="ngCart.getShipping()">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Frete:</td>
+            <td>{{ ngCart.getShipping() | currency }}</td>
+        </tr>
+        <tr ng-show="ngCart.getDiscount()">
+            <td colspan="2">Cupom De Desconto: </td>
+            <td></td>
+            <td></td>
+            <td>Desconto de XX %:</td>
+            <td>{{ ngCart.getDiscount() | currency }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td>{{ ngCart.totalCost() | currency }}</td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr ng-repeat="item in ngCart.getCart().items track by $index">
+            <td class="r2-checkout-remove"><span ng-click="ngCart.removeItemById(item.getId())" class="icon-cancel-circle"></span></td>
+
+            <td>
+                <div class="img-checkout thumbnail">
+                    <img ng-src="{{ item.getData().img }}" alt="Imagem {{ item.getName() }}" width="160" height="160"/>
+                </div>
+
+            </td>
+            <td>{{ item.getName() }}</td>
+            <td class="r2-checkout-quantity">
+                <span class="icon-minus r2-qtde-btn" ng-class="{'disabled':item.getQuantity()==1}"
+                      ng-click="item.setQuantity(-1, true)"></span>&nbsp;&nbsp;
+                {{ item.getQuantity() | number }}&nbsp;&nbsp;
+                <span class="icon-plus r2-qtde-btn" ng-click="item.setQuantity(1, true)"></span></td>
+            <td>{{ item.getPrice() | currency}}</td>
+            <td>{{ item.getTotal() | currency }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    .ngCart.cart span[ng-click] {
+        cursor: pointer;
+    }
+    .ngCart.cart .glyphicon.disabled {
+        color:#aaa;
+    }
+</style>

@@ -1,0 +1,186 @@
+<?php
+
+namespace R2Usuario\Service;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
+use R2Base\Enum\BandeiraCartao;
+use R2Base\Enum\Operadora;
+use R2Base\Enum\Sexo;
+use R2Base\Enum\TipoDocumento;
+use R2Base\Enum\TipoTelefone;
+use R2Base\Mail\Mail;
+use R2Base\Service\AbstractService;
+use R2Usuario\Entity\CartaoCredito;
+use R2Usuario\Entity\Documento;
+use R2Usuario\Entity\Email;
+use R2Usuario\Entity\RedeSocial;
+use R2Usuario\Entity\Telefone;
+use Zend\Mail\Transport\Smtp as SmtpTransport;
+
+class Usuario extends AbstractService {
+	protected $transport;
+	protected $view;
+
+	public function __construct(EntityManager $em, SmtpTransport $transport, $view) {
+		parent::__construct($em);
+
+		$this->entity = "R2Usuario\Entity\Usuario";
+		$this->transport = $transport;
+		$this->view = $view;
+	}
+
+	public function insert(array $data) {
+		$emailpadrao = new Email($data['usuario']);
+		$this->em->persist($emailpadrao);
+		$data['usuario'] = $emailpadrao;
+		$new_date = date('Y-m-d H:i:s', strtotime($data['dataNascimento']));
+		$datetime = new \DateTime($new_date);
+		$data['dataNascimento'] = $datetime;
+		$data['sexo'] = new Sexo($data['sexo']);
+		$data['documentos'] = $this->addDocumentosFromInput($data['documentos']);
+		$data['redesSociais'] = $this->addRedesSociaisFromInput($data['redesSociais']);
+		$data['emails'] = $this->addEmailsFromInput($data['emails']);
+		$data['estado'] = $this->em->getReference('R2Base\Entity\Estado', $data['estado']);
+		$data['cidade'] = $this->em->getReference('R2Base\Entity\Cidade', $data['cidade']);
+		$data['telefones'] = $this->addTelefonesFromInput($data['telefones']);
+		$data['cartoesCredito'] = $this->addCartoesCreditoFromInput($data['cartoesCredito']);
+		$data['role'] = $this->em->getReference('R2Acl\Entity\Role', $data['role']);
+
+		$entity = parent::insert($data);
+
+		$dataEmail = array('nome' => $data['nome'], 'activationKey' => $entity->getActivationKey());
+
+		if ($entity) {
+			$mail = new Mail($this->transport, $this->view, 'add-user');
+			$mail->setSubject('Confirmação de cadastro')
+				->setTo($data['usuario'])
+				->setData($dataEmail)
+				->prepare()
+				->send();
+
+			$proccessData = array(
+				'resultado' => 'estou quase lá...',
+			);
+			return $proccessData;
+		}
+
+	}
+
+	private function addDocumentosFromInput($documentos) {
+		$docsAC = new ArrayCollection();
+
+		foreach ($documentos as $doc) {
+			$newDoc = new Documento();
+			$tipoDoc = new TipoDocumento($doc['tipoDocumento']);
+			$newDoc->setTipoDocumento($tipoDoc);
+			$isMesmoNome = false;
+
+			if (isset($doc['mesmoNome']) && $doc['mesmoNome']) {
+				$isMesmoNome = true;
+			}
+
+			$countCampos = 1;
+
+			foreach ($doc['campos'] as $campo) {
+				switch ($countCampos) {
+				case 1:
+					if ($isMesmoNome) {
+						$campo = 'Mesmo nome do cadastro!';
+					}
+					$newDoc->setCampo1($campo);
+					break;
+				case 2:
+					$newDoc->setCampo2($campo);
+					break;
+				case 3:
+					$newDoc->setCampo3($campo);
+					break;
+				case 4:
+					$newDoc->setCampo4($campo);
+					break;
+				}
+
+				$countCampos++;
+
+				if ($countCampos > 4) {
+					break;
+				}
+			}
+
+			$this->em->persist($newDoc);
+			$docsAC->add($newDoc);
+		}
+
+		return $docsAC;
+	}
+
+	private function addRedesSociaisFromInput($redesSociais) {
+		$redesAC = new ArrayCollection();
+
+		foreach ($redesSociais as $rede) {
+			$newRede = new RedeSocial($rede['endereco']);
+			$this->em->persist($newRede);
+			$redesAC->add($newRede);
+		}
+
+		return $redesAC;
+	}
+
+	private function addEmailsFromInput($emails) {
+		$emailsAC = new ArrayCollection();
+
+		foreach ($emails as $email) {
+			$newEmail = new Email($email['endereco']);
+			$this->em->persist($newEmail);
+			$emailsAC->add($newEmail);
+		}
+
+		return $emailsAC;
+	}
+
+	private function addTelefonesFromInput($telefones) {
+		$telefonesAC = new ArrayCollection();
+
+		foreach ($telefones as $telefone) {
+			$newTel = new Telefone();
+			$tipoTel = new TipoTelefone($telefone['tipoTelefone']);
+			$newTel->setTipoTelefone($tipoTel);
+
+			$ddi = $this->em->getReference('R2Base\Entity\PaisDDI', $telefone['paisDDI']);
+
+			$newTel->setPaisDDI($ddi);
+			$newTel->setArea($telefone['area'])
+				->setNumero($telefone['numero']);
+
+			$oper = new Operadora($telefone['operadora']);
+			$newTel->setOperadora($oper);
+
+			$this->em->persist($newTel);
+			$telefonesAC->add($newTel);
+		}
+
+		return $telefonesAC;
+	}
+
+	private function addCartoesCreditoFromInput($cartoesCredito) {
+		$cartoesAC = new ArrayCollection();
+
+		foreach ($cartoesCredito as $cartao) {
+			$newCartao = new CartaoCredito();
+			$bandeira = new BandeiraCartao($cartao['bandeiraSelecionada']);
+			$newCartao->setBandeiraCartao($bandeira)
+				->setNumero($cartao['numero'])
+				->setTitular($cartao['titular']);
+			$new_date = date('Y-m-d H:i:s', strtotime($cartao['validade']));
+			$datetime = new \DateTime($new_date);
+			$newCartao->setValidade($datetime);
+
+			$this->em->persist($newCartao);
+			$cartoesAC->add($newCartao);
+		}
+
+		return $cartoesAC;
+	}
+
+}

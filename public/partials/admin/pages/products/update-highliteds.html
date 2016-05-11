@@ -1,0 +1,42 @@
+<div>
+	<h3 class-"r2-admin-page-title">Atualizar Produtos Destacados</h3>
+	<br>
+	<br>
+	<a  class="expanded button">Atualizar Todos</a>
+
+	<table id="products-table" st-safe-src="productsCollection" st-set-filter="myStrictFilter" st-table="displayedCollection" class="table table-striped table-scroll scroll">
+		<thead>
+			<tr>
+				<th>Imagem</th>
+				<th>Código</th>
+				<th>Referência</th>
+				<th>Título</th>
+				<th>Fabricante</th>
+				<th>Departamento</th>
+				<th>Data Cadastro</th>
+				<th>Destacado</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				<td>{{row.cover}}</td>
+				<td>{{row.id}}</td>
+				<td>{{row.reference}}</td>
+				<td>{{row.title}}</td>
+				<td>{{row.manufacturer.company.companyName}}</td>
+				<td>{{row.department.name}}</td>
+				<td>{{row.category.name}}</td>
+				<td>{{row.subcategory.name}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="7" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+</div>

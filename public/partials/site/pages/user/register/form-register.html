@@ -1,0 +1,26 @@
+<div>
+	<div class="row">
+		<div class="small-12 columns text-center">
+			<p>Parabéns. Você agora poderá acessar as suas contas e realizar as suas comprar com tranquilidade.</p>
+			<p>Para validarmos o cadastro, cheque o captcha e finalize o registro.</p>
+			<p>Após o registro, você já poderá se logar no nosso sistema.</p>
+			<p>Caso queira alterar as informações de seu cadastro, clique em 'Minha Conta'.</p>
+		</div>
+		
+	</div>
+	<div class="row">
+		<div class="columns"></div>
+		<div class="columns"></div>
+		<div class="columns">
+			<div class="r2-recaptcha"
+				vc-recaptcha
+				key="'6LdO2h0TAAAAANwRFtPaSy_UATgWn3HqJD_2wuCs'"
+			></div>
+		</div>
+	</div>
+	<div class="expanded button-group">
+		<button class="button alert" ng-click="userReset()">Cancelar</button>
+		<button class="button success" ng-disabled="userForm.$invalid" ng-click="userRegister();goToSetOne();">Registrar</button>
+	</div>
+	<div class="clearfix"></div>
+</div>

@@ -1,0 +1,191 @@
+<ul>
+  <li data-ng-repeat="(key, errors) in userForm.$error track by $index"> <strong>{{ key }}</strong> errors
+    <ul>
+      <li data-ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<button ng-click="CheckUser()">
+	VERIFICAR USUÁRIO
+</button>
+
+<form novalidate class ="cad-form" name="userForm" data-polyfiller-update>
+	<fieldset>
+		<legend>{{'Dados de Acesso'|translate}}</legend>
+
+		{{'Usuário (e-mail padrão)'|translate}} *:
+		<input
+			type="email"
+			name="access_user"
+			data-ng-model="user.user"
+			data-ng-minlength="8"
+			data-ng-maxlength="50"
+			data-ng-trim="true"
+			required>
+
+		<div
+			data-ng-messages="userForm.access_user.$error"
+			data-ng-if="userForm.access_user.$touched"
+			data-ng-class="{ 'form-has-error': userForm.access_user.$touched && userForm.access_user.$invalid }">
+	        <p data-ng-message="minlength">{{'Nome do usuário é muito curto'|translate}}.</p>
+	        <p data-ng-message="maxlength">{{'Nome do usuário é muito longo'|translate}}.</p>
+	        <p data-ng-message="email">{{'Não é um e-mail válido'|translate}}.</p>
+	        <p data-ng-message="required">{{'Nome do usuário é obrigatório'|translate}}.</p>
+	        <p data-ng-message="unique">{{'Este usuário/email já está sendo utilizado!'|translate}}.</p>
+	    </div>
+
+		{{'Senha'|translate}} *:
+		<input
+			type="password"
+			name="access_password"
+			data-ng-model="user.password"
+			data-ng-minlength="6"
+			data-ng-maxlength="30"
+			required>
+
+		<div
+			data-ng-messages="userForm.access_password.$error"
+			data-ng-if="userForm.access_password.$touched"
+			data-ng-class="{ 'form-has-error': userForm.access_password.$touched && userForm.access_password.$invalid }">
+
+	        <p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
+	        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
+	        <p data-ng-message="required">{{'Senha é obrigatória'|translate}}.</p>
+	    </div>
+
+		{{'Confirme senha'|translate}} *:
+		<input
+			type="password"
+			name="access_confpassword"
+			data-ng-model="user.confpassword"
+			data-compare-to="user.password"
+			required>
+
+		<div
+			data-ng-messages="userForm.access_confpassword.$error"
+			data-ng-if="userForm.access_confpassword.$touched"
+			data-ng-class="{ 'form-has-error': userForm.access_confpassword.$touched && userForm.access_confpassword.$invalid }">
+
+			<p data-ng-message="compareTo">{{'Precisa ser o mesmo digitado no campo "Senha"'|translate}}.</p>
+	        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
+	    </div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Dados Pessoais'|translate}}</legend>
+
+		{{'Nome'|translate}} *:
+		<input
+			type="text"
+			name="pers_name"
+			data-ng-model="user.person.name"
+			data-ng-minlength="3"
+			data-ng-maxlength="50"
+			data-ng-trim="true"
+			required>
+
+		<div
+			data-ng-messages="userForm.pers_name.$error"
+			data-ng-if="userForm.pers_name.$touched"
+			data-ng-class="{ 'form-has-error': userForm.pers_name.$touched && userForm.pers_name.$invalid }">
+
+			<p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
+	        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
+	        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
+	    </div>
+
+		{{'Sobrenome'|translate}} *:
+		<input
+			type="text"
+			name="pers_surname"
+			data-ng-model="user.person.surname"
+			data-ng-minlength="3"
+			data-ng-maxlength="50"
+			data-ng-trim="true"
+			required>
+
+		<div
+			data-ng-messages="userForm.pers_surname.$error"
+			data-ng-if="userForm.pers_surname.$touched"
+			data-ng-class="{ 'form-has-error': userForm.pers_surname.$touched && userForm.pers_surname.$invalid }">
+
+			<p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
+	        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
+	        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
+	    </div>
+
+		{{'Sexo'|translate}} *:
+		<select
+			name="pers_gender"
+			data-ng-model="user.person.gender"
+			size="1"
+			required>
+
+			<option data-ng-hide="gendersLoad">Carregando...</option>
+			<option data-ng-repeat="option in options.genders" value="{{option.name}}">{{option.name | translate | capitalize }}</option>
+		</select>
+
+		<div
+			data-ng-messages="userForm.pers_gender.$touched.$error"
+			data-ng-if="userForm.pers_gender.$touched.$touched"
+			data-ng-class="{ 'form-has-error': userForm.pers_gender.$touched.$touched && userForm.pers_gender.$touched.$invalid }">
+
+	        <p data-ng-message="required">{{'Escolha o sexo'|translate}}.</p>
+	    </div>
+
+		{{'Nacionalidade'|translate}}:
+		<input
+			type="text"
+			name="input"
+			data-ng-model="user.person.nationality">
+
+		{{'Data Nascimento'|translate}}:
+		<input
+			type="date"
+			name="input"
+			data-ng-model="user.person.birthDate">
+
+		{{'Foto'|translate}}:
+		<input
+			type="file"
+			name="input"
+			data-ng-model="user.person.photo">
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Telefones'|translate}}</legend>
+		<div data-add-telephones></div>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Documentos'|translate}}</legend>
+		<div data-add-documents data-type="physical"></div>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Redes Sociais'|translate}}</legend>
+		<div data-add-social-networks data-social-networks-model="user.person.socialNetworks" data-form="userForm"></div>
+	</fieldset>
+
+	<button ng-click="verifyUser()" class="button success">VERIFICAR USUARIO</button>
+
+	<fieldset>
+		<legend>E-mails</legend>
+
+		<div data-add-emails></div>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{'Endereço'|translate}}</legend>
+		<div data-add-addresses></div>
+	</fieldset>
+<!-- 
+	<fieldset>
+		<legend>{{'Cartões de Credito'|translate}}</legend>
+		<div data-add-credit-cards></div>
+	</fieldset> -->
+
+	<button class="button" data-ng-click="createUser()">{{'Criar usuário'|translate}}</button>
+</form>

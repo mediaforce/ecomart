@@ -1,0 +1,355 @@
+<!-- <div data-sticky-container>
+		<div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%; height: 40px" data-top-anchor="1" data-btm-anchor="content:bottom">
+				<div class="title-bar-left">REDES SOCIAIS</div>
+				<div class="title-bar-right">FALE CONOSCO</div>
+		</div>
+</div>
+-->
+<div data-foundation-init class="r2-show-hover-menu">
+	<div data-sticky-container>
+		<div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%; height: 36px">
+			<div class="title-bar-left">
+				<a href="https://www.facebook.com/EcomartBrasil/" target="_blank"><img src="/img/icon-facebook.png" width="34" height="34"></a>
+			</div>
+			<div class="title-bar-right"><a data-ui-sref="root.faleconosco"><span class="icon-bubble"></span>&nbsp;&nbsp;&nbsp;FALE CONOSCO</a></div>
+		</div>
+	</div>
+	<div class="r2-lightgrey-gradient-upsidedown expanded">
+		<header id="r2-main-header">
+			<div class="row">
+				<div class="small-12 large-expand columns">
+					<div class="row">
+						<div class="small-12 columns r2-logo-ecomart"></div>
+					</div>
+					<div class="row">
+						<div class="small-12 columns r2-contact-info">
+							<div class="r2-telephone">
+								<p>
+									<span class="r2-title">SAC / Assistência Técnica</span>
+								</p>
+								<p>
+									<span class="r2-phone">(11) 3271-1024 / 3207-6271</span>
+								</p>
+							</div>
+							<div class="r2-telephone">
+								<p>
+									<span class="r2-title">Vendas</span>
+								</p>
+								<p>
+									<span class="r2-phone">(11) 3246-6127 / 3246-6136</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="small-12 large-expand columns">
+					<div class="r2-login" ng-show="userLogged">
+						Seja bem vindo, {{ userName }}! <br>
+						<a ng-click="logout()">Deslogar?</a>
+					</div>
+					<div class="r2-login" ng-hide="userLogged">Bem vindo, <a ng-click="loginShow()">identifique-se</a> para fazer suas compras!</div>
+					<div class="show-for-small-only">
+						<br>
+					</div>
+					<div class="row collapse r2-search-field">
+						<div class="small-10 columns">
+							<input type="text" placeholder="Digite o que você procura" ng-model="searchProduct">
+						</div>
+						<div class="small-2 columns">
+							<button class="button secondary r2-btn-search" ng-click="searchProducts()" ng-disabled="searchProduct.length === 0">
+							<span class="icon-search3"></span>
+							</button>
+						</div>
+					</div>
+					<br>
+				</div>
+				<div class="small-12 large-expand columns">
+					<div class="r2-user-account">
+						<p>
+							<a data-ui-sref="root.usercompras"><span class="r2-info r2-minhas-compras"><img src="/img/icon-minhas-compras.png" width="30" height="30">&nbsp;Minhas Compras</span></a>
+							<a data-ui-sref="root.userconta"><span class="r2-info r2-minha-conta"><img src="/img/icon-minha-conta.png" width="30" height="34">&nbsp;Minha Conta</span></a>
+						</p>
+					</div>
+					<div class="r2-cart">
+						<li ui-sref-active="active">
+							<a data-ui-sref="root.checkout"><span class="r2-info r2-meu-carrinho"><ngcart-summary></ngcart-summary></span></a>
+							<div class="r2-info r2-site-seguro"></div>
+						</li>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	<div  class="expanded r2-grey-bar r2-margin-top-10">
+		<nav id="r2-category-menu" class="r2-category-menu hide-for-medium-only hide-for-small-only r2-margin-none">
+			<ul class="menu dropdown expanded" data-dropdown-menu>
+				<li ui-sref-active="active" class="r2-category-item r2-category-item-home">
+					<a data-ui-sref="root" class="r2-category-link">
+						<div class="r2-menu-image">
+							<span class="icon-home r2-menu-icon-home"></span>
+						</div>
+					</a>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.launchs" class="r2-category-link">
+						<span class="icon-rocket2 r2-menu-icon"></span>
+						<span class="r2-menu-title">Lançamentos</span>
+					</a>
+					<ul class="menu r2-submenu">
+						<li>
+							<div class="r2-box-menu">
+								<div class="row">
+									<div class="small-12 columns r2-home-title">
+										<h3>{{storeDetailLancamento.product.title}}</h3>
+										<div class="r2-line-title-decorator"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 columns">
+										<ul ng-repeat="store in storesDeptLancamento">
+											<li>
+												<a ng-click="selectStoreDetailLancamento(store)">
+													<span class="icon-star-full"></span>
+													{{store.product.title}}
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="small-6 columns">
+										<div class="r2-submenu-detail">
+											<div class="r2-submenu-detail">
+												<div class="img-submenu">
+													<img class="" ng-src="{{storeDetailLancamento.cover.path}}" alt="Imagem {{storeDetailLancamento.product.title}}" height="100%" width="100%"/>
+													<a data-ui-sref="root.productsdetails({storeId: storeDetailLancamento.id, slug: storeDetailLancamento.slug})">Mais Detalhes!</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<a class="r2-veja-mais" data-ui-sref="root.departments({departmentName: 'robôs de limpeza'})">Veja mais produtos do departamento</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</li>
+					</ul>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.combos" class="r2-category-link">
+						<span class="icon-box r2-menu-icon"></span>
+						<span class="r2-menu-title">Combos</span>
+					</a>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.departments({departmentName: 'robôs de limpeza'})" class="r2-category-link">
+						<span class="icon-hubot r2-menu-icon"></span>
+						<span class="r2-menu-title">Robôs de Limpeza</span>
+					</a>
+					<ul class="menu r2-submenu">
+						<li>
+							<div class="r2-box-menu">
+								<div class="row">
+									<div class="small-12 columns r2-home-title">
+										<h3>{{storeDetailLimpeza.product.title}}</h3>
+										<div class="r2-line-title-decorator"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 columns">
+										<ul ng-repeat="store in storesDeptLimpeza">
+											<li>
+												<a ng-click="selectStoreDetailLimpeza(store)">
+													<span class="icon-star-full"></span>
+													{{store.product.title}}
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="small-6 columns">
+										<div class="r2-submenu-detail">
+											<div class="r2-submenu-detail">
+												<div class="img-submenu">
+													<img class="" ng-src="{{storeDetailLimpeza.cover.path}}" alt="Imagem {{storeDetailLimpeza.product.title}}" height="100%" width="100%"/>
+													<a data-ui-sref="root.productsdetails({storeId: storeDetailLimpeza.id, slug: storeDetailLimpeza.slug})">Mais Detalhes!</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<a class="r2-veja-mais" data-ui-sref="root.departments({departmentName: 'robôs de limpeza'})">Veja mais produtos do departamento</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</li>
+					</ul>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.departments({departmentName: 'eletrodomésticos'})" class="r2-category-link">
+						<span class="icon-washingmachine r2-menu-icon"></span>
+						<span class="r2-menu-title">Eletrodomésticos</span>
+					</a>
+					<ul class="menu r2-submenu">
+						<li>
+							<div class="r2-box-menu">
+								<div class="row">
+									<div class="small-12 columns r2-home-title">
+										<h3>{{storeDetailEletro.product.title}}</h3>
+										<div class="r2-line-title-decorator"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 columns">
+										<ul ng-repeat="store in storesDeptEletro">
+											<li>
+												<a ng-click="selectStoreDetailEletro(store)">
+													<span class="icon-star-full"></span>
+													{{store.product.title}}
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="small-6 columns">
+										<div class="r2-submenu-detail">
+											<div class="r2-submenu-detail">
+												<div class="img-submenu">
+													<img class="" ng-src="{{storeDetailEletro.cover.path}}" alt="Imagem {{storeDetailEletro.product.title}}" height="100%" width="100%"/>
+													<a data-ui-sref="root.productsdetails({storeId: storeDetailEletro.id, slug: storeDetailEletro.slug})">Mais Detalhes!</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<br>
+									<br>
+									<div class="clearfix r2-margin-top-10"></div>
+									<a class="r2-veja-mais" data-ui-sref="root.departments({departmentName: 'eletrodomésticos'})">Veja mais produtos do departamento</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.departments({departmentName: 'ferramentas'})" class="r2-category-link">
+						<span class="icon-wrench r2-menu-icon"></span>
+						<span class="r2-menu-title">Ferramentas</span>
+					</a>
+					<ul class="menu r2-submenu">
+						<li>
+							<div class="r2-box-menu">
+								<div class="row">
+									<div class="small-12 columns r2-home-title">
+										<h3>{{storeDetailFerram.product.title}}</h3>
+										<div class="r2-line-title-decorator"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 columns">
+										<ul ng-repeat="store in storesDeptFerram">
+											<li>
+												<a ng-click="selectStoreDetailFerram(store)">
+													<span class="icon-star-full"></span>
+													{{store.product.title}}
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="small-6 columns">
+										<div class="r2-submenu-detail">
+											<div class="r2-submenu-detail">
+												<div class="img-submenu">
+													<img class="" ng-src="{{storeDetailFerram.cover.path}}" alt="Imagem {{storeDetailFerram.product.title}}" height="100%" width="100%"/>
+													<a data-ui-sref="root.productsdetails({storeId: storeDetailFerram.id, slug: storeDetailFerram.slug})">Mais Detalhes!</a>
+													<br>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<a class="r2-veja-mais" data-ui-sref="root.departments({departmentName: 'ferramentas'})">Veja mais produtos do departamento</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.departments({departmentName: 'peças de reposição'})">
+						<span class="icon-cogs3 r2-menu-icon"></span>
+						<span class="r2-menu-title">Peças de Reposição</span>
+					</a>
+					<ul class="menu r2-submenu">
+						<li>
+							<div class="r2-box-menu">
+								<div class="row">
+									<div class="small-12 columns r2-home-title">
+										<h3>{{storeDetailPecas.product.title}}</h3>
+										<div class="r2-line-title-decorator"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 columns">
+										<ul ng-repeat="store in storesDeptPecas">
+											<li>
+												<a ng-click="selectStoreDetailPecas(store)">
+													<span class="icon-star-full"></span>
+													{{store.product.title}}
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="small-6 columns">
+										<div class="r2-submenu-detail">
+											<div class="r2-submenu-detail">
+												<div class="img-submenu">
+													<img class="" ng-src="{{storeDetailPecas.cover.path}}" alt="Imagem {{storeDetailPecas.product.title}}" height="100%" width="100%"/>
+													<a data-ui-sref="root.productsdetails({storeId: storeDetailPecas.id, slug: storeDetailPecas.slug})">Mais Detalhes!</a>
+													<br>
+													<br>
+												</div>
+												<br>
+												<br>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<br>
+								<br>
+								<div class="row">
+									<a class="r2-veja-mais" data-ui-sref="root.departments({departmentName: 'peças de reposição'})">
+									Veja mais produtos do departamento</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li ui-sref-active="active" class="dropdown r2-category-item" data-dropdown-menu>
+					<a href="#">
+						<span class="icon-tools2 r2-menu-icon"></span>
+						<span class="r2-menu-title">Assistência Técnica</span>
+					</a>
+					<ul class="menu r2-simple-submenu">
+						<li><a data-ui-sref="root.assistencia">Endereços</a></li>
+						<li><a data-ui-sref="root.informacoes">Informações</a></li>
+					</ul>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a href="#">
+						<span class="icon-menu3 r2-menu-icon"></span>
+						<span class="r2-menu-title">Mostrar Categorias</span>
+					</a>
+				</li>
+				<li ui-sref-active="active" class="r2-category-item">
+					<a data-ui-sref="root.faq">
+						<span class="icon-question-circle r2-menu-icon"></span>
+						<span class="r2-menu-title">Ajuda</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="" class="r2-category-menu hide-for-large">
+			RESPONSIVE CATEGORY MENU
+			
+		</div>
+		
+		<div class="expanded r2-blueocen-hr"></div>
+	</div>
+</div>

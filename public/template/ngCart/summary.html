@@ -1,0 +1,11 @@
+<div>
+	<div class="r2-icon-cart">
+		<span class="icon-shopping-cart2"></span>
+	</div>
+	<div class="r2-checkout">
+		{{ ngCart.getTotalItems() }}
+		    <ng-pluralize count="ngCart.getTotalItems()" when="{'one': 'item', 1: 'item', 'other':'itens'}"></ng-pluralize>
+		    <br />
+		    {{ ngCart.totalCost() | currency }}
+	</div>
+</div>

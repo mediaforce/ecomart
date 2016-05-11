@@ -1,0 +1,42 @@
+<div
+	class="well well-lg bs-loading-container"
+    bs-loading-overlay
+    bs-loading-overlay-reference-id="loadProducts"
+    bs-loading-overlay-template-url="template/loading-overlay/loading-overlay-template.html">
+	<table st-safe-src="productsSelectedCollection" st-set-filter="genericFilter" st-table="displayedProductsSelectedCollection" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Referência</th>
+				<th>Produtos</th>
+			</tr>
+			<tr>
+				<th>
+					<input st-search="id" placeholder="Código" class="input-sm form-control" type="search"/>
+				</th>
+				<th>
+	                <input st-search="reference" placeholder="Refer." class="input-sm form-control" type="search"/>
+	            </th>
+	            <th>
+	                <input st-search="title" placeholder="Título" class="input-sm form-control" type="search"/>
+	            </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in displayedProductsSelectedCollection">
+				<td>{{row.id}}</td>
+				<td>{{row.reference}}</td>
+				<td>{{row.title}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+	<button ng-click="getSelectedProducts()">Capturar Produtos</button>
+</div>

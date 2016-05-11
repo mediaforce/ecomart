@@ -1,0 +1,20 @@
+<div>
+	{{'Documento'|translate}} {{index+1}} - {{'Passaporte'|translate}} <br>
+
+	{{'Nome'|translate}}:
+	<input
+		type="text"
+		name="input"
+		data-ng-model="usuario.documentos[indice].campos[0]">
+
+	<input type="checkbox" name="sameName" value="true" data-ng-model="sameName">{{'Nome é o igual ao do cadastro'|translate}}
+	<br>
+	{{'Número'|translate}} {{'Passaporte'|translate}}:
+	<input
+		type="text"
+		name="input"
+		data-ng-model="usuario.documentos[indice].campos[1]">
+
+	<button class="button" data-ng-click="removerElemento()">{{'Remover'|translate}}</button>
+
+</div>

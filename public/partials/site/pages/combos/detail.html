@@ -1,0 +1,109 @@
+<div class="row">
+	<div class="large-3 columns r2-margin-top-20">
+		<ul class="dropdown menu horizontal r2-more-combo-products" data-dropdown-menu>
+		  <li>
+		    <a href="#" class="r2-see-more-products">Veja os produtos deste combo <span class="icon-circle-right"></span></a>
+		    <ul class="menu">
+		      <li ng-repeat="product in products">
+		      	<a href="#" ng-click="selectProduct(product)">{{product.title}}</a>
+		      </li>
+		    </ul>
+		  </li>
+		</ul>
+
+		<div class="r2-product-combo-title">{{selectedProduct.title}}</div>
+		
+<!-- 	
+			<a ng-href="{{selectedImage}}" href="{{selectedImage}}">
+				<img id="r2_img_zoom" class="r2-image-fill" ng-src="{{selectedImage}}"/>
+			</a> -->
+
+		<img
+		    ez-plus 
+		    ezp-model="{thumb:selectedImage, small:selectedImage, large: selectedImage}"
+		    ezp-options="{scrollZoom: true, easing: true}"
+		    id="zoom_01" ng-src="{{selectedImage}}" />
+
+		<div class="clearfix"></div>
+
+		<div id="r2_product_gallery" >
+			<div class="r2-image-box" ng-repeat="image in selectedProduct.images">
+				<button href="#" data-image="{{image.path}}" ng-click="setSelectedImage(image.path)" data-zoom-image="{{image.path}}">
+					<div class="r2-thumbnail-detail r2-image-fill">
+						<img ng-src="{{image.path}}" alt="Imagem {{store.product.title}}" />
+					</div>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="columns r2-margin-top-20 r2-product-details">
+		<p>
+			<span class="r2-product-title">{{comboStore.comboProduct.title}}</span>
+		</p>
+		<p>
+			<span class="r2-product-subtitle">{{comboStore.comboProduct.subtitle}}</span>
+		</p>
+		<p>
+			<div class="r2-product-rating">
+			</div>
+		</p>
+		<p>
+			<span class="r2-product-price">
+				De: {{comboStore.unitPrice | currency}}
+			</span>
+		</p>
+		<p>
+			<span class="r2-product-discount-price">
+				Por: <span class="r2-bold-font">{{comboStore.unitDiscountPrice | currency}}</span>
+			</span>
+		</p>
+		<p>
+			<span class="r2-product-installments">
+				Ou em 10x iguais de {{ (comboStore.unitDiscountPrice/10) | currency}}
+			</span>
+			<div class="r2-sem-juros">sem juros</div>
+		</p>
+
+
+		<div class="r2-add-product">
+			<ngcart-addtocart id="{{comboStore.id+'-C'}}" name="{{comboStore.comboProduct.title}}" price="{{comboStore.unitDiscountPrice}}" quantity="1" quantity-max="10" data="{img: comboStore.comboProduct.thumbnail.path, product: comboStore.comboProduct, isCombo: true}">
+				<button class="r2-product-btn-add" ng-click="testeCompra()">Adicionar ao carrinho</button>
+			</ngcart-addtocart>
+		</div>
+		<div class="r2-buy-product" ng-controller="ComprarProdutoCtrl">
+								
+			<button class="r2-product-btn-buy" ng-click="comprarProduto(store, true)">COMPRAR</button>
+		</div>
+
+	</div>
+	<div class="large-5 columns r2-margin-top-20">
+		<span class="icon-video-camera r2-icon-video"></span> <span class="r2-title-video">{{videoTitle}}</span>
+		<div ng-show="showVideo" class="r2-product-video r2-margin-top-10">
+			<youtube-video video-url="videoUrl" player-width="'100%'" player-height="'100%'"></youtube-video>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="small-12 columns r2-margin-top-20">
+		<ul class="accordion" data-accordion>
+		  <li class="accordion-item is-active" data-accordion-item>
+		    <a href="#" class="accordion-title">Detalhes do produto: {{selectedProduct.title}}</a>
+		    <div class="accordion-content" data-tab-content>
+		      <div  ng-bind-html="renderHtml(selectedProduct.description)"></div>
+		    </div>
+		  </li>
+		  <li class="accordion-item" data-accordion-item>
+		    <a href="#" class="accordion-title">Depoimentos</a>
+		    <div class="accordion-content" data-tab-content>
+		      <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, aliquid, perspiciatis. Adipisci animi, perferendis exercitationem facilis quibusdam maiores architecto sint, obcaecati itaque iure in fugiat quod odio laudantium praesentium esse?.<cite>Cliente Nome 1</cite></blockquote>
+		      <br>
+		      <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, aliquid, perspiciatis. Adipisci animi, perferendis exercitationem facilis quibusdam maiores architecto sint, obcaecati itaque iure in fugiat quod odio laudantium praesentium esse?.<cite>Cliente Nome 2</cite></blockquote>
+		    </div>
+		  </li>
+
+		</ul>
+	</div>
+</div>
+
+<div data-foundation-init></div>

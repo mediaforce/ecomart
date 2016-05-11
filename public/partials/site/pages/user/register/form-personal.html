@@ -1,0 +1,55 @@
+<div>
+	<div class="row">
+		<div class="medium-6 columns">
+			<label>
+				<input type="radio" ng-model="user.customerType" value="PHYSICAL">
+    			Pessoa Física
+			</label>
+		</div>
+		<div class="medium-6 columns">
+			<label>
+				<input type="radio" ng-model="user.customerType" value="LEGAL">
+    			Pessoa Jurídica
+			</label>
+		</div>
+	</div>
+
+	<label for="person_name" class="r2-label-float">
+		<br>
+		<input type="text" class="form-control" placeholder="{{phPersonName}}" id="person_name" name="person_name"
+		ng-model="user.person.name"
+		required
+		floating-validation/>
+	</label>
+
+	<label for="person_surname" class="r2-label-float" ng-hide="user.customerType == 'PHYSICAL'">
+		<br>
+		<input type="text" class="form-control" placeholder="{{phPersonSurname}}" id="person_surname" name="person_surname"
+		ng-model="user.person.surname"
+		required
+		floating-validation/>
+	</label>
+
+	<label for="person_document_cpf" class="r2-label-float" ng-show="user.customerType == 'PHYSICAL'">
+		<br>
+		<input type="text" class="form-control" placeholder="CPF" id="person_document_cpf" name="person_document_cpf"
+		ng-model="user.person.documents[0].field1"
+		ui-br-cpf-mask
+		required
+		floating-validation/>
+	</label>
+
+	<label for="person_document_cnpj" class="r2-label-float" ng-hide="user.customerType == 'PHYSICAL'">
+		<br>
+		<input type="text" class="form-control" placeholder="CNPJ" id="person_document_cnpj" name="person_document_cnpj"
+		ng-model="user.person.documents[1].field1"
+		ui-br-cnpj-mask
+		required
+		floating-validation/>
+	</label>
+
+	<button class="button float-right" ng-click="nextStep(3)" ng-disabled="userForm.$invalid">Próximo Passo</button>
+
+	<div class="clearfix"></div>
+
+</div>

@@ -1,0 +1,137 @@
+<?php date_default_timezone_set('America/Sao_Paulo');?>
+
+<?php echo $this->doctype();?>
+
+<html lang="en" ng-app="R2AppSite">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Go Away ' . 'TESTE')->setSeparator(' - ')->setAutoEscape(false);?>
+
+        <?php echo $this->headMeta()
+    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+;?>
+
+        <!-- Base style -->
+        <!-- build:css(public) /css/base.min.css -->
+        <?php
+
+$this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+    ->prependStylesheet($this->basePath('css/screen.css'), 'screen')
+    ->prependStylesheet($this->basePath('css/print.css'), 'print')
+    ->prependStylesheet($this->basePath('css/ie.css'), 'screen', 'IE 8');
+
+echo $this->headLink();
+
+$this->headLink()->exchangeArray(array());
+?>
+        <!-- endbuild -->
+
+        <!-- Main style -->
+        <!-- build:css(public) /css/main.min.css -->
+        <?php
+
+$this->headLink()
+    ->prependStylesheet($this->basePath('css/main.css'));
+
+echo $this->headLink();
+
+$this->headLink()->exchangeArray(array());
+?>
+        <!-- endbuild -->
+
+        <!-- Plugins Scripts -->
+        <!-- build:js(public) /js/plugins.min.js -->
+        <?php
+
+$this->headScript()
+    ->prependFile($this->basePath('bower_components/foundation/js/foundation.js'))
+    ->prependFile($this->basePath('js/plugins/jquery-2.1.4.js'))
+    ->prependFile($this->basePath('js/plugins/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'))
+    ->prependFile($this->basePath('js/plugins/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
+
+echo $this->headScript();
+
+$this->headScript()->exchangeArray(array());
+?>
+        <!-- endbuild -->
+
+        <!-- Angular & Resources Scripts -->
+        <!-- build:js(public) /js/angular.all.min.js -->
+        <?php
+
+$this->headScript()
+    ->prependFile($this->basePath('bower_components/angular-route/angular-route.js'))
+    ->prependFile($this->basePath('bower_components/angular-resource/angular-resource.js'))
+    ->prependFile($this->basePath('js/ng/angular.js'));
+
+echo $this->headScript();
+
+$this->headScript()->exchangeArray(array());
+?>
+        <!-- endbuild -->
+
+    </head>
+
+    <body ng-controller="LayoutCtrl" data-plugins-layout-init>
+
+        <h1>LAYOUT APP SITE</h1>
+        <nav data-top-bar class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">R2 Turismo App</a></h1>
+                </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon">
+                    <a href="#"><span>Menu</span></a>
+                </li>
+            </ul>
+
+            <section class="top-bar-section">
+                <ul class="right">
+                    <li class="active">
+                        <a href="#">Right Button Active</a>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Right Button Dropdown</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="/Hoteis">Hoteis</a>
+                            </li>
+                            <li>
+                                <a href="/Passagens">Passagens</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="left">
+                    <li>
+                        <a href="">Left Nav Button</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+
+        <?php echo $this->content;?>
+
+        <footer>FOOTER</footer>
+
+        <!-- R2TurismoApp Scripts -->
+        <!-- build:js(public) /js/R2TuApp.min.js -->
+         <?php
+
+echo $this->inlineScript()
+    ->appendFile($this->basePath('js/app/site/R2AppSite.js'))
+    ->appendFile($this->basePath('js/app/site/directives/pluginsAppSiteInit.js'))
+    ->appendFile($this->basePath('js/app/site/services/UsuarioFactorySrvc.js'))
+    ->appendFile($this->basePath('js/app/site/controllers/LayoutCtrl.js'));
+
+?>
+        <!-- endbuild -->
+
+    </body>
+
+</html>
+

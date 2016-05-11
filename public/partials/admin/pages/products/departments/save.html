@@ -1,0 +1,68 @@
+<div>
+	 <form class="cad-form" novalidate name="departmentForm" data-polyfiller-update>
+		<fieldset>
+			<legend>{{pageTitle}}</legend>
+			<label>Nome:</label>
+			<input
+				type="text"
+				name="department_name"
+				data-ng-model="department.name"
+				data-ng-minlength="3"
+				data-ng-maxlength="50"
+				data-ng-trim="true"
+				required>
+			<div
+				data-ng-messages="departmentForm.department_name.$error"
+				data-ng-if="departmentForm.department_name.$touched"
+				data-ng-class="{ 'form-has-error': departmentForm.department_name.$touched && departmentForm.department_name.$invalid }">
+				<p data-ng-message="minlength">
+					Nome é muito curto.
+				</p>
+				<p data-ng-message="maxlength">
+					Nome é muito longo.
+				</p>
+				<p data-ng-message="required">
+					Nome é obrigatório.
+				</p>
+				<p data-ng-message="unique">Este nome de departmento já está sendo utilizado.</p>
+			</div>
+
+			<label>Descrição Seo:</label>
+			<input
+				type="text"
+				name="department_seo_description"
+				data-ng-model="department.seoDescription">
+
+			<label>Categorias</label>
+			<button ng-click="addCategory()">Adicionar Categoria</button>
+			<table st-safe-src="categoriesCollection" st-table="displayedCategoriesCollection" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Categoria</th>
+						<th>Editar</th>
+						<th>Excluir</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in displayedCategoriesCollection">
+						<td>{{row.name}}</td>
+						<td><a ng-click="editCategory(row)">Editar</a></td>
+						<td><button ng-click="deleteCategory(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3" class="text-center">
+							<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+
+			
+		</fieldset>
+
+		<button ng-click="save()" ng-disabled="disableSaveBtn || departmentForm.$invalid">{{btnSave}}</button>
+
+	</form>
+</div>
