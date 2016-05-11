@@ -5,7 +5,6 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use R2Base\Entity\Company;
-use R2Base\Enum\CompanyType;
 use R2Erp\Entity\Manufacturer\Manufacturer;
 
 class ManufacturersLoad extends AbstractFixture implements OrderedFixtureInterface {
@@ -14,23 +13,23 @@ class ManufacturersLoad extends AbstractFixture implements OrderedFixtureInterfa
 		$manufacturers = [
 			[
 				'companyName' => 'Ecovacs',
-				'companyType' => new CompanyType('MANUFACTURER'),
+				'companyType' => new \R2Base\Enum\CompanyType('MANUFACTURER'),
 			],
 			[
 				'companyName' => 'Paint Zoom',
-				'companyType' => new CompanyType('MANUFACTURER'),
+				'companyType' => new \R2Base\Enum\CompanyType('MANUFACTURER'),
 			],
 			[
 				'companyName' => 'Yoda',
-				'companyType' => new CompanyType('MANUFACTURER'),
+				'companyType' => new \R2Base\Enum\CompanyType('MANUFACTURER'),
 			],
 			[
 				'companyName' => 'HomeUP',
-				'companyType' => new CompanyType('MANUFACTURER'),
+				'companyType' => new \R2Base\Enum\CompanyType('MANUFACTURER'),
 			],
 			[
 				'companyName' => 'Worx',
-				'companyType' => new CompanyType('MANUFACTURER'),
+				'companyType' => new \R2Base\Enum\CompanyType('MANUFACTURER'),
 			],
 		];
 

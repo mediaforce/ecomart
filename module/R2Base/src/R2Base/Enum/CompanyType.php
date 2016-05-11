@@ -9,7 +9,7 @@ class CompanyType extends EnumType {
 
 	public static function getFields() {
 
-		// static::$msgError = 'Este valor `' . static::$val . '` não é um valor para tipo de telefone valido!';
+		static::$msgError = 'Este valor `' . static::$val . '` não é um valor para tipo de CompanyType valido!';
 
 		return array(
 			"MATRIX",

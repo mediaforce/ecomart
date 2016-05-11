@@ -7,10 +7,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Collections\ArrayCollection;
 use R2Base\Entity\Address;
 use R2Base\Entity\Telephone;
+use R2Base\Entity\Document;
 use R2Base\Entity\Person;
 use R2Base\Entity\Email;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use R2Erp\Enum\CustomerType;
 
 class CustomersLoad extends AbstractFixture implements OrderedFixtureInterface {
 
@@ -46,20 +46,30 @@ class CustomersLoad extends AbstractFixture implements OrderedFixtureInterface {
 
 			if (isset($user[9])) {
 
-				if ($this->validarCPF($user[6])) {
-					$documentType = 'CPF';
-				} else if ($this->validarCnpj($user[6])) {
-					$documentType = 'CNPJ';
+				if (isset($user[6]) && !empty($user[6]) ) {
+					if ($this->validarCPF($user[6])) {
+						$documentType = 'CPF';
+						$customerType = 'PHYSICAL';
+					} else if ($this->validarCnpj($user[6])) {
+						$documentType = 'CNPJ';
+						$customerType = 'LEGAL';
+					} else {
+						$customerType = 'PHYSICAL';
+						$documentType = 'GENÉRICO';
+					}
 				} else {
-					$documentType = 'GENÉRICO';
+					$documentType = 'Não Infor.';
+					$user[6] = 'Não Informado';
 				}
+
+				
 
 				$estadoCidade = array_map('trim', explode('-', $user[0]));
 
 				$userArray = [
 					'user' => new Email(array('address' => $user[7] ) ),
 					'password' => $user[8],
-					'customerType' => new CustomerType('PHYSICAL'),
+					'customerType' => $customerType,
 					'person' => [
 						'name' => $user[1],
 						'addresses' => [
@@ -74,6 +84,12 @@ class CustomersLoad extends AbstractFixture implements OrderedFixtureInterface {
 						'telephones' => [
 							0 => [
 								'number' => preg_replace('/[^0-9]/', '', $user[5])
+							]
+						],
+						'documents' => [
+							0 => [
+								'documentType' => $documentType,
+								'field1' => $user[6]
 							]
 						]
 					],
@@ -95,6 +111,12 @@ class CustomersLoad extends AbstractFixture implements OrderedFixtureInterface {
 					$telephones->add(new Telephone($telephone));
 				}
 				$userArray['person']['telephones'] = $telephones;
+
+				$documents = new ArrayCollection();
+				foreach ($userArray['person']['documents'] as $document) {
+					$documents->add(new Document($document));
+				}
+				$userArray['person']['documents'] = $documents;
 
 				$userArray['person'] = new Person($userArray['person']);
 

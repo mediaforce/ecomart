@@ -85,8 +85,8 @@ class Document {
 	 * @param string $documentType
 	 * @return Document
 	 */
-	public function setDocumentType(DocumentTypeInterface $documentType) {
-		$this->documentType = $documentType->value();
+	public function setDocumentType($documentType) {
+		$this->documentType = $documentType;
 		return $this;
 	}
 

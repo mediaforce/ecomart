@@ -332,7 +332,7 @@ class User {
      */
     public function setCustomerType($customerType)
     {
-        $this->customerType = $customerType->value();
+        $this->customerType = $customerType;
 
         return $this;
     }

@@ -32,13 +32,20 @@ class BoletoBradescoRestController extends AbstractRestfulController {
 
 	// Insere registro - POST
 	public function create($data) {
+        //return new JsonModel(array('success' => false, 'raw_data' => $data));
         
 		$currency = 986; // moeda brasileira
 
         $items = $data['items'];
 
         $customer = $this->em->getReference('R2User\Entity\User', $data['customer']);
-        $shippingType = 'SEDEX';
+        
+
+        if ($data['servicoFrete'] == '40010') {
+            $shippingType = 'SEDEX';    
+        } else {
+            $shippingType = 'PAC';
+        }
         $shippingCost = $data['shipping'];
         $totalOrder = $data['totalAmount'];
 

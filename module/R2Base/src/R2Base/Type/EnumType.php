@@ -15,10 +15,10 @@ abstract class EnumType {
 		static::$val = strtoupper($str);
 
 		if (empty(static::$msgError)) {
-			static::$msgError = "unknown type value: $str";
+			static::$msgError = "Unknown type value: $str";
 		}
 
-		if (!in_array($str, $this->getFields())) {
+		if (!in_array(static::$val, static::getFields())) {
 			throw new \Exception(static::$msgError);
 		}
 

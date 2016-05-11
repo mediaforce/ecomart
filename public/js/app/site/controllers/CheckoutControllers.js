@@ -61,6 +61,7 @@ R2Site.controller('CheckoutCtrl', [
     '$window',
     'Notification',
     'CouponsFactory',
+    'UsersFactory',
     function(
         $scope,
         AuthService,
@@ -81,7 +82,8 @@ R2Site.controller('CheckoutCtrl', [
         CalcFreteFactory,
         $window,
         Notification,
-        CouponsFactory) {      
+        CouponsFactory,
+        UsersFactory) {      
 
         $scope.transactionModel = {
             card: {
@@ -365,6 +367,55 @@ R2Site.controller('CheckoutCtrl', [
 
         $scope.chooseAgain = function() {
             $scope.checkoutChoice = 0;
+        }
+
+        $scope.boletoCliente = function () {
+            UsersFactory.show({id: '816'}, function (result) {
+                console.log('USER', result);
+                $scope.user = result.data;
+                $scope.boleto = {};
+                $scope.boleto.clienteNome = $scope.user.person.name;
+
+                $scope.boleto.valorTotal = ngCart.totalCost();
+                $scope.boleto.nossoNumero = '1172';
+                $scope.boleto.clienteDocumento = '';
+
+                if ($scope.user.person.documents[1] !== undefined) {
+                    //$scope.boleto.clienteDocumento = $scope.user.person.documents[1].field1;
+                } else {
+
+                    //$scope.boleto.clienteDocumento = $scope.user.person.documents[0].field1;
+
+/*                    var v = $scope.boleto.clienteDocumento;
+                    v = v.replace(/\D/g,"")                 //Remove tudo o que não é dígito
+                    v = v.replace(/(\d{3})(\d)/,"$1.$2")    //Coloca ponto entre o terceiro e o quarto dígitos
+                    v = v.replace(/(\d{3})(\d)/,"$1.$2")    //Coloca ponto entre o setimo e o oitava dígitos
+                    v = v.replace(/(\d{3})(\d)/,"$1-$2");*/
+                    $scope.boleto.clienteDocumento = 'não informado';
+                }
+                $scope.boleto.clienteEndereco1 = $scope.user.person.addresses[0].address1 + ' - N° : ' + $scope.user.person.addresses[0].number;                            
+                    
+                if ($scope.user.person.addresses[0].address2 !== undefined && $scope.user.person.addresses[0].address2 !== null) {
+                    $scope.boleto.clienteEndereco1 += ' / ' + $scope.user.person.addresses[0].address2;
+                }
+                var cep = $scope.user.person.addresses[0].postcode;
+                cep = cep.replace(/\D/g,"");
+                cep = cep.replace(/(\d{5})(\d)/,"$1-$2");
+                $scope.boleto.clienteEndereco2 = $scope.user.person.addresses[0].city.name + ' / ' + $scope.user.person.addresses[0].state.code + ' - CEP: ' + cep;
+
+                var demonstrativo3 = 'Produtos Adquiridos: ';
+                _.each(ngCart.getItems(), function (item) {
+                    demonstrativo3 += item._name + ' - R$ ' + item._price + ' - Qtde.: ' + item._quantity + '; ';
+                });
+                $scope.boleto.demonstrativo3 = demonstrativo3;
+
+                $scope.boleto.produtosQtde = ngCart.getTotalItems();
+                
+
+                setTimeout(function() {
+                    $('#form-boleto')[0].submit();
+                }, 500);
+            })
         }
 
         $scope.checkoutBoleto = function() {
