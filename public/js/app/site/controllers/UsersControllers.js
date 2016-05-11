@@ -74,6 +74,7 @@ R2Site.controller('CreateUserCtrl', [
             states: [],
             cities: [],
         };
+        
         $scope.editableInputSeekCep = true;
         $scope.statesLoad = false;
         $scope.stateIsSelected = false;
