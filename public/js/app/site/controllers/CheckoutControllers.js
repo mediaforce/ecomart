@@ -450,7 +450,7 @@ R2Site.controller('CheckoutCtrl', [
 
                             if (result.customer.person.documents[1] !== undefined) {
                                 $scope.boleto.clienteDocumento = result.customer.person.documents[1].field1;
-                            } else {
+                            } else if (result.customer.person.documents[0] !== undefined) {
 
                                 $scope.boleto.clienteDocumento = result.customer.person.documents[0].field1;
                                 var v = $scope.boleto.clienteDocumento;
@@ -459,6 +459,8 @@ R2Site.controller('CheckoutCtrl', [
                                 v = v.replace(/(\d{3})(\d)/,"$1.$2")    //Coloca ponto entre o setimo e o oitava dígitos
                                 v = v.replace(/(\d{3})(\d)/,"$1-$2");
                                 $scope.boleto.clienteDocumento = v;
+                            } else {
+                                $scope.boleto.clienteDocumento = 'Não informado';
                             }
                             $scope.boleto.clienteEndereco1 = result.customer.person.addresses[0].address1 + ' - N° : ' + result.customer.person.addresses[0].number;                            
                                 
