@@ -1962,17 +1962,16 @@ meta.foundation-data-attribute-namespace {
 }
 
 
-
-
 // ICOMOON
+
 
 @font-face {
     font-family: 'icomoon';
-    src:    url('/fonts/icomoon/fonts/icomoon.eot?965oee');
-    src:    url('/fonts/icomoon/fonts/icomoon.eot?965oee#iefix') format('embedded-opentype'),
-        url('/fonts/icomoon/fonts/icomoon.ttf?965oee') format('truetype'),
-        url('/fonts/icomoon/fonts/icomoon.woff?965oee') format('woff'),
-        url('/fonts/icomoon/fonts/icomoon.svg?965oee#icomoon') format('svg');
+    src:    url('/fonts/icomoon/fonts/icomoon.eot?vowd2i');
+    src:    url('/fonts/icomoon/fonts/icomoon.eot?vowd2i#iefix') format('embedded-opentype'),
+        url('/fonts/icomoon/fonts/icomoon.ttf?vowd2i') format('truetype'),
+        url('/fonts/icomoon/fonts/icomoon.woff?vowd2i') format('woff'),
+        url('/fonts/icomoon/fonts/icomoon.svg?vowd2i#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -1992,11 +1991,20 @@ meta.foundation-data-attribute-namespace {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-edit2:before {
+    content: "\e975";
+}
 .icon-stats:before {
     content: "\e95f";
 }
 .icon-presentation:before {
     content: "\e960";
+}
+.icon-banknote:before {
+    content: "\e970";
+}
+.icon-wallet:before {
+    content: "\e971";
 }
 .icon-shop:before {
     content: "\e961";
@@ -2034,6 +2042,15 @@ meta.foundation-data-attribute-namespace {
 .icon-box:before {
     content: "\e908";
 }
+.icon-pencil-square:before {
+    content: "\e972";
+}
+.icon-money:before {
+    content: "\e973";
+}
+.icon-edit:before {
+    content: "\e974";
+}
 .icon-cart-arrow-down:before {
     content: "\e962";
 }
@@ -2066,6 +2083,30 @@ meta.foundation-data-attribute-namespace {
 }
 .icon-arrow-right2:before {
     content: "\e95e";
+}
+.icon-newspaper:before {
+    content: "\e976";
+}
+.icon-coin-yen:before {
+    content: "\e969";
+}
+.icon-coin-pound:before {
+    content: "\e96a";
+}
+.icon-coin-euro:before {
+    content: "\e96b";
+}
+.icon-coin-dollar:before {
+    content: "\e96c";
+}
+.icon-pen:before {
+    content: "\e96d";
+}
+.icon-quill:before {
+    content: "\e96e";
+}
+.icon-pencil:before {
+    content: "\e96f";
 }
 .icon-credit-card3:before {
     content: "\e968";
@@ -2310,6 +2351,22 @@ meta.foundation-data-attribute-namespace {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .r2-product-image {
     position: relative;
   height: 260px;
@@ -2333,3 +2390,11 @@ meta.foundation-data-attribute-namespace {
   overflow: hidden;
   min-height: 640px;
 }
+
+
+
+
+
+
+
+

@@ -7137,12 +7137,12 @@ meta.foundation-data-attribute-namespace {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("/fonts/icomoon/fonts/icomoon.eot?965oee");
-  src: url("/fonts/icomoon/fonts/icomoon.eot?965oee#iefix") format("embedded-opentype"), url("/fonts/icomoon/fonts/icomoon.ttf?965oee") format("truetype"), url("/fonts/icomoon/fonts/icomoon.woff?965oee") format("woff"), url("/fonts/icomoon/fonts/icomoon.svg?965oee#icomoon") format("svg");
+  src: url("/fonts/icomoon/fonts/icomoon.eot?vowd2i");
+  src: url("/fonts/icomoon/fonts/icomoon.eot?vowd2i#iefix") format("embedded-opentype"), url("/fonts/icomoon/fonts/icomoon.ttf?vowd2i") format("truetype"), url("/fonts/icomoon/fonts/icomoon.woff?vowd2i") format("woff"), url("/fonts/icomoon/fonts/icomoon.svg?vowd2i#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
-/* line 1980, ../sass/main.scss */
+/* line 1979, ../sass/main.scss */
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -7157,538 +7157,608 @@ meta.foundation-data-attribute-namespace {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 1995, ../sass/main.scss */
+/* line 1994, ../sass/main.scss */
+.icon-edit2:before {
+  content: "\e975";
+}
+
+/* line 1997, ../sass/main.scss */
 .icon-stats:before {
   content: "\e95f";
 }
 
-/* line 1998, ../sass/main.scss */
+/* line 2000, ../sass/main.scss */
 .icon-presentation:before {
   content: "\e960";
 }
 
-/* line 2001, ../sass/main.scss */
+/* line 2003, ../sass/main.scss */
+.icon-banknote:before {
+  content: "\e970";
+}
+
+/* line 2006, ../sass/main.scss */
+.icon-wallet:before {
+  content: "\e971";
+}
+
+/* line 2009, ../sass/main.scss */
 .icon-shop:before {
   content: "\e961";
 }
 
-/* line 2004, ../sass/main.scss */
+/* line 2012, ../sass/main.scss */
 .icon-mail-envelope-closed:before {
   content: "\e900";
 }
 
-/* line 2007, ../sass/main.scss */
+/* line 2015, ../sass/main.scss */
 .icon-mail-envelope-open:before {
   content: "\e901";
 }
 
-/* line 2010, ../sass/main.scss */
+/* line 2018, ../sass/main.scss */
 .icon-search3:before {
   content: "\e902";
 }
 
-/* line 2013, ../sass/main.scss */
+/* line 2021, ../sass/main.scss */
 .icon-bookmark3:before {
   content: "\e95b";
 }
 
-/* line 2016, ../sass/main.scss */
+/* line 2024, ../sass/main.scss */
 .icon-rocket2:before {
   content: "\e950";
 }
 
-/* line 2019, ../sass/main.scss */
+/* line 2027, ../sass/main.scss */
 .icon-envelope:before {
   content: "\e903";
 }
 
-/* line 2022, ../sass/main.scss */
+/* line 2030, ../sass/main.scss */
 .icon-envelope2:before {
   content: "\e904";
 }
 
-/* line 2025, ../sass/main.scss */
+/* line 2033, ../sass/main.scss */
 .icon-magnifier:before {
   content: "\e905";
 }
 
-/* line 2028, ../sass/main.scss */
+/* line 2036, ../sass/main.scss */
 .icon-cogs3:before {
   content: "\e906";
 }
 
-/* line 2031, ../sass/main.scss */
+/* line 2039, ../sass/main.scss */
 .icon-washingmachine:before {
   content: "\e907";
 }
 
-/* line 2034, ../sass/main.scss */
+/* line 2042, ../sass/main.scss */
 .icon-box:before {
   content: "\e908";
 }
 
-/* line 2037, ../sass/main.scss */
+/* line 2045, ../sass/main.scss */
+.icon-pencil-square:before {
+  content: "\e972";
+}
+
+/* line 2048, ../sass/main.scss */
+.icon-money:before {
+  content: "\e973";
+}
+
+/* line 2051, ../sass/main.scss */
+.icon-edit:before {
+  content: "\e974";
+}
+
+/* line 2054, ../sass/main.scss */
 .icon-cart-arrow-down:before {
   content: "\e962";
 }
 
-/* line 2040, ../sass/main.scss */
+/* line 2057, ../sass/main.scss */
 .icon-industry:before {
   content: "\e963";
 }
 
-/* line 2043, ../sass/main.scss */
+/* line 2060, ../sass/main.scss */
 .icon-video-camera2:before {
   content: "\e957";
 }
 
-/* line 2046, ../sass/main.scss */
+/* line 2063, ../sass/main.scss */
 .icon-shopping-cart2:before {
   content: "\e94d";
 }
 
-/* line 2049, ../sass/main.scss */
+/* line 2066, ../sass/main.scss */
 .icon-envelope22:before {
   content: "\e946";
 }
 
-/* line 2052, ../sass/main.scss */
+/* line 2069, ../sass/main.scss */
 .icon-youtube-play:before {
   content: "\e947";
 }
 
-/* line 2055, ../sass/main.scss */
+/* line 2072, ../sass/main.scss */
 .icon-phone-square:before {
   content: "\e948";
 }
 
-/* line 2058, ../sass/main.scss */
+/* line 2075, ../sass/main.scss */
 .icon-question-circle:before {
   content: "\e949";
 }
 
-/* line 2061, ../sass/main.scss */
+/* line 2078, ../sass/main.scss */
 .icon-box2:before {
   content: "\e964";
 }
 
-/* line 2064, ../sass/main.scss */
+/* line 2081, ../sass/main.scss */
 .icon-arrow-right-alt1:before {
   content: "\e95d";
 }
 
-/* line 2067, ../sass/main.scss */
+/* line 2084, ../sass/main.scss */
 .icon-arrow-right2:before {
   content: "\e95e";
 }
 
-/* line 2070, ../sass/main.scss */
+/* line 2087, ../sass/main.scss */
+.icon-newspaper:before {
+  content: "\e976";
+}
+
+/* line 2090, ../sass/main.scss */
+.icon-coin-yen:before {
+  content: "\e969";
+}
+
+/* line 2093, ../sass/main.scss */
+.icon-coin-pound:before {
+  content: "\e96a";
+}
+
+/* line 2096, ../sass/main.scss */
+.icon-coin-euro:before {
+  content: "\e96b";
+}
+
+/* line 2099, ../sass/main.scss */
+.icon-coin-dollar:before {
+  content: "\e96c";
+}
+
+/* line 2102, ../sass/main.scss */
+.icon-pen:before {
+  content: "\e96d";
+}
+
+/* line 2105, ../sass/main.scss */
+.icon-quill:before {
+  content: "\e96e";
+}
+
+/* line 2108, ../sass/main.scss */
+.icon-pencil:before {
+  content: "\e96f";
+}
+
+/* line 2111, ../sass/main.scss */
 .icon-credit-card3:before {
   content: "\e968";
 }
 
-/* line 2073, ../sass/main.scss */
+/* line 2114, ../sass/main.scss */
 .icon-office:before {
   content: "\e965";
 }
 
-/* line 2076, ../sass/main.scss */
+/* line 2117, ../sass/main.scss */
 .icon-users:before {
   content: "\e966";
 }
 
-/* line 2079, ../sass/main.scss */
+/* line 2120, ../sass/main.scss */
 .icon-menu:before {
   content: "\e967";
 }
 
-/* line 2082, ../sass/main.scss */
+/* line 2123, ../sass/main.scss */
 .icon-arrow-right:before {
   content: "\e95c";
 }
 
-/* line 2085, ../sass/main.scss */
+/* line 2126, ../sass/main.scss */
 .icon-bookmark2:before {
   content: "\e959";
 }
 
-/* line 2088, ../sass/main.scss */
+/* line 2129, ../sass/main.scss */
 .icon-camera:before {
   content: "\e953";
 }
 
-/* line 2091, ../sass/main.scss */
+/* line 2132, ../sass/main.scss */
 .icon-cart:before {
   content: "\e94a";
 }
 
-/* line 2094, ../sass/main.scss */
+/* line 2135, ../sass/main.scss */
 .icon-envelope3:before {
   content: "\e915";
 }
 
-/* line 2097, ../sass/main.scss */
+/* line 2138, ../sass/main.scss */
 .icon-search:before {
   content: "\e916";
 }
 
-/* line 2100, ../sass/main.scss */
+/* line 2141, ../sass/main.scss */
 .icon-at:before {
   content: "\e917";
 }
 
-/* line 2103, ../sass/main.scss */
+/* line 2144, ../sass/main.scss */
 .icon-mail2:before {
   content: "\e918";
 }
 
-/* line 2106, ../sass/main.scss */
+/* line 2147, ../sass/main.scss */
 .icon-bookmark:before {
   content: "\e958";
 }
 
-/* line 2109, ../sass/main.scss */
+/* line 2150, ../sass/main.scss */
 .icon-mail-read:before {
   content: "\e919";
 }
 
-/* line 2112, ../sass/main.scss */
+/* line 2153, ../sass/main.scss */
 .icon-list-ordered:before {
   content: "\e91a";
 }
 
-/* line 2115, ../sass/main.scss */
+/* line 2156, ../sass/main.scss */
 .icon-credit-card:before {
   content: "\e91b";
 }
 
-/* line 2118, ../sass/main.scss */
+/* line 2159, ../sass/main.scss */
 .icon-search2:before {
   content: "\e91c";
 }
 
-/* line 2121, ../sass/main.scss */
+/* line 2162, ../sass/main.scss */
 .icon-tools2:before {
   content: "\e91d";
 }
 
-/* line 2124, ../sass/main.scss */
+/* line 2165, ../sass/main.scss */
 .icon-hubot:before {
   content: "\e91e";
 }
 
-/* line 2127, ../sass/main.scss */
+/* line 2168, ../sass/main.scss */
 .icon-video-camera:before {
   content: "\e954";
 }
 
-/* line 2130, ../sass/main.scss */
+/* line 2171, ../sass/main.scss */
 .icon-credit-card2:before {
   content: "\e91f";
 }
 
-/* line 2133, ../sass/main.scss */
+/* line 2174, ../sass/main.scss */
 .icon-bubble:before {
   content: "\e920";
 }
 
-/* line 2136, ../sass/main.scss */
+/* line 2177, ../sass/main.scss */
 .icon-lock:before {
   content: "\e921";
 }
 
-/* line 2139, ../sass/main.scss */
+/* line 2180, ../sass/main.scss */
 .icon-unlocked:before {
   content: "\e922";
 }
 
-/* line 2142, ../sass/main.scss */
+/* line 2183, ../sass/main.scss */
 .icon-wrench:before {
   content: "\e923";
 }
 
-/* line 2145, ../sass/main.scss */
+/* line 2186, ../sass/main.scss */
 .icon-rocket:before {
   content: "\e94f";
 }
 
-/* line 2148, ../sass/main.scss */
+/* line 2189, ../sass/main.scss */
 .icon-menu3:before {
   content: "\e924";
 }
 
-/* line 2151, ../sass/main.scss */
+/* line 2192, ../sass/main.scss */
 .icon-star-half:before {
   content: "\e955";
 }
 
-/* line 2154, ../sass/main.scss */
+/* line 2195, ../sass/main.scss */
 .icon-star-full:before {
   content: "\e956";
 }
 
-/* line 2157, ../sass/main.scss */
+/* line 2198, ../sass/main.scss */
 .icon-point-up:before {
   content: "\e925";
 }
 
-/* line 2160, ../sass/main.scss */
+/* line 2201, ../sass/main.scss */
 .icon-point-right:before {
   content: "\e926";
 }
 
-/* line 2163, ../sass/main.scss */
+/* line 2204, ../sass/main.scss */
 .icon-point-down:before {
   content: "\e927";
 }
 
-/* line 2166, ../sass/main.scss */
+/* line 2207, ../sass/main.scss */
 .icon-point-left:before {
   content: "\e928";
 }
 
-/* line 2169, ../sass/main.scss */
+/* line 2210, ../sass/main.scss */
 .icon-plus:before {
   content: "\e929";
 }
 
-/* line 2172, ../sass/main.scss */
+/* line 2213, ../sass/main.scss */
 .icon-minus:before {
   content: "\e92a";
 }
 
-/* line 2175, ../sass/main.scss */
+/* line 2216, ../sass/main.scss */
 .icon-info:before {
   content: "\e92b";
 }
 
-/* line 2178, ../sass/main.scss */
+/* line 2219, ../sass/main.scss */
 .icon-cancel-circle:before {
   content: "\e92c";
 }
 
-/* line 2181, ../sass/main.scss */
+/* line 2222, ../sass/main.scss */
 .icon-blocked:before {
   content: "\e92d";
 }
 
-/* line 2184, ../sass/main.scss */
+/* line 2225, ../sass/main.scss */
 .icon-cross:before {
   content: "\e92e";
 }
 
-/* line 2187, ../sass/main.scss */
+/* line 2228, ../sass/main.scss */
 .icon-checkmark:before {
   content: "\e92f";
 }
 
-/* line 2190, ../sass/main.scss */
+/* line 2231, ../sass/main.scss */
 .icon-enter:before {
   content: "\e930";
 }
 
-/* line 2193, ../sass/main.scss */
+/* line 2234, ../sass/main.scss */
 .icon-exit:before {
   content: "\e931";
 }
 
-/* line 2196, ../sass/main.scss */
+/* line 2237, ../sass/main.scss */
 .icon-loop2:before {
   content: "\e932";
 }
 
-/* line 2199, ../sass/main.scss */
+/* line 2240, ../sass/main.scss */
 .icon-circle-up:before {
   content: "\e933";
 }
 
-/* line 2202, ../sass/main.scss */
+/* line 2243, ../sass/main.scss */
 .icon-circle-right:before {
   content: "\e934";
 }
 
-/* line 2205, ../sass/main.scss */
+/* line 2246, ../sass/main.scss */
 .icon-circle-down:before {
   content: "\e935";
 }
 
-/* line 2208, ../sass/main.scss */
+/* line 2249, ../sass/main.scss */
 .icon-circle-left:before {
   content: "\e936";
 }
 
-/* line 2211, ../sass/main.scss */
+/* line 2252, ../sass/main.scss */
 .icon-sort-alpha-asc:before {
   content: "\e937";
 }
 
-/* line 2214, ../sass/main.scss */
+/* line 2255, ../sass/main.scss */
 .icon-sort-alpha-desc:before {
   content: "\e938";
 }
 
-/* line 2217, ../sass/main.scss */
+/* line 2258, ../sass/main.scss */
 .icon-sort-numeric-asc:before {
   content: "\e939";
 }
 
-/* line 2220, ../sass/main.scss */
+/* line 2261, ../sass/main.scss */
 .icon-sort-numberic-desc:before {
   content: "\e93a";
 }
 
-/* line 2223, ../sass/main.scss */
+/* line 2264, ../sass/main.scss */
 .icon-mail22:before {
   content: "\e93b";
 }
 
-/* line 2226, ../sass/main.scss */
+/* line 2267, ../sass/main.scss */
 .icon-mail4:before {
   content: "\e93c";
 }
 
-/* line 2229, ../sass/main.scss */
+/* line 2270, ../sass/main.scss */
 .icon-google-plus2:before {
   content: "\e93d";
 }
 
-/* line 2232, ../sass/main.scss */
+/* line 2273, ../sass/main.scss */
 .icon-facebook:before {
   content: "\e93e";
 }
 
-/* line 2235, ../sass/main.scss */
+/* line 2276, ../sass/main.scss */
 .icon-facebook2:before {
   content: "\e93f";
 }
 
-/* line 2238, ../sass/main.scss */
+/* line 2279, ../sass/main.scss */
 .icon-instagram:before {
   content: "\e940";
 }
 
-/* line 2241, ../sass/main.scss */
+/* line 2282, ../sass/main.scss */
 .icon-rss2:before {
   content: "\e941";
 }
 
-/* line 2244, ../sass/main.scss */
+/* line 2285, ../sass/main.scss */
 .icon-youtube2:before {
   content: "\e942";
 }
 
-/* line 2247, ../sass/main.scss */
+/* line 2288, ../sass/main.scss */
 .icon-youtube22:before {
   content: "\e943";
 }
 
-/* line 2250, ../sass/main.scss */
+/* line 2291, ../sass/main.scss */
 .icon-wordpress:before {
   content: "\e944";
 }
 
-/* line 2253, ../sass/main.scss */
+/* line 2294, ../sass/main.scss */
 .icon-linkedin:before {
   content: "\e945";
 }
 
-/* line 2256, ../sass/main.scss */
+/* line 2297, ../sass/main.scss */
 .icon-error_outline:before {
   content: "\e951";
 }
 
-/* line 2259, ../sass/main.scss */
+/* line 2300, ../sass/main.scss */
 .icon-error:before {
   content: "\e952";
 }
 
-/* line 2262, ../sass/main.scss */
+/* line 2303, ../sass/main.scss */
 .icon-shopping_cart:before {
   content: "\e94e";
 }
 
-/* line 2265, ../sass/main.scss */
+/* line 2306, ../sass/main.scss */
 .icon-mail:before {
   content: "\e909";
 }
 
-/* line 2268, ../sass/main.scss */
+/* line 2309, ../sass/main.scss */
 .icon-reorder:before {
   content: "\e90a";
 }
 
-/* line 2271, ../sass/main.scss */
+/* line 2312, ../sass/main.scss */
 .icon-room_service:before {
   content: "\e90b";
 }
 
-/* line 2274, ../sass/main.scss */
+/* line 2315, ../sass/main.scss */
 .icon-card_giftcard:before {
   content: "\e90c";
 }
 
-/* line 2277, ../sass/main.scss */
+/* line 2318, ../sass/main.scss */
 .icon-payment:before {
   content: "\e90d";
 }
 
-/* line 2280, ../sass/main.scss */
+/* line 2321, ../sass/main.scss */
 .icon-youtube_searched_for:before {
   content: "\e90e";
 }
 
-/* line 2283, ../sass/main.scss */
+/* line 2324, ../sass/main.scss */
 .icon-home:before {
   content: "\e90f";
 }
 
-/* line 2286, ../sass/main.scss */
+/* line 2327, ../sass/main.scss */
 .icon-phone:before {
   content: "\e910";
 }
 
-/* line 2289, ../sass/main.scss */
+/* line 2330, ../sass/main.scss */
 .icon-phone2:before {
   content: "\e911";
 }
 
-/* line 2292, ../sass/main.scss */
+/* line 2333, ../sass/main.scss */
 .icon-bookmarks:before {
   content: "\e95a";
 }
 
-/* line 2295, ../sass/main.scss */
+/* line 2336, ../sass/main.scss */
 .icon-shopping-cart:before {
   content: "\e94b";
 }
 
-/* line 2298, ../sass/main.scss */
+/* line 2339, ../sass/main.scss */
 .icon-shopping-basket:before {
   content: "\e94c";
 }
 
-/* line 2301, ../sass/main.scss */
+/* line 2342, ../sass/main.scss */
 .icon-youtube-with-circle:before {
   content: "\e912";
 }
 
-/* line 2304, ../sass/main.scss */
+/* line 2345, ../sass/main.scss */
 .icon-youtube:before {
   content: "\e913";
 }
 
-/* line 2307, ../sass/main.scss */
+/* line 2348, ../sass/main.scss */
 .icon-old-phone:before {
   content: "\e914";
 }
 
-/* line 2313, ../sass/main.scss */
+/* line 2370, ../sass/main.scss */
 .r2-product-image {
   position: relative;
   height: 260px;
 }
 
-/* line 2319, ../sass/main.scss */
+/* line 2376, ../sass/main.scss */
 .r2-product-image img {
   position: absolute;
   margin: 0;
@@ -7699,7 +7769,7 @@ meta.foundation-data-attribute-namespace {
   margin-right: auto;
 }
 
-/* line 2329, ../sass/main.scss */
+/* line 2386, ../sass/main.scss */
 .r2-inside-product-box {
   padding: 15px;
   position: relative;
