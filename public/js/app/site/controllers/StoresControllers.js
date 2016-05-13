@@ -32,8 +32,8 @@ R2Site.controller('StoreDetailCtrl', [
             var cover = _.find($scope.store.product.images, function(image) {
                 if (image.isCover) return true;
             });
-            $scope.store.cover = cover;
-            $scope.selectedImage = $scope.store.product.images[0].path;
+
+            $scope.selectedImage = cover.path;
 
             if ($scope.store.product.videos[0] != undefined) {
                 $scope.videoUrl = $scope.store.product.videos[0].address;

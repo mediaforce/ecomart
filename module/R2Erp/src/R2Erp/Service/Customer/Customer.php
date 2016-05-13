@@ -15,19 +15,5 @@ class Customer extends AbstractService {
 		$this->entity = "R2Erp\Entity\Customer\Customer";
 	}
 
-	// TODO FAZER FILTROS E VALIDAÇÕES!!!!!!!!!!!!!!!!!!!!
-	public function insert(array $data) {
-		$entity = parent::insert($data);
-
-		return $entity;
-
-	}
-
-	public function update(array $data) {
-		$entity = parent::update($data);
-
-		return $data;
-
-	}
 
 }

@@ -91,7 +91,7 @@ class UsersRestController extends AbstractRestfulController {
 				return new JsonModel(array('success' => false));
 			}
 		}
-
+		//return new JsonModel(array('raw data' => $data) );
 		$data = $this->prepareDataToUpdate($data);
 		$entity = $this->service->update($data);
 
@@ -147,8 +147,6 @@ class UsersRestController extends AbstractRestfulController {
 		}
 		$person['addresses'] = $addresses;
 
-
-
 		$telephones = new ArrayCollection();
 		if (count($person['telephones']) > 0) {
 			foreach ($person['telephones'] as $telephone) {
@@ -173,13 +171,23 @@ class UsersRestController extends AbstractRestfulController {
 		unset($data['role']);
 		unset($data['user']);
 		unset($data['customerType']);
+		unset($data['salt']);
+		unset($data['activationKey']);
+		unset($data['password']);
+
 
 		$person = $data['person'];
+
+		unset($person['createdAt']);
+		unset($person['emails']);
+		unset($person['creditCards']);
+		unset($person['socialNetworks']);
+		unset($person['updatedAt']);
 
 		$documents = new ArrayCollection();
 		if (count($person['documents']) > 0) {
 			foreach ($person['documents'] as $document) {
-				$document['documentType'] = new \R2Base\Enum\DocumentType($document['documentType']);
+				$document['documentType'] = new \R2Base\Enum\DocumentType('CPF');
 				$documents->add(new \R2Base\Entity\Document($document));
 			}
 		}
@@ -207,8 +215,6 @@ class UsersRestController extends AbstractRestfulController {
 			}
 		}
 		$person['telephones'] = $telephones;
-
-
 
 		$data['person'] = new \R2Base\Entity\Person($person);
 
