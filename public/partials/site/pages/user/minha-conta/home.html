@@ -11,7 +11,54 @@
 			<ul class="accordion" data-accordion>
 				
 				<li class="accordion-item is-active" data-accordion-item>
-					<a href="#" class="accordion-title">Pessoal</a>
+					<div class="row">
+						<div class="medium-6 columns">
+							<label>
+								<input type="radio" ng-model="user.customerType" value="PHYSICAL">
+				    			Pessoa Física
+							</label>
+						</div>
+						<div class="medium-6 columns">
+							<label>
+								<input type="radio" ng-model="user.customerType" value="LEGAL">
+				    			Pessoa Jurídica
+							</label>
+						</div>
+					</div>
+
+					<label for="person_name" class="r2-label-float">
+						<br>
+						<input type="text" class="form-control" placeholder="{{phPersonName}}" id="person_name" name="person_name"
+						ng-model="user.person.name"
+						required
+						floating-validation/>
+					</label>
+
+					<label for="person_surname" class="r2-label-float" ng-hide="user.customerType == 'PHYSICAL'">
+						<br>
+						<input type="text" class="form-control" placeholder="{{phPersonSurname}}" id="person_surname" name="person_surname"
+						ng-model="user.person.surname"
+						required
+						floating-validation/>
+					</label>
+
+					<label for="person_document_cpf" class="r2-label-float" ng-show="user.customerType == 'PHYSICAL'">
+						<br>
+						<input type="text" class="form-control" placeholder="CPF" id="person_document_cpf" name="person_document_cpf"
+						ng-model="user.person.documents[0].field1"
+						ui-br-cpf-mask
+						required
+						floating-validation/>
+					</label>
+
+					<label for="person_document_cnpj" class="r2-label-float" ng-hide="user.customerType == 'PHYSICAL'">
+						<br>
+						<input type="text" class="form-control" placeholder="CNPJ" id="person_document_cnpj" name="person_document_cnpj"
+						ng-model="user.person.documents[1].field1"
+						ui-br-cnpj-mask
+						required
+						floating-validation/>
+					</label>
 					<div class="accordion-content" data-tab-content>
 						
 						<button class="button expanded">ATUALIZAR PESSOAL</button>
@@ -21,7 +68,17 @@
 				<li class="accordion-item" data-accordion-item>
 					<a href="#" class="accordion-title">Contato</a>
 					<div class="accordion-content" data-tab-content>
-						contato
+						<label for="telephone_number">
+							<span class="r2-label-standard">Telefone: </span>
+							<input type="text"
+							name="telephone_number"
+							data-ng-model="user.person.telephones[0].number"
+							class="form-control"
+							placeholder="Número do Telefone"
+							id="telephone_number"
+							ui-br-phone-number
+							required/>
+						</label>
 						<button class="button expanded">ATUALIZAR CONTATO</button>
 					</div>
 					
@@ -29,7 +86,100 @@
 				<li class="accordion-item" data-accordion-item>
 					<a href="#" class="accordion-title">Endereço</a>
 					<div class="accordion-content" data-tab-content>
-						
+						<label for="address_postcode" class="r2-label-float">
+							<br>
+							<input
+								id="address_postcode"
+								type="text"
+								class="form-control"
+								name="address_postcode"
+								data-ng-model="user.person.addresses[0].postcode"
+								placeholder="CEP"
+								ui-br-cep-mask
+								required
+								floating-validation>
+						</label>
+
+						<label for="address_state" class="r2-label-float">
+							<br>
+							<select
+								name="address_state"
+								placeholder="Estado"
+								data-ng-model="user.person.addresses[0].state"
+								data-ng-change="stateSelectChange(user.person.addresses[0].state)"
+								r2-input-disabled="editableInputSeekCep"
+								required
+								floating-validation>
+
+								<option value="" disabled>Selecione o estado</option>
+								<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
+							</select>
+						</label>
+
+						<label for="address_city" class="r2-label-float">
+							<br>
+							<select
+								name="address_city"
+								placeholder="Cidade"
+								data-ng-model="user.person.addresses[0].city"
+								r2-input-disabled="editableInputSeekCep"
+								required
+								floating-validation>
+
+								<option value="" disabled>Selecione a cidade</option>
+								<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
+							</select>
+
+						</label>
+
+						<label for="address_neighborhood" class="r2-label-float">
+							<br>
+							<input
+								id="address_neighborhood"
+								type="text"
+								placeholder="Bairro"
+								name="address_neighborhood"
+								data-ng-model="user.person.addresses[0].neighborhood"
+								r2-input-disabled="editableInputSeekCep"
+								required
+								floating-validation>
+						</label>
+
+						<label for="address_address1" class="r2-label-float">
+							<br>
+							<input
+								id="address_address1"
+								type="text"
+								placeholder="Logradouro"
+								name="address_address1"
+								data-ng-model="user.person.addresses[0].address1"
+								r2-input-disabled="editableInputSeekCep"
+								required
+								floating-validation>
+						</label>
+
+						<label for="address_address2" class="r2-label-float">
+							<br>
+							<input
+								id="address_address2"
+								type="text"
+								placeholder="Complemento"
+								name="address_address2"
+								data-ng-model="user.person.addresses[0].address2"
+								floating-label>
+						</label>
+
+						<label for="address_number" class="r2-label-float">
+							<br>
+							<input
+								id="address_number"
+								type="number"
+								placeholder="Número"
+								name="address_number"
+								data-ng-model="user.person.addresses[0].number"
+								required
+								floating-validation>
+						</label>
 						<button class="button expanded" ng-click="updateAddress()" ng-disabled="minhaContaForm.user_password.$invalid || minhaContaForm.user_conf_password.$invalid">ATUALIZAR ENDEREÇO</button>
 					</div>
 				</li>

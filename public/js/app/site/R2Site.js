@@ -525,6 +525,21 @@ R2Site.run([
     '$state',
     function($rootScope, $templateCache, $state) {
 
+        console.log('nav', navigator);
+
+        if(navigator.appName.indexOf("Internet Explorer")!=-1){     //yeah, he's using IE
+            var badBrowser=(
+                navigator.appVersion.indexOf("MSIE 9")==-1 &&   //v9 is ok
+                navigator.appVersion.indexOf("MSIE 1")==-1  //v10, 11, 12, etc. is fine too
+            );
+
+            if(badBrowser){
+                console.log('IE < 9');
+            } else {
+                console.log('OK');
+            }
+        }
+
 /*        $rootScope.$on('$routeChangeStart', function(event, next, current) {
             if (typeof(current) !== 'undefined'){
                 $templateCache.remove(current.templateUrl);
