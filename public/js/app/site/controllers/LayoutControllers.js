@@ -8,6 +8,7 @@ R2Site.controller('HeaderCtrl', [
     '$state',
     'Slug',
     'blockUI',
+    '$rootScope',
     function (
     	$scope,
     	ngDialog,
@@ -15,10 +16,17 @@ R2Site.controller('HeaderCtrl', [
         AuthService,
         $state,
         Slug,
-        blockUI
+        blockUI,
+        $rootScope
     	) {
 
         blockUI.start();
+
+        $scope.badNavigator = false;
+
+        $rootScope.$on('badNavigator', function (event, next, current) {
+            $scope.badNavigator = true;
+        })
 
         $scope.userLogged = false;
         $scope.searchProduct = '';

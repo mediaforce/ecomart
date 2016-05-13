@@ -23,7 +23,7 @@ R2Site.controller('StoreDetailCtrl', [
         $scope.videoTeste = '';
 
         if (store.success) {
-            
+            console.log('store', store);
 
             $scope.store = store.data;
 

@@ -535,8 +535,7 @@ R2Site.run([
 
             if(badBrowser){
                 console.log('IE < 9');
-            } else {
-                console.log('OK');
+                $rootScope.$broadcast('badNavigator', false);
             }
         }
 

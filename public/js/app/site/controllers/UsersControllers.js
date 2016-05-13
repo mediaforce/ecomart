@@ -16,11 +16,15 @@ R2Site.controller('LoginCtrl', [
         ForgotPassFactory
         ) {
 
+        console.log('LOGIN CTRL');
+
         $scope.user = {};
+
+        $scope.senhaErrada = false;
 
         $scope.forgotPassword = function () {
             ForgotPassFactory.get({user: $scope.user.user}, function (result) {
-                console.log('FORGOT PASSWORD', result);
+                
             })
         }
 
@@ -33,16 +37,15 @@ R2Site.controller('LoginCtrl', [
                         $state.go('root', {}, {
                             reload: true
                         });
-                    } else {
-                        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-                        $state.go($state.current, {}, {
-                            reload: false
-                        });
-                        $scope.senhaErrada = true;
                     }
                 }
             );
         };
+
+        $rootScope.$on('notLogged', function (args) {
+            console.log('1', args);
+            $scope.senhaErrada = true;
+        });
     }
 ]);
 

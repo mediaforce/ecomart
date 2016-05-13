@@ -32,9 +32,11 @@ class AuthRestController extends AbstractRestfulController {
 				$user = json_decode($this->serializer->serialize($this->getAuthService()->getIdentity(), 'json'), true);
 				return new JsonModel(array('data' => array('user' => $user, 'success' => true)));
 			} else {
+				$this->getResponse()->setStatusCode(401);
 				return new JsonModel(array('data' => array('success' => false)));
 			}
 		} catch (\Exception $e) {
+			$this->getResponse()->setStatusCode(401);
 			return new JsonModel(array('data' => array('success' => false, 'error' => $e->getMessage())));
 		}
 
@@ -70,6 +72,7 @@ class AuthRestController extends AbstractRestfulController {
 			$user = json_decode($this->serializer->serialize($user, 'json'), true);
 			return new JsonModel(array('data' => array('user' => $user, 'success' => true)));
 		} else {
+			$this->getResponse()->setStatusCode(401);
 			return new JsonModel(array('data' => array('success' => false, 'result' => $result->getMessages())));
 		}
 
