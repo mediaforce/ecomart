@@ -389,22 +389,131 @@ R2Site.controller('ContaUserCtrl', [
     'AuthService',
     'Notification',
     '$state',
+    'StatesFactory',
+    'CitiesFactory',
+    '$http',
+    '$q',
     function (
         $scope,
         UsersFactory,
         AuthService,
         Notification,
-        $state
+        $state,
+        StatesFactory,
+        CitiesFactory,
+        $http,
+        $q
         ) {
-
-        console.log('CONTA USER');
-
 
         $scope.user = {
             password: '',
         };
 
+        $scope.options = {
+            telephoneTypes: [],
+            states: [],
+            cities: [],
+        };
+
         $scope.hasUser = false;
+
+        $scope.stateSelectChange = function(state) {
+
+            var deferred = $q.defer();
+
+            if (state > 0) {
+
+                $scope.options.cities = [];
+
+                $scope.citiesLoad = false;
+
+                $scope.stateIsSelected = true;
+
+                CitiesFactory.show({
+                    stateId: state
+                }, function(result) {
+                    console.log('CIDADES', result);
+                    _.each(
+                        result.data,
+                        function(city) {
+                            $scope.options.cities.push({
+                                id: city.id,
+                                name: city.name
+                            });
+
+                        }
+                    );
+
+                    $scope.citiesLoad = true;
+
+                    deferred.resolve();
+
+                });
+            }
+
+            return deferred.promise;
+        };
+
+        StatesFactory.show(function(result) {
+                    _.each(
+                        result.data,
+                        function(state) {
+                            $scope.options.states.push({
+                                id: state.id,
+                                name: state.code,
+                                ibge_code: state.ibge_code,
+                            });
+                        }
+                    );
+
+            $scope.statesLoad = true;
+
+        });
+
+        $scope.$watch('user.person.addresses[0].postcode', function (newVal, oldVal) {
+
+            if (newVal != undefined) {
+                $scope.editableInputSeekCep = false;
+                var promise = null;
+
+                var callCep = 'https://api.postmon.com.br/v1/cep/' + newVal;
+                $http.jsonp(callCep + '?callback=JSON_CALLBACK')
+                    .then(function(response) {
+                    var endereco = response.data;
+
+                    var state = _.find($scope.options.states, function (val_state) {
+                        if (val_state.name == endereco.estado) return val_state;
+                    });
+
+                    if (state !== undefined && state !== null) {
+
+                        $scope.user.person.addresses[0].state = state.id.toString();
+                        promise = $scope.stateSelectChange(state.id);
+                        promise.then(function () {
+                            var city = _.find($scope.options.cities, function (val_city) {
+                                if (val_city.id == Number(endereco.cidade_info.codigo_ibge.substr(0, 6))) return val_city;
+                                return null;
+                            });
+
+                            if (city !== null && city !== undefined) {
+                                $scope.user.person.addresses[0].city = city.id.toString();
+                            }
+
+                            $scope.user.person.addresses[0].neighborhood = endereco.bairro;
+                            $scope.user.person.addresses[0].address1 = endereco.logradouro;
+
+                            return true;
+
+                        }).then(function () {
+                            $scope.editableInputSeekCep = true;
+                        });
+
+                    };
+                });
+            } else {
+                $scope.editableInputSeekCep = true;
+            }
+        });
 
         if (AuthService.isAuthenticated()) {
             console.log(AuthService.getUserId());
@@ -444,6 +553,27 @@ R2Site.controller('ContaUserCtrl', [
 
                 });
             }
+        }
+
+
+        $scope.updateUser = function () {
+            UsersFactory.update( $scope.user, function (result) {
+                if (result.success) {
+                    Notification.success({
+                        message: 'Usuário atualizado com sucesso.',
+                        title: 'Aviso!',
+                        templateUrl: '/partials/shared/notifications/generic.html'
+                    });
+                    $scope.user.password = '';
+                    $scope.user.confPassword = '';
+                    console.log('UPDATE USER SUCCESS', result);
+
+                    //ngDialog.open({ template: '/partials/site/pages/user/login/form.html', className: 'ngdialog-theme-default', controller: 'LoginCtrl', scope: $scope });
+                } else {
+                    console.log('UPDATE USER ERROR', result);
+                }
+
+            });
         }
 
         $scope.updateAddress = function () {
@@ -488,6 +618,8 @@ R2Site.controller('RecadastrarSenhaCtrl', [
         $state,
         $stateParams
         ) {
+
+        
 
         console.log('RecadastrarSenhaCtrl');
 

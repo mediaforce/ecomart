@@ -127,27 +127,15 @@ class UsersRestController extends AbstractRestfulController {
 		$getDocType = $data['customerType']->value();
 
 		$person = $data['person'];
-		if ($getDocType == 'PHYSICAL') {
-			unset($person['documents'][1]);
-		} else {
-			unset($person['documents'][0]);
-		}
-
 
 		$documents = new ArrayCollection();
 		if (count($person['documents']) > 0) {
 			foreach ($person['documents'] as $document) {
 				$document['documentType'] = new \R2Base\Enum\DocumentType($document['documentType']);
-
-				
-
 				$documents->add(new \R2Base\Entity\Document($document));
 			}
 		}
 		$person['documents'] = $documents;
-
-
-
 
 		$addresses = new ArrayCollection();
 		if (count($person['addresses']) > 0) {
@@ -180,6 +168,46 @@ class UsersRestController extends AbstractRestfulController {
 	}
 
 	private function prepareDataToUpdate($data) {
+		unset($data['role']);
+		unset($data['user']);
+		unset($data['customerType']);
+
+		$documents = new ArrayCollection();
+		if (count($person['documents']) > 0) {
+			foreach ($person['documents'] as $document) {
+				$document['documentType'] = new \R2Base\Enum\DocumentType($document['documentType']);
+				$documents->add(new \R2Base\Entity\Document($document));
+			}
+		}
+		$person['documents'] = $documents;
+
+		$addresses = new ArrayCollection();
+		if (count($person['addresses']) > 0) {
+			foreach ($person['addresses'] as $address) {
+				$address['state'] = $this->em->getReference('R2Base\Entity\State', $address['state']);
+				$address['city'] = $this->em->getReference('R2Base\Entity\City', $address['city']);
+				$addresses->add(new \R2Base\Entity\Address($address));
+			}
+		}
+		$person['addresses'] = $addresses;
+
+
+
+		$telephones = new ArrayCollection();
+		if (count($person['telephones']) > 0) {
+			foreach ($person['telephones'] as $telephone) {
+
+				$telephone['telephoneType'] = new \R2Base\Enum\TelephoneType($telephone['telephoneType']);
+
+				$telephones->add(new \R2Base\Entity\Telephone($telephone));
+			}
+		}
+		$person['telephones'] = $telephones;
+
+
+
+		$data['person'] = new \R2Base\Entity\Person($person);
+
 		return $data;
 	}
 }

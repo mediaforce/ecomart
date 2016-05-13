@@ -1,5 +1,20 @@
 <div>
 
+	<div class="row">
+		<div class="medium-6 columns">
+			<label>
+				<input type="radio" ng-model="user.customerType" value="PHYSICAL">
+    			Pessoa Física
+			</label>
+		</div>
+		<div class="medium-6 columns">
+			<label>
+				<input type="radio" ng-model="user.customerType" value="LEGAL">
+    			Pessoa Jurídica
+			</label>
+		</div>
+	</div>
+
 	<label for="person_name" class="r2-label-float">
 		
 		<input type="text" class="form-control" placeholder="{{phPersonName}}" id="person_name" name="person_name"

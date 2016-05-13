@@ -11,57 +11,25 @@
 			<ul class="accordion" data-accordion>
 				
 				<li class="accordion-item is-active" data-accordion-item>
-					<div class="row">
-						<div class="medium-6 columns">
-							<label>
-								<input type="radio" ng-model="user.customerType" value="PHYSICAL">
-				    			Pessoa Física
-							</label>
-						</div>
-						<div class="medium-6 columns">
-							<label>
-								<input type="radio" ng-model="user.customerType" value="LEGAL">
-				    			Pessoa Jurídica
-							</label>
-						</div>
-					</div>
-
-					<label for="person_name" class="r2-label-float">
-						<br>
-						<input type="text" class="form-control" placeholder="{{phPersonName}}" id="person_name" name="person_name"
-						ng-model="user.person.name"
-						required
-						floating-validation/>
-					</label>
-
-					<label for="person_surname" class="r2-label-float" ng-hide="user.customerType == 'PHYSICAL'">
-						<br>
-						<input type="text" class="form-control" placeholder="{{phPersonSurname}}" id="person_surname" name="person_surname"
-						ng-model="user.person.surname"
-						required
-						floating-validation/>
-					</label>
-
-					<label for="person_document_cpf" class="r2-label-float" ng-show="user.customerType == 'PHYSICAL'">
-						<br>
-						<input type="text" class="form-control" placeholder="CPF" id="person_document_cpf" name="person_document_cpf"
-						ng-model="user.person.documents[0].field1"
-						ui-br-cpf-mask
-						required
-						floating-validation/>
-					</label>
-
-					<label for="person_document_cnpj" class="r2-label-float" ng-hide="user.customerType == 'PHYSICAL'">
-						<br>
-						<input type="text" class="form-control" placeholder="CNPJ" id="person_document_cnpj" name="person_document_cnpj"
-						ng-model="user.person.documents[1].field1"
-						ui-br-cnpj-mask
-						required
-						floating-validation/>
-					</label>
+					<a href="#" class="accordion-title">Pessoal</a>
+					
 					<div class="accordion-content" data-tab-content>
-						
-						<button class="button expanded">ATUALIZAR PESSOAL</button>
+
+						<label for="person_name" class="r2-label-float">
+							<br>
+							<input type="text" class="form-control" placeholder="{{phPersonName}}" id="person_name" name="person_name"
+							ng-model="user.person.name"
+							required
+							floating-validation/>
+						</label>
+
+						<label for="person_document_cpf" class="r2-label-float">
+							<br>
+							<input type="text" class="form-control" placeholder="CPF ou CNPJ" id="person_document_cpf" name="person_document_cpf"
+							ng-model="user.person.documents[0].field1"
+							required
+							floating-validation/>
+						</label>
 					</div>
 					
 				</li>
@@ -79,7 +47,6 @@
 							ui-br-phone-number
 							required/>
 						</label>
-						<button class="button expanded">ATUALIZAR CONTATO</button>
 					</div>
 					
 				</li>
@@ -180,7 +147,6 @@
 								required
 								floating-validation>
 						</label>
-						<button class="button expanded" ng-click="updateAddress()" ng-disabled="minhaContaForm.user_password.$invalid || minhaContaForm.user_conf_password.$invalid">ATUALIZAR ENDEREÇO</button>
 					</div>
 				</li>
 				<li class="accordion-item" data-accordion-item>
@@ -192,19 +158,9 @@
 								<label for="user_password">
 									<span class="r2-label-standard">Nova Senha: </span>
 									<br>
-									<input type="password" class="form-control" placeholder="Nova Senha" id="user_password" name="user_password"
+									<input type="text" class="form-control" placeholder="Nova Senha" id="user_password" name="user_password"
 									ng-model="user.password"
-									required/>
-								</label>
-							</div>
-							<div class="medium-12 columns">
-								<label for="user_conf_password" class="r2-label-float">
-									<br>
-									<input type="password" class="form-control" placeholder="Confirme a Senha" id="user_conf_password" name="user_conf_password"
-									ng-model="user.confPassword"
-									data-r2-compare-to="user.password"
-									required
-									floating-validation/>
+									/>
 								</label>
 							</div>
 						</div>
@@ -215,7 +171,7 @@
 					</div>
 				</li>
 			</ul>
-			<button class="button expanded">ATUALIZAR USUÁRIO</button>
+			<button class="button expanded" ng-click="updateUser()" ng-disabled="minhaContaForm.$invalid">ATUALIZAR USUÁRIO</button>
 		</div>
 	</div>
 </form>
