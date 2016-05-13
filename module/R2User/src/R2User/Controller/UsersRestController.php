@@ -168,6 +168,8 @@ class UsersRestController extends AbstractRestfulController {
 	}
 
 	private function prepareDataToUpdate($data) {
+		unset($data['createdAt']);
+		unset($data['updatedAt']);
 		unset($data['role']);
 		unset($data['user']);
 		unset($data['customerType']);
