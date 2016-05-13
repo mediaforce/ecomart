@@ -174,6 +174,8 @@ class UsersRestController extends AbstractRestfulController {
 		unset($data['user']);
 		unset($data['customerType']);
 
+		$person = $data['person'];
+
 		$documents = new ArrayCollection();
 		if (count($person['documents']) > 0) {
 			foreach ($person['documents'] as $document) {
