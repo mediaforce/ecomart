@@ -47,7 +47,7 @@ class ForgotPasswordRestController extends AbstractRestfulController {
 			try {
 				$mail = new Mail($this->transport, $this->view, 'forgot-password');
 
-				$mail->setSubject('testando recadastro senha')
+				$mail->setSubject('ECOMART - Recadastre a sua senha!')
 					->setTo($data['user'])
 					->setData($dataEmail)
 					->prepare()
