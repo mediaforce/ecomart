@@ -33,6 +33,7 @@ R2Site.controller('StoreDetailCtrl', [
                 if (image.isCover) return true;
             });
 
+            $scope.cover = cover;
             $scope.selectedImage = cover.path;
 
             if ($scope.store.product.videos[0] != undefined) {
