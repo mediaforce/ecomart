@@ -1,16 +1,16 @@
-<div>
-
-	<form name="boletoStatusForm">
-		<label for="boleto_status" class="r2-label-float">
-			<br>
-			<select class="form-control" ng-model="boleto.status" placeholder="Status Boleto" id="boleto_status" name="boleto_status"
-				required
-				floating-validation>
-				<option value="" disabled>Selecione o status do boleto</option>
-				<option data-ng-repeat="option in options.paymentStatus" value="{{option.name}}">{{option.name}}</option>
-			</select>
-		</label>
-
-		<button class="button expanded" ng-click="updateBoletoStatus()" ng-disabled="boletoStatusForm.$invalid">Atualizar</button>
-	</form>
+<div>
+
+	<form name="boletoStatusForm">
+		<label for="boleto_status" class="r2-label-float">
+			<br>
+			<select class="form-control" ng-model="boleto.status" placeholder="Status Boleto" id="boleto_status" name="boleto_status"
+				required
+				floating-validation>
+				<option value="" disabled>Selecione o status do boleto</option>
+				<option data-ng-repeat="option in options.paymentStatus" value="{{option.name}}">{{option.name}}</option>
+			</select>
+		</label>
+
+		<button class="button expanded" ng-click="updateBoletoStatus()" ng-disabled="boletoStatusForm.$invalid">Atualizar</button>
+	</form>
 </div>

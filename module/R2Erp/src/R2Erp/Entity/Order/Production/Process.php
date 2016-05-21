@@ -1,6 +1,5 @@
 <?php
 namespace R2Erp\Entity\Order\Production;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,14 +16,12 @@ class Process {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="name", type="string", nullable=true)
 	 */
 	private $name;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}

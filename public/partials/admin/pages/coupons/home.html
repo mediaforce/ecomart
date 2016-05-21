@@ -1,49 +1,49 @@
-<div>
-	<h3 class-"r2-admin-page-title">Cupons de Desconto (EM TESTE - HOMOLOGAÇÃO)</h3>
-
-	<div class="expanded button-group">
-	  <a ng-click="newDepartmentCoupon()" class="button">Adicionar Cupom Para Departamento</a>
-	  <a ng-click="newProductCoupon()" class="button">Adicionar Cupom Para Produto</a>
-	</div>
-
-
-	<table st-safe-src="couponsCollection" st-table="displayedCouponsCollection" class="table table-striped">
-		<thead>
-			<tr class="r2-title-line">
-				<th>Cupom</th>
-				<th>Desconto</th>
-				<th>Data de Início</th>
-				<th>Data de Término</th>
-				<th>Quantidade</th>
-				<th>Qtde. Utilizada</th>
-				<th>Tipo de Cupom</th>
-				<th>Departamento</th>
-				<th>Produto</th>
-				<th>Editar</th>
-				<th>Excluir</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedCouponsCollection">
-				<td>{{row.coupon}}</td>
-				<td>{{row.discount}}</td>
-				<td>{{row.startDate}}</td>
-				<td>{{row.finishDate}}</td>
-				<td>{{row.quantity}}</td>
-				<td>0</td>
-				<td>{{row.couponType}}</td>
-				<td>{{row.department}}{{row.toAll}}</td>
-				<td>{{row.product}}</td>
-				<td><a data-ui-sref="editCoupon(row)">Editar</a></td>
-				<td><button ng-click="deleteCoupon(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="11" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+<div>
+	<h3 class-"r2-admin-page-title">Cupons de Desconto (EM TESTE - HOMOLOGAÇÃO)</h3>
+
+	<div class="expanded button-group">
+	  <a ng-click="newDepartmentCoupon()" class="button">Adicionar Cupom Para Departamento</a>
+	  <a ng-click="newProductCoupon()" class="button">Adicionar Cupom Para Produto</a>
+	</div>
+
+
+	<table st-safe-src="couponsCollection" st-table="displayedCouponsCollection" class="table table-striped">
+		<thead>
+			<tr class="r2-title-line">
+				<th>Cupom</th>
+				<th>Desconto</th>
+				<th>Data de Início</th>
+				<th>Data de Término</th>
+				<th>Quantidade</th>
+				<th>Qtde. Utilizada</th>
+				<th>Tipo de Cupom</th>
+				<th>Departamento</th>
+				<th>Produto</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCouponsCollection">
+				<td>{{row.coupon}}</td>
+				<td>{{row.discount}}</td>
+				<td>{{row.startDate}}</td>
+				<td>{{row.finishDate}}</td>
+				<td>{{row.quantity}}</td>
+				<td>0</td>
+				<td>{{row.couponType}}</td>
+				<td>{{row.department}}{{row.toAll}}</td>
+				<td>{{row.product}}</td>
+				<td><a data-ui-sref="editCoupon(row)">Editar</a></td>
+				<td><button ng-click="deleteCoupon(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="11" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </div>

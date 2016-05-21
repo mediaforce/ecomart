@@ -1,18 +1,18 @@
-<div>
-	{{'Tipo de Documento'|translate}}:
-	<select
-		name="doc_isSelectedType"
-		data-ng-model="selectedDocumentType">
-
-		<option data-ng-hide="documentTypesLoad">{{'Carregando'|translate}}...</option>
-		<option data-ng-repeat="option in options.documentTypes" value="{{option.name}}">{{option.name|translate|capitalize}}</option>
-
-	</select>
-
-
-	<button class="button"
-		data-ng-disabled="!selectedDocumentType"
-		data-r2base-btn-add-document>{{'Adicionar'|translate}} {{selectedDocumentType}}</button>
-	<div data-r2base-populate-documents></div>
-	<section id="section-to-documents"></section>
+<div>
+	{{'Tipo de Documento'|translate}}:
+	<select
+		name="doc_isSelectedType"
+		data-ng-model="selectedDocumentType">
+
+		<option data-ng-hide="documentTypesLoad">{{'Carregando'|translate}}...</option>
+		<option data-ng-repeat="option in options.documentTypes" value="{{option.name}}">{{option.name|translate|capitalize}}</option>
+
+	</select>
+
+
+	<button class="button"
+		data-ng-disabled="!selectedDocumentType"
+		data-r2base-btn-add-document>{{'Adicionar'|translate}} {{selectedDocumentType}}</button>
+	<div data-r2base-populate-documents></div>
+	<section id="section-to-documents"></section>
 </div>

@@ -17,6 +17,7 @@ use R2Base\Enum\TelephoneType;
 use R2Base\Mail\Mail;
 use R2Base\Service\AbstractService;
 use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Stdlib\Hydrator;
 
 class User extends AbstractService {
 	protected $transport;
@@ -28,6 +29,34 @@ class User extends AbstractService {
 		$this->entity = "R2User\Entity\User";
 		$this->transport = $transport;
 		$this->view = $view;
+	}
+
+	public function update(array $data) {
+		$entity = $this->em->getReference($this->entity, $data['id']);
+		
+		foreach($entity->getPerson()->getDocuments() as $document) {
+			$this->em->remove($document);
+			$entity->getPerson()->getDocuments()->removeElement($document);
+		}
+
+		foreach($entity->getPerson()->getAddresses() as $address) {
+			$this->em->remove($address);
+			$entity->getPerson()->getAddresses()->removeElement($address);
+		}
+
+		foreach($entity->getPerson()->getTelephones() as $telephone) {
+			$this->em->remove($telephone);
+			$entity->getPerson()->getTelephones()->removeElement($telephone);
+		}
+
+		$this->em->flush();
+
+		(new Hydrator\ClassMethods())->hydrate($data, $entity);
+
+		$this->em->persist($entity);
+		$this->em->flush();
+
+		return $entity;
 	}
 
 }

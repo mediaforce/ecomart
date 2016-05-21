@@ -1,38 +1,38 @@
-<div>
-	<form class="cad-form" novalidate name="featureGroupForm" data-polyfiller-update>
-		<fieldset>
-			<legend>{{pageTitle}}</legend>
-
-			<label>Nome:</label>
-			<input
-				type="text"
-				name="feature_group_name"
-				data-ng-model="group.name"
-				data-ng-minlength="3"
-				data-ng-maxlength="50"
-				data-ng-trim="true"
-				required>
-			<div
-				data-ng-messages="featureGroupForm.feature_group_name.$error"
-				data-ng-if="featureGroupForm.feature_group_name.$touched"
-				data-ng-class="{ 'form-has-error': featureGroupForm.feature_group_name.$touched && featureGroupForm.feature_group_name.$invalid }">
-				<p data-ng-message="minlength">
-					Nome é muito curto.
-				</p>
-				<p data-ng-message="maxlength">
-					Nome é muito longo.
-				</p>
-				<p data-ng-message="required">
-					Nome é obrigatório.
-				</p>
-				<p data-ng-message="unique">Este nome de grupo de características já está sendo utilizado.</p>
-			</div>
-
-
-		</fieldset>
-
-		<button ng-click="save()" ng-disabled="disableSaveBtn || featureGroupForm.$invalid">{{btnSave}}</button>
-		<button ng-click="closeThisDialog(0)">Cancelar</button>
-
-	</form>
+<div>
+	<form class="cad-form" novalidate name="featureGroupForm" data-polyfiller-update>
+		<fieldset>
+			<legend>{{pageTitle}}</legend>
+
+			<label>Nome:</label>
+			<input
+				type="text"
+				name="feature_group_name"
+				data-ng-model="group.name"
+				data-ng-minlength="3"
+				data-ng-maxlength="50"
+				data-ng-trim="true"
+				required>
+			<div
+				data-ng-messages="featureGroupForm.feature_group_name.$error"
+				data-ng-if="featureGroupForm.feature_group_name.$touched"
+				data-ng-class="{ 'form-has-error': featureGroupForm.feature_group_name.$touched && featureGroupForm.feature_group_name.$invalid }">
+				<p data-ng-message="minlength">
+					Nome é muito curto.
+				</p>
+				<p data-ng-message="maxlength">
+					Nome é muito longo.
+				</p>
+				<p data-ng-message="required">
+					Nome é obrigatório.
+				</p>
+				<p data-ng-message="unique">Este nome de grupo de características já está sendo utilizado.</p>
+			</div>
+
+
+		</fieldset>
+
+		<button ng-click="save()" ng-disabled="disableSaveBtn || featureGroupForm.$invalid">{{btnSave}}</button>
+		<button ng-click="closeThisDialog(0)">Cancelar</button>
+
+	</form>
 </div>

@@ -1,10 +1,8 @@
 <?php
 namespace R2Erp\Entity\Order\Expense;
-
 use Doctrine\ORM\Mapping as ORM;
 use R2Erp\Entity\Order\OrderSuperClass;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_erp_order_expense_orders")
@@ -20,9 +18,7 @@ class Order extends OrderSuperClass {
 	 *      )
 	 **/
 	private $expenses;
-
 	public function __construct() {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 }

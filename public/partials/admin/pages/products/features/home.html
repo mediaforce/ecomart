@@ -1,59 +1,59 @@
-<div>
-
-	<h3 class-"r2-admin-page-title">Grupo de Características</h3>
-	<a ng-click="newGroup()" class="expanded button">Adicionar Grupo de Características</a>
-	<table st-safe-src="featureGroupsCollection" st-table="displayedGroupsCollection" class="table table-striped">
-		<thead>
-			<tr>
-				<th>GRUPO</th>
-				<th>Editar</th>
-				<th>Excluir</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedGroupsCollection">
-				<td>{{row.name}}</td>
-				<td><button ng-click="editGroup(row.id)">Editar</button></td>
-				<td><button ng-click="deleteGroup(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="3" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
-	<hr>
-
-	<h3 class-"r2-admin-page-title">Características</h3>
-	<a ng-click="newFeature()" class="expanded button">Adicionar Característica</a>
-	<table st-safe-src="featuresCollection" st-table="displayedFeatureCollection" class="table table-striped">
-		<thead>
-			<tr>
-				<th>Característica</th>
-				<th>Valor</th>
-				<th>Editar</th>
-				<th>Excluir</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedFeatureCollection">
-				<td>{{row.group.name}}</td>
-				<td>{{row.value}}</td>				
-				<td><button ng-click="editFeature(row.id)">Editar</button></td>
-				<td><button ng-click="deleteFeature(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
+<div>
+
+	<h3 class-"r2-admin-page-title">Grupo de Características</h3>
+	<a ng-click="newGroup()" class="expanded button">Adicionar Grupo de Características</a>
+	<table st-safe-src="featureGroupsCollection" st-table="displayedGroupsCollection" class="table table-striped">
+		<thead>
+			<tr>
+				<th>GRUPO</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedGroupsCollection">
+				<td>{{row.name}}</td>
+				<td><button ng-click="editGroup(row.id)">Editar</button></td>
+				<td><button ng-click="deleteGroup(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<hr>
+
+	<h3 class-"r2-admin-page-title">Características</h3>
+	<a ng-click="newFeature()" class="expanded button">Adicionar Característica</a>
+	<table st-safe-src="featuresCollection" st-table="displayedFeatureCollection" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Característica</th>
+				<th>Valor</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedFeatureCollection">
+				<td>{{row.group.name}}</td>
+				<td>{{row.value}}</td>				
+				<td><button ng-click="editFeature(row.id)">Editar</button></td>
+				<td><button ng-click="deleteFeature(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
 </div>

@@ -7,7 +7,7 @@ nbproject
 .idea
 .project
 .settings
-vendor
+vendor/
 config/
 composer.phar
 public/bower_components/
@@ -21,3 +21,5 @@ ecomart/
 resources/
 public/.sass-cache/
 public/img/
+*.rar
+*.zip

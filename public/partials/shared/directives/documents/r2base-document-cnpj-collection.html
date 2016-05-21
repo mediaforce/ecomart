@@ -1,23 +1,23 @@
-<div>
-	{{'Documento'|translate}} {{index+1}} - CNPJ<br>
-
-	{{'Número'|translate}} CPF:
-	<input
-		type="number"
-		name="cnpj_number[{{index}}]"
-		data-ng-model="matrix.documents[index].fields[0]"
-		ui-br-cnpj-mask
-		required>
-
-	<div
-		data-ng-messages="matrixForm['cnpj_number['+index+']'].$error"
-		data-ng-if="matrixForm['cnpj_number['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': matrixForm['cnpj_number['+index+']'].$touched && matrixForm['cnpj_number['+index+']'].$invalid }">
-		
-		<p data-ng-message="cnpj">{{'Não é um número de cnpj válido'|translate}}.</p>
-        <p data-ng-message="required">{{'Número é obrigatório'|translate}}.</p>
-    </div>
-
-	<button class="button" data-ng-click="removerElemento()">{{'Remover'|translate}}</button>
-
+<div>
+	{{'Documento'|translate}} {{index+1}} - CNPJ<br>
+
+	{{'Número'|translate}} CPF:
+	<input
+		type="number"
+		name="cnpj_number[{{index}}]"
+		data-ng-model="matrix.documents[index].fields[0]"
+		ui-br-cnpj-mask
+		required>
+
+	<div
+		data-ng-messages="matrixForm['cnpj_number['+index+']'].$error"
+		data-ng-if="matrixForm['cnpj_number['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': matrixForm['cnpj_number['+index+']'].$touched && matrixForm['cnpj_number['+index+']'].$invalid }">
+		
+		<p data-ng-message="cnpj">{{'Não é um número de cnpj válido'|translate}}.</p>
+        <p data-ng-message="required">{{'Número é obrigatório'|translate}}.</p>
+    </div>
+
+	<button class="button" data-ng-click="removerElemento()">{{'Remover'|translate}}</button>
+
 </div>

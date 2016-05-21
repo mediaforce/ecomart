@@ -1,32 +1,32 @@
-<div>
-	<label for="user_user" class="r2-label-float">
-		<br>
-		<input type="email" class="form-control" placeholder="E-mail de Acesso" id="user_user" name="user_user"
-		ng-model="user.user"
-		data-r2-unique-user
-		required
-		floating-validation/>
-	</label>
-
-	<label for="user_password" class="r2-label-float">
-		<br>
-		<input type="password" class="form-control" placeholder="Senha" id="user_password" name="user_password"
-		ng-model="user.password" required
-		floating-validation/>
-	</label>
-
-	<label for="user_conf_password" class="r2-label-float">
-		<br>
-		<input type="password" class="form-control" placeholder="Confirme a Senha" id="user_conf_password" name="user_conf_password"
-		ng-model="user.confPassword"
-		data-r2-compare-to="user.password"
-		required
-		floating-validation/>
-	</label>
-
-	<button class="button float-right" ng-click="nextStep(2)" ng-disabled="userForm.$invalid">Próximo Passo</button>
-
-	<div class="clearfix"></div>
-
-</div>
-
+<div>
+	<label for="user_user" class="r2-label-float">
+		<br>
+		<input type="email" class="form-control" placeholder="E-mail de Acesso" id="user_user" name="user_user"
+		ng-model="user.user"
+		data-r2-unique-user
+		required
+		floating-validation/>
+	</label>
+
+	<label for="user_password" class="r2-label-float">
+		<br>
+		<input type="password" class="form-control" placeholder="Senha" id="user_password" name="user_password"
+		ng-model="user.password" required
+		floating-validation/>
+	</label>
+
+	<label for="user_conf_password" class="r2-label-float">
+		<br>
+		<input type="password" class="form-control" placeholder="Confirme a Senha" id="user_conf_password" name="user_conf_password"
+		ng-model="user.confPassword"
+		data-r2-compare-to="user.password"
+		required
+		floating-validation/>
+	</label>
+
+	<button class="button float-right" ng-click="nextStep(2)" ng-disabled="userForm.$invalid">Próximo Passo</button>
+
+	<div class="clearfix"></div>
+
+</div>
+

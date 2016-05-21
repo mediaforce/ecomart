@@ -1,46 +1,46 @@
-<div>
-
-	<label for="telephone_type" class="r2-label-float">
-		<br>
-		<select class="form-control" ng-model="user.person.telephones[0].telephoneType" placeholder="Tipo de Telefone" id="telephone_type" name="telephone_type"
-			required
-			floating-validation>
-			<option value="" disabled>Selecione o tipo de telefone</option>
-			<option data-ng-repeat="option in options.telephoneTypes" value="{{option.name}}">{{option.name}}</option>
-		</select>
-	</label>
-
-	<label for="telephone_number" class="r2-label-float">
-		<br>
-		<input type="text"
-		name="telephone_number"
-		data-ng-model="user.person.telephones[0].number"
-		class="form-control"
-		placeholder="Número do Telefone"
-		id="telephone_number"
-		ui-br-phone-number
-		required
-		floating-validation/>
-	</label>
-
-	<!-- <div data-ng-show="user.person.telephones[0].telephoneType === 'CELULAR'">
-		<label for="telephone_operadora" class="r2-label-float">
-			<br>
-			<select
-				class="form-control"
-				name="input"
-				placeholder="Operadora" id="telephone_operadora" name="telephone_operadora"
-				data-ng-model="user.person.telephones[0].mobileMNO"
-				floating-label>
-	
-				<option value="" disabled>Selecione a operadora</option>
-				<option data-ng-repeat="option in options.mobileMNOs" value="{{option.name}}">{{option.name}}</option>
-			</select>
-		</label>
-	</div> -->
-
-	<button class="button float-right" ng-click="nextStep(4)" ng-disabled="userForm.$invalid">Próximo Passo</button>
-
-	<div class="clearfix"></div>
-
+<div>
+
+	<label for="telephone_type" class="r2-label-float">
+		<br>
+		<select class="form-control" ng-model="user.person.telephones[0].telephoneType" placeholder="Tipo de Telefone" id="telephone_type" name="telephone_type"
+			required
+			floating-validation>
+			<option value="" disabled>Selecione o tipo de telefone</option>
+			<option data-ng-repeat="option in options.telephoneTypes" value="{{option.name}}">{{option.name}}</option>
+		</select>
+	</label>
+
+	<label for="telephone_number" class="r2-label-float">
+		<br>
+		<input type="text"
+		name="telephone_number"
+		data-ng-model="user.person.telephones[0].number"
+		class="form-control"
+		placeholder="Número do Telefone"
+		id="telephone_number"
+		ui-br-phone-number
+		required
+		floating-validation/>
+	</label>
+
+	<!-- <div data-ng-show="user.person.telephones[0].telephoneType === 'CELULAR'">
+		<label for="telephone_operadora" class="r2-label-float">
+			<br>
+			<select
+				class="form-control"
+				name="input"
+				placeholder="Operadora" id="telephone_operadora" name="telephone_operadora"
+				data-ng-model="user.person.telephones[0].mobileMNO"
+				floating-label>
+	
+				<option value="" disabled>Selecione a operadora</option>
+				<option data-ng-repeat="option in options.mobileMNOs" value="{{option.name}}">{{option.name}}</option>
+			</select>
+		</label>
+	</div> -->
+
+	<button class="button float-right" ng-click="nextStep(4)" ng-disabled="userForm.$invalid">Próximo Passo</button>
+
+	<div class="clearfix"></div>
+
 </div>

@@ -79,8 +79,8 @@ class Telephone {
 	 * @param string $telephoneType
 	 * @return Telephone
 	 */
-	public function setTelephoneType(TelephoneType $telephoneType) {
-		$this->telephoneType = $telephoneType->value();
+	public function setTelephoneType($telephoneType) {
+		$this->telephoneType = $telephoneType;
 		return $this;
 	}
 

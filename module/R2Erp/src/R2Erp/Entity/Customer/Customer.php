@@ -1,10 +1,8 @@
 <?php
 namespace R2Erp\Entity\Customer;
-
 use Doctrine\ORM\Mapping as ORM;
 use R2Erp\Enum\CustomerType;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_erp_customers")
@@ -21,87 +19,74 @@ class Customer {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Base\Entity\Person")
 	 * @ORM\JoinColumn(name="$person_id", referencedColumnName="id", nullable=false)
 	 */
 	private $person;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2User\Entity\User")
 	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
 	 */
 	private $user;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Base\Entity\Company")
 	 * @ORM\JoinColumn(name="company_id", referencedColumnName="id", nullable=true)
 	 */
 	private $company;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="credit", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $credit;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="current_credit", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $currentCredit;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="preferred_pay_day", type="datetime", nullable=true)
 	 */
 	private $preferredPayDay;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="customer_type", type="string", nullable=true)
 	 */
 	private $customerType;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="notes", type="text", nullable=true)
 	 */
 	private $notes;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created_at", type="datetime", nullable=false)
 	 */
 	private $createdAt;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated_at", type="datetime", nullable=false)
 	 */
 	private $updatedAt;
-
 	public function __construct(array $options = array()) {
 		$this->createdAt = new \DateTime("now");
 		$this->updatedAt = new \DateTime("now");
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Customer
@@ -110,14 +95,12 @@ class Customer {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getPerson() {
 		return $this->person;
 	}
-
 	/**
 	 * @param mixed $person
 	 * @return Customer
@@ -126,14 +109,12 @@ class Customer {
 		$this->person = $person;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getUser() {
 		return $this->user;
 	}
-
 	/**
 	 * @param mixed $user
 	 * @return Customer
@@ -142,14 +123,12 @@ class Customer {
 		$this->user = $user;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getCompany() {
 		return $this->company;
 	}
-
 	/**
 	 * @param mixed $company
 	 * @return Customer
@@ -158,14 +137,12 @@ class Customer {
 		$this->company = $company;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getCredit() {
 		return $this->credit;
 	}
-
 	/**
 	 * @param string $credit
 	 * @return Customer
@@ -174,14 +151,12 @@ class Customer {
 		$this->credit = $credit;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getCurrentCredit() {
 		return $this->currentCredit;
 	}
-
 	/**
 	 * @param string $currentCredit
 	 * @return Customer
@@ -190,14 +165,12 @@ class Customer {
 		$this->currentCredit = $currentCredit;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
 	public function getPreferredPayDay() {
 		return $this->preferredPayDay;
 	}
-
 	/**
 	 * @param \DateTime $preferredPayDay
 	 * @return Customer
@@ -206,14 +179,12 @@ class Customer {
 		$this->preferredPayDay = $preferredPayDay;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getCustomerType() {
 		return $this->customerType;
 	}
-
 	/**
 	 * @param string $customerType
 	 * @return Customer
@@ -222,14 +193,12 @@ class Customer {
 		$this->customerType = $customerType;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getNotes() {
 		return $this->notes;
 	}
-
 	/**
 	 * @param string $notes
 	 * @return Customer
@@ -238,14 +207,12 @@ class Customer {
 		$this->notes = $notes;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
 	public function getCreatedAt() {
 		return $this->createdAt;
 	}
-
 	/**
 	 * @param \DateTime $createdAt
 	 * @return Customer
@@ -254,14 +221,12 @@ class Customer {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
 	public function getUpdatedAt() {
 		return $this->updatedAt;
 	}
-
 	/**
 	 * @param \DateTime $updatedAt
 	 * @return Customer
@@ -272,5 +237,4 @@ class Customer {
 		$this->updatedAt = new \DateTime("now");
 		return $this;
 	}
-
 }

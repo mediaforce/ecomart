@@ -1,10 +1,8 @@
 <?php
 namespace R2Erp\Entity\Order\Sale;
-
 use Doctrine\ORM\Mapping as ORM;
 use R2Erp\Entity\Order\OrderSuperClass;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  *
  * @ORM\Table(name="r2_erp_sale_orders")
@@ -12,7 +10,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\HasLifecycleCallbacks
  */
 class Order extends OrderSuperClass {
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Order\Sale\Sale", inversedBy="saleOrder", cascade={"persist","remove"})
 	 * @ORM\JoinTable(name="r2_erp_sale_order_sales",
@@ -21,59 +18,50 @@ class Order extends OrderSuperClass {
 	 *                        referencedColumnName="id", onDelete="cascade")})
 	 **/
 	private $sales;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2User\Entity\User")
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=false)
 	 **/
 	private $customer;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Product\DiscountCoupon")
 	 * @ORM\JoinColumn(name="coupon_id", referencedColumnName="id", nullable=true)
 	 */
 	private $coupon;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="tid", type="string", length=255, nullable=true)
 	 */
 	private $tid;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="pan", type="string", length=255, nullable=true)
 	 */
 	private $pan;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="authorizationCode", type="string", length=255, nullable=true)
 	 */
 	private $authorizationCode;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="authorizationMessage", type="string", length=255, nullable=true)
 	 */
 	private $authorizationMessage;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="authorizationDate", type="string", length=255, nullable=true)
 	 */
 	private $authorizationDate;
-
 	public function __construct(array $options = array()) {
 		$this->sales = new ArrayCollection();
 		parent::__construct($options);
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -81,7 +69,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->sales;
 	}
-
 	/**
 	 * @param mixed $sales
 	 * @return Order
@@ -91,7 +78,6 @@ class Order extends OrderSuperClass {
 		$this->sales = $sales;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -99,7 +85,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->customer;
 	}
-
 	/**
 	 * @param mixed $customer
 	 * @return Order
@@ -109,7 +94,6 @@ class Order extends OrderSuperClass {
 		$this->customer = $customer;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -117,7 +101,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->coupon;
 	}
-
 	/**
 	 * @param mixed $coupon
 	 * @return Order
@@ -127,7 +110,6 @@ class Order extends OrderSuperClass {
 		$this->coupon = $coupon;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -135,7 +117,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->tid;
 	}
-
 	/**
 	 * @param string $tid
 	 * @return Order
@@ -145,7 +126,6 @@ class Order extends OrderSuperClass {
 		$this->tid = $tid;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -153,7 +133,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->pan;
 	}
-
 	/**
 	 * @param string $pan
 	 * @return Order
@@ -163,7 +142,6 @@ class Order extends OrderSuperClass {
 		$this->pan = $pan;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -171,7 +149,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->authorizationCode;
 	}
-
 	/**
 	 * @param string $authorizationCode
 	 * @return Order
@@ -181,7 +158,6 @@ class Order extends OrderSuperClass {
 		$this->authorizationCode = $authorizationCode;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -189,7 +165,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->authorizationMessage;
 	}
-
 	/**
 	 * @param string $authorizationMessage
 	 * @return Order
@@ -199,7 +174,6 @@ class Order extends OrderSuperClass {
 		$this->authorizationMessage = $authorizationMessage;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -207,7 +181,6 @@ class Order extends OrderSuperClass {
 	{
 		return $this->authorizationDate;
 	}
-
 	/**
 	 * @param string $authorizationDate
 	 * @return Order
@@ -217,5 +190,4 @@ class Order extends OrderSuperClass {
 		$this->authorizationDate = $authorizationDate;
 		return $this;
 	}
-
 }

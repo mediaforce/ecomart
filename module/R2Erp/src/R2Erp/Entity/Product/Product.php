@@ -1,10 +1,8 @@
 <?php
 namespace R2Erp\Entity\Product;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  * @ORM\Table(name="r2_erp_products")
  * @ORM\Entity
@@ -19,73 +17,62 @@ class Product {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="reference", type="string", length=60, unique=true, nullable=true)
 	 */
 	private $reference;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="title", type="string", length=255, nullable=false)
 	 */
 	private $title;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="subtitle", type="string", length=60, nullable=true)
 	 */
 	private $subtitle;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Manufacturer\Manufacturer")
 	 * @ORM\JoinColumn(name="manufacturer_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $manufacturer;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="seo_description", type="string", length=255, nullable=true)
 	 */
 	private $seoDescription;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="description", type="text", nullable=true)
 	 */
 	private $description;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="brief_description", type="text", nullable=true)
 	 */
 	private $briefDescription;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Product\ProductDepartment")
 	 * @ORM\JoinColumn(name="department_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $department;
-
 	/**
      * @ORM\OneToOne(targetEntity="R2Erp\Entity\Product\ProductGuide", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="product_guide_id", referencedColumnName="id", nullable=true)
      */
 	private $productGuide;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Product\ProductCategory")
 	 * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $category;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Product\FeatureTag")
 	 * @ORM\JoinTable(name="r2_erp_product_product_feature_tags",
@@ -94,7 +81,6 @@ class Product {
 	 *      )
 	 **/
 	private $features;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Image", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_erp_product_images",
@@ -103,7 +89,6 @@ class Product {
 	 *      )
 	 */
 	private $images;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Article")
 	 * @ORM\JoinTable(name="r2_erp_product_related_articles",
@@ -112,7 +97,6 @@ class Product {
 	 *      )
 	 **/
 	private $relatedArticles;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Testimony")
 	 * @ORM\JoinTable(name="r2_erp_product_testimonies",
@@ -121,7 +105,6 @@ class Product {
 	 *      )
 	 **/
 	private $testimonies;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\VideoLink", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_erp_product_video_links",
@@ -130,35 +113,30 @@ class Product {
 	 *      )
 	 */
 	private $videos;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="weight", type="float", nullable=true)
 	 */
 	private $weight;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="dimension_length", type="float", nullable=true)
 	 */
 	private $dimensionLength;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="dimension_height", type="float", nullable=true)
 	 */
 	private $dimensionHeight;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="dimension_width", type="float", nullable=true)
 	 */
 	private $dimensionWidth;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Rating")
 	 * @ORM\JoinTable(name="r2_erp_product_ratings",
@@ -167,7 +145,6 @@ class Product {
 	 *      )
 	 */
 	private $produtoRatings;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Product\Product")
 	 * @ORM\JoinTable(name="r2_erp_product_product_alternate_products",
@@ -176,61 +153,51 @@ class Product {
 	 *      )
 	 **/
 	private $alternativeProducts;
-
 	/**
 	 * @var Booleam
 	 *
 	 * @ORM\Column(name="is_highlighted", type="boolean", nullable=true)
 	 */
 	private $isHighlighted;
-
 	/**
 	 * @var Booleam
 	 *
 	 * @ORM\Column(name="is_Launch", type="boolean", nullable=true)
 	 */
 	private $isLaunch;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Erp\Entity\Order\Store\Store", mappedBy="product", orphanRemoval=true)
 	 */
 	private $store;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created_at", type="datetime", nullable=false)
 	 */
 	private $createdAt;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated_at", type="datetime", nullable=false)
 	 */
 	private $updatedAt;
-
 	public function __construct(array $options = array()) {
 		$this->createdAt = new \DateTime("now");
 		$this->updatedAt = new \DateTime("now");
-
 		$this->features = new ArrayCollection();
 		$this->images = new ArrayCollection();
 		$this->videos = new ArrayCollection();
 		$this->produtoRating = new ArrayCollection();
 		$this->mixProducts = new ArrayCollection();
 		$this->alternativeProducts = new ArrayCollection();
-
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Product
@@ -239,16 +206,12 @@ class Product {
 		$this->id = $id;
 		return $this;
 	}
-
-
-
 	/**
 	 * @return string
 	 */
 	public function getTitle() {
 		return $this->title;
 	}
-
 	/**
 	 * @param string $title
 	 * @return Product
@@ -257,14 +220,12 @@ class Product {
 		$this->title = $title;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getSubtitle() {
 		return $this->subtitle;
 	}
-
 	/**
 	 * @param string $subtitle
 	 * @return Product
@@ -273,14 +234,12 @@ class Product {
 		$this->subtitle = $subtitle;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getManufacturer() {
 		return $this->manufacturer;
 	}
-
 	/**
 	 * @param mixed $manufacturer
 	 * @return Product
@@ -289,14 +248,12 @@ class Product {
 		$this->manufacturer = $manufacturer;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getSeoDescription() {
 		return $this->seoDescription;
 	}
-
 	/**
 	 * @param string $seoDescription
 	 * @return Product
@@ -305,14 +262,12 @@ class Product {
 		$this->seoDescription = $seoDescription;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getDescription() {
 		return $this->description;
 	}
-
 	/**
 	 * @param string $description
 	 * @return Product
@@ -321,14 +276,12 @@ class Product {
 		$this->description = $description;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getBriefDescription() {
 		return $this->briefDescription;
 	}
-
 	/**
 	 * @param string $briefDescription
 	 * @return Product
@@ -337,14 +290,12 @@ class Product {
 		$this->briefDescription = $briefDescription;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getDepartment() {
 		return $this->department;
 	}
-
 	/**
 	 * @param mixed $department
 	 * @return Product
@@ -353,16 +304,12 @@ class Product {
 		$this->department = $department;
 		return $this;
 	}
-
-
-
 	/**
 	 * @return mixed
 	 */
 	public function getCategory() {
 		return $this->category;
 	}
-
 	/**
 	 * @param mixed $category
 	 * @return Product
@@ -371,14 +318,12 @@ class Product {
 		$this->category = $category;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getFeatures() {
 		return $this->features;
 	}
-
 	/**
 	 * @param mixed $featureTags
 	 * @return Product
@@ -387,19 +332,16 @@ class Product {
 		$this->features = $features;
 		return $this;
 	}
-
 	public function addFeature($feature) {
 		$this->features->add($feature);
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getImages() {
 		return $this->images;
 	}
-
 	/**
 	 * @param mixed $images
 	 * @return Product
@@ -408,19 +350,16 @@ class Product {
 		$this->images = $images;
 		return $this;
 	}
-
 	public function addImage($image) {
 		$this->images->add($image);
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getVideos() {
 		return $this->videos;
 	}
-
 	/**
 	 * @param mixed $videos
 	 * @return Product
@@ -429,19 +368,16 @@ class Product {
 		$this->videos = $videos;
 		return $this;
 	}
-
 	public function addVideo($video) {
 		$this->videos_ > add($video);
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getWeight() {
 		return $this->weight;
 	}
-
 	/**
 	 * @param string $weight
 	 * @return Product
@@ -450,14 +386,12 @@ class Product {
 		$this->weight = $weight;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getDimensionLength() {
 		return $this->dimensionLength;
 	}
-
 	/**
 	 * @param string $dimensionLength
 	 * @return Product
@@ -466,14 +400,12 @@ class Product {
 		$this->dimensionLength = $dimensionLength;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getDimensionHeight() {
 		return $this->dimensionHeight;
 	}
-
 	/**
 	 * @param string $dimensionHeight
 	 * @return Product
@@ -482,14 +414,12 @@ class Product {
 		$this->dimensionHeight = $dimensionHeight;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getDimensionWidth() {
 		return $this->dimensionWidth;
 	}
-
 	/**
 	 * @param string $dimensionWidth
 	 * @return Product
@@ -498,14 +428,12 @@ class Product {
 		$this->dimensionWidth = $dimensionWidth;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getProdutoRatings() {
 		return $this->produtoRatings;
 	}
-
 	/**
 	 * @param mixed $produtoRatings
 	 * @return Product
@@ -514,19 +442,16 @@ class Product {
 		$this->produtoRatings = $produtoRatings;
 		return $this;
 	}
-
 	public function addProdutoRating($produtoRating) {
 		$this->produtoRatings->add($produtoRating);
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getAlternativeProducts() {
 		return $this->alternativeProducts;
 	}
-
 	/**
 	 * @param mixed $alternativeProducts
 	 * @return Product
@@ -535,19 +460,16 @@ class Product {
 		$this->alternativeProducts = $alternativeProducts;
 		return $this;
 	}
-
 	public function setAlternativeProduct($alternativeProduct) {
 		$this->alternativeProducts->add($alternativeProduct);
 		return $this;
 	}
-
 	/**
 	 * @return Booleam
 	 */
 	public function getIsHighlighted() {
 		return $this->isHighlighted;
 	}
-
 	/**
 	 * @param Booleam $isHighlighted
 	 * @return Product
@@ -556,14 +478,12 @@ class Product {
 		$this->isHighlighted = $isHighlighted;
 		return $this;
 	}
-
 	/**
 	 * @return Booleam
 	 */
 	public function getIsLaunch() {
 		return $this->isLaunch;
 	}
-
 	/**
 	 * @param Booleam $isLaunch
 	 * @return Product
@@ -572,14 +492,12 @@ class Product {
 		$this->isLaunch = $isLaunch;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getStore() {
 		return $this->store;
 	}
-
 	/**
 	 * @param mixed $store
 	 * @return Product
@@ -588,14 +506,12 @@ class Product {
 		$this->store = $store;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
 	public function getCreatedAt() {
 		return $this->createdAt;
 	}
-
 	/**
 	 * @param \DateTime $createdAt
 	 * @return Product
@@ -604,14 +520,12 @@ class Product {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
 	public function getUpdatedAt() {
 		return $this->updatedAt;
 	}
-
 	/**
 	 * @param \DateTime $updatedAt
 	 * @return Product
@@ -622,8 +536,6 @@ class Product {
 		$this->updatedAt = new \Datetime("now");
 		return $this;
 	}
-
-
     /**
      * Gets the value of reference.
      *
@@ -633,7 +545,6 @@ class Product {
     {
         return $this->reference;
     }
-
     /**
      * Sets the value of reference.
      *
@@ -644,10 +555,8 @@ class Product {
     public function setReference($reference)
     {
         $this->reference = $reference;
-
         return $this;
     }
-
     /**
      * Gets the value of productGuide.
      *
@@ -657,7 +566,6 @@ class Product {
     {
         return $this->productGuide;
     }
-
     /**
      * Sets the value of productGuide.
      *
@@ -668,7 +576,6 @@ class Product {
     public function setProductGuide($productGuide)
     {
         $this->productGuide = $productGuide;
-
         return $this;
     }
 }

@@ -58,7 +58,7 @@ class ForgotPasswordRestController extends AbstractRestfulController {
 			}
 			
 
-			return new JsonModel(array('success' => true, 'data' => $data));
+			return new JsonModel(array('success' => true, 'data' => 'email enviado'));
 		}
 
 		return new JsonModel(array('data' => false));

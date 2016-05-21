@@ -1,113 +1,113 @@
-<div>
-	<h3>{{'Endereço'|translate}} {{index+1}}</h3>
-
-	{{'Cep'|translate}}:
-	<input
-		type="text"
-		name="address_postcode[{{index}}]"
-		data-ng-model="addressesModel[index].postcode"
-		ui-br-cep-mask
-		required>
-	<div
-		data-ng-messages="form['address_postcode['+index+']'].$error"
-		data-ng-if="form['address_postcode['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': form['address_postcode['+index+']'].$touched && form['address_postcode['+index+']'].$invalid }">
-
-        <p data-ng-message="required">{{'Cep obrigatório'|translate}}.</p>
-        <p data-ng-message="cep">{{'Cep inválido'|translate}}.</p>
-    </div>
-
-	{{'Estado'|translate}} (ver angular-input-dropdown):
-	<select
-		name="address_state[{{index}}]"
-		data-ng-model="addressesModel[index].state"
-		data-ng-change="stateSelectChange(addressesModel[index].state)"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-		<option data-ng-hide="statesLoad">{{'Carregando'|translate}}...</option>
-		<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
-	</select>
-
-	<div
-		data-ng-messages="form['address_state['+index+']'].$error"
-		data-ng-if="form['address_state['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': form['address_state['+index+']'].$touched && form['address_state['+index+']'].$invalid }">
-
-        <p data-ng-message="required">{{'Escolha o estado'|translate}}.</p>
-    </div>
-
-	{{'Cidade'|translate}}:
-	<select
-		name="address_city[{{index}}]"
-		data-ng-model="addressesModel[index].city"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-		<option data-ng-hide="stateIsSelected">{{'Selecione um estado'|translate}}!</option>
-		<option data-ng-hide="citiesLoad || !stateIsSelected">{{'Carregando'|translate}}...</option>
-		<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
-	</select>
-
-	<div
-		data-ng-messages="form['address_city['+index+']'].$error"
-		data-ng-if="form['address_city['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': form['address_city['+index+']'].$touched && form['address_city['+index+']'].$invalid }">
-
-        <p data-ng-message="required">{{'Escolha a cidade'|translate}}.</p>
-    </div>
-
-	{{'Bairro'|translate}}:
-	<input
-		type="text"
-		name="address_neighborhood[{{index}}]"
-		data-ng-model="addressesModel[index].neighborhood"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-	<div
-		data-ng-messages="form['address_neighborhood['+index+']'].$error"
-		data-ng-if="form['address_neighborhood['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': form['address_neighborhood['+index+']'].$touched && form['address_neighborhood['+index+']'].$invalid }">
-
-        <p data-ng-message="required">{{'Bairro obrigatório'|translate}}.</p>
-    </div>
-
-	{{'Logradouro'|translate}}:
-	<input
-		type="text"
-		name="address_address1[{{index}}]"
-		data-ng-model="addressesModel[index].address1"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-	<div
-		data-ng-messages="form['address_address1['+index+']'].$error"
-		data-ng-if="form['address_address1['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': form['address_address1['+index+']'].$touched && form['address_address1['+index+']'].$invalid }">
-
-        <p data-ng-message="required">{{'Logradouro obrigatório'|translate}}.</p>
-    </div>
-
-	{{'Complemento'|translate}}:
-	<input
-		type="text"
-		name="address_address2[{{index}}]"
-		data-ng-model="addressesModel[index].address2">
-
-	{{'Número'|translate}}:
-	<input
-		type="number"
-		name="address_number[{{index}}]"
-		data-ng-model="addressesModel[index].number"
-		required>
-	<div
-		data-ng-messages="form['address_number['+index+']'].$error"
-		data-ng-if="form['address_number['+index+']'].$touched"
-		data-ng-class="{ 'form-has-error': form['address_number['+index+']'].$touched && form['address_number['+index+']'].$invalid }">
-
-        <p data-ng-message="required">{{'Número obrigatório'|translate}}.</p>
-    </div>
-
-	<button ng-click="removeElement()" class="button alert">{{'Remover'|translate}}</button>
+<div>
+	<h3>{{'Endereço'|translate}} {{index+1}}</h3>
+
+	{{'Cep'|translate}}:
+	<input
+		type="text"
+		name="address_postcode[{{index}}]"
+		data-ng-model="addressesModel[index].postcode"
+		ui-br-cep-mask
+		required>
+	<div
+		data-ng-messages="form['address_postcode['+index+']'].$error"
+		data-ng-if="form['address_postcode['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['address_postcode['+index+']'].$touched && form['address_postcode['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Cep obrigatório'|translate}}.</p>
+        <p data-ng-message="cep">{{'Cep inválido'|translate}}.</p>
+    </div>
+
+	{{'Estado'|translate}} (ver angular-input-dropdown):
+	<select
+		name="address_state[{{index}}]"
+		data-ng-model="addressesModel[index].state"
+		data-ng-change="stateSelectChange(addressesModel[index].state)"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+		<option data-ng-hide="statesLoad">{{'Carregando'|translate}}...</option>
+		<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
+	</select>
+
+	<div
+		data-ng-messages="form['address_state['+index+']'].$error"
+		data-ng-if="form['address_state['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['address_state['+index+']'].$touched && form['address_state['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Escolha o estado'|translate}}.</p>
+    </div>
+
+	{{'Cidade'|translate}}:
+	<select
+		name="address_city[{{index}}]"
+		data-ng-model="addressesModel[index].city"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+		<option data-ng-hide="stateIsSelected">{{'Selecione um estado'|translate}}!</option>
+		<option data-ng-hide="citiesLoad || !stateIsSelected">{{'Carregando'|translate}}...</option>
+		<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
+	</select>
+
+	<div
+		data-ng-messages="form['address_city['+index+']'].$error"
+		data-ng-if="form['address_city['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['address_city['+index+']'].$touched && form['address_city['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Escolha a cidade'|translate}}.</p>
+    </div>
+
+	{{'Bairro'|translate}}:
+	<input
+		type="text"
+		name="address_neighborhood[{{index}}]"
+		data-ng-model="addressesModel[index].neighborhood"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+	<div
+		data-ng-messages="form['address_neighborhood['+index+']'].$error"
+		data-ng-if="form['address_neighborhood['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['address_neighborhood['+index+']'].$touched && form['address_neighborhood['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Bairro obrigatório'|translate}}.</p>
+    </div>
+
+	{{'Logradouro'|translate}}:
+	<input
+		type="text"
+		name="address_address1[{{index}}]"
+		data-ng-model="addressesModel[index].address1"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+	<div
+		data-ng-messages="form['address_address1['+index+']'].$error"
+		data-ng-if="form['address_address1['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['address_address1['+index+']'].$touched && form['address_address1['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Logradouro obrigatório'|translate}}.</p>
+    </div>
+
+	{{'Complemento'|translate}}:
+	<input
+		type="text"
+		name="address_address2[{{index}}]"
+		data-ng-model="addressesModel[index].address2">
+
+	{{'Número'|translate}}:
+	<input
+		type="number"
+		name="address_number[{{index}}]"
+		data-ng-model="addressesModel[index].number"
+		required>
+	<div
+		data-ng-messages="form['address_number['+index+']'].$error"
+		data-ng-if="form['address_number['+index+']'].$touched"
+		data-ng-class="{ 'form-has-error': form['address_number['+index+']'].$touched && form['address_number['+index+']'].$invalid }">
+
+        <p data-ng-message="required">{{'Número obrigatório'|translate}}.</p>
+    </div>
+
+	<button ng-click="removeElement()" class="button alert">{{'Remover'|translate}}</button>
 </div>

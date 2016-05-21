@@ -1,57 +1,57 @@
-<div
-	class="well well-lg bs-loading-container"
-    bs-loading-overlay
-    bs-loading-overlay-reference-id="loadProducts"
-    bs-loading-overlay-template-url="template/loading-overlay/loading-overlay-template.html">
-
-	<table st-safe-src="featuresCollection" st-table="displayedCollection" st-set-filter="genericFilter" class="table table-striped">
-		<thead>
-			<tr>
-				<th>Característica</th>
-				<th>Valor</th>
-			</tr>
-			<tr>
-				<th colspan="2">
-	                <input st-search="value" placeholder="Buscar Valor" class="input-sm form-control" type="search"/>
-	            </th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in displayedCollection">
-				<td>{{row.group.name}}</td>
-				<td>{{row.value}}</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-	
-	<button ng-click="getSelectedFeatures()">Capturar Características</button>
-</div>
-<!--
-<table st-table="rowCollection" class="table">
-	<thead>
-	<tr>
-		<th st-sort="firstName">first name</th>
-		<th st-sort="lastName">last name</th>
-		<th st-sort="birthDate">birth date</th>
-		<th st-sort="balance">balance</th>
-		<th>email</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowCollection">
-		<td>{{row.firstName | uppercase}}</td>
-		<td>{{row.lastName}}</td>
-		<td>{{row.birthDate | date}}</td>
-		<td>{{row.balance | currency}}</td>
-		<td><a ng-href="mailto:{{row.email}}">email</a></td>
-	</tr>
-	</tbody>
-</table>
--->
+<div
+	class="well well-lg bs-loading-container"
+    bs-loading-overlay
+    bs-loading-overlay-reference-id="loadProducts"
+    bs-loading-overlay-template-url="template/loading-overlay/loading-overlay-template.html">
+
+	<table st-safe-src="featuresCollection" st-table="displayedCollection" st-set-filter="genericFilter" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Característica</th>
+				<th>Valor</th>
+			</tr>
+			<tr>
+				<th colspan="2">
+	                <input st-search="value" placeholder="Buscar Valor" class="input-sm form-control" type="search"/>
+	            </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in displayedCollection">
+				<td>{{row.group.name}}</td>
+				<td>{{row.value}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+	<button ng-click="getSelectedFeatures()">Capturar Características</button>
+</div>
+<!--
+<table st-table="rowCollection" class="table">
+	<thead>
+	<tr>
+		<th st-sort="firstName">first name</th>
+		<th st-sort="lastName">last name</th>
+		<th st-sort="birthDate">birth date</th>
+		<th st-sort="balance">balance</th>
+		<th>email</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowCollection">
+		<td>{{row.firstName | uppercase}}</td>
+		<td>{{row.lastName}}</td>
+		<td>{{row.birthDate | date}}</td>
+		<td>{{row.balance | currency}}</td>
+		<td><a ng-href="mailto:{{row.email}}">email</a></td>
+	</tr>
+	</tbody>
+</table>
+-->

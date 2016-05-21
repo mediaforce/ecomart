@@ -1,9 +1,7 @@
 <?php
 namespace R2Erp\Entity\Order\Sale;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_erp_sale_sales")
@@ -18,50 +16,41 @@ class Sale {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Order\Sale\Order", mappedBy="sales")
 	 **/
 	private $saleOrder;
-	 
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Order\Store\Store")
 	 * @ORM\JoinColumn(name="store_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $store;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Order\Store\ComboStore")
 	 * @ORM\JoinColumn(name="combo_store_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $comboStore;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="quantity", type="float", nullable=false)
 	 */
 	private $quantity;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="unit_price", type="decimal", precision=8, scale=2, nullable=false)
 	 */
 	private $unitPrice;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="total_price", type="decimal", precision=8, scale=2, nullable=false)
 	 */
 	private $totalPrice;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
@@ -69,7 +58,6 @@ class Sale {
 	{
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Sale
@@ -79,7 +67,6 @@ class Sale {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -87,7 +74,6 @@ class Sale {
 	{
 		return $this->store;
 	}
-
 	/**
 	 * @param mixed $store
 	 * @return Sale
@@ -97,7 +83,6 @@ class Sale {
 		$this->store = $store;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -105,7 +90,6 @@ class Sale {
 	{
 		return $this->comboStore;
 	}
-
 	/**
 	 * @param mixed $comboStore
 	 * @return Sale
@@ -115,7 +99,6 @@ class Sale {
 		$this->comboStore = $comboStore;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -123,7 +106,6 @@ class Sale {
 	{
 		return $this->quantity;
 	}
-
 	/**
 	 * @param string $quantity
 	 * @return Sale
@@ -133,7 +115,6 @@ class Sale {
 		$this->quantity = $quantity;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -141,7 +122,6 @@ class Sale {
 	{
 		return $this->unitPrice;
 	}
-
 	/**
 	 * @param string $unitPrice
 	 * @return Sale
@@ -151,7 +131,6 @@ class Sale {
 		$this->unitPrice = $unitPrice;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -159,7 +138,6 @@ class Sale {
 	{
 		return $this->totalPrice;
 	}
-
 	/**
 	 * @param string $totalPrice
 	 * @return Sale
@@ -169,10 +147,6 @@ class Sale {
 		$this->totalPrice = $totalPrice;
 		return $this;
 	}
-
-
-
-
     /**
      * Gets the value of saleOrder.
      *
@@ -182,7 +156,6 @@ class Sale {
     {
         return $this->saleOrder;
     }
-
     /**
      * Sets the value of saleOrder.
      *
@@ -193,7 +166,6 @@ class Sale {
     public function setSaleOrder($saleOrder)
     {
         $this->saleOrder = $saleOrder;
-
         return $this;
     }
 }

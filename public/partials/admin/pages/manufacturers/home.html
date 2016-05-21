@@ -1,32 +1,32 @@
-<div>
-	<h3 class-"r2-admin-page-title">Fabricantes</h3>
-
-	<a ng-click="new()" class="expanded button">Adicionar Novo Fabricante</a>
-	<table st-safe-src="manufacturersCollection" st-table="displayedCollection" class="table table-striped">
-		<thead>
-			<tr class="r2-title-line">
-				<th>Fabricante</th>
-				<th>Website</th>
-				<th>Editar</th>
-				<th>Excluir</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedCollection">
-				<td>{{row.company.companyName}}</td>
-				<td>{{row.company.website}}</td>
-				<td><a ng-click="edit(row)">Editar</a></td>
-				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-	
-
+<div>
+	<h3 class-"r2-admin-page-title">Fabricantes</h3>
+
+	<a ng-click="new()" class="expanded button">Adicionar Novo Fabricante</a>
+	<table st-safe-src="manufacturersCollection" st-table="displayedCollection" class="table table-striped">
+		<thead>
+			<tr class="r2-title-line">
+				<th>Fabricante</th>
+				<th>Website</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				<td>{{row.company.companyName}}</td>
+				<td>{{row.company.website}}</td>
+				<td><a ng-click="edit(row)">Editar</a></td>
+				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+
 </div>

@@ -1,36 +1,75 @@
-<div>
-	<form name="loginForm">
+<div ng-hide="enviandoEmail">
+
+	<form name="loginForm" ng-hide="enviandoEmai">
+
 		<label for="user_user" class="r2-label-float">
+
 			<br>
+
 			<input type="email" class="form-control" placeholder="E-mail de Acesso" id="user_user" name="user_user"
+
 			ng-model="user.user"
+
 			required
+
 			floating-validation/>
+
 		</label>
 
+
+
 		<label for="user_password" class="r2-label-float">
+
 			<br>
+
 			<input type="password" class="form-control" placeholder="Senha" id="user_password" name="user_password"
+
 			ng-model="user.password" required
+
 			floating-validation/>
+
 		</label>
+
+
 
 		
 
+
+
 		<div ng-show="senhaErrada">
+
 			<span class="icon-error"></span><span class="r2-error-message">Seu usuário ou senha estão errados.</span>
+
 		</div>
 
+
+
 		<button class="small expanded button" ng-click="login()" ng-disabled="loginForm.$invalid">LOGAR</button>
+
 		<br>
+
 		<button class="small expanded button" ng-click="forgotPassword()" ng-disabled="loginForm.user_user.$invalid">Esqueci Minha Senha</button>
+
+
 
 	</form>
 
+
+
 	<br>
 
+
+
 	<p>
+
 		Não é cadastrado ainda?<br>
+
 		<div><a class="small expanded secondary button" data-ui-sref="root.userregister" ng-click="closeThisDialog()">SE CADASTRE</a></div>
+
 	</p>
+
+</div>
+
+<div ng-show="enviandoEmail">
+	<p>Enviando e-mail. Aguarde...</p>
 </div>

@@ -19,7 +19,6 @@
         $this->headLink()->exchangeArray(array());
         ?>
         <!-- endbuild -->
-
         <!-- Main style -->
         <!-- build:css(public) /css/main.min.css -->
         <?php
@@ -29,7 +28,6 @@
         $this->headLink()->exchangeArray(array());
         ?>
         <!-- endbuild -->
-
         <!-- Third-Party styles -->
         <!-- build:css(public) /css/vendors.min.css -->
         <?php
@@ -47,7 +45,6 @@
         $this->headLink()->exchangeArray(array());
         ?>
         <!-- endbuild -->
-
         <!-- Plugins Scripts -->
         <!-- build:js(public) /js/plugins.min.js -->
         <?php
@@ -67,7 +64,7 @@
         ->prependFile($this->basePath('js/plugins/foundation/foundation.responsiveToggle.js'))
         ->prependFile($this->basePath('js/plugins/foundation/foundation.util.nest.js'))
         ->prependFile($this->basePath('js/plugins/foundation/foundation.util.keyboard.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.box.js'))  
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.box.js'))
         ->prependFile($this->basePath('js/plugins/foundation/foundation.util.mediaQuery.js'))
         ->prependFile($this->basePath('js/plugins/foundation/foundation.util.motion.js'))
         ->prependFile($this->basePath('js/plugins/foundation/foundation.util.triggers.js'))
@@ -79,8 +76,6 @@
         $this->headScript()->exchangeArray(array());
         ?>
         <!-- endbuild -->
-
-
         <!-- Scripts Condicionais  -->
         <?php
         $this->headScript()
@@ -89,14 +84,11 @@
         echo $this->headScript();
         $this->headScript()->exchangeArray(array());
         ?>
-
         <script src="https://www.youtube.com/iframe_api"></script>
-
         <script
-          src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
-          async defer
+        src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
+        async defer
         ></script>
-
         <!-- Angular & Resources Scripts -->
         <!-- build:js(public) /js/angular-and-resources.min.js -->
         <?php
@@ -127,31 +119,21 @@
         $this->headScript()->exchangeArray(array());
         ?>
         <!-- endbuild -->
-
     </head>
-
     <body data-foundation-init data-polyfiller-init id="layout-site" ng-cloak>
-
         <div id="loading-bar-container"></div>
-
         <!-- <div data-ng-cloak class="row">
             <div class="large-3 large-offset-9 columns"><div data-ng-translate-language-select></div></div>
         </div> -->
-
         <div data-ui-view="header"></div>
         <div data-ui-view="banner"></div>
         <div data-ui-view="sidebar_left"></div>
         <div data-ui-view="content"></div>
         <div data-ui-view="sidebar_right"></div>
         <div data-ui-view="footer"></div>
-
-
         <div data-ng-cloak data-ui-view="notification"></div>
-
-
         <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
         </script>
-
         <!-- R2TurismoApp Scripts -->
         <!-- build:js(public) /js/R2AdminApp.min.js -->
         <?php
@@ -193,9 +175,9 @@
         ->appendFile($this->basePath('js/app/site/controllers/LayoutControllers.js'))
         ->appendFile($this->basePath('js/app/site/controllers/UsersControllers.js'))
         ->appendFile($this->basePath('js/app/site/controllers/StoresControllers.js'))
-        ->appendFile($this->basePath('js/app/site/controllers/CheckoutControllers.js'))
+        ->appendFile($this->basePath('js/app/site/controllers/CheckoutControllers.js'));
         ?>
         <!-- endbuild -->
-   
+        
     </body>
 </html>

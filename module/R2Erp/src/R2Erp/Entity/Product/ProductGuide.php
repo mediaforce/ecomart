@@ -1,10 +1,7 @@
 <?php
-
 namespace R2Erp\Entity\Product;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_product_guides")
@@ -19,25 +16,21 @@ class ProductGuide {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="path", type="string", length=255, nullable=true)
 	 */
 	private $path;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Image
@@ -46,14 +39,12 @@ class ProductGuide {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getPath() {
 		return $this->path;
 	}
-
 	/**
 	 * @param string $path
 	 * @return Image
@@ -62,5 +53,4 @@ class ProductGuide {
 		$this->path = $path;
 		return $this;
 	}
-
 }

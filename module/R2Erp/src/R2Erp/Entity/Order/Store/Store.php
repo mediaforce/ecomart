@@ -1,9 +1,7 @@
 <?php
 namespace R2Erp\Entity\Order\Store;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_erp_product_stores")
@@ -19,48 +17,41 @@ class Store {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Erp\Entity\Product\Product", inversedBy="store")
 	 * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
 	 */
 	private $product;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="quantity", type="float", nullable=true)
 	 */
 	private $quantity;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="minimal_qtde_on_stock", type="float", nullable=true)
 	 */
 	private $minimalQtdeOnStock;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="unit_cost", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $unitCost;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="unit_price", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $unitPrice;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="unit_discount_price", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $unitDiscountPrice;
-
 	/**
 	 * If value is true to sell with the discount price
 	 * @var Boolean
@@ -68,40 +59,34 @@ class Store {
 	 * @ORM\Column(name="sell_discount_price", type="boolean", nullable=true)
 	 */
 	private $sellDiscountPrice;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="sell_no_shipping", type="boolean", nullable=true)
 	 */
 	private $sellNoShipping;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="to_sell", type="boolean", nullable=true)
 	 */
 	private $toSell;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated_at", type="datetime", nullable=false)
 	 */
 	private $updatedAt;
-
 	public function __construct(array $options = array()) {
 		$this->updatedAt = new \DateTime("now");
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Store
@@ -110,14 +95,12 @@ class Store {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getProduct() {
 		return $this->product;
 	}
-
 	/**
 	 * @param mixed $product
 	 * @return Store
@@ -126,14 +109,12 @@ class Store {
 		$this->product = $product;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getQuantity() {
 		return $this->quantity;
 	}
-
 	/**
 	 * @param string $quantity
 	 * @return Store
@@ -142,14 +123,12 @@ class Store {
 		$this->quantity = $quantity;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getMinimalQtdeOnStock() {
 		return $this->minimalQtdeOnStock;
 	}
-
 	/**
 	 * @param string $minimalQtdeOnStock
 	 * @return Store
@@ -158,14 +137,12 @@ class Store {
 		$this->minimalQtdeOnStock = $minimalQtdeOnStock;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getInventory() {
 		return $this->inventory;
 	}
-
 	/**
 	 * @param mixed $inventory
 	 * @return Store
@@ -174,14 +151,12 @@ class Store {
 		$this->inventory = $inventory;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getUnitCost() {
 		return $this->unitCost;
 	}
-
 	/**
 	 * @param string $unitCost
 	 * @return Store
@@ -190,14 +165,12 @@ class Store {
 		$this->unitCost = $unitCost;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getUnitPrice() {
 		return $this->unitPrice;
 	}
-
 	/**
 	 * @param string $unitPrice
 	 * @return Store
@@ -206,14 +179,12 @@ class Store {
 		$this->unitPrice = $unitPrice;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getUnitDiscountPrice() {
 		return $this->unitDiscountPrice;
 	}
-
 	/**
 	 * @param string $unitDiscountPrice
 	 * @return Store
@@ -222,14 +193,12 @@ class Store {
 		$this->unitDiscountPrice = $unitDiscountPrice;
 		return $this;
 	}
-
 	/**
 	 * @return boolean
 	 */
 	public function isSellDiscountPrice() {
 		return $this->sellDiscountPrice;
 	}
-
 	/**
 	 * @param boolean $sellDiscountPrice
 	 * @return Store
@@ -238,7 +207,6 @@ class Store {
 		$this->sellDiscountPrice = $sellDiscountPrice;
 		return $this;
 	}
-
 	/**
      * Gets the value of sellNoShipping.
      *
@@ -248,7 +216,6 @@ class Store {
     {
         return $this->sellNoShipping;
     }
-
     /**
      * Sets the value of sellNoShipping.
      *
@@ -259,17 +226,14 @@ class Store {
     public function setSellNoShipping($sellNoShipping)
     {
         $this->sellNoShipping = $sellNoShipping;
-
         return $this;
     }
-
 	/**
 	 * @return string
 	 */
 	public function getToSell() {
 		return $this->toSell;
 	}
-
 	/**
 	 * @param string $storeStatus
 	 * @return Store
@@ -278,7 +242,6 @@ class Store {
 		$this->toSell = $toSell;
 		return $this;
 	}
-
 	/**
 	 * Gets the value of updatedAt.
 	 *
@@ -287,7 +250,6 @@ class Store {
 	public function getUpdatedAt() {
 		return $this->updatedAt;
 	}
-
 	/**
 	 * Sets the value of updatedAt.
 	 *
@@ -299,8 +261,6 @@ class Store {
 	 */
 	public function setUpdatedAt() {
 		$this->updatedAt = new \Datetime("now");
-
 		return $this;
 	}
-
 }

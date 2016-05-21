@@ -1,12 +1,10 @@
 <?php
 namespace R2Base\Entity;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use R2Base\Entity\Strategy\MultiAssocStrategy;
 use R2Base\Enum\Gender;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_base_people")
@@ -23,48 +21,41 @@ class Person {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="name", type="string", length=255, nullable=true)
 	 */
 	private $name;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="surname", type="string", length=255, nullable=true)
 	 */
 	private $surname;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="gender", type="string", length=10, nullable=true)
 	 */
 	private $gender;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="nationality", type="string", length=50, nullable=true)
 	 */
 	private $nationality;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="birth_date", type="datetime", nullable=true)
 	 */
 	private $birthDate;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Base\Entity\Image")
 	 * @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $image;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Document", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_base_person_documents",
@@ -73,7 +64,6 @@ class Person {
 	 *      )
 	 **/
 	private $documents;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\SocialNetwork", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_base_person_social_networks",
@@ -82,7 +72,6 @@ class Person {
 	 *      )
 	 **/
 	private $socialNetworks;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Email", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_base_person_emails",
@@ -91,7 +80,6 @@ class Person {
 	 *      )
 	 **/
 	private $emails;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Telephone", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_base_person_telephones",
@@ -100,7 +88,6 @@ class Person {
 	 *      )
 	 **/
 	private $telephones;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\CreditCard", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_base_person_credit_cards",
@@ -109,7 +96,6 @@ class Person {
 	 *      )
 	 **/
 	private $creditCards;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Base\Entity\Address", cascade={"persist", "remove"})
 	 * @ORM\JoinTable(name="r2_base_person_address",
@@ -118,58 +104,47 @@ class Person {
 	 *      )
 	 **/
 	private $addresses;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="descricao", type="text", nullable=true)
 	 */
 	private $description;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created_at", type="datetime", nullable=false)
 	 */
 	private $createdAt;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated_at", type="datetime", nullable=false)
 	 */
 	private $updatedAt;
-
 	public function __construct(array $options = array()) {
-
 		$this->documents = new ArrayCollection();
 		$this->socialNetworks = new ArrayCollection();
 		$this->emails = new ArrayCollection();
 		$this->telephones = new ArrayCollection();
 		$this->creditCards = new ArrayCollection();
 		$this->addresses = new ArrayCollection();
-
 		$this->createdAt = new \DateTime("now");
 		$this->updatedAt = new \DateTime("now");
-
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
-
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getName() {
 		return $this->name;
 	}
-
 	/**
 	 * @param string $name
 	 * @return Person
@@ -178,14 +153,12 @@ class Person {
 		$this->name = $name;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getSurname() {
 		return $this->surname;
 	}
-
 	/**
 	 * @param string $surname
 	 * @return Person
@@ -194,14 +167,12 @@ class Person {
 		$this->surname = $surname;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getGender() {
 		return $this->gender;
 	}
-
 	/**
 	 * @param string $gender
 	 * @return Person
@@ -210,14 +181,12 @@ class Person {
 		$this->gender = $gender->value();
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getNationality() {
 		return $this->nationality;
 	}
-
 	/**
 	 * @param string $nationality
 	 * @return Person
@@ -226,14 +195,12 @@ class Person {
 		$this->nationality = $nationality;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
 	public function getBirthDate() {
 		return $this->birthDate;
 	}
-
 	/**
 	 * @param \DateTime $birthDate
 	 * @return Person
@@ -242,14 +209,12 @@ class Person {
 		$this->birthDate = $birthDate;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getImage() {
 		return $this->image;
 	}
-
 	/**
 	 * @param mixed $photo
 	 * @return Person
@@ -258,14 +223,12 @@ class Person {
 		$this->image = $image;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getDocuments() {
 		return $this->documents;
 	}
-
 	/**
 	 * @param mixed $documents
 	 * @return Person
@@ -274,7 +237,6 @@ class Person {
 		$this->documents = $documents;
 		return $this;
 	}
-
 	/**
 	 * Sets the value of documentos.
 	 *
@@ -284,17 +246,14 @@ class Person {
 	 */
 	public function addDocument(Document $document) {
 		$this->documents->add($document);
-
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getSocialNetworks() {
 		return $this->socialNetworks;
 	}
-
 	/**
 	 * @param mixed $socialNetworks
 	 * @return Person
@@ -303,7 +262,6 @@ class Person {
 		$this->socialNetworks = $socialNetworks;
 		return $this;
 	}
-
 	/**
 	 * Sets the value of socialNetworks.
 	 *
@@ -313,10 +271,8 @@ class Person {
 	 */
 	public function addSocialNetwork(SocialNetwork $socialNetwork) {
 		$this->socialNetworks->add($socialNetwork);
-
 		return $this;
 	}
-
 	/**
 	 * Gets the value of emails.
 	 *
@@ -325,7 +281,6 @@ class Person {
 	public function getEmails() {
 		return $this->emails;
 	}
-
 	/**
 	 * Sets the value of emails.
 	 *
@@ -335,10 +290,8 @@ class Person {
 	 */
 	public function setEmails(ArrayCollection $emails) {
 		$this->emails = $emails;
-
 		return $this;
 	}
-
 	/**
 	 * Sets the value of emails.
 	 *
@@ -348,17 +301,14 @@ class Person {
 	 */
 	public function addEmail(Email $email) {
 		$this->emails->add($email);
-
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getTelephones() {
 		return $this->telephones;
 	}
-
 	/**
 	 * @param mixed $telephones
 	 * @return Person
@@ -367,7 +317,6 @@ class Person {
 		$this->telephones = $telephones;
 		return $this;
 	}
-
 	/**
 	 * Sets the value of telephones.
 	 *
@@ -377,17 +326,14 @@ class Person {
 	 */
 	public function addTelephone(Telephone $telephone) {
 		$this->telephones->add($telephone);
-
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getCreditCards() {
 		return $this->creditCards;
 	}
-
 	/**
 	 * @param mixed $creditCards
 	 * @return Person
@@ -396,7 +342,6 @@ class Person {
 		$this->creditCards = $creditCards;
 		return $this;
 	}
-
 	/**
 	 * Sets the value of creditCards.
 	 *
@@ -406,17 +351,14 @@ class Person {
 	 */
 	public function addCreditCard(CreditCard $creditCard) {
 		$this->creditCards->add($creditCard);
-
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getAddresses() {
 		return $this->addresses;
 	}
-
 	/**
 	 * @param mixed $addresses
 	 * @return Person
@@ -425,7 +367,6 @@ class Person {
 		$this->addresses = $addresses;
 		return $this;
 	}
-
 	/**
 	 * Sets the value of enderecos.
 	 *
@@ -435,17 +376,14 @@ class Person {
 	 */
 	public function addAddress(Address $address) {
 		$this->addresses->add($address);
-
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
 	public function getDescription() {
 		return $this->description;
 	}
-
 	/**
 	 * @param string $description
 	 * @return Person
@@ -454,7 +392,6 @@ class Person {
 		$this->description = $description;
 		return $this;
 	}
-
 	/**
 	 * Gets the value of createdAt.
 	 *
@@ -463,7 +400,6 @@ class Person {
 	public function getCreatedAt() {
 		return $this->createdAt;
 	}
-
 	/**
 	 * Gets the value of updatedAt.
 	 *
@@ -472,7 +408,6 @@ class Person {
 	public function getUpdatedAt() {
 		return $this->updatedAt;
 	}
-
 	/**
 	 * Sets the value of updatedAt.
 	 *
@@ -484,20 +419,16 @@ class Person {
 	 */
 	public function setUpdatedAt() {
 		$this->updatedAt = new \Datetime("now");
-
 		return $this;
 	}
-
 	public function toArray() {
 		$person = (new Hydrator\ClassMethods())->extract($this);
-
 		$person['addresses'] = (new MultiAssocStrategy())->extract($person['addresses']);
 		$person['social_networks'] = (new MultiAssocStrategy())->extract($person['social_networks']);
 		$person['documents'] = (new MultiAssocStrategy())->extract($person['documents']);
 		$person['credit_cards'] = (new MultiAssocStrategy())->extract($person['credit_cards']);
 		$person['emails'] = (new MultiAssocStrategy())->extract($person['emails']);
 		$person['telephones'] = (new MultiAssocStrategy())->extract($person['telephones']);
-
 		return $person;
 	}
 }

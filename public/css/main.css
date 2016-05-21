@@ -698,7 +698,7 @@ select {
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb%28138, 138, 138%29"></polygon></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="https://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb%28138, 138, 138%29"></polygon></svg>');
   background-size: 9px 6px;
   background-position: right center;
   background-origin: content-box;
@@ -2429,7 +2429,7 @@ select {
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb%28138, 138, 138%29"></polygon></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="https://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb%28138, 138, 138%29"></polygon></svg>');
   background-size: 9px 6px;
   background-position: right center;
   background-origin: content-box;
@@ -5776,7 +5776,7 @@ a.r2-veja-mais {
 /* line 703, ../sass/main.scss */
 #r2-category-menu .r2-submenu {
   width: 580px;
-  height: 340px;
+  height: 440px;
   position: absolute;
   z-index: 9999;
   left: 0;
@@ -5793,8 +5793,8 @@ a.r2-veja-mais {
   bottom: 0;
   margin-left: -46px;
   border-radius: 10px;
-  width: 580px;
-  height: 340px;
+  width: 580px;  
+  /*height: 340px;*/
   border: none;
   box-shadow: -2px 2px 10px grey;
 }
@@ -5916,16 +5916,18 @@ a.r2-veja-mais {
   min-height: 120px !important;
 }
 
-/* line 832, ../sass/main.scss */
-.r2-product-image {
+/* line 832, ../sass/main.scss */.r2-product-image {
   padding: 10px;
   overflow: hidden !important;
   border: 1px solid white !important;
   border: 1px solid lightgrey;
   box-shadow: 0px 0px 1px lightgrey;
   position: relative;
-  height: 260px;
+  max-width: 260px;
+  max-height: 260px;
+  margin: auto;
 }
+
 /* line 841, ../sass/main.scss */
 .r2-product-image img {
   position: absolute;
@@ -6612,7 +6614,7 @@ r2-sublabel-float {
 .r2-product-box .r2-product-plus-btn {
   position: absolute;
   height: 40px;
-  width: 40px;
+  width: 120px;    padding: 6px;
   -webkit-border-top-left-radius: 100px;
   -moz-border-radius-topleft: 100px;
   border-top-left-radius: 100px;
@@ -6673,15 +6675,13 @@ r2-sublabel-float {
 /* line 1493, ../sass/main.scss */
 .r2-product-box:hover .r2-product-plus-btn:hover {
   cursor: pointer;
-  width: 120px !important;
-  padding: 6px;
-  -webkit-transition: width 0.5s ease-in-out;
+/*  padding: 6px;  width: 120px !important;  -webkit-transition: width 0.5s ease-in-out;
   -moz-transition: width 0.5s ease-in-out;
   -o-transition: width 0.5s ease-in-out;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;*/
 }
 /* line 1502, ../sass/main.scss */
-.r2-product-box:hover .r2-product-plus-btn:hover::after {
+.r2-product-box .r2-product-plus-btn::after {
   content: "Detalhes";
   margin-left: 28px;
   line-height: 30px;
@@ -6748,7 +6748,7 @@ r2-sublabel-float {
   width: 150px;
   height: 30px !important;
   background: red;
-  background-image: url("http://fifthgroup.com/wp-content/uploads/2014/06/five-stars.png");
+  background-image: url("https://www.itsroundanditswhite.co.uk/wp-content/uploads/2012/01/5-stars.jpg");
   background-size: 100% 100%;
 }
 
@@ -6857,7 +6857,16 @@ r2-sublabel-float {
 }
 /* line 1670, ../sass/main.scss */
 .r2-category-menu a:hover {
-  color: #76b3ac;
+  color: #76b3ac;.r2-site-seguro {
+  background-image: url("/img/icon-site-seguro-topo.png");
+  margin-left: 50%;
+  background-size: 80% 100%;
+  background-repeat: no-repeat;
+  width: 50%;
+  max-width: 240px;
+  height: 80px;
+  margin-top: -70px;
+}
 }
 
 /* line 1676, ../sass/main.scss */
@@ -6867,15 +6876,7 @@ r2-sublabel-float {
 }
 
 /* line 1680, ../sass/main.scss */
-.r2-site-seguro {
-  background-image: url("/img/icon-site-seguro-topo.png");
-  margin-left: 50%;
-  background-size: 80% 100%;
-  background-repeat: no-repeat;
-  width: 50%;
-  height: 80px;
-  margin-top: -70px;
-}
+
 
 /* line 1690, ../sass/main.scss */
 .title-bar-right a {
@@ -7776,4 +7777,32 @@ meta.foundation-data-attribute-namespace {
   border: 1px solid lightgrey;
   overflow: hidden;
   min-height: 640px;
+}
+
+
+
+
+
+
+
+.r2-box-menu {
+  position: relative;
+  width: 100%;
+}
+
+.r2-veja-mais {
+  position: absolute;
+  width: 100px;
+  left: 0;
+  top: 410px;
+}
+
+
+.r2-category-responsive-menu ul {
+  list-style: none;
+  
+}
+
+.r2-category-responsive-menu ul li {
+  border-top: 1px solid lightgrey;
 }

@@ -1,38 +1,38 @@
-<div>
-	<h3 class-"r2-admin-page-title">Usuários</h3>
-
-	<table id="customers-table" st-safe-src="usersCollection" st-table="displayedUsersCollection" class="table table-striped">
-		<thead>
-			<tr  class="r2-title-line">
-				<th>Usuário</th>
-				<th>Nome</th>
-				<th>Grupo</th>
-				<th>Ver Detalhes</th>				
-				<th>Ativo</th>
-				<th>Atualizar</th>
-				<th>Excluir</th>
-			</tr>
-			<tr>
-
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedUsersCollection">
-				<td>{{row.user}}</td>
-				<td>{{row.person.name}}</td>
-				<td>{{row.role.name}}</td>
-				<td><button ng-click="gotoCustomer(row)">Ver Detalhes</button></td>
-				<td>{{row.active ? 'SIM' : 'NÃO'}}</td>				
-				<td><a data-ui-sref="">Editar</a></td>
-				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="6" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+<div>
+	<h3 class-"r2-admin-page-title">Usuários</h3>
+
+	<table id="customers-table" st-safe-src="usersCollection" st-table="displayedUsersCollection" class="table table-striped">
+		<thead>
+			<tr  class="r2-title-line">
+				<th>Usuário</th>
+				<th>Nome</th>
+				<th>Grupo</th>
+				<th>Ver Detalhes</th>				
+				<th>Ativo</th>
+				<th>Atualizar</th>
+				<th>Excluir</th>
+			</tr>
+			<tr>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedUsersCollection">
+				<td>{{row.user}}</td>
+				<td>{{row.person.name}}</td>
+				<td>{{row.role.name}}</td>
+				<td><button ng-click="gotoCustomer(row)">Ver Detalhes</button></td>
+				<td>{{row.active ? 'SIM' : 'NÃO'}}</td>				
+				<td><a data-ui-sref="">Editar</a></td>
+				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="6" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </div>

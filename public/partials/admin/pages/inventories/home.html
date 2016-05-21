@@ -1,112 +1,112 @@
-<div>
-	
-	<h3 class-"r2-admin-page-title">Estoque</h3>
-
-	<a class="button expanded">Atualizar Status de Venda</a>
-
-	<table id="r2-table-store" st-safe-src="storesCollection" st-set-filter="genericStoreFilter" st-table="displayedStoresCollection" class="table table-striped table-scroll scroll">
-		<thead>
-			<tr class="r2-title-line">
-				<th style="display:none"></th>
-				<th st-sort="product.id">Código</th>
-				<th st-sort="product.reference">Referência</th>
-				<th st-sort="product.title">Produto</th>
-				<th st-sort="quantity">Qtde</th>
-				<th st-sort="minimalQtdeOnStock">Qtde Mínima</th>
-				<th st-sort="unitCost">Custo</th>
-				<th st-sort="unitPrice">Preço Venda</th>
-				<th st-sort="unitDiscountPrice">Preço Desconto</th>
-				<th st-sort="sellDiscountPrice">Vender c/ Desconto</th>
-				<th st-sort="qtdeVendida">Qtde. Vendida</th>
-				<th st-sort="qtdeRestante">Qtde. Restante</th>
-				<th st-sort="toSell">Em vendas</th>
-				<th st-sort="product.createdAt">Data de Cadastro</th>
-				<th st-sort="updatedAt">Data de Atualização</th>
-				
-			</tr>
-
-			<tr>
-				<th>
-					<input st-search="product.id" placeholder="Código" class="input-sm form-control" type="search"/>
-				</th>
-				<th>
-	                <input st-search="product.reference" placeholder="Refer." class="input-sm form-control" type="search"/>
-	            </th>
-	            <th>
-	            	<input st-search="product.title" placeholder="Título do Produto" class="input-sm form-control" type="search"/>
-	            </th>
-	            <th>
-		            <input st-search="quantity" placeholder="Quantidade" class="input-sm form-control" type="search"/>
-	            </th>
-
-				<th></th>
-				<th></th>
-	            <th>
-	            	<label for="">
-	            		Preço Mínimo
-	            		<input st-search="precoMin" placeholder="Preço Mínimo" class="input-sm form-control" type="search"/>
-	            	</label>
-	            	<label for="">
-	            		Preço Máximo
-	            		<input st-search="precoMax" placeholder="Preço Máximo" class="input-sm form-control" type="search"/>
-	            	</label>
-	            </th>
-
-	            <th>
-	            	<label for="">
-	            		Desconto Mínimo
-	            		<input st-search="descontoMim" placeholder="Preço Mínimo" class="input-sm form-control" type="search"/>
-	            	</label>
-	            	<label for="">
-	            		Desconto Máximo
-	            		<input st-search="descontoMax" placeholder="Preço Máximo" class="input-sm form-control" type="search"/>
-	            	</label>
-	            </th>
-
-	            <th></th>
-	            <th></th>
-	            <th></th>
-	            <th></th>
-
-	            <th>
-	            	
-	            </th>
-
-	            <th></th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedStoresCollection">
-				<td style="display:none" ng-class="{'r2-qtde-no-stock': row.qtdeRestante < 1, 'r2-qtde-minimal-reach': row.qtdeRestante < row.minimalQtdeOnStock}"></td>
-				<td>{{row.product.id}}</td>
-				<td>{{row.product.reference}}</td>
-				<td>{{row.product.title}}</td>
-				<td>{{row.quantity}}</td>
-				<td>{{row.minimalQtdeOnStock}}</td>
-				<td>{{row.unitCost | currency}}</td>
-				<td>{{row.unitPrice | currency}}</td>
-				<td>{{row.unitDiscountPrice | currency}}</td>
-				<td>{{row.sellDiscountPrice ? 'SIM' : 'NÃO'}}</td>
-				<td>{{row.qtdeVendida}}</td>
-				<td>{{row.qtdeRestante}}</td>
-				<td>{{row.toSell ? 'SIM' : 'NÃO'}}</td>
-				<td>{{row.product.createdAt | date:'shortDate'}}</td>
-				<td>{{row.updatedAt | date:'shortDate'}}</td>
-				
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="14" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
-	<h4 class-"r2-admin-page-subtitle subheader">Combos Vendidos</h4>
-	<a class="button expanded">Atualizar Status de Venda</a>
-
-</div>
-
+<div>
+	
+	<h3 class-"r2-admin-page-title">Estoque</h3>
+
+	<a class="button expanded">Atualizar Status de Venda</a>
+
+	<table id="r2-table-store" st-safe-src="storesCollection" st-set-filter="genericStoreFilter" st-table="displayedStoresCollection" class="table table-striped table-scroll scroll">
+		<thead>
+			<tr class="r2-title-line">
+				<th style="display:none"></th>
+				<th st-sort="product.id">Código</th>
+				<th st-sort="product.reference">Referência</th>
+				<th st-sort="product.title">Produto</th>
+				<th st-sort="quantity">Qtde</th>
+				<th st-sort="minimalQtdeOnStock">Qtde Mínima</th>
+				<th st-sort="unitCost">Custo</th>
+				<th st-sort="unitPrice">Preço Venda</th>
+				<th st-sort="unitDiscountPrice">Preço Desconto</th>
+				<th st-sort="sellDiscountPrice">Vender c/ Desconto</th>
+				<th st-sort="qtdeVendida">Qtde. Vendida</th>
+				<th st-sort="qtdeRestante">Qtde. Restante</th>
+				<th st-sort="toSell">Em vendas</th>
+				<th st-sort="product.createdAt">Data de Cadastro</th>
+				<th st-sort="updatedAt">Data de Atualização</th>
+				
+			</tr>
+
+			<tr>
+				<th>
+					<input st-search="product.id" placeholder="Código" class="input-sm form-control" type="search"/>
+				</th>
+				<th>
+	                <input st-search="product.reference" placeholder="Refer." class="input-sm form-control" type="search"/>
+	            </th>
+	            <th>
+	            	<input st-search="product.title" placeholder="Título do Produto" class="input-sm form-control" type="search"/>
+	            </th>
+	            <th>
+		            <input st-search="quantity" placeholder="Quantidade" class="input-sm form-control" type="search"/>
+	            </th>
+
+				<th></th>
+				<th></th>
+	            <th>
+	            	<label for="">
+	            		Preço Mínimo
+	            		<input st-search="precoMin" placeholder="Preço Mínimo" class="input-sm form-control" type="search"/>
+	            	</label>
+	            	<label for="">
+	            		Preço Máximo
+	            		<input st-search="precoMax" placeholder="Preço Máximo" class="input-sm form-control" type="search"/>
+	            	</label>
+	            </th>
+
+	            <th>
+	            	<label for="">
+	            		Desconto Mínimo
+	            		<input st-search="descontoMim" placeholder="Preço Mínimo" class="input-sm form-control" type="search"/>
+	            	</label>
+	            	<label for="">
+	            		Desconto Máximo
+	            		<input st-search="descontoMax" placeholder="Preço Máximo" class="input-sm form-control" type="search"/>
+	            	</label>
+	            </th>
+
+	            <th></th>
+	            <th></th>
+	            <th></th>
+	            <th></th>
+
+	            <th>
+	            	
+	            </th>
+
+	            <th></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedStoresCollection">
+				<td style="display:none" ng-class="{'r2-qtde-no-stock': row.qtdeRestante < 1, 'r2-qtde-minimal-reach': row.qtdeRestante < row.minimalQtdeOnStock}"></td>
+				<td>{{row.product.id}}</td>
+				<td>{{row.product.reference}}</td>
+				<td>{{row.product.title}}</td>
+				<td>{{row.quantity}}</td>
+				<td>{{row.minimalQtdeOnStock}}</td>
+				<td>{{row.unitCost | currency}}</td>
+				<td>{{row.unitPrice | currency}}</td>
+				<td>{{row.unitDiscountPrice | currency}}</td>
+				<td>{{row.sellDiscountPrice ? 'SIM' : 'NÃO'}}</td>
+				<td>{{row.qtdeVendida}}</td>
+				<td>{{row.qtdeRestante}}</td>
+				<td>{{row.toSell ? 'SIM' : 'NÃO'}}</td>
+				<td>{{row.product.createdAt | date:'shortDate'}}</td>
+				<td>{{row.updatedAt | date:'shortDate'}}</td>
+				
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="14" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<h4 class-"r2-admin-page-subtitle subheader">Combos Vendidos</h4>
+	<a class="button expanded">Atualizar Status de Venda</a>
+
+</div>
+

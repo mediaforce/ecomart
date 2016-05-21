@@ -1,64 +1,64 @@
-<div>
-	{{'Usuário (e-mail padrão)'|translate}} *:
-	<input
-		type="email"
-		name="access_user"
-		data-ng-model="userModel.user"
-		data-ng-minlength="8"
-		data-ng-maxlength="50"
-		data-ng-trim="true"
-		required>
-
-	<div
-		data-ng-messages="form.access_user.$error"
-		data-ng-if="form.access_user.$touched"
-		data-ng-class="{ 'form-has-error': form.access_user.$touched && form.access_user.$invalid }">
-        <p data-ng-message="minlength">{{'Nome do usuário é muito curto'|translate}}.</p>
-        <p data-ng-message="maxlength">{{'Nome do usuário é muito longo'|translate}}.</p>
-        <p data-ng-message="email">{{'Não é um e-mail válido'|translate}}.</p>
-        <p data-ng-message="required">{{'Nome do usuário é obrigatório'|translate}}.</p>
-        <p data-ng-message="unique">{{'Este usuário/email já está sendo utilizado!'|translate}}.</p>
-    </div>
-
-	<div ng-show="changePassword">
-		{{'Senha'|translate}} *:
-		<input
-			type="password"
-			name="access_password"
-			data-ng-model="userModel.password"
-			data-ng-minlength="6"
-			data-ng-maxlength="30"
-			data-ng-required="changePassword">
-
-		<div
-			data-ng-messages="form.access_password.$error"
-			data-ng-if="form.access_password.$touched"
-			data-ng-class="{ 'form-has-error': form.access_password.$touched && form.access_password.$invalid }">
-
-			        <p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
-			        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
-			        <p data-ng-message="required">{{'Senha é obrigatória'|translate}}.</p>
-			    </div>
-
-		{{'Confirme senha'|translate}} *:
-		<input
-			type="password"
-			name="access_confpassword"
-			data-ng-model="userModel.confpassword"
-			data-r2-compare-to="userModel.password" data-not-compare="{{!changePassword}}"
-			data-ng-required="changePassword">
-
-		<div
-			data-ng-messages="form.access_confpassword.$error"
-			data-ng-if="form.access_confpassword.$touched"
-			data-ng-class="{ 'form-has-error': form.access_confpassword.$touched && form.access_confpassword.$invalid }">
-			<p data-ng-message="compareTo">{{'Precisa ser o mesmo digitado no campo "Senha"'|translate}}.</p>
-		        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
-		    </div>
-	</div>
-
-	<div ng-hide="changePassword">
-		<button ng-click="showChangePassword()" class="button">Alterar Senha</button>
-	</div>
-
+<div>
+	{{'Usuário (e-mail padrão)'|translate}} *:
+	<input
+		type="email"
+		name="access_user"
+		data-ng-model="userModel.user"
+		data-ng-minlength="8"
+		data-ng-maxlength="50"
+		data-ng-trim="true"
+		required>
+
+	<div
+		data-ng-messages="form.access_user.$error"
+		data-ng-if="form.access_user.$touched"
+		data-ng-class="{ 'form-has-error': form.access_user.$touched && form.access_user.$invalid }">
+        <p data-ng-message="minlength">{{'Nome do usuário é muito curto'|translate}}.</p>
+        <p data-ng-message="maxlength">{{'Nome do usuário é muito longo'|translate}}.</p>
+        <p data-ng-message="email">{{'Não é um e-mail válido'|translate}}.</p>
+        <p data-ng-message="required">{{'Nome do usuário é obrigatório'|translate}}.</p>
+        <p data-ng-message="unique">{{'Este usuário/email já está sendo utilizado!'|translate}}.</p>
+    </div>
+
+	<div ng-show="changePassword">
+		{{'Senha'|translate}} *:
+		<input
+			type="password"
+			name="access_password"
+			data-ng-model="userModel.password"
+			data-ng-minlength="6"
+			data-ng-maxlength="30"
+			data-ng-required="changePassword">
+
+		<div
+			data-ng-messages="form.access_password.$error"
+			data-ng-if="form.access_password.$touched"
+			data-ng-class="{ 'form-has-error': form.access_password.$touched && form.access_password.$invalid }">
+
+			        <p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
+			        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
+			        <p data-ng-message="required">{{'Senha é obrigatória'|translate}}.</p>
+			    </div>
+
+		{{'Confirme senha'|translate}} *:
+		<input
+			type="password"
+			name="access_confpassword"
+			data-ng-model="userModel.confpassword"
+			data-r2-compare-to="userModel.password" data-not-compare="{{!changePassword}}"
+			data-ng-required="changePassword">
+
+		<div
+			data-ng-messages="form.access_confpassword.$error"
+			data-ng-if="form.access_confpassword.$touched"
+			data-ng-class="{ 'form-has-error': form.access_confpassword.$touched && form.access_confpassword.$invalid }">
+			<p data-ng-message="compareTo">{{'Precisa ser o mesmo digitado no campo "Senha"'|translate}}.</p>
+		        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
+		    </div>
+	</div>
+
+	<div ng-hide="changePassword">
+		<button ng-click="showChangePassword()" class="button">Alterar Senha</button>
+	</div>
+
 </div>

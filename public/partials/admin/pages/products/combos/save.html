@@ -1,187 +1,187 @@
-
-<div data-foundation-init>
-
- 	<h3>{{pageTitle}}</h3>
-
-	<form name="comboForm" class="form-vertical" novalidate
-		ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
-
-		<ul class="tabs" data-tabs id="combo-form-tabs">
-			<li class="tabs-title is-active"><a href="#panelCombo" aria-selected="true">Combo</a></li>
-			<li class="tabs-title"><a href="#panelEstoque" aria-selected="true">Estoque</a></li>
-		</ul>
-
-		<div class="tabs-content" data-tabs-content="combo-form-tabs">
-			<div class="tabs-panel is-active" id="panelCombo">
-
-				<div class="row align-middle">
-					<input type="text" name="combo_hasThumbnail" ng-model="boleto.hasThumbnail" required style="display: none;"/>
-				  <div class="columns large-3 r2-thumbnail-product-field">
-					<label for="combo_thumbnail r2-label-float">
-						<span class="r2-label-standard">Thumbnail: </span> 
-						<br>
-						<img class="thumbnail" ngf-thumbnail="combo.thumbnail || '/img/thumbnail.png'" width="165">
-						<br>
-						<div class="button" ngf-select ng-model="combo.thumbnail" name="combo_thumbnail" ngf-pattern="'image/*'"
-						    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Selecione a imagem</div>
-					</label>
-
-					<div
-						data-ng-messages="comboForm.combo_hasThumbnail.$error"
-						data-ng-class="{ 'form-has-error': comboForm.combo_hasThumbnail.$invalid }">
-						<p data-ng-message="hasThumbnail">
-							<span class="icon-error"></span><span class="r2-error-message">Você deve escolher uma imagem de exibição para o carrinho.</span>
-						</p>
-					</div>
-
-				  </div>
-
-				  <div class="columns large-9">
-				  	<div class="row">
-				  		<div class="columns">
-							<label for="combo_reference">
-								<span class="r2-label-standard">Referência</span>
-								<input type="text" class="form-control" placeholder="Referência" id="combo_reference" name="combo_reference"
-								ng-model="combo.reference"/>
-							</label>
-				  		</div>
-				  	</div>
-				  	<div class="row">
-				  		<div class="columns">
-
-				  			<label for="combo_title">
-								<span class="r2-label-standard">Título</span>
-								<input type="text" class="form-control" placeholder="Título" id="combo_title" name="combo_title"
-								ng-model="combo.title" required/>
-								<div
-									data-ng-messages="comboForm.combo_title.$error"
-									data-ng-if="comboForm.combo_title.$touched"
-									data-ng-class="{ 'form-has-error': comboForm.combo_title.$touched && comboForm.combo_title.$invalid }">
-									<p data-ng-message="required"><span class="icon-error"></span>Título do combo é obrigatório.</p>
-								</div>
-							</label>
-				  		</div>
-				  	</div>
-				  	<div class="row">
-				  		<div class="columns">
-							<label for="combo_subtitle">
-								<span class="r2-label-standard">Subtítulo</span>
-								<input type="text" class="form-control" placeholder="Subtítulo" id="combo_subtitle" name="combo_subtitle"
-								ng-model="combo.subtitle"/>
-							</label>
-				  		</div>
-				  	</div>
-				  </div>
-				</div>
-				<div class="row r2-margin-top-20">
-					<div class="columns">
-						<label>
-							<span class="r2-label-standard">Combo</span>
-							<input type="text" name="combo_hasProducts" ng-model="boleto.hasProducts" required style="display: none;"/>
-							<button ng-click="addComboProducts()" class="small expanded button">Adicionar Produto no Combo</button>
-							<table st-safe-src="selectedComboProductsCollection" st-table="combo.products" class="table table-striped">
-								<thead>
-									<tr>
-										<th>Produto</th>
-										<th>Fabricante</th>
-										<th>Departamento</th>
-										<th>Ver Estoque</th>
-										<th>Excluir</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="row in combo.products">
-										<td>{{row.title}}</td>
-										<td>{{row.manufacturer.company.companyName}}</td>
-										<td>{{row.department.name}}</td>
-										<td><button ng-click="showStock(row.id)">ver</button></td>
-										<td><button ng-click="removeCombo(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-									</tr>
-								</tbody>
-								<tfoot>
-								<tr>
-									<td colspan="5" class="text-center">
-										<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-									</td>
-								</tr>
-								</tfoot>
-							</table>
-							
-						</label>
-						<div
-							data-ng-messages="comboForm.combo_hasProducts.$error"
-							data-ng-class="{ 'form-has-error': comboForm.combo_hasProducts.$invalid }">
-							<p data-ng-message="hasProducts">
-								<span class="icon-error"></span><span class="r2-error-message">Você deve escolher mais de um produto para o combo!</span>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="tabs-content" data-tabs-content="combo-form-tabs">
-			<div class="tabs-panel" id="panelEstoque">
-				<label for="store_unit_cost">
-					<span class="r2-label-standard">Custo</span>
-					<div class="input-group">
-					  <span class="input-group-label">R$</span>
-					  <input type="number" class="input-group-field form-control" placeholder="Custo" value="e" id="store_unit_cost" name="store_unit_cost"
-						ng-model="combo.comboStore.unitCost"/>
-					</div>
-
-
-				</label>
-
-				<label for="store_unit_cost">
-					<span class="r2-label-standard">Preço</span>
-					<div class="input-group">
-					  	<span class="input-group-label">R$</span>
-						<input type="number" class="input-group-field form-control" placeholder="Preço" id="store_unit_price" 
-							name="store_unit_price"
-							ng-model="combo.comboStore.unitPrice" required>
-					</div>
-					<div
-						data-ng-messages="comboForm.product_title.$error"
-						data-ng-if="comboForm.product_title.$touched"
-						data-ng-class="{ 'form-has-error': comboForm.product_title.$touched && comboForm.product_title.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Título do produto é obrigatório.</p>
-					</div>
-				</label>
-
-				<label for="store_unit_cost" class="r2-label-float">
-					<span class="r2-label-standard">Desconto</span>
-					<div class="input-group">
-						<span class="input-group-label">R$</span>
-						<input type="number" class="input-group-field form-control" placeholder="Preço c/ Desconto" value="e" id="store_unit_discount_price" name="store_unit_discount_price"
-						ng-model="combo.comboStore.unitDiscountPrice" ng-required="combo.comboStore.sellDiscountPrice"/>
-					</div>
-					<div
-						data-ng-messages="comboForm.store_unit_discount_price.$error"
-						data-ng-if="comboForm.store_unit_discount_price.$touched"
-						data-ng-class="{ 'form-has-error': comboForm.store_unit_discount_price.$touched && comboForm.store_unit_discount_price.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Você selecionou a opção vender com desconto. Coloque o valor do desconto.</p>
-					</div>
-				</label>
-
-				<label for="store_sell_discount_price">
-					<span class="r2-label-standard">Vender c/ desconto?</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="store_sell_discount_price" ng-model="combo.comboStore.sellDiscountPrice" id="store_sell_discount_price"/>
-					
-				</label>
-
-				<label for="product_store_sell_no_shipping">
-					<span class="r2-label-standard">Não Cobrar Frete?</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="combo.comboStore.sellNoShipping" name="product_store_sell_no_shipping" id="product_store_sell_no_shipping"/>
-				</label>
-
-				<label for="store_store_status">
-					<span class="r2-label-standard">Por Para Vender?</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="combo.comboStore.storeStatus" id="store_store_status"/>
-				</label>
-			</div>
-		</div>
-
-		<button ng-click="saveCombo()" class="expanded button large" ng-disabled="comboForm.$invalid">CADASTRAR COMBO</button>
-	</form>
+
+<div data-foundation-init>
+
+ 	<h3>{{pageTitle}}</h3>
+
+	<form name="comboForm" class="form-vertical" novalidate
+		ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+
+		<ul class="tabs" data-tabs id="combo-form-tabs">
+			<li class="tabs-title is-active"><a href="#panelCombo" aria-selected="true">Combo</a></li>
+			<li class="tabs-title"><a href="#panelEstoque" aria-selected="true">Estoque</a></li>
+		</ul>
+
+		<div class="tabs-content" data-tabs-content="combo-form-tabs">
+			<div class="tabs-panel is-active" id="panelCombo">
+
+				<div class="row align-middle">
+					<input type="text" name="combo_hasThumbnail" ng-model="boleto.hasThumbnail" required style="display: none;"/>
+				  <div class="columns large-3 r2-thumbnail-product-field">
+					<label for="combo_thumbnail r2-label-float">
+						<span class="r2-label-standard">Thumbnail: </span> 
+						<br>
+						<img class="thumbnail" ngf-thumbnail="combo.thumbnail || '/img/thumbnail.png'" width="165">
+						<br>
+						<div class="button" ngf-select ng-model="combo.thumbnail" name="combo_thumbnail" ngf-pattern="'image/*'"
+						    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Selecione a imagem</div>
+					</label>
+
+					<div
+						data-ng-messages="comboForm.combo_hasThumbnail.$error"
+						data-ng-class="{ 'form-has-error': comboForm.combo_hasThumbnail.$invalid }">
+						<p data-ng-message="hasThumbnail">
+							<span class="icon-error"></span><span class="r2-error-message">Você deve escolher uma imagem de exibição para o carrinho.</span>
+						</p>
+					</div>
+
+				  </div>
+
+				  <div class="columns large-9">
+				  	<div class="row">
+				  		<div class="columns">
+							<label for="combo_reference">
+								<span class="r2-label-standard">Referência</span>
+								<input type="text" class="form-control" placeholder="Referência" id="combo_reference" name="combo_reference"
+								ng-model="combo.reference"/>
+							</label>
+				  		</div>
+				  	</div>
+				  	<div class="row">
+				  		<div class="columns">
+
+				  			<label for="combo_title">
+								<span class="r2-label-standard">Título</span>
+								<input type="text" class="form-control" placeholder="Título" id="combo_title" name="combo_title"
+								ng-model="combo.title" required/>
+								<div
+									data-ng-messages="comboForm.combo_title.$error"
+									data-ng-if="comboForm.combo_title.$touched"
+									data-ng-class="{ 'form-has-error': comboForm.combo_title.$touched && comboForm.combo_title.$invalid }">
+									<p data-ng-message="required"><span class="icon-error"></span>Título do combo é obrigatório.</p>
+								</div>
+							</label>
+				  		</div>
+				  	</div>
+				  	<div class="row">
+				  		<div class="columns">
+							<label for="combo_subtitle">
+								<span class="r2-label-standard">Subtítulo</span>
+								<input type="text" class="form-control" placeholder="Subtítulo" id="combo_subtitle" name="combo_subtitle"
+								ng-model="combo.subtitle"/>
+							</label>
+				  		</div>
+				  	</div>
+				  </div>
+				</div>
+				<div class="row r2-margin-top-20">
+					<div class="columns">
+						<label>
+							<span class="r2-label-standard">Combo</span>
+							<input type="text" name="combo_hasProducts" ng-model="boleto.hasProducts" required style="display: none;"/>
+							<button ng-click="addComboProducts()" class="small expanded button">Adicionar Produto no Combo</button>
+							<table st-safe-src="selectedComboProductsCollection" st-table="combo.products" class="table table-striped">
+								<thead>
+									<tr>
+										<th>Produto</th>
+										<th>Fabricante</th>
+										<th>Departamento</th>
+										<th>Ver Estoque</th>
+										<th>Excluir</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="row in combo.products">
+										<td>{{row.title}}</td>
+										<td>{{row.manufacturer.company.companyName}}</td>
+										<td>{{row.department.name}}</td>
+										<td><button ng-click="showStock(row.id)">ver</button></td>
+										<td><button ng-click="removeCombo(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+									</tr>
+								</tbody>
+								<tfoot>
+								<tr>
+									<td colspan="5" class="text-center">
+										<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+									</td>
+								</tr>
+								</tfoot>
+							</table>
+							
+						</label>
+						<div
+							data-ng-messages="comboForm.combo_hasProducts.$error"
+							data-ng-class="{ 'form-has-error': comboForm.combo_hasProducts.$invalid }">
+							<p data-ng-message="hasProducts">
+								<span class="icon-error"></span><span class="r2-error-message">Você deve escolher mais de um produto para o combo!</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-content" data-tabs-content="combo-form-tabs">
+			<div class="tabs-panel" id="panelEstoque">
+				<label for="store_unit_cost">
+					<span class="r2-label-standard">Custo</span>
+					<div class="input-group">
+					  <span class="input-group-label">R$</span>
+					  <input type="number" class="input-group-field form-control" placeholder="Custo" value="e" id="store_unit_cost" name="store_unit_cost"
+						ng-model="combo.comboStore.unitCost"/>
+					</div>
+
+
+				</label>
+
+				<label for="store_unit_cost">
+					<span class="r2-label-standard">Preço</span>
+					<div class="input-group">
+					  	<span class="input-group-label">R$</span>
+						<input type="number" class="input-group-field form-control" placeholder="Preço" id="store_unit_price" 
+							name="store_unit_price"
+							ng-model="combo.comboStore.unitPrice" required>
+					</div>
+					<div
+						data-ng-messages="comboForm.product_title.$error"
+						data-ng-if="comboForm.product_title.$touched"
+						data-ng-class="{ 'form-has-error': comboForm.product_title.$touched && comboForm.product_title.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Título do produto é obrigatório.</p>
+					</div>
+				</label>
+
+				<label for="store_unit_cost" class="r2-label-float">
+					<span class="r2-label-standard">Desconto</span>
+					<div class="input-group">
+						<span class="input-group-label">R$</span>
+						<input type="number" class="input-group-field form-control" placeholder="Preço c/ Desconto" value="e" id="store_unit_discount_price" name="store_unit_discount_price"
+						ng-model="combo.comboStore.unitDiscountPrice" ng-required="combo.comboStore.sellDiscountPrice"/>
+					</div>
+					<div
+						data-ng-messages="comboForm.store_unit_discount_price.$error"
+						data-ng-if="comboForm.store_unit_discount_price.$touched"
+						data-ng-class="{ 'form-has-error': comboForm.store_unit_discount_price.$touched && comboForm.store_unit_discount_price.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Você selecionou a opção vender com desconto. Coloque o valor do desconto.</p>
+					</div>
+				</label>
+
+				<label for="store_sell_discount_price">
+					<span class="r2-label-standard">Vender c/ desconto?</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="store_sell_discount_price" ng-model="combo.comboStore.sellDiscountPrice" id="store_sell_discount_price"/>
+					
+				</label>
+
+				<label for="product_store_sell_no_shipping">
+					<span class="r2-label-standard">Não Cobrar Frete?</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="combo.comboStore.sellNoShipping" name="product_store_sell_no_shipping" id="product_store_sell_no_shipping"/>
+				</label>
+
+				<label for="store_store_status">
+					<span class="r2-label-standard">Por Para Vender?</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="combo.comboStore.storeStatus" id="store_store_status"/>
+				</label>
+			</div>
+		</div>
+
+		<button ng-click="saveCombo()" class="expanded button large" ng-disabled="comboForm.$invalid">CADASTRAR COMBO</button>
+	</form>
 </div>

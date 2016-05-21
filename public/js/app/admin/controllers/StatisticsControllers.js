@@ -1,10 +1,10 @@
-'use strict';
-
-R2Admin.controller('StatisticsHomeCtrl', [
-    '$scope',
-    function (
-    	$scope
-    	) {
-    	
-    }
-]);
+'use strict';
+
+R2Admin.controller('StatisticsHomeCtrl', [
+    '$scope',
+    function (
+    	$scope
+    	) {
+    	
+    }
+]);

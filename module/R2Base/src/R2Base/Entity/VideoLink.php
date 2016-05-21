@@ -1,9 +1,7 @@
 <?php
 namespace R2Base\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_base_video_links")
@@ -18,25 +16,21 @@ class VideoLink {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="title", type="string", length=255, nullable=false)
 	 */
 	private $title;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="address", type="string", length=255, nullable=false)
 	 */
 	private $address;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
@@ -44,7 +38,6 @@ class VideoLink {
 	{
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return VideoLink
@@ -54,7 +47,6 @@ class VideoLink {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -62,7 +54,6 @@ class VideoLink {
 	{
 		return $this->title;
 	}
-
 	/**
 	 * @param string $title
 	 * @return VideoLink
@@ -72,7 +63,6 @@ class VideoLink {
 		$this->title = $title;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -80,7 +70,6 @@ class VideoLink {
 	{
 		return $this->address;
 	}
-
 	/**
 	 * @param string $address
 	 * @return VideoLink
@@ -90,5 +79,4 @@ class VideoLink {
 		$this->address = $address;
 		return $this;
 	}
-
 }

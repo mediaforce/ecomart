@@ -1,9 +1,7 @@
 <?php
 namespace R2Erp\Entity\Financial;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_erp_financial_payments")
@@ -20,129 +18,109 @@ class Payment
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
     /**
      * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Order\OrderSuperClass", inversedBy="payments")
      * @ORM\JoinColumn(name="super_order_id", referencedColumnName="id")
      */
     private $superOrder;
-
     /**
      * @var string
      *
      * @ORM\Column(name="amount_income", type="decimal", precision=8, scale=2, nullable=true)
      */
     private $amountIncome;
-
     /**
      * @var string
      *
      * @ORM\Column(name="total_parcels", type="integer", nullable=true)
      */
     private $totalParcels;
-
     /**
      * @var string
      *
      * @ORM\Column(name="interests_free", type="boolean", nullable=true)
      */
     private $interestsFree;
-
     /**
      * @var string
      *
      * @ORM\Column(name="installment_amount", type="decimal", precision=8, scale=2, nullable=true)
      */
     private $installmentAmount;
-
     /**
      * @var string
      *
      * @ORM\Column(name="amount_outcome", type="decimal", precision=8, scale=2, nullable=true)
      */
     private $amountOutcome;
-
     /**
      * @ORM\ManyToOne(targetEntity="R2Base\Entity\Currency")
      * @ORM\JoinColumn(name="currency", referencedColumnName="id", nullable=false)
      */
     private $currency;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="invoice_date", type="datetime", nullable=true)
      */
     private $invoiceDate;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="expiration_date", type="datetime", nullable=true)
      */
     private $expirationDate;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="payment_date", type="datetime", nullable=true)
      */
     private $paymentDate;
-
     /**
      * @ORM\Column(name="payment_method", type="string", length=75, nullable=true)
      */
     private $paymentMethod;
-
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="credit_card_auth_code", type="string", nullable=true)
      */
     private $creditCardAuthCode;
-
     /**
      * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Financial\AccountSuperClass")
      * @ORM\JoinColumn(name="to_account", referencedColumnName="id", nullable=true)
      **/
     private $toAccount;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
     private $updatedAt;
-
     /**
      * @var string
      *,
      * @ORM\Column(name="status", type="string", length=255, nullable=false)
      */
     private $status;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="excrow_end_aate", type="datetime", nullable=true)
      */
     private $escrowEndDate;
-
     /**
      * @var string
      *,
      * @ORM\Column(name="notes", type="text", nullable=true)
      */
     private $notes;
-
     public function __construct(array $options = array())
     {
         $this->createdAt = new \DateTime("now");
@@ -150,7 +128,6 @@ class Payment
         $this->invoiceDate = $this->createdAt;
         (new Hydrator\ClassMethods)->hydrate($options, $this);
     }
-
     /**
      * @return int
      */
@@ -158,7 +135,6 @@ class Payment
     {
         return $this->id;
     }
-
     /**
      * @param int $id
      * @return Payment
@@ -168,7 +144,6 @@ class Payment
         $this->id = $id;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -176,7 +151,6 @@ class Payment
     {
         return $this->amountIncome;
     }
-
     /**
      * @param string $amountIncome
      * @return Payment
@@ -186,7 +160,6 @@ class Payment
         $this->amountIncome = $amountIncome;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -194,7 +167,6 @@ class Payment
     {
         return $this->amountOutcome;
     }
-
     /**
      * @param string $amountOutcome
      * @return Payment
@@ -204,7 +176,6 @@ class Payment
         $this->amountOutcome = $amountOutcome;
         return $this;
     }
-
     /**
      * @return mixed
      */
@@ -212,7 +183,6 @@ class Payment
     {
         return $this->currency;
     }
-
     /**
      * @param mixed $currency
      * @return Payment
@@ -222,7 +192,6 @@ class Payment
         $this->currency = $currency;
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -230,7 +199,6 @@ class Payment
     {
         return $this->invoiceDate;
     }
-
     /**
      * @param \DateTime $invoiceDate
      * @return Payment
@@ -240,7 +208,6 @@ class Payment
         $this->invoiceDate = $invoiceDate;
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -248,7 +215,6 @@ class Payment
     {
         return $this->expirationDate;
     }
-
     /**
      * @param \DateTime $expirationDate
      * @return Payment
@@ -258,7 +224,6 @@ class Payment
         $this->expirationDate = $expirationDate;
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -266,7 +231,6 @@ class Payment
     {
         return $this->paymentDate;
     }
-
     /**
      * @param \DateTime $paymentDate
      * @return Payment
@@ -276,7 +240,6 @@ class Payment
         $this->paymentDate = $paymentDate;
         return $this;
     }
-
     /**
      * @return mixed
      */
@@ -284,7 +247,6 @@ class Payment
     {
         return $this->superOrder;
     }
-
     /**
      * @param mixed $superOrder
      * @return Payment
@@ -294,7 +256,6 @@ class Payment
         $this->superOrder = $superOrder;
         return $this;
     }
-
     /**
      * @return mixed
      */
@@ -302,7 +263,6 @@ class Payment
     {
         return $this->paymentMethod;
     }
-
     /**
      * @param mixed $paymentMethod
      * @return Payment
@@ -312,7 +272,6 @@ class Payment
         $this->paymentMethod = $paymentMethod->value();
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -320,7 +279,6 @@ class Payment
     {
         return $this->creditCardAuthCode;
     }
-
     /**
      * @param \DateTime $creditCardAuthCode
      * @return Payment
@@ -330,7 +288,6 @@ class Payment
         $this->creditCardAuthCode = $creditCardAuthCode;
         return $this;
     }
-
     /**
      * @return mixed
      */
@@ -338,7 +295,6 @@ class Payment
     {
         return $this->toAccount;
     }
-
     /**
      * @param mixed $toAccount
      * @return Payment
@@ -348,7 +304,6 @@ class Payment
         $this->toAccount = $toAccount;
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -356,7 +311,6 @@ class Payment
     {
         return $this->createdAt;
     }
-
     /**
      * @param \DateTime $createdAt
      * @return Payment
@@ -366,7 +320,6 @@ class Payment
         $this->createdAt = $createdAt;
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -374,7 +327,6 @@ class Payment
     {
         return $this->updatedAt;
     }
-
     /**
      * @param \DateTime $updatedAt
      * @return Payment
@@ -386,7 +338,6 @@ class Payment
         $this->updatedAt = new \DateTime("now");
         return $this;
     }
-
     /**
      * @return string
      */
@@ -394,7 +345,6 @@ class Payment
     {
         return $this->status;
     }
-
     /**
      * @param string $status
      * @return Order
@@ -404,7 +354,6 @@ class Payment
         $this->status = $status;
         return $this;
     }
-
     /**
      * Gets the ,.
      *
@@ -414,7 +363,6 @@ class Payment
     {
         return $this->notes;
     }
-
     /**
      * Sets the ,.
      *
@@ -425,7 +373,6 @@ class Payment
     public function setNotes($notes)
     {
         $this->notes = $notes;
-
         return $this;
     }
 }

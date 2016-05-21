@@ -1,72 +1,144 @@
 
+
 <style>
+
+
 
 </style>
 
+
+
 <div class="row">
+
 	<div class="small-12 medium-6 large-3 columns" ng-repeat="store in comboStoresCollection">
+
 		<div class="r2-product-box">
+
 			<div class="r2-hover-line"></div>
+
 			<div class="r2-inside-product-box">
 
 
+
+
+
 				<div class="r2-product-image">
+
 					<div class="img-test r2-image-fill">
+
 						<img ng-src="{{store.comboProduct.thumbnail.path}}" alt="Imagem {{store.comboProduct.title}}"  data-zoom-image="{{store.comboProduct.thumbnail.path}}"/>
+
 					</div>
+
 				</div>
 
+
+
 				<p>
+
 					<span class="r2-product-title">{{store.comboProduct.title}}</span>
+
 				</p>
+
 				<p>
+
 					<span class="r2-product-subtitle">{{store.comboProduct.subtitle}}</span>
+
 				</p>
+
 				<p>
+
 					<div class="r2-product-rating">
+
 					</div>
+
 				</p>
+
 				<p>
+
 					
+
 					<span class="r2-product-price" ng-class="{'r2-text-line-trough': store.sellDiscountPrice}">
+
 						De: {{store.unitPrice|currency}}
+
 					</span>
+
 				</p>
+
 				<p ng-show="store.sellDiscountPrice">
+
 					<span class="r2-product-discount-price">
-						Por: <span class="r2-bold-font">De: {{store.unitDiscountPrice|currency}}</span>
+
+						<span class="r2-bold-font">Por: {{store.unitDiscountPrice|currency}}</span>
+
 					</span>
+
 				</p>
+
 				<p>
+
 					<span class="r2-product-installments">
+
 						Ou em 6x iguais de {{(store.unitDiscountPrice/6)|currency}}
+
 					</span>
+
 					<div class="r2-sem-juros">sem juros</div>
+
 				</p>
+
+
 
 				<div class="r2-add-product">
+
 					<ngcart-addtocart id="{{store.id+'-C'}}" name="{{store.comboProduct.title}}" price="{{store.unitDiscountPrice}}" quantity="1" quantity-max="10" data="{img: store.comboProduct.thumbnail.path, isCombo: true, product: store.comboProduct.products}">
+
 						<button class="r2-product-btn-add" ng-click="testeCompra()">Adicionar ao carrinho</button>
+
 					</ngcart-addtocart>
+
 				</div>
+
 				<div class="r2-buy-product" ng-controller="ComprarProdutoCtrl">
+
 								
+
 					<button class="r2-product-btn-buy" ng-click="comprarProduto(store, true)">COMPRAR</button>
+
 				</div>
+
 				<div class="clearfix"></div>
+
 				<div class="r2-margin-top-50"></div>
+
 				<a data-ui-sref="root.combodetails({comboStoreId: store.id, slug: store.slug})">
+
 					<div class="r2-product-plus-btn">
+
 						
+
 							<span class="r2-product-plus-symbol" >+</span>
+
 						
+
 					</div>
+
 				</a>
 
 
+
+
+
 			</div>
+
 		</div>
 
+
+
 	</div>
+
 </div>
+
+
 

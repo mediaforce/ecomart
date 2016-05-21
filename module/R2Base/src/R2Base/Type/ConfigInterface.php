@@ -1,6 +1,6 @@
-<?php
-namespace R2Base\Type;
-
-interface ConfigInterface {
-	function getValue();
+<?php
+namespace R2Base\Type;
+
+interface ConfigInterface {
+	function getValue();
 }

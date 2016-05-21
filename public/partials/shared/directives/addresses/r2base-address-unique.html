@@ -1,64 +1,64 @@
-<div>
-	{{'Cep'|translate}}:
-	<input
-		type="text"
-		name="address_postcode"
-		data-ng-model="addressModel.postcode"
-		ui-br-cep-mask
-		required>
-
-	{{'Estado'|translate}} (ver angular-input-dropdown):
-	<select
-		name="address_state"
-		data-ng-model="addressModel.state"
-		data-ng-change="stateSelectChange(addressModel.state)"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-		<option data-ng-hide="statesLoad">{{'Carregando'|translate}}...</option>
-		<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
-	</select>
-
-	{{'Cidade'|translate}}:
-	<select
-		name="address_city"
-		data-ng-model="addressModel.city"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-		<option data-ng-hide="stateIsSelected">{{'Selecione um estado'|translate}}!</option>
-		<option data-ng-hide="citiesLoad || !stateIsSelected">{{'Carregando'|translate}}...</option>
-		<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
-	</select>
-
-	{{'Bairro'|translate}}:
-	<input
-		type="text"
-		name="address_neighborhood"
-		data-ng-model="addressModel.neighborhood"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-	{{'Logradouro'|translate}}:
-	<input
-		type="text"
-		name="address_address1"
-		data-ng-model="addressModel.address1"
-		r2-input-disabled="editableInputSeekCep"
-		required>
-
-	{{'Complemento'|translate}}:
-	<input
-		type="text"
-		name="address_address2"
-		data-ng-model="addressModel.address2">
-
-	{{'Número'|translate}}:
-	<input
-		type="number"
-		name="address_number"
-		data-ng-model="addressModel.number"
-		required>
-
-	<button ng-click="removeElement()">{{'Remover'|translate}}</button>
+<div>
+	{{'Cep'|translate}}:
+	<input
+		type="text"
+		name="address_postcode"
+		data-ng-model="addressModel.postcode"
+		ui-br-cep-mask
+		required>
+
+	{{'Estado'|translate}} (ver angular-input-dropdown):
+	<select
+		name="address_state"
+		data-ng-model="addressModel.state"
+		data-ng-change="stateSelectChange(addressModel.state)"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+		<option data-ng-hide="statesLoad">{{'Carregando'|translate}}...</option>
+		<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
+	</select>
+
+	{{'Cidade'|translate}}:
+	<select
+		name="address_city"
+		data-ng-model="addressModel.city"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+		<option data-ng-hide="stateIsSelected">{{'Selecione um estado'|translate}}!</option>
+		<option data-ng-hide="citiesLoad || !stateIsSelected">{{'Carregando'|translate}}...</option>
+		<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
+	</select>
+
+	{{'Bairro'|translate}}:
+	<input
+		type="text"
+		name="address_neighborhood"
+		data-ng-model="addressModel.neighborhood"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+	{{'Logradouro'|translate}}:
+	<input
+		type="text"
+		name="address_address1"
+		data-ng-model="addressModel.address1"
+		r2-input-disabled="editableInputSeekCep"
+		required>
+
+	{{'Complemento'|translate}}:
+	<input
+		type="text"
+		name="address_address2"
+		data-ng-model="addressModel.address2">
+
+	{{'Número'|translate}}:
+	<input
+		type="number"
+		name="address_number"
+		data-ng-model="addressModel.number"
+		required>
+
+	<button ng-click="removeElement()">{{'Remover'|translate}}</button>
 </div>

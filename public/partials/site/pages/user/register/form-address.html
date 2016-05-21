@@ -1,101 +1,101 @@
-<div>
-	<label for="address_postcode" class="r2-label-float">
-		<br>
-		<input
-			id="address_postcode"
-			type="text"
-			class="form-control"
-			name="address_postcode"
-			data-ng-model="user.person.addresses[0].postcode"
-			placeholder="CEP"
-			ui-br-cep-mask
-			required
-			floating-validation>
-	</label>
-
-	<label for="address_state" class="r2-label-float">
-		<br>
-		<select
-			name="address_state"
-			placeholder="Estado"
-			data-ng-model="user.person.addresses[0].state"
-			data-ng-change="stateSelectChange(user.person.addresses[0].state)"
-			r2-input-disabled="editableInputSeekCep"
-			required
-			floating-validation>
-
-			<option value="" disabled>Selecione o estado</option>
-			<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
-		</select>
-	</label>
-
-	<label for="address_city" class="r2-label-float">
-		<br>
-		<select
-			name="address_city"
-			placeholder="Cidade"
-			data-ng-model="user.person.addresses[0].city"
-			r2-input-disabled="editableInputSeekCep"
-			required
-			floating-validation>
-
-			<option value="" disabled>Selecione a cidade</option>
-			<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
-		</select>
-
-	</label>
-
-	<label for="address_neighborhood" class="r2-label-float">
-		<br>
-		<input
-			id="address_neighborhood"
-			type="text"
-			placeholder="Bairro"
-			name="address_neighborhood"
-			data-ng-model="user.person.addresses[0].neighborhood"
-			r2-input-disabled="editableInputSeekCep"
-			required
-			floating-validation>
-	</label>
-
-	<label for="address_address1" class="r2-label-float">
-		<br>
-		<input
-			id="address_address1"
-			type="text"
-			placeholder="Logradouro"
-			name="address_address1"
-			data-ng-model="user.person.addresses[0].address1"
-			r2-input-disabled="editableInputSeekCep"
-			required
-			floating-validation>
-	</label>
-
-	<label for="address_address2" class="r2-label-float">
-		<br>
-		<input
-			id="address_address2"
-			type="text"
-			placeholder="Complemento"
-			name="address_address2"
-			data-ng-model="user.person.addresses[0].address2"
-			floating-label>
-	</label>
-
-	<label for="address_number" class="r2-label-float">
-		<br>
-		<input
-			id="address_number"
-			type="number"
-			placeholder="Número"
-			name="address_number"
-			data-ng-model="user.person.addresses[0].number"
-			required
-			floating-validation>
-	</label>
-
-	<button class="button float-right" ng-click="nextStep(5)" ng-disabled="userForm.$invalid">Próximo Passo</button>
-
-	<div class="clearfix"></div>
-
+<div>
+	<label for="address_postcode" class="r2-label-float">
+		<br>
+		<input
+			id="address_postcode"
+			type="text"
+			class="form-control"
+			name="address_postcode"
+			data-ng-model="user.person.addresses[0].postcode"
+			placeholder="CEP"
+			ui-br-cep-mask
+			required
+			floating-validation>
+	</label>
+
+	<label for="address_state" class="r2-label-float">
+		<br>
+		<select
+			name="address_state"
+			placeholder="Estado"
+			data-ng-model="user.person.addresses[0].state"
+			data-ng-change="stateSelectChange(user.person.addresses[0].state)"
+			r2-input-disabled="editableInputSeekCep"
+			required
+			floating-validation>
+
+			<option value="" disabled>Selecione o estado</option>
+			<option data-ng-repeat="option in options.states" value="{{option.id}}">{{option.name}}</option>
+		</select>
+	</label>
+
+	<label for="address_city" class="r2-label-float">
+		<br>
+		<select
+			name="address_city"
+			placeholder="Cidade"
+			data-ng-model="user.person.addresses[0].city"
+			r2-input-disabled="editableInputSeekCep"
+			required
+			floating-validation>
+
+			<option value="" disabled>Selecione a cidade</option>
+			<option data-ng-show="stateIsSelected" data-ng-repeat="option in options.cities" value="{{option.id}}">{{option.name}}</option>
+		</select>
+
+	</label>
+
+	<label for="address_neighborhood" class="r2-label-float">
+		<br>
+		<input
+			id="address_neighborhood"
+			type="text"
+			placeholder="Bairro"
+			name="address_neighborhood"
+			data-ng-model="user.person.addresses[0].neighborhood"
+			r2-input-disabled="editableInputSeekCep"
+			required
+			floating-validation>
+	</label>
+
+	<label for="address_address1" class="r2-label-float">
+		<br>
+		<input
+			id="address_address1"
+			type="text"
+			placeholder="Logradouro"
+			name="address_address1"
+			data-ng-model="user.person.addresses[0].address1"
+			r2-input-disabled="editableInputSeekCep"
+			required
+			floating-validation>
+	</label>
+
+	<label for="address_address2" class="r2-label-float">
+		<br>
+		<input
+			id="address_address2"
+			type="text"
+			placeholder="Complemento"
+			name="address_address2"
+			data-ng-model="user.person.addresses[0].address2"
+			floating-label>
+	</label>
+
+	<label for="address_number" class="r2-label-float">
+		<br>
+		<input
+			id="address_number"
+			type="number"
+			placeholder="Número"
+			name="address_number"
+			data-ng-model="user.person.addresses[0].number"
+			required
+			floating-validation>
+	</label>
+
+	<button class="button float-right" ng-click="nextStep(5)" ng-disabled="userForm.$invalid">Próximo Passo</button>
+
+	<div class="clearfix"></div>
+
 </div>

@@ -1,10 +1,8 @@
 <?php
 namespace R2Erp\Entity\Product;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  *
  * @ORM\Table(name="r2_erp_combo_products")
@@ -12,64 +10,54 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\HasLifecycleCallbacks
  */
 class ComboProduct {
-	/**
-	 * @var integer
-	 *
-	 * @ORM\Column(name="id", type="integer", nullable=false)
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="IDENTITY")
-	 */
-	private $id;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="reference", type="string", length=60, unique=true, nullable=true)
-	 */
-	private $reference;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="title", type="string", length=60, nullable=false)
-	 */
-	private $title;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="subtitle", type="string", length=60, nullable=true)
-	 */
-	private $subtitle;
-
-	/**
-	 * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Product\Product")
-	 * @ORM\JoinTable(name="r2_erp_combo_product_products",
-	 *      joinColumns={@ORM\JoinColumn(name="combo_product_id", referencedColumnName="id")},
-	 *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
-	 *      )
-	 */
-	private $products;
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=60, unique=true, nullable=true)
+     */
+    private $reference;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=60, nullable=false)
+     */
+    private $title;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="subtitle", type="string", length=60, nullable=true)
+     */
+    private $subtitle;
+    /**
+     * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Product\Product")
+     * @ORM\JoinTable(name="r2_erp_combo_product_products",
+     *      joinColumns={@ORM\JoinColumn(name="combo_product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
+     *      )
+     */
+    private $products;
     /**
      * @ORM\ManyToOne(targetEntity="R2Base\Entity\Image", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="thumbnail_id", referencedColumnName="id")
      */
     private $thumbnail;
-
     /**
      * @ORM\OneToOne(targetEntity="R2Erp\Entity\Order\Store\ComboStore", mappedBy="comboProduct", orphanRemoval=true)
      */
     private $comboStore;
-
-	public function __construct(array $options = array()) {
-		$this->updatedAt = new \DateTime("now");
-
-		$this->products = new ArrayCollection();
-
-		(new Hydrator\ClassMethods)->hydrate($options, $this);
-	}
-
+    public function __construct(array $options = array()) {
+        $this->updatedAt = new \DateTime("now");
+        $this->products = new ArrayCollection();
+        (new Hydrator\ClassMethods)->hydrate($options, $this);
+    }
     /**
      * Gets the value of id.
      *
@@ -79,7 +67,6 @@ class ComboProduct {
     {
         return $this->id;
     }
-
     /**
      * Sets the value of id.
      *
@@ -90,10 +77,8 @@ class ComboProduct {
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
-
     /**
      * Gets the value of reference.
      *
@@ -103,7 +88,6 @@ class ComboProduct {
     {
         return $this->reference;
     }
-
     /**
      * Sets the value of reference.
      *
@@ -114,10 +98,8 @@ class ComboProduct {
     public function setReference($reference)
     {
         $this->reference = $reference;
-
         return $this;
     }
-
     /**
      * Gets the value of title.
      *
@@ -127,7 +109,6 @@ class ComboProduct {
     {
         return $this->title;
     }
-
     /**
      * Sets the value of title.
      *
@@ -138,10 +119,8 @@ class ComboProduct {
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Gets the value of subtitle.
      *
@@ -151,7 +130,6 @@ class ComboProduct {
     {
         return $this->subtitle;
     }
-
     /**
      * Sets the value of subtitle.
      *
@@ -162,10 +140,8 @@ class ComboProduct {
     public function setSubtitle($subtitle)
     {
         $this->subtitle = $subtitle;
-
         return $this;
     }
-
     /**
      *
      * @return mixed
@@ -174,7 +150,6 @@ class ComboProduct {
     {
         return $this->products;
     }
-
     /**
      * Sets the joinColumns={@ORM\JoinColumn(name="combo_product_id", referencedColumnName="id")},
 inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id", unique=true)}
@@ -187,10 +162,8 @@ inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id"
     public function setProducts($products)
     {
         $this->products = $products;
-
         return $this;
     }
-
     /**
      * Gets the value of thumbnail.
      *
@@ -200,7 +173,6 @@ inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id"
     {
         return $this->thumbnail;
     }
-
     /**
      * Sets the value of thumbnail.
      *
@@ -211,10 +183,8 @@ inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id"
     public function setThumbnail($thumbnail)
     {
         $this->thumbnail = $thumbnail;
-
         return $this;
     }
-
     /**
      * Gets the value of comboStore.
      *
@@ -224,7 +194,6 @@ inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id"
     {
         return $this->comboStore;
     }
-
     /**
      * Sets the value of comboStore.
      *
@@ -235,11 +204,6 @@ inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id"
     public function setComboStore($comboStore)
     {
         $this->comboStore = $comboStore;
-
         return $this;
     }
-
-
-
-    
 }

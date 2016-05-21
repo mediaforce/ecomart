@@ -1,9 +1,7 @@
 <?php
 namespace R2Erp\Entity\Manufacturer;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_erp_manufacturers")
@@ -18,24 +16,20 @@ class Manufacturer {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	public $id;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Base\Entity\Company", cascade={"persist", "remove"})
 	 * @ORM\JoinColumn(name="company_id", referencedColumnName="id", nullable=true)
 	 **/
 	public $company;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Manufacturer
@@ -44,14 +38,12 @@ class Manufacturer {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
 	public function getCompany() {
 		return $this->company;
 	}
-
 	/**
 	 * @param mixed $company
 	 * @return Manufacturer
@@ -60,5 +52,4 @@ class Manufacturer {
 		$this->company = $company;
 		return $this;
 	}
-
 }

@@ -1,10 +1,8 @@
 <?php
 namespace R2Erp\Entity\Order;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  * @ORM\Table(name="r2_erp_super_orders")
  * @ORM\Entity
@@ -29,117 +27,103 @@ class OrderSuperClass {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2User\Entity\User")
 	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $user;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Shipper\Shipper")
 	 * @ORM\JoinColumn(name="supplier_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $shipper;
-
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="cod_rastreio", type="string", length=255, nullable=true)
+	 */
+	private $codRastreio;
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="shipping_type", type="string", length=15, nullable=true)
 	 */
 	private $shippingType;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="shipping_cost", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $shippingCost;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Order\Expense\Expense")
 	 * @ORM\JoinColumn(name="shipping_expense_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $shippingExpense;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="date_shipped", type="datetime", nullable=true)
 	 */
 	private $dateShipped;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="expected_delivery_date", type="datetime", nullable=true)
 	 */
 	private $expectedDeliveryDate;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="date_delivered", type="datetime", nullable=true)
 	 */
 	private $dateDelivered;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="total_order_cost", type="decimal", precision=8, scale=2, nullable=false)
 	 */
 	private $totalOrderCost;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="discount", type="decimal", precision=8, scale=2, nullable=true)
 	 */
 	private $discount;
-
 	/**
 	 * @ORM\OneToMany(targetEntity="R2Erp\Entity\Financial\Payment", mappedBy="superOrder", cascade={"remove"})
 	 */
 	public $payments;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="payment_type", type="string", length=30, nullable=false)
 	 */
 	private $paymentType;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="order_reason", type="text", nullable=true)
 	 */
 	private $orderReason;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="created_at", type="datetime", nullable=false)
 	 */
 	private $createdAt;
-
 	/**
 	 * @var \DateTime
 	 *
 	 * @ORM\Column(name="updated_at", type="datetime", nullable=false)
 	 */
 	private $updatedAt;
-
 	public function __construct(array $options = array()) {
 		$this->payments = new ArrayCollection();
-
 		$this->createdAt = new \DateTime("now");
 		$this->updatedAt = new \DateTime("now");
-
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
-
 	}
-
 	/**
 	 * @return int
 	 */
@@ -147,7 +131,6 @@ class OrderSuperClass {
 	{
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return OrderSuperClass
@@ -157,7 +140,6 @@ class OrderSuperClass {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -165,7 +147,6 @@ class OrderSuperClass {
 	{
 		return $this->user;
 	}
-
 	/**
 	 * @param mixed $user
 	 * @return OrderSuperClass
@@ -175,7 +156,6 @@ class OrderSuperClass {
 		$this->user = $user;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -183,7 +163,6 @@ class OrderSuperClass {
 	{
 		return $this->shipper;
 	}
-
 	/**
 	 * @param mixed $shipper
 	 * @return OrderSuperClass
@@ -193,7 +172,6 @@ class OrderSuperClass {
 		$this->shipper = $shipper;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -201,7 +179,6 @@ class OrderSuperClass {
 	{
 		return $this->shippingType;
 	}
-
 	/**
 	 * @param string $shippingType
 	 * @return OrderSuperClass
@@ -211,7 +188,6 @@ class OrderSuperClass {
 		$this->shippingType = $shippingType;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -219,7 +195,6 @@ class OrderSuperClass {
 	{
 		return $this->shippingCost;
 	}
-
 	/**
 	 * @param string $shippingCost
 	 * @return OrderSuperClass
@@ -229,7 +204,6 @@ class OrderSuperClass {
 		$this->shippingCost = $shippingCost;
 		return $this;
 	}
-
 	/**
 	 * @return mixed
 	 */
@@ -237,7 +211,6 @@ class OrderSuperClass {
 	{
 		return $this->shippingExpense;
 	}
-
 	/**
 	 * @param mixed $shippingExpense
 	 * @return OrderSuperClass
@@ -247,7 +220,6 @@ class OrderSuperClass {
 		$this->shippingExpense = $shippingExpense;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
@@ -255,7 +227,6 @@ class OrderSuperClass {
 	{
 		return $this->dateShipped;
 	}
-
 	/**
 	 * @param \DateTime $dateShipped
 	 * @return OrderSuperClass
@@ -265,7 +236,6 @@ class OrderSuperClass {
 		$this->dateShipped = $dateShipped;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
@@ -273,7 +243,6 @@ class OrderSuperClass {
 	{
 		return $this->expectedDeliveryDate;
 	}
-
 	/**
 	 * @param \DateTime $expectedDeliveryDate
 	 * @return OrderSuperClass
@@ -283,7 +252,6 @@ class OrderSuperClass {
 		$this->expectedDeliveryDate = $expectedDeliveryDate;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
@@ -291,7 +259,6 @@ class OrderSuperClass {
 	{
 		return $this->dateDelivered;
 	}
-
 	/**
 	 * @param \DateTime $dateDelivered
 	 * @return OrderSuperClass
@@ -301,7 +268,6 @@ class OrderSuperClass {
 		$this->dateDelivered = $dateDelivered;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -309,7 +275,6 @@ class OrderSuperClass {
 	{
 		return $this->totalOrderCost;
 	}
-
 	/**
 	 * @param string $totalOrderCost
 	 * @return OrderSuperClass
@@ -319,7 +284,6 @@ class OrderSuperClass {
 		$this->totalOrderCost = $totalOrderCost;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -327,7 +291,6 @@ class OrderSuperClass {
 	{
 		return $this->discount;
 	}
-
 	/**
 	 * @param string $discount
 	 * @return OrderSuperClass
@@ -337,7 +300,6 @@ class OrderSuperClass {
 		$this->discount = $discount;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -345,7 +307,6 @@ class OrderSuperClass {
 	{
 		return $this->paymentType;
 	}
-
 	/**
 	 * @param string $paymentType
 	 * @return OrderSuperClass
@@ -355,7 +316,6 @@ class OrderSuperClass {
 		$this->paymentType = $paymentType;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -363,7 +323,6 @@ class OrderSuperClass {
 	{
 		return $this->orderReason;
 	}
-
 	/**
 	 * @param string $orderReason
 	 * @return OrderSuperClass
@@ -373,7 +332,6 @@ class OrderSuperClass {
 		$this->orderReason = $orderReason;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
@@ -381,7 +339,6 @@ class OrderSuperClass {
 	{
 		return $this->createdAt;
 	}
-
 	/**
 	 * @param \DateTime $createdAt
 	 * @return OrderSuperClass
@@ -391,7 +348,6 @@ class OrderSuperClass {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
-
 	/**
 	 * @return \DateTime
 	 */
@@ -399,7 +355,6 @@ class OrderSuperClass {
 	{
 		return $this->updatedAt;
 	}
-
 	/**
 	 * @param \DateTime $updatedAt
 	 * @return OrderSuperClass
@@ -409,9 +364,6 @@ class OrderSuperClass {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
-
-
-
     /**
      * Gets the value of payments.
      *
@@ -421,7 +373,6 @@ class OrderSuperClass {
     {
         return $this->payments;
     }
-
     /**
      * Sets the value of payments.
      *
@@ -432,7 +383,27 @@ class OrderSuperClass {
     public function setPayments($payments)
     {
         $this->payments = $payments;
-
+        return $this;
+    }
+    /**
+     * Gets the value of codRastreio.
+     *
+     * @return string
+     */
+    public function getCodRastreio()
+    {
+        return $this->codRastreio;
+    }
+    /**
+     * Sets the value of codRastreio.
+     *
+     * @param string $codRastreio the cod rastreio
+     *
+     * @return self
+     */
+    public function setCodRastreio($codRastreio)
+    {
+        $this->codRastreio = $codRastreio;
         return $this;
     }
 }

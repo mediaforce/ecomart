@@ -10,8 +10,7 @@
 				<th>Custo Frete</th>
 				<th>Data de Compra</th>
 				<th>Data de Envio</th>
-				<th>Data Esperada</th>
-				<th>Data de Entrega</th>
+				<th>Cód. Rastreio</th>
 				<th>Atualizar Envio</th>
 				<th>Valor Total</th>
 				<th>Desconto</th>
@@ -30,7 +29,7 @@
 				<th>
 	                <input st-search="shippingType" placeholder="Serviço Frete" class="input-sm form-control" type="search"/>
 	            </th>
-	            <th colspan="15"></th>
+	            <th colspan="13"></th>
 			</tr>
 		</thead>
 
@@ -40,9 +39,8 @@
 				<td>{{row.shippingType}}</td>
 				<td>{{row.shippingCost | currency}}</td>
 				<td>{{row.createdAt | date:'shortDate'}}</td>
-				<td>{{row.dateShipped}}</td>
-				<td>{{row.expectedDeliveryDate}}</td>
-				<td>{{row.dateDelivered}}</td>
+				<td>{{row.dateShipped | date:'shortDate'}}</td>
+				<td>{{row.codRastreio}}</td>
 				<td><button ng-click="gotoDateDelivery(row.id)">Atualizar</button></td>
 				<td>{{row.totalOrderCost  | currency}}</td>
 				<td>{{row.discount  | currency}}</td>
@@ -62,7 +60,7 @@
 
 		<tfoot>
 			<tr>
-				<td colspan="16" class="text-center">
+				<td colspan="15" class="text-center">
 					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
 				</td>
 			</tr>

@@ -1,12 +1,9 @@
 <?php
-
 namespace R2Base\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use R2Base\Enum\CardBrand;
 use Zend\Crypt\PublicKey\Rsa;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_base_credit_cards")
@@ -21,41 +18,34 @@ class CreditCard {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="brand", type="string", nullable=false)
 	 */
 	private $brand;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="number",  type="string", nullable=false)
 	 */
 	private $number;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="holder", type="string", nullable=false)
 	 */
 	private $holder;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="validity", type="string", nullable=false)
 	 */
 	private $validity;
-
 	private $rsa;
-
 	public function __construct() {
 		$this->rsa = self::_getRsa();
 	}
-
 	private static function _getRsa() {
 		return Rsa::factory(array(
 			'public_key' => 'public_key.pub',
@@ -64,14 +54,12 @@ class CreditCard {
 			'binary_output' => false,
 		));
 	}
-
 	/**
 	 * @return int
 	 */
 	public function getId() {
 		return $this->id;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -79,7 +67,6 @@ class CreditCard {
 		$rsa = self::_getRsa();
 		return $rsa->decrypt($this->brand);
 	}
-
 	/**
 	 * @param string $brand
 	 * @return CreditCard
@@ -88,7 +75,6 @@ class CreditCard {
 		$this->brand = $this->rsa->encrypt($brand->value());
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -96,7 +82,6 @@ class CreditCard {
 		$rsa = self::_getRsa();
 		return $rsa->decrypt($this->number);
 	}
-
 	/**
 	 * @param string $number
 	 * @return CreditCard
@@ -105,7 +90,6 @@ class CreditCard {
 		$this->number = $this->rsa->encrypt($number);
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -113,7 +97,6 @@ class CreditCard {
 		$rsa = self::_getRsa();
 		return $rsa->decrypt($this->holder);
 	}
-
 	/**
 	 * @param string $holder
 	 * @return CreditCard
@@ -122,7 +105,6 @@ class CreditCard {
 		$this->holder = $this->rsa->encrypt($holder);
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -130,7 +112,6 @@ class CreditCard {
 		$rsa = self::_getRsa();
 		return $rsa->decrypt($this->validity);
 	}
-
 	/**
 	 * @param string $validity
 	 * @return CreditCard
@@ -139,7 +120,6 @@ class CreditCard {
 		$this->validity = $this->rsa->encrypt($validity->format('Y-m-d H:i:s'));
 		return $this;
 	}
-
 	public function toArray() {
 		return (new Hydrator\ClassMethods())->extract($this);
 	}

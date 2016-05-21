@@ -1,9 +1,7 @@
 <?php
 namespace R2Base\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  *
  * @ORM\Table(name="r2_base_ratings")
@@ -20,25 +18,21 @@ class Rating {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="rating", type="float", nullable=true)
 	 */
 	private $rating;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="max_rating", type="float", nullable=true)
 	 */
 	private $maxRating;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}
-
 	/**
 	 * @return int
 	 */
@@ -46,7 +40,6 @@ class Rating {
 	{
 		return $this->id;
 	}
-
 	/**
 	 * @param int $id
 	 * @return Rating
@@ -56,7 +49,6 @@ class Rating {
 		$this->id = $id;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -64,7 +56,6 @@ class Rating {
 	{
 		return $this->rating;
 	}
-
 	/**
 	 * @param string $rating
 	 * @return Rating
@@ -74,7 +65,6 @@ class Rating {
 		$this->rating = $rating;
 		return $this;
 	}
-
 	/**
 	 * @return string
 	 */
@@ -82,7 +72,6 @@ class Rating {
 	{
 		return $this->maxRating;
 	}
-
 	/**
 	 * @param string $maxRating
 	 * @return Rating
@@ -92,6 +81,4 @@ class Rating {
 		$this->maxRating = $maxRating;
 		return $this;
 	}
-
-
 }

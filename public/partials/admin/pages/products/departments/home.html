@@ -1,31 +1,31 @@
-<div>
-
-	<h3 class-"r2-admin-page-title">Departamentos</h3>
-	<a data-ui-sref="admin.products.departments.create" class="expanded button">Adicionar Departamento</a>
-	<table st-safe-src="departmentsCollection" st-table="displayedCollection" class="table table-striped">
-		<thead>
-			<tr class="r2-title-line">
-				<th>Departamento</th>
-				<th>Ver Categorias</th>
-				<th>Editar</th>
-				<th>Excluir</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedCollection">
-				<td>{{row.name}}</td>
-				<td><button ng-click="viewCats(row.id)">Ver</button></td>
-				<td><a data-ui-sref="admin.products.departments.save({departmentId: row.id})">Editar</a></td>
-				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
+<div>
+
+	<h3 class-"r2-admin-page-title">Departamentos</h3>
+	<a data-ui-sref="admin.products.departments.create" class="expanded button">Adicionar Departamento</a>
+	<table st-safe-src="departmentsCollection" st-table="displayedCollection" class="table table-striped">
+		<thead>
+			<tr class="r2-title-line">
+				<th>Departamento</th>
+				<th>Ver Categorias</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				<td>{{row.name}}</td>
+				<td><button ng-click="viewCats(row.id)">Ver</button></td>
+				<td><a data-ui-sref="admin.products.departments.save({departmentId: row.id})">Editar</a></td>
+				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
 </div>

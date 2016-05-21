@@ -1,18 +1,39 @@
 <div>
+
 	<label for="">Nome: {{customer.person.name}}</label>
+
 	<label for="">E-mail: {{customer.user}}</label>
+
 	<label for="">Telefone: {{customer.person.telephones[0].number}}</label>
+
+	<label for="">Documento: {{customer.person.documents[0].documentType}} - {{customer.person.documents[0].field1}}</label>
+
 	<fieldset>
+
 		<legend>Endereço:</legend>
+
 		<label for="">
+
 			CEP: {{customer.person.addresses[0].postcode}} <br>
+
 			Estado: {{customer.person.addresses[0].state.code}} <br>
+
 			Cidade: {{customer.person.addresses[0].city.name}} <br>
+
+			Bairro: {{customer.person.addresses[0].neighborhood}} <br>
+
 			Logradouro: {{customer.person.addresses[0].address1}} <br>
+
 			Complemento: {{customer.person.addresses[0].address2}} <br>
+
 			Número: {{customer.person.addresses[0].number}} <br>
+
 			<br>
+
 			Notas: {{customer.notes}} <br>
+
 		</label>
+
 	</fieldset>
+
 </div>

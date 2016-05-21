@@ -1,225 +1,225 @@
-<?php date_default_timezone_set('America/Sao_Paulo');?>
-<?php echo $this->doctype();?>
-<html lang="pt-br" data-ng-app="R2Admin">
-    <head>
-        <base href="/">
-        <meta charset="utf-8">
-        <?php echo $this->headTitle('Ecomart Admin')->setSeparator(' - ')->setAutoEscape(false);?>
-        <?php echo $this->headMeta()
-        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ;?>
-        <!-- Base style -->
-        <!-- build:css(public) /css/base.min.css -->
-        <?php
-        $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-        ->prependStylesheet($this->basePath('css/screen.css'), 'screen')
-        ->prependStylesheet($this->basePath('css/print.css'), 'print');
-        echo $this->headLink();
-        $this->headLink()->exchangeArray(array());
-        ?>
-        <!-- endbuild -->
-
-        <!-- Main style -->
-        <!-- build:css(public) /css/main.min.css -->
-        <?php
-        $this->headLink()
-        ->prependStylesheet($this->basePath('css/main.css'));
-        echo $this->headLink();
-        $this->headLink()->exchangeArray(array());
-        ?>
-        <!-- endbuild -->
-
-        <!-- Third-Party styles -->
-        <!-- build:css(public) /css/main.min.css -->
-        <?php
-        $this->headLink()
-        ->prependStylesheet($this->basePath('bower_components/angular-block-ui/dist/angular-block-ui.css'))
-        ->prependStylesheet($this->basePath('bower_components/ngFloatingLabels/src/ng-floating-labels.css'))
-        ->prependStylesheet($this->basePath('bower_components/ng-dialog/css/ngDialog-theme-default.css'))
-        ->prependStylesheet($this->basePath('bower_components/ng-dialog/css/ngDialog.css'))
-        ->prependStylesheet($this->basePath('bower_components/ngWYSIWYG/dist/editor.min.css'))
-        ->prependStylesheet($this->basePath('bower_components/angular-ui-notification/dist/angular-ui-notification.css'))
-        ->prependStylesheet($this->basePath('bower_components/angular-loading-bar/build/loading-bar.css'));
-        echo $this->headLink();
-        $this->headLink()->exchangeArray(array());
-        ?>
-        <!-- endbuild -->
-
-        <!-- Plugins Scripts -->
-        <!-- build:js(public) /js/plugins.min.js -->
-        <?php
-        $this->headScript()
-        ->prependFile($this->basePath('bower_components/string/dist/string.js'))
-        ->prependFile($this->basePath('js/plugins/polyfiller.js'))
-        ->prependFile($this->basePath('js/plugins/underscore.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.tabs.js'))
-        ->prependFile($this->basePath('bower_components/foundation-sites/js/foundation.offcanvas.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.accordionMenu.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.reveal.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.timerAndImageLoader.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.keyboard.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.box.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.dropdownMenu.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.motion.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.nest.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.mediaQuery.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.triggers.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.responsiveMenu.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.responsiveToggle.js'))
-        ->prependFile($this->basePath('js/plugins/foundation/foundation.core.js'))
-        ->prependFile($this->basePath('bower_components/foundation-sites/dist/foundation.js'))
-        ->prependFile($this->basePath('js/plugins/jquery.sticky.js'))
-        ->prependFile($this->basePath('bower_components/jquery/dist/jquery.js'));
-        echo $this->headScript();
-        $this->headScript()->exchangeArray(array());
-        ?>
-        <!-- endbuild -->
-
-
-        <!-- Scripts Condicionais  -->
-        <?php
-        $this->headScript()
-        ->prependFile($this->basePath('js/plugins/respond.js'), 'text/javascript', array('conditional' => 'lt IE 9'))
-        ->prependFile($this->basePath('js/plugins/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
-        echo $this->headScript();
-        $this->headScript()->exchangeArray(array());
-        ?>
-        <!-- Angular & Resources Scripts -->
-        <!-- build:js(public) /js/angular-and-resources.min.js -->
-        <?php
-        $this->headScript()
-        ->prependFile($this->basePath('bower_components/angular-block-ui/dist/angular-block-ui.js'))
-        ->prependFile($this->basePath('bower_components/ngFloatingLabels/src/ngFloatingLabels.js'))
-        ->prependFile($this->basePath('bower_components/ng-file-upload/ng-file-upload.js'))
-        ->prependFile($this->basePath('bower_components/angular-loading-overlay/dist/angular-loading-overlay.js'))
-        ->prependFile($this->basePath('bower_components/angular-smart-table/dist/smart-table.js'))
-        ->prependFile($this->basePath('bower_components/ng-dialog/js/ngDialog.js'))
-        ->prependFile($this->basePath('bower_components/ngWYSIWYG/dist/wysiwyg.min.js'))
-        ->prependFile($this->basePath('bower_components/angular-loading-bar/build/loading-bar.js'))
-        ->prependFile($this->basePath('bower_components/angular-ui-notification/dist/angular-ui-notification.js'))
-        ->prependFile($this->basePath('bower_components/angular-input-masks/angular-input-masks-standalone.js'))
-        ->prependFile($this->basePath('bower_components/angular-i18n/angular-locale_pt-br.js'))
-        ->prependFile($this->basePath('bower_components/angular-favicon/angular-favicon.js'))
-        ->prependFile($this->basePath('bower_components/angular-messages/angular-messages.js'))
-        ->prependFile($this->basePath('bower_components/angular-cookies/angular-cookies.js'))
-        ->prependFile($this->basePath('bower_components/angular-ui-router/release/angular-ui-router.js'))
-        ->prependFile($this->basePath('bower_components/angular-resource/angular-resource.js'))
-        ->prependFile($this->basePath('bower_components/angular-breadcrumb/dist/angular-breadcrumb.js'))
-        ->prependFile($this->basePath('bower_components/angular-sanitize/angular-sanitize.js'))
-        ->prependFile($this->basePath('bower_components/angular-animate/angular-animate.js'))
-        ->prependFile($this->basePath('bower_components/angular/angular.js'));
-        echo $this->headScript();
-        $this->headScript()->exchangeArray(array());
-        ?>
-        <!-- endbuild -->
-
-        <!-- Angular Translate Resources Scripts -->
-        <!-- build:js(public) /js/angular-translate-pack.min.js -->
-        <?php
-/*        $this->headScript()
-        ->prependFile($this->basePath('bower_components/angular-dynamic-locale/tmhDynamicLocale.min.js'))
-        ->prependFile($this->basePath('bower_components/angular-translate-handler-log/angular-translate-handler-log.js'))
-        ->prependFile($this->basePath('bower_components/angular-translate-storage-local/angular-translate-storage-local.js'))
-        ->prependFile($this->basePath('bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js'))
-        ->prependFile($this->basePath('bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js'))
-        ->prependFile($this->basePath('bower_components/angular-translate/angular-translate.js'));
-
-        echo $this->headScript();
-        $this->headScript()->exchangeArray(array());*/
-        ?>
-        <!-- endbuild -->
-    </head>
-
-    <body data-foundation-init data-polyfiller-init id="layout-site">
-
-        <div id="loading-bar-container"></div>
-
-        <div data-ui-view="header"></div>
-
-
-        <div class="off-canvas-wrapper" id="r2-wrapper">
-            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-                <div class="off-canvas position-left r2-left" id="offCanvas" data-off-canvas>
-                    <div data-ui-view="sidebar_left"></div>
-                </div>
-                <div class="off-canvas-content r2-right" data-off-canvas-content>
-                    <div class="breadcrumbs" ncy-breadcrumb></div>
-                    <div data-ui-view="content"></div>
-                </div>
-            </div>
-        </div>
-
-
-        <div data-ng-cloak data-ui-view="notification"></div>
-
-        <!-- R2TurismoApp Scripts -->
-        <!-- build:js(public) /js/R2AdminApp.min.js -->
-        <?php
-        echo $this->inlineScript()
-        // Shared Modules
-        ->appendFile($this->basePath('js/app/shared/ConstantsModule.js'))
-        ->appendFile($this->basePath('js/app/shared/auth/AuthModule.js'))
-        // Shared Plugins
-        ->appendFile($this->basePath('js/app/shared/plugins/factories/underscore.js'))
-        ->appendFile($this->basePath('js/app/shared/plugins/factories/string.js'))
-        // Shared Filters
-        ->appendFile($this->basePath('js/app/shared/filters/StringFilters.js'))
-        ->appendFile($this->basePath('js/app/shared/filters/TableFilters.js'))
-        // Shared Directives
-        ->appendFile($this->basePath('js/app/shared/directives/PluginsDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/DocumentsDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/SocialNetworksDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/EmailsDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/CreditCardsDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/TelephonesDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/AddressesDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/LaguageSelectDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/ValidationDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/InputDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/PersonDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/UsersDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/LabelDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/CompanyDirectives.js'))
-        ->appendFile($this->basePath('js/app/shared/directives/VideosDirectives.js'))
-        // Shared Services
-        ->appendFile($this->basePath('js/app/shared/services/BaseServices.js'))
-        ->appendFile($this->basePath('js/app/shared/services/UserServices.js'))
-        ->appendFile($this->basePath('js/app/shared/services/AclServices.js'))
-        ->appendFile($this->basePath('js/app/shared/services/LocaleServices.js'))
-        ->appendFile($this->basePath('js/app/shared/services/CompanyServices.js'))
-        ->appendFile($this->basePath('js/app/shared/services/InventoriesServices.js'))
-        ->appendFile($this->basePath('js/app/shared/services/NotificationServices.js'))
-        // Site App
-        ->appendFile($this->basePath('js/app/admin/R2Admin.js'))
-        // Admin Controllers
-        ->appendFile($this->basePath('js/app/admin/controllers/HomeControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/LayoutControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/UsersControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/ManufacturersControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/ProductControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/DepartmentsControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/ProductOrdersControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/SaleOrdersControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/CustomersControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/StatisticsControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/FeaturesControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/InventoriesControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/DiscountCouponsControllers.js'))
-        ->appendFile($this->basePath('js/app/admin/controllers/ComboProductsControllers.js'))
-        // Admin Services
-        ->appendFile($this->basePath('js/app/admin/services/ManufacturersServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/ProductsServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/DepartmentsServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/OrderProductStores.js'))
-        ->appendFile($this->basePath('js/app/admin/services/CustomersServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/FeaturesServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/FeatureGroupsServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/ImagesServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/DiscountCouponsServices.js'))
-        ->appendFile($this->basePath('js/app/admin/services/ComboProductsServices.js'));
-        ?>
-        <!-- endbuild -->
-        
-    </body>
+<?php date_default_timezone_set('America/Sao_Paulo');?>
+<?php echo $this->doctype();?>
+<html lang="pt-br" data-ng-app="R2Admin">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Ecomart Admin')->setSeparator(' - ')->setAutoEscape(false);?>
+        <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ;?>
+        <!-- Base style -->
+        <!-- build:css(public) /css/base.min.css -->
+        <?php
+        $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('css/screen.css'), 'screen')
+        ->prependStylesheet($this->basePath('css/print.css'), 'print');
+        echo $this->headLink();
+        $this->headLink()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Main style -->
+        <!-- build:css(public) /css/main.min.css -->
+        <?php
+        $this->headLink()
+        ->prependStylesheet($this->basePath('css/main.css'));
+        echo $this->headLink();
+        $this->headLink()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Third-Party styles -->
+        <!-- build:css(public) /css/main.min.css -->
+        <?php
+        $this->headLink()
+        ->prependStylesheet($this->basePath('bower_components/angular-block-ui/dist/angular-block-ui.css'))
+        ->prependStylesheet($this->basePath('bower_components/ngFloatingLabels/src/ng-floating-labels.css'))
+        ->prependStylesheet($this->basePath('bower_components/ng-dialog/css/ngDialog-theme-default.css'))
+        ->prependStylesheet($this->basePath('bower_components/ng-dialog/css/ngDialog.css'))
+        ->prependStylesheet($this->basePath('bower_components/ngWYSIWYG/dist/editor.min.css'))
+        ->prependStylesheet($this->basePath('bower_components/angular-ui-notification/dist/angular-ui-notification.css'))
+        ->prependStylesheet($this->basePath('bower_components/angular-loading-bar/build/loading-bar.css'));
+        echo $this->headLink();
+        $this->headLink()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Plugins Scripts -->
+        <!-- build:js(public) /js/plugins.min.js -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('bower_components/string/dist/string.js'))
+        ->prependFile($this->basePath('js/plugins/polyfiller.js'))
+        ->prependFile($this->basePath('js/plugins/underscore.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.tabs.js'))
+        ->prependFile($this->basePath('bower_components/foundation-sites/js/foundation.offcanvas.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.accordionMenu.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.reveal.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.timerAndImageLoader.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.keyboard.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.box.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.dropdownMenu.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.motion.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.nest.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.mediaQuery.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.util.triggers.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.responsiveMenu.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.responsiveToggle.js'))
+        ->prependFile($this->basePath('js/plugins/foundation/foundation.core.js'))
+        ->prependFile($this->basePath('bower_components/foundation-sites/dist/foundation.js'))
+        ->prependFile($this->basePath('js/plugins/jquery.sticky.js'))
+        ->prependFile($this->basePath('bower_components/jquery/dist/jquery.js'));
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+
+        <!-- Scripts Condicionais  -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('js/plugins/respond.js'), 'text/javascript', array('conditional' => 'lt IE 9'))
+        ->prependFile($this->basePath('js/plugins/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- Angular & Resources Scripts -->
+        <!-- build:js(public) /js/angular-and-resources.min.js -->
+        <?php
+        $this->headScript()
+        ->prependFile($this->basePath('bower_components/angular-block-ui/dist/angular-block-ui.js'))
+        ->prependFile($this->basePath('bower_components/ngFloatingLabels/src/ngFloatingLabels.js'))
+        ->prependFile($this->basePath('bower_components/ng-file-upload/ng-file-upload.js'))
+        ->prependFile($this->basePath('bower_components/angular-loading-overlay/dist/angular-loading-overlay.js'))
+        ->prependFile($this->basePath('bower_components/angular-smart-table/dist/smart-table.js'))
+        ->prependFile($this->basePath('bower_components/ng-dialog/js/ngDialog.js'))
+        ->prependFile($this->basePath('bower_components/ngWYSIWYG/dist/wysiwyg.min.js'))
+        ->prependFile($this->basePath('bower_components/angular-loading-bar/build/loading-bar.js'))
+        ->prependFile($this->basePath('bower_components/angular-ui-notification/dist/angular-ui-notification.js'))
+        ->prependFile($this->basePath('bower_components/angular-input-masks/angular-input-masks-standalone.js'))
+        ->prependFile($this->basePath('bower_components/angular-i18n/angular-locale_pt-br.js'))
+        ->prependFile($this->basePath('bower_components/angular-favicon/angular-favicon.js'))
+        ->prependFile($this->basePath('bower_components/angular-messages/angular-messages.js'))
+        ->prependFile($this->basePath('bower_components/angular-cookies/angular-cookies.js'))
+        ->prependFile($this->basePath('bower_components/angular-ui-router/release/angular-ui-router.js'))
+        ->prependFile($this->basePath('bower_components/angular-resource/angular-resource.js'))
+        ->prependFile($this->basePath('bower_components/angular-breadcrumb/dist/angular-breadcrumb.js'))
+        ->prependFile($this->basePath('bower_components/angular-sanitize/angular-sanitize.js'))
+        ->prependFile($this->basePath('bower_components/angular-animate/angular-animate.js'))
+        ->prependFile($this->basePath('bower_components/angular/angular.js'));
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());
+        ?>
+        <!-- endbuild -->
+
+        <!-- Angular Translate Resources Scripts -->
+        <!-- build:js(public) /js/angular-translate-pack.min.js -->
+        <?php
+/*        $this->headScript()
+        ->prependFile($this->basePath('bower_components/angular-dynamic-locale/tmhDynamicLocale.min.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-handler-log/angular-translate-handler-log.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-storage-local/angular-translate-storage-local.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js'))
+        ->prependFile($this->basePath('bower_components/angular-translate/angular-translate.js'));
+
+        echo $this->headScript();
+        $this->headScript()->exchangeArray(array());*/
+        ?>
+        <!-- endbuild -->
+    </head>
+
+    <body data-foundation-init data-polyfiller-init id="layout-site">
+
+        <div id="loading-bar-container"></div>
+
+        <div data-ui-view="header"></div>
+
+
+        <div class="off-canvas-wrapper" id="r2-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+                <div class="off-canvas position-left r2-left" id="offCanvas" data-off-canvas>
+                    <div data-ui-view="sidebar_left"></div>
+                </div>
+                <div class="off-canvas-content r2-right" data-off-canvas-content>
+                    <div class="breadcrumbs" ncy-breadcrumb></div>
+                    <div data-ui-view="content"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div data-ng-cloak data-ui-view="notification"></div>
+
+        <!-- R2TurismoApp Scripts -->
+        <!-- build:js(public) /js/R2AdminApp.min.js -->
+        <?php
+        echo $this->inlineScript()
+        // Shared Modules
+        ->appendFile($this->basePath('js/app/shared/ConstantsModule.js'))
+        ->appendFile($this->basePath('js/app/shared/auth/AuthModule.js'))
+        // Shared Plugins
+        ->appendFile($this->basePath('js/app/shared/plugins/factories/underscore.js'))
+        ->appendFile($this->basePath('js/app/shared/plugins/factories/string.js'))
+        // Shared Filters
+        ->appendFile($this->basePath('js/app/shared/filters/StringFilters.js'))
+        ->appendFile($this->basePath('js/app/shared/filters/TableFilters.js'))
+        // Shared Directives
+        ->appendFile($this->basePath('js/app/shared/directives/PluginsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/DocumentsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/SocialNetworksDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/EmailsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/CreditCardsDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/TelephonesDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/AddressesDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/LaguageSelectDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/ValidationDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/InputDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/PersonDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/UsersDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/LabelDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/CompanyDirectives.js'))
+        ->appendFile($this->basePath('js/app/shared/directives/VideosDirectives.js'))
+        // Shared Services
+        ->appendFile($this->basePath('js/app/shared/services/BaseServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/UserServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/AclServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/LocaleServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/CompanyServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/InventoriesServices.js'))
+        ->appendFile($this->basePath('js/app/shared/services/NotificationServices.js'))
+        // Site App
+        ->appendFile($this->basePath('js/app/admin/R2Admin.js'))
+        // Admin Controllers
+        ->appendFile($this->basePath('js/app/admin/controllers/HomeControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/LayoutControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/UsersControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/ManufacturersControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/ProductControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/DepartmentsControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/ProductOrdersControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/SaleOrdersControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/CustomersControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/StatisticsControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/FeaturesControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/InventoriesControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/DiscountCouponsControllers.js'))
+        ->appendFile($this->basePath('js/app/admin/controllers/ComboProductsControllers.js'))
+        // Admin Services
+        ->appendFile($this->basePath('js/app/admin/services/ManufacturersServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/ProductsServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/DepartmentsServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/OrderProductStores.js'))
+        ->appendFile($this->basePath('js/app/admin/services/CustomersServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/FeaturesServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/FeatureGroupsServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/ImagesServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/DiscountCouponsServices.js'))
+        ->appendFile($this->basePath('js/app/admin/services/ComboProductsServices.js'));
+        ?>
+        <!-- endbuild -->
+        
+    </body>
 </html>

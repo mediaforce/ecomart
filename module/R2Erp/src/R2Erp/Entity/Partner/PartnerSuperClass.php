@@ -1,9 +1,7 @@
 <?php
 namespace R2Erp\Entity\Partner;
-
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
-
 /**
  * @ORM\Table(name="r2_erp_staff_partners")
  * @ORM\Entity
@@ -29,19 +27,16 @@ class PartnerSuperClass {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Base\Entity\Person")
 	 * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $person;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Erp\Entity\Partner\Department")
 	 * @ORM\JoinColumn(name="department_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $department;
-
 	/**
 	 * @ORM\ManyToMany(targetEntity="R2Erp\Entity\Partner\Burden")
 	 * @ORM\JoinTable(name="r2_erp_staff_partner_burdens",
@@ -50,14 +45,12 @@ class PartnerSuperClass {
 	 *      )
 	 **/
 	private $burdens;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="is_on_comission", type="boolean")
 	 */
 	private $isOnComission;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Financial\AccountSuperClass")
 	 * @ORM\JoinTable(name="r2_erp_partner_accounts",
@@ -66,7 +59,6 @@ class PartnerSuperClass {
 	 *      )
 	 **/
 	private $accounts;
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="R2Erp\Entity\Order\Expense\Order")
 	 * @ORM\JoinTable(name="r2_erp_partner_expenses",
@@ -75,14 +67,12 @@ class PartnerSuperClass {
 	 *      )
 	 **/
 	private $expenses;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="partner_status", type="string", length=20, nullable=false)
 	 */
 	private $partnerStatus;
-
 	public function __construct(array $options = array()) {
 		(new Hydrator\ClassMethods)->hydrate($options, $this);
 	}

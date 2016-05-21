@@ -1,25 +1,25 @@
-<div>
-
-	<form class="cad-form" novalidate name="imageForm">
-		<label>Nome</label>
-		Multiple files
-		<div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
-
-		<div ng-repeat="file in files track by $index">
-			<img
-			  ngf-src="file"
-			  ngf-background="file"
-			  ngf-resize="{width: 200, height: 200, quality: 0.9}">
-			<label>Principal</label>
-			<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>{{$index}}
-
-		</div>
-
-		COVER: {{selectedValue}}
-
-		<button ng-click="enviar()">ENVIAR</button>
-
-	</form>
-
-
+<div>
+
+	<form class="cad-form" novalidate name="imageForm">
+		<label>Nome</label>
+		Multiple files
+		<div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
+
+		<div ng-repeat="file in files track by $index">
+			<img
+			  ngf-src="file"
+			  ngf-background="file"
+			  ngf-resize="{width: 200, height: 200, quality: 0.9}">
+			<label>Principal</label>
+			<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>{{$index}}
+
+		</div>
+
+		COVER: {{selectedValue}}
+
+		<button ng-click="enviar()">ENVIAR</button>
+
+	</form>
+
+
 </div>

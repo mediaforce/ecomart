@@ -1,34 +1,34 @@
-<div>
-	<h3 class-"r2-admin-page-title">Combos</h3>
-	<a data-ui-sref="admin.products.combostores.create" class="expanded button">Adicionar Novo Combo</a>
-	<table id="products-table" st-safe-src="combosCollection" st-set-filter="genericFilter" st-table="displayedCombosCollection" class="table table-striped">
-		<thead>
-			<tr class="r2-title-line">
-				<th>Imagem</th>
-				<th>Código</th>
-				<th>Referência</th>
-				<th>Título</th>
-				<th>Editar</th>
-				<th>Excluir</th>
-			</tr>
-
-		</thead>
-		<tbody>
-			<tr ng-repeat="row in displayedCollection">
-				<td>{{row.cover}}</td>
-				<td>{{row.id}}</td>
-				<td>{{row.reference}}</td>
-				<td>{{row.title}}</td>
-				<td><a data-ui-sref="admin.products.save({productId: row.id})">Editar</a></td>
-				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan=" 6" class="text-center">
-					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+<div>
+	<h3 class-"r2-admin-page-title">Combos</h3>
+	<a data-ui-sref="admin.products.combostores.create" class="expanded button">Adicionar Novo Combo</a>
+	<table id="products-table" st-safe-src="combosCollection" st-set-filter="genericFilter" st-table="displayedCombosCollection" class="table table-striped">
+		<thead>
+			<tr class="r2-title-line">
+				<th>Imagem</th>
+				<th>Código</th>
+				<th>Referência</th>
+				<th>Título</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				<td>{{row.cover}}</td>
+				<td>{{row.id}}</td>
+				<td>{{row.reference}}</td>
+				<td>{{row.title}}</td>
+				<td><a data-ui-sref="admin.products.save({productId: row.id})">Editar</a></td>
+				<td><button ng-click="delete(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan=" 6" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </div>

@@ -1,8 +1,6 @@
 <?php
 namespace R2Erp\Entity\Supplier;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  *
  * @ORM\Table(name="r2_erp_suppliers")
@@ -17,35 +15,28 @@ class Supplier {
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Base\Entity\Person")
 	 * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $person;
-
 	/**
 	 * @ORM\OneToOne(targetEntity="R2Base\Entity\Company")
 	 * @ORM\JoinColumn(name="company_id", referencedColumnName="id", nullable=true)
 	 **/
 	private $company;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="supplier_type", type="string", length=50, nullable=false)
 	 */
 	private $supplierType;
-
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="notes", type="text", nullable=false)
 	 */
 	private $notes;
-
 	public function __construct() {
-
 	}
-
 }

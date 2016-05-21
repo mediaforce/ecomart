@@ -1,78 +1,78 @@
-<div>
-	{{'Nome'|translate}} *:
-	<input
-		type="text"
-		name="pers_name"
-		data-ng-model="personModel.name"
-		data-ng-minlength="3"
-		data-ng-maxlength="50"
-		data-ng-trim="true"
-		required>
-
-	<div
-		data-ng-messages="form.pers_name.$error"
-		data-ng-if="form.pers_name.$touched"
-		data-ng-class="{ 'form-has-error': form.pers_name.$touched && form.pers_name.$invalid }">
-
-		<p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
-        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
-        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
-    </div>
-
-	{{'Sobrenome'|translate}} *:
-	<input
-		type="text"
-		name="pers_surname"
-		data-ng-model="personModel.surname"
-		data-ng-minlength="3"
-		data-ng-maxlength="50"
-		data-ng-trim="true"
-		required>
-
-	<div
-		data-ng-messages="form.pers_surname.$error"
-		data-ng-if="form.pers_surname.$touched"
-		data-ng-class="{ 'form-has-error': form.pers_surname.$touched && form.pers_surname.$invalid }">
-
-		<p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
-        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
-        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
-    </div>
-
-	{{'Sexo'|translate}} *:
-	<select
-		name="pers_gender"
-		data-ng-model="personModel.gender"
-		size="1"
-		required>
-
-		<option data-ng-hide="gendersLoad">Carregando...</option>
-		<option data-ng-repeat="option in options.genders" value="{{option.name}}">{{option.name | translate | capitalize }}</option>
-	</select>
-
-	<div
-		data-ng-messages="form.pers_gender.$touched.$error"
-		data-ng-if="form.pers_gender.$touched.$touched"
-		data-ng-class="{ 'form-has-error': form.pers_gender.$touched.$touched && form.pers_gender.$touched.$invalid }">
-
-        <p data-ng-message="required">{{'Escolha o sexo'|translate}}.</p>
-    </div>
-
-	{{'Nacionalidade'|translate}}:
-	<input
-		type="text"
-		name="input"
-		data-ng-model="personModel.nationality">
-
-	{{'Data Nascimento'|translate}}:
-	<input
-		type="date"
-		name="input"
-		data-ng-model="personModel.birthDate">
-
-	{{'Foto'|translate}}:
-	<input
-		type="file"
-		name="input"
-		data-ng-model="personModel.photo">
+<div>
+	{{'Nome'|translate}} *:
+	<input
+		type="text"
+		name="pers_name"
+		data-ng-model="personModel.name"
+		data-ng-minlength="3"
+		data-ng-maxlength="50"
+		data-ng-trim="true"
+		required>
+
+	<div
+		data-ng-messages="form.pers_name.$error"
+		data-ng-if="form.pers_name.$touched"
+		data-ng-class="{ 'form-has-error': form.pers_name.$touched && form.pers_name.$invalid }">
+
+		<p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
+        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
+        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
+    </div>
+
+	{{'Sobrenome'|translate}} *:
+	<input
+		type="text"
+		name="pers_surname"
+		data-ng-model="personModel.surname"
+		data-ng-minlength="3"
+		data-ng-maxlength="50"
+		data-ng-trim="true"
+		required>
+
+	<div
+		data-ng-messages="form.pers_surname.$error"
+		data-ng-if="form.pers_surname.$touched"
+		data-ng-class="{ 'form-has-error': form.pers_surname.$touched && form.pers_surname.$invalid }">
+
+		<p data-ng-message="minlength">{{'Senha é muito curta'|translate}}.</p>
+        <p data-ng-message="maxlength">{{'Senha é muito longa'|translate}}.</p>
+        <p data-ng-message="required">{{'Confirmar senha é obrigatório'|translate}}.</p>
+    </div>
+
+	{{'Sexo'|translate}} *:
+	<select
+		name="pers_gender"
+		data-ng-model="personModel.gender"
+		size="1"
+		required>
+
+		<option data-ng-hide="gendersLoad">Carregando...</option>
+		<option data-ng-repeat="option in options.genders" value="{{option.name}}">{{option.name | translate | capitalize }}</option>
+	</select>
+
+	<div
+		data-ng-messages="form.pers_gender.$touched.$error"
+		data-ng-if="form.pers_gender.$touched.$touched"
+		data-ng-class="{ 'form-has-error': form.pers_gender.$touched.$touched && form.pers_gender.$touched.$invalid }">
+
+        <p data-ng-message="required">{{'Escolha o sexo'|translate}}.</p>
+    </div>
+
+	{{'Nacionalidade'|translate}}:
+	<input
+		type="text"
+		name="input"
+		data-ng-model="personModel.nationality">
+
+	{{'Data Nascimento'|translate}}:
+	<input
+		type="date"
+		name="input"
+		data-ng-model="personModel.birthDate">
+
+	{{'Foto'|translate}}:
+	<input
+		type="file"
+		name="input"
+		data-ng-model="personModel.photo">
 </div>

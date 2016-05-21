@@ -1,147 +1,147 @@
-
-		/*
-$docType = new PhysicalDocumentType('RG');die;*/
-/*		$manager = $this->getServiceLocator()->get('ModuleManager');
-$modules = $manager->getLoadedModules();
-
-die;
-$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-
-$repo = $em->getRepository("R2User\Entity\Usuario");
-
-$data = $repo->findArray();
-
-print_r($data);
-die;*/
-/*		$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-
-$repo = $em->getRepository("R2Base\Entity\RedeSocial");
-
-$data = $repo->find(1);
-
-// var_dump($data->getSuperClasse());
-
-switch ($data->getSuperClasse()->getType()) {
-case 'ClasseA':
-echo $data->getSuperClasse()->getCampoAContent();
-break;
-case 'ClasseB':
-echo $data->getSuperClasse()->getCampoBContent();
-break;
-}
-
-die;*/
-
-/*		$request = $this->getRequest();
-
-$service = $this->getServiceLocator()->get('R2Tracker\Service\UserTracker');
-
-$server = $request->getServer();
-
-$arrServer = array(
-'siteUri' => $server->get('REQUEST_URI'),
-'userIp' => $server->get('REMOTE_ADDR'),
-'userBrowser' => $server->get('HTTP_USER_AGENT'),
-'userBrowserLanguage' => $server->get('HTTP_ACCEPT_LANGUAGE'),
-);
-
-$usuario = $service->insert($arrServer);
-
-var_dump($usuario);die;*/
-
-		// $rsa = Rsa::factory(array(
-		// 	'public_key' => 'public_key.pub',
-		// 	'private_key' => 'private_key.pem',
-		// 	'pass_phrase' => 'test',
-		// 	'binary_output' => false,
-		// ));
-
-		// $text = '1';
-
-		// $encrypt = $rsa->encrypt($text);
-		// printf("Encrypted message:\n%s\n", $encrypt);
-
-		// $decrypt = $rsa->decrypt($encrypt);
-
-		// if ($text !== $decrypt) {
-		// 	echo "ERROR\n";
-		// } else {
-		// 	echo "Encryption and decryption performed successfully!\n";
-		// }
-
-		// die;
-		/*
-		$trackerService = $this->getServiceLocator()->get("R2Tracker\Service\UserTracker");
-
-		$jsonIpInfo = file_get_contents("http://ipinfo.io/177.32.25.55");
-		$arrIpInfo = json_decode($jsonIpInfo, true);
-
-		$server = $this->request->getServer();
-
-		$data = array(
-		'siteUri' => $server->get('REQUEST_URI'),
-		'userIp' => $server->get('REMOTE_ADDR'),
-		'userBrowser' => $server->get('HTTP_USER_AGENT'),
-		'userBrowserLanguage' => $server->get('HTTP_ACCEPT_LANGUAGE'),
-		'userCountry' => $arrIpInfo['country'],
-		'userRegion' => $arrIpInfo['region'],
-		'userCity' => $arrIpInfo['city'],
-		'userLat' => $arrIpInfo['loc'],
-		'userLong' => $arrIpInfo['loc'],
-		'userHostname' => $arrIpInfo['hostname'],
-		'userOrg' => $arrIpInfo['org'],
-		);
-
-		$sessionStorage = new SessionStorage();
-		$this->authService = new AuthenticationService;
-		$this->authService->setStorage($sessionStorage);*/
-
-		// TODO
-		// 1° verificar se esta logado
-		// 2° Se estiver logado, se possui userTracker
-		// 3° Verificar se possui userCookieId...
-		// Se suprir estas condições salvar userTracker, caso não, criar novo...
-		// UserTracker tera uma api rest para atualizações apenas...
-
-/*		if ($this->getAuthService()->hasIdentity()) {
-
-} else {
-
-}
-
-var_dump($data);
-die;*/
-/*
-$aliceOptions = array(
-'prime' => '1615264663143856159582568818888995127215884267',
-'generator' => '2',
-'private' => '18357635708512876826280268862',
-);
-
-$bobOptions = array(
-'prime' => '1615264663143856159582568818888995127215884267',
-'generator' => '2',
-'private' => base_convert(time() . time() . uniqid(), 11, 10),
-);
-
-$alice = new DiffieHellman($aliceOptions['prime'], $aliceOptions['generator'], $aliceOptions['private']);
-$bob = new DiffieHellman($bobOptions['prime'], $bobOptions['generator'], $bobOptions['private']);
-
-$alice->generateKeys();
-$bob->generateKeys();
-
-$aliceSecretKey = $alice->computeSecretKey($bob->getPublicKey(DiffieHellman::FORMAT_BINARY),
-DiffieHellman::FORMAT_BINARY,
-DiffieHellman::FORMAT_BINARY);
-
-$bobSecretKey = $bob->computeSecretKey($alice->getPublicKey(DiffieHellman::FORMAT_BINARY),
-DiffieHellman::FORMAT_BINARY,
-DiffieHellman::FORMAT_BINARY);
-
-if ($aliceSecretKey !== $bobSecretKey) {
-echo "ERROR!\n";
-} else {
-printf("The secret key is: %s\n", base64_encode($bobSecretKey));
-}
-die;
+
+		/*
+$docType = new PhysicalDocumentType('RG');die;*/
+/*		$manager = $this->getServiceLocator()->get('ModuleManager');
+$modules = $manager->getLoadedModules();
+
+die;
+$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+
+$repo = $em->getRepository("R2User\Entity\Usuario");
+
+$data = $repo->findArray();
+
+print_r($data);
+die;*/
+/*		$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+
+$repo = $em->getRepository("R2Base\Entity\RedeSocial");
+
+$data = $repo->find(1);
+
+// var_dump($data->getSuperClasse());
+
+switch ($data->getSuperClasse()->getType()) {
+case 'ClasseA':
+echo $data->getSuperClasse()->getCampoAContent();
+break;
+case 'ClasseB':
+echo $data->getSuperClasse()->getCampoBContent();
+break;
+}
+
+die;*/
+
+/*		$request = $this->getRequest();
+
+$service = $this->getServiceLocator()->get('R2Tracker\Service\UserTracker');
+
+$server = $request->getServer();
+
+$arrServer = array(
+'siteUri' => $server->get('REQUEST_URI'),
+'userIp' => $server->get('REMOTE_ADDR'),
+'userBrowser' => $server->get('HTTP_USER_AGENT'),
+'userBrowserLanguage' => $server->get('HTTP_ACCEPT_LANGUAGE'),
+);
+
+$usuario = $service->insert($arrServer);
+
+var_dump($usuario);die;*/
+
+		// $rsa = Rsa::factory(array(
+		// 	'public_key' => 'public_key.pub',
+		// 	'private_key' => 'private_key.pem',
+		// 	'pass_phrase' => 'test',
+		// 	'binary_output' => false,
+		// ));
+
+		// $text = '1';
+
+		// $encrypt = $rsa->encrypt($text);
+		// printf("Encrypted message:\n%s\n", $encrypt);
+
+		// $decrypt = $rsa->decrypt($encrypt);
+
+		// if ($text !== $decrypt) {
+		// 	echo "ERROR\n";
+		// } else {
+		// 	echo "Encryption and decryption performed successfully!\n";
+		// }
+
+		// die;
+		/*
+		$trackerService = $this->getServiceLocator()->get("R2Tracker\Service\UserTracker");
+
+		$jsonIpInfo = file_get_contents("http://ipinfo.io/177.32.25.55");
+		$arrIpInfo = json_decode($jsonIpInfo, true);
+
+		$server = $this->request->getServer();
+
+		$data = array(
+		'siteUri' => $server->get('REQUEST_URI'),
+		'userIp' => $server->get('REMOTE_ADDR'),
+		'userBrowser' => $server->get('HTTP_USER_AGENT'),
+		'userBrowserLanguage' => $server->get('HTTP_ACCEPT_LANGUAGE'),
+		'userCountry' => $arrIpInfo['country'],
+		'userRegion' => $arrIpInfo['region'],
+		'userCity' => $arrIpInfo['city'],
+		'userLat' => $arrIpInfo['loc'],
+		'userLong' => $arrIpInfo['loc'],
+		'userHostname' => $arrIpInfo['hostname'],
+		'userOrg' => $arrIpInfo['org'],
+		);
+
+		$sessionStorage = new SessionStorage();
+		$this->authService = new AuthenticationService;
+		$this->authService->setStorage($sessionStorage);*/
+
+		// TODO
+		// 1° verificar se esta logado
+		// 2° Se estiver logado, se possui userTracker
+		// 3° Verificar se possui userCookieId...
+		// Se suprir estas condições salvar userTracker, caso não, criar novo...
+		// UserTracker tera uma api rest para atualizações apenas...
+
+/*		if ($this->getAuthService()->hasIdentity()) {
+
+} else {
+
+}
+
+var_dump($data);
+die;*/
+/*
+$aliceOptions = array(
+'prime' => '1615264663143856159582568818888995127215884267',
+'generator' => '2',
+'private' => '18357635708512876826280268862',
+);
+
+$bobOptions = array(
+'prime' => '1615264663143856159582568818888995127215884267',
+'generator' => '2',
+'private' => base_convert(time() . time() . uniqid(), 11, 10),
+);
+
+$alice = new DiffieHellman($aliceOptions['prime'], $aliceOptions['generator'], $aliceOptions['private']);
+$bob = new DiffieHellman($bobOptions['prime'], $bobOptions['generator'], $bobOptions['private']);
+
+$alice->generateKeys();
+$bob->generateKeys();
+
+$aliceSecretKey = $alice->computeSecretKey($bob->getPublicKey(DiffieHellman::FORMAT_BINARY),
+DiffieHellman::FORMAT_BINARY,
+DiffieHellman::FORMAT_BINARY);
+
+$bobSecretKey = $bob->computeSecretKey($alice->getPublicKey(DiffieHellman::FORMAT_BINARY),
+DiffieHellman::FORMAT_BINARY,
+DiffieHellman::FORMAT_BINARY);
+
+if ($aliceSecretKey !== $bobSecretKey) {
+echo "ERROR!\n";
+} else {
+printf("The secret key is: %s\n", base64_encode($bobSecretKey));
+}
+die;
  */
