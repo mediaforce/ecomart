@@ -54,15 +54,15 @@ module.exports = function(grunt) {
 
             site_vendors_css: {
                 src: [
-                    'public/bower_components/ngFloatingLabels/src/ng-floating-labels.css',
-                    'public/bower_components/ng-dialog/css/ngDialog-theme-default.css',
-                    'public/bower_components/ng-dialog/css/ngDialog.css',
-                    'public/bower_components/angular-ui-notification/dist/angular-ui-notification.css',
                     'public/bower_components/angular-loading-bar/build/loading-bar.css',
-                    'bower_components/angular-block-ui/dist/angular-block-ui.css',
-                    'public/css/barousel.css',
+                    'public/bower_components/angular-ui-notification/dist/angular-ui-notification.css',
+                    'public/bower_components/ng-dialog/css/ngDialog.css',
+                    'public/bower_components/ng-dialog/css/ngDialog-theme-default.css',
+                    'public/css/angular-photo-slider.css',
+                    'public/bower_components/ngFloatingLabels/src/ng-floating-labels.css',
                     'public/css/easyzoom.css',
-                    'public/css/angular-photo-slider.css'
+                    'public/css/barousel.css',
+                    'public/bower_components/angular-block-ui/dist/angular-block-ui.css'
                 ],
                 dest: '.tmp/concat/sitevendors.css'
             },
@@ -118,6 +118,8 @@ module.exports = function(grunt) {
                     'public/bower_components/angular-youtube-embed/dist/angular-youtube-embed.min.js',
                     'public/bower_components/angular-recaptcha/release/angular-recaptcha.js',
                     'public/bower_components/angular-credit-cards/release/angular-credit-cards.js',
+                    'public/bower_components/angular-slugify/angular-slugify.js',
+                    'public/bower_components/angular-block-ui/dist/angular-block-ui.js',
                     'public/bower_components/angular-smart-table/dist/smart-table.js'
                 ],
                 dest: '.tmp/concat/ng/siteangularandresources.js'
@@ -141,16 +143,15 @@ module.exports = function(grunt) {
                     'public/js/app/shared/directives/LaguageSelectDirectives.js',
                     'public/js/app/shared/directives/ValidationDirectives.js',
                     'public/js/app/shared/directives/InputDirectives.js',
-                    'public/js/app/shared/directives/PersonDirectives.js',
                     'public/js/app/shared/directives/UsersDirectives.js',
                     'public/js/app/shared/services/BaseServices.js',
                     'public/js/app/shared/services/UserServices.js',
                     'public/js/app/shared/services/AclServices.js',
                     'public/js/app/shared/services/LocaleServices.js',
                     'public/js/app/shared/services/InventoriesServices.js',
+                    'public/js/app/shared/services/CheckoutServices.js',
                     'public/js/app/shared/services/NotificationServices.js',
                     'public/js/app/shared/services/CouponServices.js',
-                    'public/js/app/shared/services/CheckoutServices.js',
                     'public/js/app/site/R2Site.js',
                     'public/js/app/site/controllers/LayoutControllers.js',
                     'public/js/app/site/controllers/UsersControllers.js',
@@ -187,7 +188,7 @@ module.exports = function(grunt) {
             },
             my_target: {
                 files: {
-                    'public/minified/js/site.plugins.min.js': ['.tmp/concat/siteplugins.js'],
+                    'public/minified/js/site_plugins.min.js': ['.tmp/concat/siteplugins.js'],
                     'public/minified/js/site_angular_and_resources.min.js': ['.tmp/concat/ng/siteangularandresources.js'],
                     'public/minified/js/R2SiteApp.min.js': ['.tmp/concat/ng/R2SiteApp.js']                    
 
@@ -270,7 +271,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean']);
     grunt.registerTask('css', ['compass']);
     grunt.registerTask('tests', ['phpunit', 'karma']);
-    grunt.registerTask('prep', ['clean', 'compass', 'concat', 'cssmin', 'uglify' ]);
+    grunt.registerTask('prep', ['clean', 'concat', 'cssmin', 'uglify' ]);
 
 
 };

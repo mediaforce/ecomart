@@ -115,8 +115,6 @@ var R2Site = angular.module('R2Site', [
 
     'InputDirectives',
 
-    'PeopleDirectives',
-
     'UsersDirectives',
 
 

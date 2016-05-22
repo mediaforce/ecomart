@@ -628,7 +628,7 @@ R2Site
 
             $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
 
-            $timeout($scope.nextSlide, INTERVAL);
+            //$timeout($scope.nextSlide, INTERVAL);
 
         };
 
@@ -655,6 +655,8 @@ R2Site
             if (className == 'ng-hide') {
 
                 var finishPoint = element.parent().width();
+
+                console.log('ELEM IMG', element.context.currentSrc);
 
                 if(scope.direction !== 'right') {
 
