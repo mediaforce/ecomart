@@ -2,10 +2,12 @@
 	<div class="expanded">
 		<div class="container slider expanded row align-center">
 		    <div class="columns">
-		    	<div class="">
-		    		<img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
-		    		     ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
-		    		     ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}" width="100%">
+		    	<div ng-repeat="slide in slides">
+		    		<a ng-href="{{slide.link}}" target="_blank">
+		    			<img class="slide slide-animation nonDraggableImage"
+		    			     ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+		    			     ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}" width="100%">
+		    		</a>
 		    	</div>
 		    		<a class="arrow prev" href="#" ng-click="nextSlide()"></a>
 		    		<a class="arrow next" href="#" ng-click="prevSlide()"></a>

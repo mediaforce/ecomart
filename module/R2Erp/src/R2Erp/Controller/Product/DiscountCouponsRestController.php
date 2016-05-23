@@ -48,8 +48,11 @@ class DiscountCouponsRestController extends AbstractRestfulController {
 	// Insere registro - POST
 	public function create($data) {
 		//return new JsonModel(array('raw data' => $data, 'success' => false));
+		return new JsonModel(array('success' => false, 'product' => $data['product']));
 		try {
 			$data = $this->prepareDataToInsert($data);
+
+
 			$entity = $this->service->insert($data);
 		} catch (\Exception $e) {
 			return new JsonModel(array('error' => $e->getMessage(), 'success' => false));
@@ -94,8 +97,11 @@ class DiscountCouponsRestController extends AbstractRestfulController {
 				$data['toAll'] = false;
 				$data['department'] = $this->em->getRepository('R2Erp\Entity\Product\ProductDepartment')->find($data['department']);
 			}
-		} else {
-			$data['couponType'] = new \R2Erp\Enum\DiscountCouponType("PRODUCT");	
+		} else if ( isset($data['product']) ) {
+			$data['couponType'] = new \R2Erp\Enum\DiscountCouponType("PRODUCT");
+
+
+
 		}
 		$data['startDate'] = new \DateTime(date('Y-m-d H:i:s', strtotime($data['startDate'])));
 		$data['finishDate'] = new \DateTime(date('Y-m-d H:i:s', strtotime($data['finishDate'])));

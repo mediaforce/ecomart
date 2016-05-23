@@ -31,7 +31,7 @@
 				<td>{{row.quantity}}</td>
 				<td>0</td>
 				<td>{{row.couponType}}</td>
-				<td>{{row.department}}{{row.toAll}}</td>
+				<td>{{row.toAll?"TODOS OS DEPARTAMENTOS":row.department.name}}</td>
 				<td>{{row.product}}</td>
 				<td><a data-ui-sref="editCoupon(row)">Editar</a></td>
 				<td><button ng-click="deleteCoupon(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>

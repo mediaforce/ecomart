@@ -1,370 +1,358 @@
-<div data-foundation-init>
-	<!-- 	<ul>
-		<li data-ng-repeat="(key, errors) in productForm.$error track by $index"> <strong>{{ key }}</strong> errors
-				<ul>
-						<li data-ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>
-				</ul>
-		</li>
-	</ul> -->
-	<h3>{{pageTitle}}</h3>
-	<form name="productForm" class="form-vertical" novalidate
-		ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
-		<ul class="tabs" data-tabs id="product-form-tabs">
-			<li class="tabs-title is-active"><a href="#panelProduto" aria-selected="true">Produto</a></li>
-			<li class="tabs-title"><a href="#panelDescricoes" aria-selected="true">Descrições</a></li>
-			<li class="tabs-title"><a href="#panelMedidas" aria-selected="true">Medidas</a></li>
-			<li class="tabs-title"><a href="#panelGalerias" aria-selected="true">Galerias</a></li>
-			<li class="tabs-title"><a href="#panelPromocoes" aria-selected="true">Promoções</a></li>
-			<li class="tabs-title"><a href="#panelEstoque" aria-selected="true">Estoque</a></li>
-		</ul>
-		<div class="tabs-content" data-tabs-content="product-form-tabs">
-			<div class="tabs-panel is-active" id="panelProduto">
-				<label for="product_reference">
-					<span class="r2-label-standard">Referência</span>
-					<input type="text" class="form-control" placeholder="Referência" id="product_reference" name="product_reference"
-					ng-model="product.reference"/>
-				</label>
-				<label for="product_title">
-					<span class="r2-label-standard">Título</span>
-					<input type="text" class="form-control" placeholder="Título" id="product_title" name="product_title"
-					ng-model="product.title" required/>
-					<div
-						data-ng-messages="productForm.product_title.$error"
-						data-ng-if="productForm.product_title.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_title.$touched && productForm.product_title.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Título do produto é obrigatório.</p>
-					</div>
-				</label>
-				<label for="product_subtitle">
-					<span class="r2-label-standard">Subtítulo</span>
-					<input type="text" class="form-control" placeholder="Subtítulo" id="product_subtitle" name="product_subtitle"
-					ng-model="product.subtitle"/>
-				</label>
-				<label for="product_manufacturer">
-					<span class="r2-label-standard">Fabricante</span>
-					<select class="form-control" ng-model="product.manufacturer" placeholder="Fabricante" id="product_manufacturer" name="product_manufacturer"
-						required>
-						<option value="" disabled>Selecione o fabricante</option>
-						<option data-ng-repeat="option in options.manufacturers" value="{{option.id}}">{{option.company.companyName}}</option>
-					</select>
-					<div
-						data-ng-messages="productForm.product_manufacturer.$error"
-						data-ng-if="productForm.product_manufacturer.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_manufacturer.$touched && productForm.product_manufacturer.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Fabricante do produto é obrigatório.</p>
-					</div>
-				</label>
-				<label for="product_department">
-					<span class="r2-label-standard">Departamento</span>
-					<select class="form-control" ng-model="product.department" placeholder="Departamento" id="product_department" name="product_department"
-						required>
-						<option value="" disabled>Selecione o departamento</option>
-						<option data-ng-repeat="option in options.departments" value="{{option.id}}">{{option.name}}</option>
-					</select>
-					<div
-						data-ng-messages="productForm.product_department.$error"
-						data-ng-if="productForm.product_department.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_department.$touched && productForm.product_department.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Departamento do produto é obrigatório.</p>
-					</div>
-				</label>
-				<label for="product_category">
-					<span class="r2-label-standard">Categoria</span>
-					<select class="form-control" ng-model="product.category" placeholder="Categoria" id="product_category" name="product_category">
-						<option value="">Selecione a categoria</option>
-						<option data-ng-repeat="option in options.categories" value="{{option.id}}">{{option.name}}</option>
-					</select>
-				</label>
-				<label for="product_features">
-					<span class="r2-label-standard">Características do Produto</span>
-					<button ng-click="addFeature()" class="small expanded button">Adicionar Características ao Produto</button>
-					<table st-safe-src="selectedFeaturesCollection" st-table="product.features" class="table table-striped">
-						<thead>
-							<tr>
-								<th>Característica</th>
-								<th>Valor</th>
-								<th>Excluir</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="row in product.features">
-								<td>{{row.group.name}}</td>
-								<td>{{row.value}}</td>
-								<td><button ng-click="removeFeature(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-							</tr>
-						</tbody>
-						<tfoot>
-						<tr>
-							<td colspan="4" class="text-center">
-								<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-							</td>
-						</tr>
-						</tfoot>
-					</table>
-				</label>
-			</div>
-		</div>
-		<div class="tabs-content" data-tabs-content="product-form-tabs">
-			<div class="tabs-panel" id="panelDescricoes">
-				<label for="product_seo_description">
-					<span class="r2-label-standard">Descrição Completa</span>
-					<input type="text" class="form-control" placeholder="Descrição seo" id="product_seo_description" name="product_seo_description"
-					ng-model="product.seoDescription"/>
-				</label>
-				<label for="product_description">
-					<span class="r2-label-standard">Descrição Completa</span>
-					<wysiwyg-edit content="product.description"></wysiwyg-edit>
-				</label>
-				<label for="combo_thumbnail r2-label-float">
-						<span class="r2-label-standard">Adicionar Manual</span> 
-						<br>{{product.guideToUpload ? 'OK' : 'Sem arquivo'}}
-						<div class="button" ngf-select ng-model="product.guideToUpload" name="product_guide" ngf-max-size="20MB" ngf-min-height="100">Selecione o arquivo</div>
-					</label>
-				<label for="product_brief_description">
-					<span class="r2-label-standard">Descrição Resumida</span>
-					<textarea rows="5" ng-model="product.briefDescription"></textarea>
-				</label>
-			</div>
-		</div>
-		<div class="tabs-content" data-tabs-content="product-form-tabs">
-			<div class="tabs-panel" id="panelMedidas">
-				<label for="product_weight">
-					<span class="r2-label-standard">Peso</span>
-
-					<div class="input-group">
-						<span class="input-group-label">Kg</span>
-						<input type="number" class="input-group-field form-control" placeholder="Peso" id="product_weight" name="product_weight"
-						ng-model="product.weight" required/>
-					</div>
-
-					<div
-						data-ng-messages="productForm.product_weight.$error"
-						data-ng-if="productForm.product_weight.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_weight.$touched && productForm.product_weight.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Peso do produto é obrigatório.</p>
-					</div>
-				</label>
-				<label for="product_dimension_length">
-					<span class="r2-label-standard">Comprimento</span>
-
-					<div class="input-group">
-						<span class="input-group-label">cm</span>
-						<input type="number" class="input-group-field form-control" placeholder="Comprimento" id="product_dimension_length" name="product_dimension_length"
-					ng-model="product.dimensionLength" required/>
-					</div>
-
-					<div
-						data-ng-messages="productForm.product_dimension_length.$error"
-						data-ng-if="productForm.product_dimension_length.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_dimension_length.$touched && productForm.product_dimension_length.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Comprimento do produto é obrigatório.</p>
-					</div>
-				</label>
-				<label for="product_dimension_height">
-					<span class="r2-label-standard">Altura</span>
-					
-
-					<div class="input-group">
-						<span class="input-group-label">cm</span>
-						<input type="number" class="input-group-field  form-control" placeholder="Altura" id="product_dimension_height" name="product_dimension_height"
-					ng-model="product.dimensionHeight" required/>
-					</div>
-
-					<div
-						data-ng-messages="productForm.product_dimension_height.$error"
-						data-ng-if="productForm.product_dimension_height.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_dimension_height.$touched && productForm.product_dimension_height.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Altura do produto é obrigatório.</p>
-					</div>
-				</label>
-				<label for="product_dimension_width" class="r2-label-float">
-					<span class="r2-label-standard">Largura</span>
-					
-					<div class="input-group">
-						<span class="input-group-label">cm</span>
-						<input type="number" class="input-group-field form-control" placeholder="Largura" id="product_dimension_width" name="product_dimension_width"
-					ng-model="product.dimensionWidth" required/>
-					</div>
-
-					<div
-						data-ng-messages="productForm.product_dimension_width.$error"
-						data-ng-if="productForm.product_dimension_width.$touched"
-						data-ng-class="{ 'form-has-error': productForm.product_dimension_width.$touched && productForm.product_dimension_width.$invalid }">
-						<p data-ng-message="required"><span class="icon-error"></span>Largura do produto é obrigatório.</p>
-					</div>
-				</label>
-			</div>
-		</div>
-		<div class="tabs-content" data-tabs-content="product-form-tabs">
-			<div class="tabs-panel" id="panelGalerias">
-				<label>
-					<span class="r2-label-standard">Galeria de Imagens</span>
-					<br>
-					<input type="text" name="product_cover" ng-model="product.hasCover" required style="display: none;"/>
-					<div ng-show="hasProduct">
-						<div class="small expanded button" ngf-select ng-model="product.images" ngf-multiple="true">Substituir as imagens</div>
-						<div class="row" ng-hide="hasUpload">
-							<div ng-repeat="file in product.images track by $index">
-								<div class="small-12 large-expand columns">
-									<img
-									ngf-src="file.path"
-									ngf-background="file.path"
-									ngf-resize="{width: 200, height: 200, quality: 0.9}">
-									<label>É a imagem principal?
-										<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="row" ng-show="hasUpload">
-							<div ng-repeat="file in product.images track by $index">
-								<div class="small-12 large-expand columns">
-									<img
-									ngf-src="file"
-									ngf-background="file"
-									ngf-resize="{width: 200, height: 200, quality: 0.9}">
-									<label>É a imagem principal?
-										<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div ng-hide="hasProduct">
-						<div class="small expanded button" ngf-select ng-model="product.images" ngf-multiple="true">Selecione as Imagens</div>
-						<div class="row">
-							<div ng-repeat="file in product.images track by $index">
-								<div class="small-12 large-expand columns">
-									<img
-									ngf-src="file"
-									ngf-background="file"
-									ngf-resize="{width: 200, height: 200, quality: 0.9}">
-									<label>É a imagem principal?
-										<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div
-						data-ng-messages="productForm.combo_hasThumbnail.$error"
-						data-ng-class="{ 'form-has-error': productForm.combo_hasThumbnail.$invalid }">
-						<p data-ng-message="hasCover">
-							<span class="icon-error"></span><span class="r2-error-message">Você deve escolher uma imagem de capa.</span>
-						</p>
-					</div>
-				</label>
-				<label>
-					<span class="r2-label-standard">Galeria de Vídeos</span>
-				</label>
-				<div data-r2base-add-videos data-videos-model="product.videos" data-form="productForm"></div>
-			</div>
-		</div>
-		<div class="tabs-content" data-tabs-content="product-form-tabs">
-			<div class="tabs-panel" id="panelPromocoes">
-				<label for="product_is_highlighted">
-					<span class="r2-label-standard">Produto destacado</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="product.isHighlighted"  id="product_is_highlighted"/>
-				</label>
-				<label for="product_is_highlighted">
-					<span class="r2-label-standard">Produto lançamento</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="product.isLaunch" id="product_is_launch"/>
-				</label>
-				<label>
-					<span class="r2-label-standard">Produtos Alternativos</span>
-					<button ng-click="addAlternativeProduct()" class="small expanded button">Adicionar Produto Alternativo</button>
-					<table st-safe-src="selectedAlternativeProductsCollection" st-table="product.alternativeProducts" class="table table-striped">
-						<thead>
-							<tr>
-								<th>Produto</th>
-								<th>Fabricante</th>
-								<th>Departamento</th>
-								<th>Ver Estoque</th>
-								<th>Excluir</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="row in product.alternativeProducts">
-								<td>{{row.title}}</td>
-								<td>{{row.manufacturer.company.companyName}}</td>
-								<td>{{row.department.name}}</td>
-								<td><button ng-click="showStock(row.id)">ver</button></td>
-								<td><button ng-click="removeAlternativeProduct(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
-							</tr>
-						</tbody>
-						<tfoot>
-						<tr>
-							<td colspan="5" class="text-center">
-								<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-							</td>
-						</tr>
-						</tfoot>
-					</table>
-				</label>
-			</div>
-		</div>
-		<div class="tabs-content" data-tabs-content="product-form-tabs">
-			<div class="tabs-panel" id="panelEstoque">
-				<label for="product_store_quantity" class="r2-label-float">
-					<br>
-					<input type="number" class="form-control" placeholder="Quantidade" id="product_store_quantity" name="product_store_quantity"
-					ng-model="product.store.quantity" required
-					floating-validation/>
-				</label>
-				<label for="product_store_minimal_qtde_on_stock" class="r2-label-float">
-					<span class="r2-label-standard">Qtde. Mínima no Estoque</span>
-					<input type="number" class="form-control" placeholder="Qtde. Mínima no Estoque" value="e" id="product_store_minimal_qtde_on_stock" name="product_store_minimal_qtde_on_stock"
-					ng-model="product.store.minimalQtdeOnStock"
-					floating-validation/>
-				</label>
-				<label for="product_store_minimal_qtde_on_stock" class="r2-label-float">
-					<span class="r2-label-standard">Custo</span>
-					<input type="number" class="form-control" placeholder="Custo" value="e" id="product_store_minimal_qtde_on_stock" name="product_store_minimal_qtde_on_stock"
-					ng-model="product.store.unitCost"
-					floating-validation/>
-				</label>
-				<label for="product_store_minimal_qtde_on_stock" class="r2-label-float">
-					<br>
-					<input type="number" class="form-control" placeholder="Preço" id="product_store_minimal_qtde_on_stock" name="product_store_minimal_qtde_on_stock"
-					ng-model="product.store.unitPrice" required
-					floating-validation/>
-				</label>
-				<label for="product_store_unit_discount_price" class="r2-label-float">
-					<span class="r2-label-standard">Preço c/ Desconto</span>
-					<input type="number" class="form-control" placeholder="Preço c/ Desconto" value="e" id="product_store_unit_discount_price" name="product_store_unit_discount_price"
-					ng-model="product.store.unitDiscountPrice"
-					floating-validation/>
-				</label>
-				<label for="product_store_sell_discount_price">
-					<span class="r2-label-standard">Vender c/ desconto?</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="product.store.sellDiscountPrice" id="product_store_sell_discount_price"/>
-				</label>
-				<label for="product_store_sell_no_shipping">
-					<span class="r2-label-standard">Não Cobrar Frete?</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="product.store.sellNoShipping" name="product_store_sell_no_shipping" id="product_store_sell_no_shipping"/>
-				</label>
-				<label for="product_store_to_sell">
-					<span class="r2-label-standard">Por Para Vender?</span> &nbsp;&nbsp;&nbsp;
-					<input type="checkbox" ng-model="product.store.toSell" name="product_store_to_sell" id="product_store_to_sell"/>
-				</label>
-			</div>
-		</div>
-		<button ng-click="saveProduct()" class="expanded button large" ng-disabled="productForm.$invalid">{{btnSaveTitle}}</button>
-	</form>
-</div>
-<!-- 			<div class="row">
-	<div class="small-12 columns form-group floating-label-wrapper">
-		<label for="produtoTitulo">Título</label>
-		<input type="text" class="form-control" id="produtoTitulo" placeholder="Título" ng-model="product.title" with-floating-label>
-	</div>
-</div>
-<div class="row">
-	<div class="small-12 columns form-group floating-label-wrapper">
-		<label for="produtoReferencia">Referência</label>
-		<input type="text" class="form-control" id="produtoReferencia" placeholder="Referência" ng-model="product.reference" with-floating-label>
-	</div>
-</div>
+<div data-foundation-init>
+	<!-- 	<ul>
+		<li data-ng-repeat="(key, errors) in productForm.$error track by $index"> <strong>{{ key }}</strong> errors
+				<ul>
+						<li data-ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>
+				</ul>
+		</li>
+	</ul> -->
+	<h3>{{pageTitle}}</h3>
+	<form name="productForm" class="form-vertical" novalidate
+		ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+		<ul class="tabs" data-tabs id="product-form-tabs">
+			<li class="tabs-title is-active"><a href="#panelProduto" aria-selected="true">Produto</a></li>
+			<li class="tabs-title"><a href="#panelDescricoes" aria-selected="true">Descrições</a></li>
+			<li class="tabs-title"><a href="#panelMedidas" aria-selected="true">Medidas</a></li>
+			<li class="tabs-title"><a href="#panelGalerias" aria-selected="true">Galerias</a></li>
+			<li class="tabs-title"><a href="#panelPromocoes" aria-selected="true">Promoções</a></li>
+			<li class="tabs-title"><a href="#panelEstoque" aria-selected="true">Estoque</a></li>
+		</ul>
+		<div class="tabs-content" data-tabs-content="product-form-tabs">
+			<div class="tabs-panel is-active" id="panelProduto">
+				<label for="product_reference">
+					<span class="r2-label-standard">Referência</span>
+					<input type="text" class="form-control" placeholder="Referência" id="product_reference" name="product_reference"
+					ng-model="product.reference"/>
+				</label>
+				<label for="product_title">
+					<span class="r2-label-standard">Título</span>
+					<input type="text" class="form-control" placeholder="Título" id="product_title" name="product_title"
+					ng-model="product.title" required/>
+					<div
+						data-ng-messages="productForm.product_title.$error"
+						data-ng-if="productForm.product_title.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_title.$touched && productForm.product_title.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Título do produto é obrigatório.</p>
+					</div>
+				</label>
+				<label for="product_subtitle">
+					<span class="r2-label-standard">Subtítulo</span>
+					<input type="text" class="form-control" placeholder="Subtítulo" id="product_subtitle" name="product_subtitle"
+					ng-model="product.subtitle"/>
+				</label>
+				<label for="product_manufacturer">
+					<span class="r2-label-standard">Fabricante</span>
+					<select class="form-control" ng-model="product.manufacturer" placeholder="Fabricante" id="product_manufacturer" name="product_manufacturer"
+						required>
+						<option value="" disabled>Selecione o fabricante</option>
+						<option data-ng-repeat="option in options.manufacturers" value="{{option.id}}">{{option.company.companyName}}</option>
+					</select>
+					<div
+						data-ng-messages="productForm.product_manufacturer.$error"
+						data-ng-if="productForm.product_manufacturer.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_manufacturer.$touched && productForm.product_manufacturer.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Fabricante do produto é obrigatório.</p>
+					</div>
+				</label>
+				<label for="product_department">
+					<span class="r2-label-standard">Departamento</span>
+					<select class="form-control" ng-model="product.department" placeholder="Departamento" id="product_department" name="product_department"
+						required>
+						<option value="" disabled>Selecione o departamento</option>
+						<option data-ng-repeat="option in options.departments" value="{{option.id}}">{{option.name}}</option>
+					</select>
+					<div
+						data-ng-messages="productForm.product_department.$error"
+						data-ng-if="productForm.product_department.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_department.$touched && productForm.product_department.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Departamento do produto é obrigatório.</p>
+					</div>
+				</label>
+				<label for="product_category">
+					<span class="r2-label-standard">Categoria</span>
+					<select class="form-control" ng-model="product.category" placeholder="Categoria" id="product_category" name="product_category">
+						<option value="">Selecione a categoria</option>
+						<option data-ng-repeat="option in options.categories" value="{{option.id}}">{{option.name}}</option>
+					</select>
+				</label>
+				<label for="product_features">
+					<span class="r2-label-standard">Características do Produto</span>
+					<button ng-click="addFeature()" class="small expanded button">Adicionar Características ao Produto</button>
+					<table st-safe-src="selectedFeaturesCollection" st-table="product.features" class="table table-striped">
+						<thead>
+							<tr>
+								<th>Característica</th>
+								<th>Valor</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="row in product.features">
+								<td>{{row.group.name}}</td>
+								<td>{{row.value}}</td>
+								<td><button ng-click="removeFeature(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+							</tr>
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="4" class="text-center">
+								<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+							</td>
+						</tr>
+						</tfoot>
+					</table>
+				</label>
+			</div>
+		</div>
+		<div class="tabs-content" data-tabs-content="product-form-tabs">
+			<div class="tabs-panel" id="panelDescricoes">
+				<label for="product_seo_description">
+					<span class="r2-label-standard">Descrição Completa</span>
+					<input type="text" class="form-control" placeholder="Descrição seo" id="product_seo_description" name="product_seo_description"
+					ng-model="product.seoDescription"/>
+				</label>
+				<label for="product_description">
+					<span class="r2-label-standard">Descrição Completa</span>
+					<wysiwyg-edit content="product.description"></wysiwyg-edit>
+				</label>
+				<label for="combo_thumbnail r2-label-float">
+						<span class="r2-label-standard">Adicionar Manual</span> 
+						<br>{{product.guideToUpload ? 'OK' : 'Sem arquivo'}}
+						<div class="button" ngf-select ng-model="product.guideToUpload" name="product_guide" ngf-max-size="20MB" ngf-min-height="100">Selecione o arquivo</div>
+					</label>
+				<label for="product_brief_description">
+					<span class="r2-label-standard">Descrição Resumida</span>
+					<textarea rows="5" ng-model="product.briefDescription"></textarea>
+				</label>
+			</div>
+		</div>
+		<div class="tabs-content" data-tabs-content="product-form-tabs">
+			<div class="tabs-panel" id="panelMedidas">
+				<label for="product_weight">
+					<span class="r2-label-standard">Peso</span>
+					<div class="input-group">
+						<span class="input-group-label">Kg</span>
+						<input type="number" class="input-group-field form-control" placeholder="Peso" id="product_weight" name="product_weight"
+						ng-model="product.weight" required/>
+					</div>
+					<div
+						data-ng-messages="productForm.product_weight.$error"
+						data-ng-if="productForm.product_weight.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_weight.$touched && productForm.product_weight.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Peso do produto é obrigatório.</p>
+					</div>
+				</label>
+				<label for="product_dimension_length">
+					<span class="r2-label-standard">Comprimento</span>
+					<div class="input-group">
+						<span class="input-group-label">cm</span>
+						<input type="number" class="input-group-field form-control" placeholder="Comprimento" id="product_dimension_length" name="product_dimension_length"
+					ng-model="product.dimensionLength" required/>
+					</div>
+					<div
+						data-ng-messages="productForm.product_dimension_length.$error"
+						data-ng-if="productForm.product_dimension_length.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_dimension_length.$touched && productForm.product_dimension_length.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Comprimento do produto é obrigatório.</p>
+					</div>
+				</label>
+				<label for="product_dimension_height">
+					<span class="r2-label-standard">Altura</span>
+					<div class="input-group">
+						<span class="input-group-label">cm</span>
+						<input type="number" class="input-group-field  form-control" placeholder="Altura" id="product_dimension_height" name="product_dimension_height"
+					ng-model="product.dimensionHeight" required/>
+					</div>
+					<div
+						data-ng-messages="productForm.product_dimension_height.$error"
+						data-ng-if="productForm.product_dimension_height.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_dimension_height.$touched && productForm.product_dimension_height.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Altura do produto é obrigatório.</p>
+					</div>
+				</label>
+				<label for="product_dimension_width" class="r2-label-float">
+					<span class="r2-label-standard">Largura</span>
+					<div class="input-group">
+						<span class="input-group-label">cm</span>
+						<input type="number" class="input-group-field form-control" placeholder="Largura" id="product_dimension_width" name="product_dimension_width"
+					ng-model="product.dimensionWidth" required/>
+					</div>
+					<div
+						data-ng-messages="productForm.product_dimension_width.$error"
+						data-ng-if="productForm.product_dimension_width.$touched"
+						data-ng-class="{ 'form-has-error': productForm.product_dimension_width.$touched && productForm.product_dimension_width.$invalid }">
+						<p data-ng-message="required"><span class="icon-error"></span>Largura do produto é obrigatório.</p>
+					</div>
+				</label>
+			</div>
+		</div>
+		<div class="tabs-content" data-tabs-content="product-form-tabs">
+			<div class="tabs-panel" id="panelGalerias">
+				<label>
+					<span class="r2-label-standard">Galeria de Imagens</span>
+					<br>
+					<input type="text" name="product_cover" ng-model="product.hasCover" required style="display: none;"/>
+					<div ng-show="hasProduct">
+						<div class="small expanded button" ngf-select ng-model="product.images" ngf-multiple="true">Substituir as imagens</div>
+						<div class="row" ng-hide="hasUpload">
+							<div ng-repeat="file in product.images track by $index">
+								<div class="small-12 large-expand columns">
+									<img
+									ngf-src="file.path"
+									ngf-background="file.path"
+									ngf-resize="{width: 200, height: 200, quality: 0.9}">
+									<label>É a imagem principal?
+										<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row" ng-show="hasUpload">
+							<div ng-repeat="file in product.images track by $index">
+								<div class="small-12 large-expand columns">
+									<img
+									ngf-src="file"
+									ngf-background="file"
+									ngf-resize="{width: 200, height: 200, quality: 0.9}">
+									<label>É a imagem principal?
+										<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-hide="hasProduct">
+						<div class="small expanded button" ngf-select ng-model="product.images" ngf-multiple="true">Selecione as Imagens</div>
+						<div class="row">
+							<div ng-repeat="file in product.images track by $index">
+								<div class="small-12 large-expand columns">
+									<img
+									ngf-src="file"
+									ngf-background="file"
+									ngf-resize="{width: 200, height: 200, quality: 0.9}">
+									<label>É a imagem principal?
+										<input type="radio" name="selected_cover" ng-click="selectedCover($index)" required>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div
+						data-ng-messages="productForm.combo_hasThumbnail.$error"
+						data-ng-class="{ 'form-has-error': productForm.combo_hasThumbnail.$invalid }">
+						<p data-ng-message="hasCover">
+							<span class="icon-error"></span><span class="r2-error-message">Você deve escolher uma imagem de capa.</span>
+						</p>
+					</div>
+				</label>
+				<label>
+					<span class="r2-label-standard">Galeria de Vídeos</span>
+				</label>
+				<div data-r2base-add-videos data-videos-model="product.videos" data-form="productForm"></div>
+			</div>
+		</div>
+		<div class="tabs-content" data-tabs-content="product-form-tabs">
+			<div class="tabs-panel" id="panelPromocoes">
+				<label for="product_is_highlighted">
+					<span class="r2-label-standard">Produto destacado</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="product.isHighlighted"  id="product_is_highlighted"/>
+				</label>
+				<label for="product_is_highlighted">
+					<span class="r2-label-standard">Produto lançamento</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="product.isLaunch" id="product_is_launch"/>
+				</label>
+				<label>
+					<span class="r2-label-standard">Produtos Alternativos</span>
+					<button ng-click="addAlternativeProduct()" class="small expanded button">Adicionar Produto Alternativo</button>
+					<table st-safe-src="selectedAlternativeProductsCollection" st-table="product.alternativeProducts" class="table table-striped">
+						<thead>
+							<tr>
+								<th>Produto</th>
+								<th>Fabricante</th>
+								<th>Departamento</th>
+								<th>Ver Estoque</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="row in product.alternativeProducts">
+								<td>{{row.title}}</td>
+								<td>{{row.manufacturer.company.companyName}}</td>
+								<td>{{row.department.name}}</td>
+								<td><button ng-click="showStock(row.id)">ver</button></td>
+								<td><button ng-click="removeAlternativeProduct(row.id)" ng-disabled="disableDeleteBtn">Excluir</button></td>
+							</tr>
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="5" class="text-center">
+								<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+							</td>
+						</tr>
+						</tfoot>
+					</table>
+				</label>
+			</div>
+		</div>
+		<div class="tabs-content" data-tabs-content="product-form-tabs">
+			<div class="tabs-panel" id="panelEstoque">
+				<label for="product_store_quantity" class="r2-label-float">
+					<br>
+					<input type="number" class="form-control" placeholder="Quantidade" id="product_store_quantity" name="product_store_quantity"
+					ng-model="product.store.quantity" required
+					floating-validation/>
+				</label>
+				<label for="product_store_minimal_qtde_on_stock" class="r2-label-float">
+					<span class="r2-label-standard">Qtde. Mínima no Estoque</span>
+					<input type="number" class="form-control" placeholder="Qtde. Mínima no Estoque" value="e" id="product_store_minimal_qtde_on_stock" name="product_store_minimal_qtde_on_stock"
+					ng-model="product.store.minimalQtdeOnStock"
+					floating-validation/>
+				</label>
+				<label for="product_store_minimal_qtde_on_stock" class="r2-label-float">
+					<span class="r2-label-standard">Custo</span>
+					<input type="number" class="form-control" placeholder="Custo" value="e" id="product_store_minimal_qtde_on_stock" name="product_store_minimal_qtde_on_stock"
+					ng-model="product.store.unitCost"
+					floating-validation/>
+				</label>
+				<label for="product_store_minimal_qtde_on_stock" class="r2-label-float">
+					<br>
+					<input type="number" class="form-control" placeholder="Preço" id="product_store_minimal_qtde_on_stock" name="product_store_minimal_qtde_on_stock"
+					ng-model="product.store.unitPrice" required
+					floating-validation/>
+				</label>
+				<label for="product_store_unit_discount_price" class="r2-label-float">
+					<span class="r2-label-standard">Preço c/ Desconto</span>
+					<input type="number" class="form-control" placeholder="Preço c/ Desconto" value="e" id="product_store_unit_discount_price" name="product_store_unit_discount_price"
+					ng-model="product.store.unitDiscountPrice"
+					floating-validation/>
+				</label>
+				<label for="product_store_sell_discount_price">
+					<span class="r2-label-standard">Vender c/ desconto?</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="product.store.sellDiscountPrice" id="product_store_sell_discount_price"/>
+				</label>
+				<label for="product_store_sell_no_shipping">
+					<span class="r2-label-standard">Não Cobrar Frete?</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="product.store.sellNoShipping" name="product_store_sell_no_shipping" id="product_store_sell_no_shipping"/>
+				</label>
+				<label for="product_store_to_sell">
+					<span class="r2-label-standard">Por Para Vender?</span> &nbsp;&nbsp;&nbsp;
+					<input type="checkbox" ng-model="product.store.toSell" name="product_store_to_sell" id="product_store_to_sell"/>
+				</label>
+			</div>
+		</div>
+		<button ng-click="saveProduct()" class="expanded button large" ng-disabled="productForm.$invalid">{{btnSaveTitle}}</button>
+	</form>
+</div>
+<!-- 			<div class="row">
+	<div class="small-12 columns form-group floating-label-wrapper">
+		<label for="produtoTitulo">Título</label>
+		<input type="text" class="form-control" id="produtoTitulo" placeholder="Título" ng-model="product.title" with-floating-label>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns form-group floating-label-wrapper">
+		<label for="produtoReferencia">Referência</label>
+		<input type="text" class="form-control" id="produtoReferencia" placeholder="Referência" ng-model="product.reference" with-floating-label>
+	</div>
+</div>
 -->

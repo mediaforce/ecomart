@@ -231,10 +231,10 @@ R2Site
     function ($scope, $timeout) {
         var INTERVAL = 7000;
         $scope.slides = [
-            {image: '/img/banners/banner-04.jpg', description: 'Imagem 1'},
-            {image: '/img/banners/banner-05.jpg', description: 'Imagem 2'},
-            {image: '/img/banners/banner-06.jpg', description: 'Imagem 3'},
-            {image: '/img/banners/banner-07.jpg', description: 'Imagem 4'},
+            {image: '/img/banners/banner-04.jpg', description: 'Imagem 1', link: ''},
+            {image: '/img/banners/banner-05.jpg', description: 'Imagem 2', link: ''},
+            {image: '/img/banners/banner-06.jpg', description: 'Imagem 3', link: ''},
+            {image: '/img/banners/banner-07.jpg', description: 'Imagem 4', link: 'http://www.ecomart.com.br/public/pesquisa/floor-washer/floor-washer.html'},
         ];
         $scope.direction = 'left';
         $scope.currentIndex = 0;

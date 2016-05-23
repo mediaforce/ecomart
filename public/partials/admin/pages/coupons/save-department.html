@@ -1,85 +1,82 @@
-<div>
-	<h4 class-"r2-admin-page-title">{{pageTitle}}</h4>
-	<form name="couponForm" class="form-vertical" novalidate
-		ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
-		<div class="row">
-			<div class="medium-12 columns">
-				<label for="coupon_department" class="r2-label-float">
-					<br>
-					<select class="form-control" ng-model="coupon.department" placeholder="Categoria" id="coupon_department" name="coupon_department"
-						floating-label>
-						<option value="ALL">Todos os Departamentos</option>
-						<option data-ng-repeat="option in options.departments" value="{{option.id}}">{{option.name}}</option>
-					</select>
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="medium-12 columns">
-				<label for="coupon_coupon" class="r2-label-float">
-					<br>					
-					<div class="input-group">
-						<input type="text" class="form-control input-group-field" placeholder="Cupom de Desconto" id="coupon_coupon" name="coupon_coupon"
-						ng-model="coupon.coupon"
-						required
-						floating-validation/>
-						<div class="input-group-button">
-							<button class="button" ng-click="generateCoupon()">Gerar</button>
-						</div>
-					</div>
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="medium-6 columns">
-				<label for="coupon_discount" class="r2-label-float">
-					<br>
-					<div class="input-group">
-						<span class="input-group-label">%</span>
-						<input type="number" class="form-control input-group-field" placeholder="Desconto" id="coupon_discount" name="coupon_discount"
-						ng-model="coupon.discount" required
-						floating-validation/>
-					</div>
-				</label>
-			</div>
-			<div class="medium-6 columns">
-				<label for="coupon_quantity" class="r2-label-float">
-					<br>
-					<input type="number" class="form-control" placeholder="Quantidade" id="coupon_quantity" name="coupon_quantity"
-					ng-model="coupon.quantity" required
-					floating-validation/>
-				</label>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="medium-12 columns">
-				<label for="coupon_description">
-					<span class="r2-label-standard">Descrição Resumida</span>
-					<textarea rows="3" ng-model="coupon.description"></textarea>
-				</label>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="medium-6 columns">
-				<label for="coupon_start_date">
-					<span class="r2-label-standard">Data de Início</span>
-					<input type="date" name="coupon_start_date" ng-model="coupon.startDate" id="coupon_start_date"/>
-				</label>
-			</div>
-			<div class="medium-6 columns">
-<!-- 				<label for="coupon_ilimited_date">
-	<span class="r2-label-standard">Produto destacado</span> &nbsp;&nbsp;&nbsp;
-	<input type="checkbox" ng-model="product.ilimitedDate"  id="coupon_ilimited_date"/>
-</label> -->
-				<label for="coupon_finish_date">
-					<span class="r2-label-standard">Data de Término</span>
-					<input type="date" name="coupon_finish_date" ng-model="coupon.finishDate" id="coupon_finish_date"/>
-				</label>
-			</div>
-		</div>
-
-		<button class="button expanded" ng-click="saveCoupon()">CRIAR CUPON</button>
-	</form>
+<div>
+	<h4 class-"r2-admin-page-title">{{pageTitle}}</h4>
+	<form name="couponForm" class="form-vertical" novalidate
+		ng-model-options="{updateOn:'default blur',debounce:{'default':500,'blur':0}}">
+		<div class="row">
+			<div class="medium-12 columns">
+				<label for="coupon_department" class="r2-label-float">
+					<br>
+					<select class="form-control" ng-model="coupon.department" placeholder="Categoria" id="coupon_department" name="coupon_department"
+						floating-label>
+						<option value="ALL">Todos os Departamentos</option>
+						<option data-ng-repeat="option in options.departments" value="{{option.id}}">{{option.name}}</option>
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-12 columns">
+				<label for="coupon_coupon" class="r2-label-float">
+					<br>					
+					<div class="input-group">
+						<input type="text" class="form-control input-group-field" placeholder="Cupom de Desconto" id="coupon_coupon" name="coupon_coupon"
+						ng-model="coupon.coupon"
+						required
+						floating-validation/>
+						<div class="input-group-button">
+							<button class="button" ng-click="generateCoupon()">Gerar</button>
+						</div>
+					</div>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-6 columns">
+				<label for="coupon_discount" class="r2-label-float">
+					<br>
+					<div class="input-group">
+						<span class="input-group-label">%</span>
+						<input type="number" class="form-control input-group-field" placeholder="Desconto" id="coupon_discount" name="coupon_discount"
+						ng-model="coupon.discount" required
+						floating-validation/>
+					</div>
+				</label>
+			</div>
+			<div class="medium-6 columns">
+				<label for="coupon_quantity" class="r2-label-float">
+					<br>
+					<input type="number" class="form-control" placeholder="Quantidade" id="coupon_quantity" name="coupon_quantity"
+					ng-model="coupon.quantity" required
+					floating-validation/>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-12 columns">
+				<label for="coupon_description">
+					<span class="r2-label-standard">Descrição Resumida</span>
+					<textarea rows="3" ng-model="coupon.description"></textarea>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-6 columns">
+				<label for="coupon_start_date">
+					<span class="r2-label-standard">Data de Início</span>
+					<input type="date" name="coupon_start_date" ng-model="coupon.startDate" id="coupon_start_date"/>
+				</label>
+			</div>
+			<div class="medium-6 columns">
+<!-- 				<label for="coupon_ilimited_date">
+	<span class="r2-label-standard">Produto destacado</span> &nbsp;&nbsp;&nbsp;
+	<input type="checkbox" ng-model="product.ilimitedDate"  id="coupon_ilimited_date"/>
+</label> -->
+				<label for="coupon_finish_date">
+					<span class="r2-label-standard">Data de Término</span>
+					<input type="date" name="coupon_finish_date" ng-model="coupon.finishDate" id="coupon_finish_date"/>
+				</label>
+			</div>
+		</div>
+		<button class="button expanded" ng-click="saveCoupon()">CRIAR CUPON</button>
+	</form>
 </div>
