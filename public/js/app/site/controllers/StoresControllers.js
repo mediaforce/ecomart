@@ -18,13 +18,13 @@ R2Site.controller('StoreDetailCtrl', [
         $scope.store = {};
         $scope.videoTeste = '';
         if (store.success) {
-            console.log('store', store);
+
             $scope.store = store.data;
             $scope.store.slug = Slug.slugify($scope.store.product.title);
-            if(store.sellDiscountPrice) {
-                store.price = store.unitDiscountPrice;
+            if($scope.store.sellDiscountPrice) {
+                $scope.store.price = $scope.store.unitDiscountPrice;
             } else {
-                store.price = store.unitPrice;
+                $scope.store.price = $scope.store.unitPrice;
             }
             var cover = _.find($scope.store.product.images, function(image) {
                 if (image.isCover) return true;
@@ -40,6 +40,8 @@ R2Site.controller('StoreDetailCtrl', [
                 $scope.videoTitle = 'Em breve um novo video deste produto';
                 $scope.showVideo = false;
             }
+
+            console.log('STORE DETAILS', $scope.store);
         }
         $scope.setSelectedImage = function(image) {
             $scope.selectedImage = image;
